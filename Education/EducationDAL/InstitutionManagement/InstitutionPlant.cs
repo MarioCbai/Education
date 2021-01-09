@@ -9,7 +9,8 @@ using EducationDAL.InstitutionManagement.Semesters;
 using EducationDAL.InstitutionManagement.HourTables;
 using EducationDAL.InstitutionManagement.Organs;
 using EducationDAL.InstitutionManagement.OrganesTypes;
-using EducationDAL.InstitutionManagement.Regions; 
+using EducationDAL.InstitutionManagement.Regions;
+
 
 namespace EducationDAL.InstitutionManagement
 {
@@ -21,6 +22,7 @@ namespace EducationDAL.InstitutionManagement
         {
             return new ClassManagementRealize();
         }
+
         //学段年级
         public override FieldGrade FieldGrade()
         {

@@ -11,6 +11,7 @@ using EducationDAL.InstitutionManagement.Organs;
 using EducationDAL.InstitutionManagement.OrganesTypes;
 using EducationDAL.InstitutionManagement.Regions;
 
+
 namespace EducationDAL.InstitutionManagement
 {
     //机构管理
@@ -22,7 +23,7 @@ namespace EducationDAL.InstitutionManagement
         /// <returns></returns>
         public abstract ClassManagement ClassManagement();
         /// <summary>
-        /// 年纪学段
+        /// 年级学段
         /// </summary>
         /// <returns></returns>
         public abstract FieldGrade FieldGrade();
@@ -61,6 +62,8 @@ namespace EducationDAL.InstitutionManagement
         /// </summary>
         /// <returns></returns>
         public abstract Region Region();
+
+        
 
     }
 }
