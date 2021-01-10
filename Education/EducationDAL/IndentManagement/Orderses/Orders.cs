@@ -7,5 +7,6 @@ namespace EducationDAL.IndentManagement.Orderses
     //订单
     public abstract class Orders
     {
+
     }
 }

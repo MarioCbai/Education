@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EducationDAL\EducationDAL.csproj" />
+    <ProjectReference Include="..\EducationMODEL\EducationMODEL.csproj" />
+    <ProjectReference Include="..\IEducation\IEducation.csproj" />
+  </ItemGroup>
+
 </Project>
