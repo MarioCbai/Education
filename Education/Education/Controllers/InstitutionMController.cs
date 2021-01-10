@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EducationBLL;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +13,10 @@ namespace Education.Controllers
     [ApiController]
     public class InstitutionMController : ControllerBase
     {
-        IInstitutionManagement institutionManagement = new InstitutionManagementBll();
+        private IInstitutionManagement _institutionManagement;
+        public InstitutionMController(IInstitutionManagement institutionManagement)
+        {
+            _institutionManagement = institutionManagement;
+        }
     }
 }
