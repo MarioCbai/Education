@@ -8,12 +8,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Education.Controllers
 {
-    //机构管理管理控制器
-    [Route("api/[controller]")]
+    /// <summary>
+    /// 机构管理管理控制器
+    /// </summary>
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class InstitutionMController : ControllerBase
     {
         private IInstitutionManagement _institutionManagement;
+        /// <summary>
+        /// 机构管理管理控制器接口
+        /// </summary>
+        /// <param name="institutionManagement"></param>
         public InstitutionMController(IInstitutionManagement institutionManagement)
         {
             _institutionManagement = institutionManagement;

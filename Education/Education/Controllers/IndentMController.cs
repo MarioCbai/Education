@@ -8,12 +8,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Education.Controllers
 {
-    //订单管理
-    [Route("api/[controller]")]
+    /// <summary>
+    /// 订单管理
+    /// </summary>
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class IndentMController : ControllerBase
     {
         private IIndentManagement _indentManagement;
+        /// <summary>
+        /// 订单管理接口
+        /// </summary>
+        /// <param name="indentManagement"></param>
         public IndentMController(IIndentManagement indentManagement)
         {
             _indentManagement = indentManagement;

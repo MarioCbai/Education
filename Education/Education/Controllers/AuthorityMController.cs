@@ -8,12 +8,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Education.Controllers
 {
-    //权限管理控制器
-    [Route("api/[controller]")]
+    /// <summary>
+    /// 权限管理控制器
+    /// </summary>
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthorityMController : ControllerBase
     {
         private IAuthorityManagement _authorityManagement;
+        /// <summary>
+        /// 连接口
+        /// </summary>
+        /// <param name="authorityManagement"></param>
         public AuthorityMController(IAuthorityManagement authorityManagement)
         {
             _authorityManagement = authorityManagement;

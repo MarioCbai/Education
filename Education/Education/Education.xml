@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Education</name>
+    </assembly>
+    <members>
+        <member name="T:Education.Controllers.AuthorityMController">
+            <summary>
+            权限管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.#ctor(IEducation.IAuthorityManagement)">
+            <summary>
+            连接口
+            </summary>
+            <param name="authorityManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.EssentialDataController">
+            <summary>
+            基本数据管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.#ctor(IEducation.IEssentialData)">
+            <summary>
+            基本数据管理控制器连接接口
+            </summary>
+            <param name="essentialData"></param>
+        </member>
+        <member name="T:Education.Controllers.FinancesController">
+            <summary>
+            财务管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.FinancesController.#ctor(IEducation.IFinances)">
+            <summary>
+            财务管理控制器接口
+            </summary>
+            <param name="finances"></param>
+        </member>
+        <member name="T:Education.Controllers.IndentMController">
+            <summary>
+            订单管理
+            </summary>
+        </member>
+    </members>
+</doc>

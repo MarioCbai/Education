@@ -4,7 +4,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\White\Desktop\培训机构管理后台\Education\Education\Education.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EducationDAL\EducationDAL.csproj" />
     <ProjectReference Include="..\EducationMODEL\EducationMODEL.csproj" />
     <ProjectReference Include="..\IEducation\IEducation.csproj" />
   </ItemGroup>

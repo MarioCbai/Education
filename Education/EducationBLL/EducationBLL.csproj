@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EducationDAL\EducationDAL.csproj" />
     <ProjectReference Include="..\EducationMODEL\EducationMODEL.csproj" />
     <ProjectReference Include="..\IEducation\IEducation.csproj" />
