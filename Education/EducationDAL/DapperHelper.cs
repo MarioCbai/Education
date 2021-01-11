@@ -36,6 +36,62 @@ namespace EducationDAL
         }
 
         /// <summary>
+        /// 查询第一个数据
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static T QueryFirst <T>(string sql, object param)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                return con.QueryFirst<T>(sql, param);
+            }
+        }
+
+        /// <summary>
+        /// 查询第一个数据没有返回默认值
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static T QueryFirstOrDefault <T>(string sql, object param)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                return con.QueryFirstOrDefault<T>(sql, param);
+            }
+        }
+
+        /// <summary>
+        /// 查询单条数据
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static T QuerySingle<T>(string sql, object param)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                return con.QuerySingle<T>(sql, param);
+            }
+        }
+
+        /// <summary>
+        /// 查询单条数据没有返回默认值
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static T QuerySingleOrDefault<T>(string sql, object param)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                return con.QuerySingleOrDefault<T>(sql, param);
+            }
+        }
+
+        /// <summary>
         /// 增删改
         /// </summary>
         /// <param name="sql"></param>
@@ -78,6 +134,20 @@ namespace EducationDAL
         }
 
         /// <summary>
+        /// Scalar获取数据
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static T ExecuteScalarForT<T>(string sql, object param)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                return con.ExecuteScalar<T>(sql, param);
+            }
+        }
+
+        /// <summary>
         /// 带参数的存储过程
         /// </summary>
         /// <param name="sql"></param>
@@ -110,7 +180,6 @@ namespace EducationDAL
             {
                 using (var transaction = con.BeginTransaction())
                 {
-
                     try
                     {
                         int result = 0;
