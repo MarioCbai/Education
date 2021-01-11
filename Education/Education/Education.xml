@@ -15,6 +15,12 @@
             </summary>
             <param name="authorityManagement"></param>
         </member>
+        <member name="M:Education.Controllers.AuthorityMController.add">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Education.Controllers.EssentialDataController">
             <summary>
             基本数据管理控制器
@@ -40,6 +46,156 @@
         <member name="T:Education.Controllers.IndentMController">
             <summary>
             订单管理
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.#ctor(IEducation.IIndentManagement)">
+            <summary>
+            订单管理接口
+            </summary>
+            <param name="indentManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.InstitutionMController">
+            <summary>
+            机构管理管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.InstitutionMController.#ctor(IEducation.IInstitutionManagement)">
+            <summary>
+            机构管理管理控制器接口
+            </summary>
+            <param name="institutionManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.StudentMController">
+            <summary>
+            学员管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.#ctor(IEducation.IStudentManagement)">
+            <summary>
+            学员管理控制器接口
+            </summary>
+            <param name="studentManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.TeacherMController">
+            <summary>
+            教师管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.TeacherMController.#ctor(IEducation.ITeacherManagement)">
+            <summary>
+            教师管理控制器接口
+            </summary>
+            <param name="teacherManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.TeachingMController">
+            <summary>
+            教学管理控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.TeachingMController.#ctor(IEducation.ITeachingManagement)">
+            <summary>
+            教学管理控制器接口
+            </summary>
+            <param name="teachingManagement"></param>
+        </member>
+        <member name="T:Education.Controllers.WeatherForecastController">
+            <summary>
+            自带控制器
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{Education.Controllers.WeatherForecastController})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Education.Controllers.WeatherForecastController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Education.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Education.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Education.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Education.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Education.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Education.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Education.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Education.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:Education.SwaggerSetUp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Education.SwaggerSetUp.AddSwaggerSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:Education.WeatherForecast">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Education.WeatherForecast.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Education.WeatherForecast.TemperatureC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Education.WeatherForecast.TemperatureF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Education.WeatherForecast.Summary">
+            <summary>
+            
             </summary>
         </member>
     </members>

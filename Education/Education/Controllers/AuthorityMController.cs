@@ -11,9 +11,9 @@ namespace Education.Controllers
     /// <summary>
     /// 权限管理控制器
     /// </summary>
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AuthorityMController : ControllerBase
+    public class AuthorityMController : ValuesController
     {
         private IAuthorityManagement _authorityManagement;
         /// <summary>
@@ -23,6 +23,15 @@ namespace Education.Controllers
         public AuthorityMController(IAuthorityManagement authorityManagement)
         {
             _authorityManagement = authorityManagement;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public string add()
+        {
+            return "123";
         }
 
     }
