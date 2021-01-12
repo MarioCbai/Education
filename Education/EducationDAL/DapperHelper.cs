@@ -166,8 +166,6 @@ namespace EducationDAL
                 return list;
             }
         }
-
-
         /// <summary>
         /// 事务1 - 全SQL
         /// </summary>
