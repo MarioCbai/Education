@@ -36,8 +36,8 @@ namespace Education
                 });
                 c.OrderActionsBy(o => o.RelativePath);
                 // 获取xml注释文件的目录
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, "Education.xml");
-                c.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, "Education.xml");
+                //c.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
             });
             
         }

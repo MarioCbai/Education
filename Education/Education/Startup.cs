@@ -38,6 +38,7 @@ namespace Education
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            //swaggerÅäÖÃ
             services.AddSwaggerSetup();
             services.AddSwaggerGen();
             services.AddCors(options =>
