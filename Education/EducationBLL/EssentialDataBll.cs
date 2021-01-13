@@ -215,28 +215,40 @@ namespace EducationBLL
             return essentials.TeacherSort().TeacherSortZtai(ztai,id);
         }
         /// <summary>
-        /// 教师风格
+        /// 教师风格添加
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
         public int TeacherStyleAdd(TeachingStyleMod t)
         {
-            throw new NotImplementedException();
+            return essentials.TeacherStyle().TeacherStyleAdd(t);
         }
-
+        /// <summary>
+        /// 教师风格显示
+        /// </summary>
+        /// <returns></returns>
         public List<TeachingStyleMod> TeacherStyleShow()
         {
-            throw new NotImplementedException();
+            return essentials.TeacherStyle().TeacherStyleShow();
         }
-
+        /// <summary>
+        /// 教师风格修改状态
+        /// </summary>
+        /// <param name="ztai"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int TeacherStyleZtai(int ztai, int id)
         {
-            throw new NotImplementedException();
+            return essentials.TeacherStyle().TeacherStyleZtai(ztai,id);
         }
-
+        /// <summary>
+        /// 教师风格修改
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public int TTeacherStyleUpt(TeachingStyleMod t)
         {
-            throw new NotImplementedException();
+            return essentials.TeacherStyle().TTeacherStyleUpt(t);
         }
     }
 }

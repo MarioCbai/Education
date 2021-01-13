@@ -24,5 +24,6 @@ namespace Education.Controllers
         {
             _essentialData = essentialData;
         }
+
     }
 }
