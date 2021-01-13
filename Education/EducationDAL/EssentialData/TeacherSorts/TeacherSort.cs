@@ -9,16 +9,16 @@ namespace EducationDAL.EssentialData.TeacherSorts
     public abstract class TeacherSort
     {
         //教师类别增删改查声明
-        //教师类显示
+        //教师类别显示
         public abstract List<TeacherTypeMod> TeacherSortShow();
 
-        //教师类添加
+        //教师类别添加
         public abstract int TeacherSortAdd(TeacherTypeMod t);
 
-        //教师类编辑
+        //教师类别编辑
         public abstract int TeacherSortUpt(TeacherTypeMod t);
 
-        //教师类状态修改
+        //教师类别状态修改
         public abstract int TeacherSortZtai(int ztai, int id);
     }
 }

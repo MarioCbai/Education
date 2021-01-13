@@ -15,7 +15,7 @@ namespace EducationDAL.EssentialData
     //基础数据工厂工厂类
     public class EssentialDataPlant : Essential
     {
-        //课型管理表
+        //班型管理表
         public override ClasstypeManagement ClasstypeManagement()
         {
             return  new ClasstypeManagementRealize();

@@ -9,16 +9,16 @@ namespace EducationDAL.EssentialData.ClassTypes
     public abstract class ClassType
     {
         //课时类型增删改查
-        //来源表显示
+        //课时表显示
         public abstract List<HourTypeMod> ClassTypeShow();
 
-        //来源表添加
+        //课时表添加
         public abstract int ClassTypeAdd(HourTypeMod h);
 
-        //来源表编辑
+        //课时表编辑
         public abstract int ClassTypeUpt(HourTypeMod h);
 
-        //来源表状态修改
+        //课时表状态修改
         public abstract int ClassTypeZtai(int ztai, int id);
     }
 }

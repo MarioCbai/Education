@@ -17,5 +17,9 @@ namespace EducationMODEL.Infrastructure
         public int HourTypeId { get; set; }//课时类别管理（外键）
 
         public int PricingPrice { get; set; }//课时单价
+
+        public int PriceReigth { get; set; }
+
+        public int PriceLefght { get; set; }
     }
 }

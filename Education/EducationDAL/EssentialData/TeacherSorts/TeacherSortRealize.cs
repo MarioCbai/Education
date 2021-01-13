@@ -11,22 +11,22 @@ namespace EducationDAL.EssentialData.TeacherSorts
         //教师类别添加
         public override int TeacherSortAdd(TeacherTypeMod t)
         {
-            return DapperHelper.Execute("insert into TeacherTypeMod values(@TeacherTypeName,@Sort,@Ztai)", t);
+            return DapperHelper.Execute("insert into TeacherType values(@TeacherTypeName,@Sort,@Ztai)", t);
         }
         //教师类别显示
         public override List<TeacherTypeMod> TeacherSortShow()
         {
-            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherTypeMod", "");
+            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherType", "");
         }
         //教师类别修改
         public override int TeacherSortUpt(TeacherTypeMod t)
         {
-            return DapperHelper.Execute("update TeacherTypeMod set TeacherTypeName=@TeacherTypeName,Sort=@Sort where TeacherTypeId=@TeacherTypeId", t);
+            return DapperHelper.Execute("update TeacherType set TeacherTypeName=@TeacherTypeName,Sort=@Sort where TeacherTypeId=@TeacherTypeId", t);
         }
         //状态修改
         public override int TeacherSortZtai(int ztai, int id)
         {
-            return DapperHelper.Execute("update TeacherTypeMod set Ztai=@Ztai where TeacherTypeId=@TeacherTypeId", new { Ztai = ztai, TeacherTypeId = id });
+            return DapperHelper.Execute("update TeacherType set Ztai=@Ztai where TeacherTypeId=@TeacherTypeId", new { Ztai = ztai, TeacherTypeId = id });
         }
     }
 }
