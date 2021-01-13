@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationBLL;
 using EducationDAL;
+using IEducation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +43,7 @@ namespace Education
             //swagger≈‰÷√
             services.AddSwaggerSetup();
             services.AddSwaggerGen();
+            services.AddTransient<IIndentManagement, IndentManagementBll>(); //∂©µ•◊¢»Î
             services.AddCors(options =>
             {
                 options.AddPolicy("any", builder =>

@@ -18,9 +18,6 @@ namespace EducationDAL
         {
             _locastr = locastr;
         }
-        private static readonly string connectionString = _locastr;
-
-
         /// <summary>
         /// 查询列表
         /// </summary>
@@ -29,7 +26,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static List<T> Query<T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.Query<T>(sql, param).ToList();
             }
@@ -43,7 +40,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static T QueryFirst <T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.QueryFirst<T>(sql, param);
             }
@@ -57,7 +54,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static T QueryFirstOrDefault <T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.QueryFirstOrDefault<T>(sql, param);
             }
@@ -71,7 +68,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static T QuerySingle<T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.QuerySingle<T>(sql, param);
             }
@@ -85,7 +82,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static T QuerySingleOrDefault<T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.QuerySingleOrDefault<T>(sql, param);
             }
@@ -99,7 +96,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static int Execute(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.Execute(sql, param);
             }
@@ -113,7 +110,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static IDataReader ExecuteReader(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.ExecuteReader(sql, param);
             }
@@ -127,7 +124,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static object ExecuteScalar(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.ExecuteScalar(sql, param);
             }
@@ -141,7 +138,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static T ExecuteScalarForT<T>(string sql, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 return con.ExecuteScalar<T>(sql, param);
             }
@@ -155,7 +152,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static List<T> ExecutePro<T>(string proc, object param)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 List<T> list = con.Query<T>(proc,
                     param,
@@ -174,7 +171,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static int ExecuteTransaction(string[] sqlarr)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 using (var transaction = con.BeginTransaction())
                 {
@@ -189,7 +186,7 @@ namespace EducationDAL
                         transaction.Commit();
                         return result;
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         transaction.Rollback();
                         return 0;
@@ -209,7 +206,7 @@ namespace EducationDAL
         /// <returns></returns>
         public static int ExecuteTransaction(Dictionary<string, object> dic)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_locastr))
             {
                 using (var transaction = con.BeginTransaction())
                 {
@@ -224,7 +221,7 @@ namespace EducationDAL
                         transaction.Commit();
                         return result;
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         transaction.Rollback();
                         return 0;
