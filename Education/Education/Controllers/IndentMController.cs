@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationDAL.IndentManagement.Orderses;
+using EducationMODEL.OrderManagement;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +26,20 @@ namespace Education.Controllers
         {
             _indentManagement = indentManagement;
         }
+        /// <summary>
+        /// 显示以及查询
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetOrders")]
+        [HttpGet]
+        public List<OrdersMod> GetOrders() 
+        {
+            List<OrdersMod> list = _indentManagement.GetOrdersMods();
+            return list;
+        }
+
+
+
+
     }
 }

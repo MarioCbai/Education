@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationBLL;
 using EducationDAL;
+using IEducation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +43,14 @@ namespace Education
             //swagger配置
             services.AddSwaggerSetup();
             services.AddSwaggerGen();
+            services.AddTransient<IIndentManagement, IndentManagementBll>(); //订单管理注入
+            services.AddTransient<IAuthorityManagement, AuthorityManagementBll>();//权限管理注入
+            services.AddTransient<IEssentialData, EssentialDataBll>();//基本数据管理
+            services.AddTransient<IFinances, FinancesBll>();//财务管理
+            services.AddTransient<IInstitutionManagement, InstitutionManagementBll>();//机构管理
+            services.AddTransient<IStudentManagement, StudentManagementBll>();//学员管理
+            services.AddTransient<ITeacherManagement, TeacherManagementBll>();//教师管理
+            services.AddTransient<ITeachingManagement, TeachingManagementBll>();//教学管理
             services.AddCors(options =>
             {
                 options.AddPolicy("any", builder =>
