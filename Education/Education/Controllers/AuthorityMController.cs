@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Education.Controllers
 {
@@ -15,13 +16,15 @@ namespace Education.Controllers
     [ApiController]
     public class AuthorityMController : ControllerBase
     {
+        private readonly ILogger<AuthorityMController> _logger;
         private IAuthorityManagement _authorityManagement;
         /// <summary>
         /// 连接口
         /// </summary>
         /// <param name="authorityManagement"></param>
-        public AuthorityMController(IAuthorityManagement authorityManagement)
+        public AuthorityMController(IAuthorityManagement authorityManagement, ILogger<AuthorityMController> logger)
         {
+            _logger = logger;
             _authorityManagement = authorityManagement;
         }
         /// <summary>

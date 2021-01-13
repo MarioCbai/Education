@@ -15,6 +15,7 @@ namespace Education.Controllers
     [ApiController]
     public class InstitutionMController : ControllerBase
     {
+
         private IInstitutionManagement _institutionManagement;
         /// <summary>
         /// 机构管理管理控制器接口
