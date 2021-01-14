@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL.AuthorityManagement;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Education.Controllers
 {
     /// <summary>
     /// 权限管理控制器
     /// </summary>
-    [Route("api/[controller]/[action]")]
+    //[Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthorityMController : ControllerBase
     {
@@ -25,13 +27,39 @@ namespace Education.Controllers
             _authorityManagement = authorityManagement;
         }
         /// <summary>
-        /// 
+        /// 权限查询
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/SelMenu")]
+        public List<MenuMod> SelMenu(int id)
+        {
+            List<MenuMod> menuMods = _authorityManagement.SelPermission(id);
+            return menuMods;
+        }
+        /// <summary>
+        /// 权限菜单的树显示
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string add()
+        [Route("/api/MenuShow")]
+        public List<MenuMod> MenuShow()
         {
-            return "123";
+            List<MenuMod> menuMods = _authorityManagement.PermissionShow();
+            return menuMods;
+        }
+
+        /// <summary>
+        /// 权限菜单的显示
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/MenuShowNT")]
+        public List<MenuMod> MenuShowNT()
+        {
+            List<MenuMod> menuMods = _authorityManagement.PermissionShowNT();
+
+            return menuMods;
         }
 
     }

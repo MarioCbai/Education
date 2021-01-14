@@ -4,14 +4,16 @@ using System.Text;
 
 namespace EducationMODEL.TeachingManagement
 {
-    public class FAFSAMod//退课申请表//返还课
+    public class FAFSAMod  //返还课
     {
         public int AuditionID { get; set; }//主键id
 
-        public int CourseId { get; set; }//排课申请表id
+        public string Auditor { get; set; }//审核人
 
         public int ASID { get; set; }//试听课学生关系表 
 
-        public int Dropclasstype { get; set; }//1 退课  2返还课
+        public DateTime AuditorPTime { get; set; }//审核时间
+
+        public int AuditStatus { get; set; }//审核状态
     }
 }
