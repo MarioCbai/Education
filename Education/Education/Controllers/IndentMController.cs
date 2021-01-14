@@ -7,6 +7,7 @@ using EducationMODEL.OrderManagement;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Education.Controllers
 {
@@ -17,13 +18,15 @@ namespace Education.Controllers
     [ApiController]
     public class IndentMController : ControllerBase
     {
+        private readonly ILogger<IndentMController> _logger;
         private IIndentManagement _indentManagement;
         /// <summary>
         /// 订单管理接口
         /// </summary>
         /// <param name="indentManagement"></param>
-        public IndentMController(IIndentManagement indentManagement)
+        public IndentMController(IIndentManagement indentManagement, ILogger<IndentMController> logger)
         {
+            _logger = logger;
             _indentManagement = indentManagement;
         }
         /// <summary>
