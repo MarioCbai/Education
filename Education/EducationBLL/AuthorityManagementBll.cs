@@ -1,7 +1,10 @@
 ﻿using EducationDAL.AuthorityManagement;
 using EducationDAL.AuthorityManagement.Permissions;
+using EducationDAL.AuthorityManagement.UserRoleses;
 using EducationDAL.AuthorityManagement.Users;
+using EducationMODEL;
 using EducationMODEL.AuthorityManagement;
+using EducationMODEL.linkModel;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -32,6 +35,20 @@ namespace EducationBLL
         {
             Permission permission = authoritys.Permission();
             return permission.SelPermission(id);
+        }
+        //用户角色添加
+        public List<ConsumerMod> UserPartAdd()
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 用户角色显示
+        /// </summary>
+        /// <returns></returns>
+        public List<UserPardMod> UserPartShow()
+        {
+            UserRoles user = authoritys.UserRoles();
+            return user.UserPartShow();
         }
 
         //用户的全部显示

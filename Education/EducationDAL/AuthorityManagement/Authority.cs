@@ -41,5 +41,7 @@ namespace EducationDAL.AuthorityManagement
         /// </summary>
         /// <returns></returns>
         public abstract RolePermission RolePermission();
+
+
     }
 }

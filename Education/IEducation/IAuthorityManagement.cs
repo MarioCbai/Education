@@ -1,4 +1,6 @@
-﻿using EducationMODEL.AuthorityManagement;
+﻿using EducationMODEL;
+using EducationMODEL.AuthorityManagement;
+using EducationMODEL.linkModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +10,10 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
-        //用户显示
-        List<ConsumerMod> UserShow();
+        //用户角色显示
+        List<UserPardMod> UserPartShow();
+        //用户角色添加
+        List<ConsumerMod> UserPartAdd();
 
         //权限查询
         List<MenuMod> SelPermission(int id);
@@ -19,6 +23,10 @@ namespace IEducation
 
         //权限全显示
         List<MenuMod> PermissionShowNT();
+
+ 
+
+        
 
     }
 }
