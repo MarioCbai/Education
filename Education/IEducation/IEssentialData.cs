@@ -11,7 +11,7 @@ namespace IEducation
     {
         //来源管理
         //显示
-        List<SourceMod> SourceShow();
+        List<SourceMod> SourceShow(string name = null);
         //添加
         int SourceAdd(SourceMod s);
         //修改

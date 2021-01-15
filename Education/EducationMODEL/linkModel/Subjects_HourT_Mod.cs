@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EducationMODEL.linkModel
 {
-   public class Subjects_HourT_Mod
+   public class Subjects_HourT_Mod//课时类型+科目+学科
     {
         public int SHId { get; set; }//主键
 

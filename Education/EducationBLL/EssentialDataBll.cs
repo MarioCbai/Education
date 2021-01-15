@@ -119,9 +119,9 @@ namespace EducationBLL
         /// 来源表显示
         /// </summary>
         /// <returns></returns>
-        public List<SourceMod> SourceShow()
+        public List<SourceMod> SourceShow(string name = null)
         {
-            return essentials.Source().SourceShow();
+            return essentials.Source().SourceShow(name);
         }
         /// <summary>
         /// 来源表修改
