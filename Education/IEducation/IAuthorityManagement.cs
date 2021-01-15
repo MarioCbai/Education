@@ -29,10 +29,13 @@ namespace IEducation
         List<MenuMod> PermissionShowNT();
         //全部角色
         List<PartMod> PartShow();
+        //登录
+         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
 
- 
 
-        
+
+
+
 
     }
 }
