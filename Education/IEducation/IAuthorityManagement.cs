@@ -10,8 +10,12 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
+        //用户角色状态修改
+        void State(int id,int val);
         //用户角色显示
-        List<UserPardMod> UserPartShow();
+        List<UserPardMod> UserPartShow(int PageIndex, int PageSize, string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
+        //用户数据总条数
+        int UserPartShows();
         //用户角色添加
         List<ConsumerMod> UserPartAdd();
 
@@ -23,10 +27,15 @@ namespace IEducation
 
         //权限全显示
         List<MenuMod> PermissionShowNT();
+        //全部角色
+        List<PartMod> PartShow();
+        //登录
+         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
 
- 
 
-        
+
+
+
 
     }
 }
