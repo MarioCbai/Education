@@ -8,8 +8,15 @@ namespace EducationDAL.AuthorityManagement.Permissions
     //权限实现
     public class PermissionRealize : Permission
     {
-        
 
+
+        //全部显示
+        public override List<MenuMod> PermissionShowNT()
+        {
+            string sql = "select * from Menu";
+            List<MenuMod> menuMods = DapperHelper.Query<MenuMod>(sql, new { });
+            return menuMods;
+        }
         //权限树显示
         public override List<MenuMod> PermissionShow()
         {
@@ -21,13 +28,7 @@ namespace EducationDAL.AuthorityManagement.Permissions
             }
             return menuMods;
         }
-        //全部显示
-        public override List<MenuMod> PermissionShowNT()
-        {
-            string sql = "select * from Menu";
-            List<MenuMod> menuMods = DapperHelper.Query<MenuMod>(sql, new { });
-            return menuMods;
-        }
+
         //权限递归方法
         public List<MenuMod> RecursionP(int id)
         {

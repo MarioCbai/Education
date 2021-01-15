@@ -11,5 +11,8 @@ namespace EducationMODEL
         public int Consumer { get; set; }//用户表（外键）
 
         public int Part { get; set; }//角色表（外键）
+        public int CPState { get; set; }//状态
+        public DateTime Createtime { get; set; }//创建时间
+        public string Handlers { get; set; }//操作人
     }
 }

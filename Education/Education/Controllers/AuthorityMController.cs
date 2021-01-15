@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL;
 using EducationMODEL.AuthorityManagement;
+using EducationMODEL.linkModel;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +28,25 @@ namespace Education.Controllers
         {
             _authorityManagement = authorityManagement;
         }
+        /// <summary>
+        /// 用户角色显示
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/UserPartShow")]
+        public string UserPartShow()
+        {
+            List<UserPardMod> list= _authorityManagement.UserPartShow();
+            var cc = new
+            {
+                code=0,
+                msg="",
+                count=list.Count,
+                data=list
+            };
+            return JsonConvert.SerializeObject(cc);
+        }
+
         /// <summary>
         /// 权限查询
         /// </summary>
