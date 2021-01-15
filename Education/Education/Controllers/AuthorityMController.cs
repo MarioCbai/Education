@@ -29,19 +29,42 @@ namespace Education.Controllers
             _authorityManagement = authorityManagement;
         }
         /// <summary>
+        /// 用户角色状态修改
+        /// </summary>
+        /// <param name=""></param>
+        [HttpPost]
+        [Route("/api/State")]
+        public void State(int id,int val)
+        {
+            _authorityManagement.State(id,val);
+        }
+
+        /// <summary>
         /// 用户角色显示
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("/api/UserPartShow")]
-        public string UserPartShow()
+        public string UserPartShow(int PageIndex,int PageSize)
         {
-            List<UserPardMod> list= _authorityManagement.UserPartShow();
+            List<UserPardMod> list= _authorityManagement.UserPartShow( PageIndex, PageSize);
+            foreach (var item in list)
+            {
+                if (item.CPState==1)
+                {
+                    item.Zhuang = "启用";
+                }
+                else
+                {
+                    item.Zhuang = "禁用";
+                }
+            }
+            int counts = _authorityManagement.UserPartShows();
             var cc = new
             {
                 code=0,
                 msg="",
-                count=list.Count,
+                count= counts,
                 data=list
             };
             return JsonConvert.SerializeObject(cc);
