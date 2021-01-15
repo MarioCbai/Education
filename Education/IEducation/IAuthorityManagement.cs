@@ -19,6 +19,8 @@ namespace IEducation
 
         //权限全显示
         List<MenuMod> PermissionShowNT();
+        //登录
+        List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
 
     }
 }

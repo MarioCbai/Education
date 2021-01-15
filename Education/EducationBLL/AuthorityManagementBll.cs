@@ -26,6 +26,11 @@ namespace EducationBLL
             Permission permission = authoritys.Permission();
             return  permission.PermissionShowNT();
         }
+        //登录
+        public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
+        }
 
         //查询权限
         public List<MenuMod> SelPermission(int id)

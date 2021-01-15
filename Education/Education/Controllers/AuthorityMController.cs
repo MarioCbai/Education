@@ -61,6 +61,17 @@ namespace Education.Controllers
 
             return menuMods;
         }
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/AuthorityM/Register")]
+        public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
+        {
+            List<ConsumerMod> list = _authorityManagement.Register(ConsumerIPhone, ConsumerPwd);
+            return list;
+        }
 
     }
 }
