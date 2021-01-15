@@ -1,5 +1,6 @@
 ﻿using EducationDAL.AuthorityManagement;
 using EducationDAL.AuthorityManagement.Permissions;
+using EducationDAL.AuthorityManagement.Roles;
 using EducationDAL.AuthorityManagement.UserRoleses;
 using EducationDAL.AuthorityManagement.Users;
 using EducationMODEL;
@@ -16,6 +17,13 @@ namespace EducationBLL
     public class AuthorityManagementBll: IAuthorityManagement
     {
         Authority authoritys = new AuthorityPlant();
+
+        //全部角色
+        public List<PartMod> PartShow()
+        {
+            Role permission = authoritys.Role();
+            return permission.PartShow();
+        }
 
         //权限菜单的树显示
         public List<MenuMod> PermissionShow()
@@ -53,10 +61,10 @@ namespace EducationBLL
         /// 用户角色显示分页
         /// </summary>
         /// <returns></returns>
-        public List<UserPardMod> UserPartShow(int PageIndex=1, int PageSize=2)
+        public List<UserPardMod> UserPartShow(int PageIndex, int PageSize,string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime)
         {
             UserRoles user = authoritys.UserRoles();
-            return user.UserPartShow(PageIndex, PageSize);
+            return user.UserPartShow(PageIndex, PageSize, name, Iphone, PartName, State, StartTime, EndTime);
         }
         /// <summary>
         /// 用户角色总条数

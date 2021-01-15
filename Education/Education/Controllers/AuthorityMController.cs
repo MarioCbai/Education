@@ -29,6 +29,16 @@ namespace Education.Controllers
             _authorityManagement = authorityManagement;
         }
         /// <summary>
+        /// 全部角色
+        /// </summary>
+        [HttpGet]
+        [Route("/api/PartShow")]
+        public List<PartMod> PartShow()
+        {
+            return _authorityManagement.PartShow();
+        }
+
+        /// <summary>
         /// 用户角色状态修改
         /// </summary>
         /// <param name=""></param>
@@ -45,9 +55,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/UserPartShow")]
-        public string UserPartShow(int PageIndex,int PageSize)
+        public string UserPartShow(int PageIndex=1,int PageSize=1,string name="",string Iphone="",string PartName="",string State="",DateTime? StartTime= null, DateTime? EndTime=null)
         {
-            List<UserPardMod> list= _authorityManagement.UserPartShow( PageIndex, PageSize);
+            List<UserPardMod> list= _authorityManagement.UserPartShow( PageIndex, PageSize, name, Iphone, PartName, State, StartTime, EndTime);
             foreach (var item in list)
             {
                 if (item.CPState==1)

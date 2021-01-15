@@ -10,7 +10,7 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
     public abstract class UserRoles
     {
         //用户角色显示分页
-        public abstract List<UserPardMod> UserPartShow(int PageIndex, int PageSize);
+        public abstract List<UserPardMod> UserPartShow(int PageIndex, int PageSize, string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
         //用户角色状态
         public abstract void State(int id,int val);
         //用户角色总条数
