@@ -68,6 +68,7 @@ namespace Education.Controllers
                 {
                     item.Zhuang = "禁用";
                 }
+                item.date = item.Createtime.ToString("yyyy-MM-dd");
             }
             int counts = _authorityManagement.UserPartShows(name, Iphone, PartName, State, StartTime, EndTime);
             var cc = new
