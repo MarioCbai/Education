@@ -30,7 +30,7 @@ namespace IEducation
         //全部角色
         List<PartMod> PartShow();
         //登录
-         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
+        List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
 
 
 
