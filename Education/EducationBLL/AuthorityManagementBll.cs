@@ -75,10 +75,11 @@ namespace EducationBLL
         /// 用户角色总条数
         /// </summary>
         /// <returns></returns>
-        public int UserPartShows()
+        public int UserPartShows(string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime)
         {
             UserRoles user = authoritys.UserRoles();
-            return user.UserPartShows();
+            string sname = name;
+            return user.UserPartShows(sname,Iphone,PartName,State,StartTime, EndTime);
         }
 
         //用户的全部显示

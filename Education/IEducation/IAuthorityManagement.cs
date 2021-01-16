@@ -15,7 +15,7 @@ namespace IEducation
         //用户角色显示
         List<UserPardMod> UserPartShow(int PageIndex, int PageSize, string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
         //用户数据总条数
-        int UserPartShows();
+        int UserPartShows(string name, string Iphone, string PartName, string State , DateTime? StartTime, DateTime? EndTime);
         //用户角色添加
         List<ConsumerMod> UserPartAdd();
 
@@ -30,7 +30,7 @@ namespace IEducation
         //全部角色
         List<PartMod> PartShow();
         //登录
-         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
+        List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
 
 
 

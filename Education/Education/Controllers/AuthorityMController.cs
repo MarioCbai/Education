@@ -55,7 +55,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/UserPartShow")]
-        public string UserPartShow(int PageIndex=1,int PageSize=1,string name="",string Iphone="",string PartName="",string State="",DateTime? StartTime= null, DateTime? EndTime=null)
+        public string UserPartShow(int PageIndex=1,int PageSize=3,string name="",string Iphone="",string PartName="",string State="全部",DateTime? StartTime= null, DateTime? EndTime=null)
         {
             List<UserPardMod> list= _authorityManagement.UserPartShow( PageIndex, PageSize, name, Iphone, PartName, State, StartTime, EndTime);
             foreach (var item in list)
@@ -69,7 +69,7 @@ namespace Education.Controllers
                     item.Zhuang = "禁用";
                 }
             }
-            int counts = _authorityManagement.UserPartShows();
+            int counts = _authorityManagement.UserPartShows(name, Iphone, PartName, State, StartTime, EndTime);
             var cc = new
             {
                 code=0,

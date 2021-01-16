@@ -14,6 +14,6 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
         //用户角色状态
         public abstract void State(int id,int val);
         //用户角色总条数
-        public abstract int UserPartShows();
+        public abstract int UserPartShows(string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
     }
 }
