@@ -138,8 +138,20 @@ namespace Education.Controllers
         [Route("/AuthorityM/RetrievePassword")]
         public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
         {
-            return _authorityManagement.RetrievePassword(ConsumerIPhone, ConsumerPwd);
+           int i=_authorityManagement.RetrievePassword(ConsumerIPhone, ConsumerPwd);
+            return i;
         }
+        //添加角色
+      
+        [Route("/AuthorityM/AddPart")]
+        [HttpPost]
+        public int AddPart(PartMod dt)
+        {
+            int permission = _authorityManagement.AddPart(dt);
+            return permission;
+        }
+
+        
 
     }
 }

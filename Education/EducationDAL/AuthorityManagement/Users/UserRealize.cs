@@ -16,7 +16,8 @@ namespace EducationDAL.AuthorityManagement.Users
         //修改密码
         public override int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
         {
-            return DapperHelper.Execute("update Consumer set ConsumerPwd='@ConsumerPwd' where ConsumerIPhone='@ConsumerIPhone'",new { ConsumerPwd= ConsumerPwd, ConsumerIPhone= ConsumerIPhone });
+            int i= DapperHelper.Execute("update Consumer set ConsumerPwd=@ConsumerPwd  where ConsumerIPhone=@ConsumerIPhone",new { ConsumerPwd= ConsumerPwd, ConsumerIPhone= ConsumerIPhone });
+            return i;        
         }
     }
 }
