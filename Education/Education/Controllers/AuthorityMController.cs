@@ -127,5 +127,18 @@ namespace Education.Controllers
             return list;
         }
 
+        /// <summary>
+        ///  忘记密码/修改
+        /// </summary>
+        /// <param name="ConsumerIPhone"></param>
+        /// <param name="ConsumerPwd"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/AuthorityM/RetrievePassword")]
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return _authorityManagement.RetrievePassword(ConsumerIPhone, ConsumerPwd);
+        }
+
     }
 }

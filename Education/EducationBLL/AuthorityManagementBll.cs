@@ -42,6 +42,11 @@ namespace EducationBLL
         {
             return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
         }
+        //忘记密码/修改
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
+        }
 
         //查询权限
         public List<MenuMod> SelPermission(int id)
