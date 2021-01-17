@@ -1,6 +1,8 @@
 ﻿using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
+using EducationMODEL.students;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +16,7 @@ namespace IEducation
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = 0, int classModelId = 0, int stID = 0);
+        List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1);
         /// <summary>
         /// 查询所有业务类型的数据
         /// </summary>
@@ -40,7 +42,16 @@ namespace IEducation
         /// </summary>
         /// <returns></returns>
         List<HourTypeMod> GetTypeMods();
-
+        /// <summary>
+        /// 根据参数查询出是意向/正式学员
+        /// </summary>
+        /// <returns></returns>
+        List<StudentViewModel> GetStudentMods(int studentKind =-1);
+        /// <summary>
+        /// 查询出所有的机构
+        /// </summary>
+        /// <returns></returns>
+        public abstract List<OrganMod> GetOrganes();
 
     }
 }
