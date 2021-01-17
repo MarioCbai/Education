@@ -69,7 +69,7 @@ namespace Education.Controllers
             return _institutionManagement.AddOrganes(organ);
         }
         //反填机构管理信息 
-        [HttpPost]
+        [HttpGet]
         [Route("api/ModiyIdOrganes")]
         public OrganMod ModiyIdOrganes(int orgid)
         {

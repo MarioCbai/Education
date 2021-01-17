@@ -30,8 +30,8 @@ namespace EducationDAL.InstitutionManagement.Organs
         //修改机构管理信息
         public override int ModiyOrganes(OrganMod organ)
         {
-            var result = DapperHelper.Execute("update Organ set OrganEncod=@OrganEncod,OrganName=@OrganName,InstitutionalId=@InstitutionalId,PriceRankId=@PriceRankId,OrganPhoneName=@OrganPhoneName,OrganPhone=@OrganPhone,ProvinceId=@ProvinceId,City=@City,District=@District,OrganRemark=@OrganRemark,OrganStatus=@OrganStatus,OrganBeginTime=@OrganBeginTime,PId=@PId where OrganId=@OrganId",
-            new { organ.OrganEncod, organ.OrganName, organ.InstitutionalId, organ.PriceRankId, organ.OrganPhoneName, organ.OrganPhone, organ.ProvinceId, organ.City, organ.District, organ.OrganRemark, organ.OrganStatus, organ.OrganBeginTime, organ.PId, organ.OrganId });
+            var result = DapperHelper.Execute("update Organ set OrganEncod=@OrganEncod,OrganName=@OrganName,InstitutionalId=@InstitutionalId,OrganPhoneName=@OrganPhoneName,OrganPhone=@OrganPhone,ProvinceId=@ProvinceId,City=@City,District=@District,OrganRemark=@OrganRemark,PId=@PId where OrganId=@OrganId",
+            new { organ.OrganEncod, organ.OrganName, organ.InstitutionalId, organ.OrganPhoneName, organ.OrganPhone, organ.ProvinceId, organ.City, organ.District, organ.OrganRemark, organ.PId, organ.OrganId });
             return result;
         }
         //单删除机构管理信息
