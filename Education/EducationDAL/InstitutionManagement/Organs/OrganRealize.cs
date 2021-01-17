@@ -18,8 +18,8 @@ namespace EducationDAL.InstitutionManagement.Organs
         //添加机构管理信息
         public override int AddOrganes(OrganMod organ)
         {
-            var result = DapperHelper.Execute("insert into Organ values(@OrganEncod,@OrganName,@InstitutionalId,@PriceRankId,@OrganPhoneName,@OrganPhone,@ProvinceId,@City,@District,@OrganRemark,@OrganStatus,@OrganBeginTime,@PId)",
-            new { organ.OrganEncod, organ.OrganName, organ.InstitutionalId, organ.PriceRankId, organ.OrganPhoneName, organ.OrganPhone, organ.ProvinceId, organ.City, organ.District, organ.OrganRemark, organ.OrganStatus, organ.OrganBeginTime, organ.PId });
+            var result = DapperHelper.Execute("insert into Organ values(@OrganEncod,@OrganName,@InstitutionalId,@PriceRankId,@OrganPhoneName,@OrganPhone,@ProvinceId,@City,@District,@OrganRemark,@OrganStatus,@OrganBeginTime,@PId,@OrganAddress)",
+            new { organ.OrganEncod, organ.OrganName, organ.InstitutionalId, organ.PriceRankId, organ.OrganPhoneName, organ.OrganPhone, organ.ProvinceId, organ.City, organ.District, organ.OrganRemark, organ.OrganStatus, organ.OrganBeginTime, organ.PId, organ.OrganAddress });
             return result;
         }
         //反填机构管理信息

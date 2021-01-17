@@ -13,6 +13,7 @@ namespace EducationMODEL.organizational
         public string OrganName { get; set; }//机构名称
 
         public int InstitutionalId { get; set; }//机构类型外键
+
         public int InstitutionalName { get; set; }//机构类型名称
 
         public int PriceRankId { get; set; }//价格级别表外键

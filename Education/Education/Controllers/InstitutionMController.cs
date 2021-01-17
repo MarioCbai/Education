@@ -14,7 +14,7 @@ namespace Education.Controllers
     /// <summary>
     /// 机构管理管理控制器
     /// </summary>
-
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class InstitutionMController : ControllerBase
     {
@@ -48,16 +48,16 @@ namespace Education.Controllers
             return JsonConvert.SerializeObject(list);
         }
 
-        //机构管理显示
-        [HttpGet]
-        [Route("api/GetOrganMod")]
-        public List<OrganMod> GetOrganMod()
-        {
-            //记录日志
-            _logger.LogInformation("机构管理显示");
-            List<OrganMod> Organs = _institutionManagement.GetOrganMods();        
-            return Organs;
-        }
+        ////机构管理显示
+        //[HttpGet]
+        //[Route("api/GetOrganMod")]
+        //public List<OrganMod> GetOrganMod()
+        //{
+        //    //记录日志
+        //    _logger.LogInformation("机构管理显示");
+        //    List<OrganMod> Organs = _institutionManagement.GetOrganMods();        
+        //    return Organs;
+        //}
         [HttpPost]
         [Route("api/AddOrganes")]
         //添加机构管理
