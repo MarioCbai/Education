@@ -20,5 +20,8 @@ namespace EducationDAL.EssentialData.Sources
 
         //来源表状态修改
         public abstract int SourceZtai(int ztai,int id);
+
+        //来源表根据id查询反填
+        public abstract SourceMod SourceSelectById(int id);
     }
 }

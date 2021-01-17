@@ -82,6 +82,17 @@ namespace Education.Controllers
         {
             return _essentialData.SourceZtai(ztai, id);
         }
+        /// <summary>
+        /// 来源表根据id查询反填
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        [Route("/api/SourceSelectById")]
+        [HttpGet]
+        public SourceMod SourceSelectById(int id)
+        {
+            return _essentialData.SourceSelectById(id);
+        }
 
         //教师类别管理
         /// <summary>
@@ -135,6 +146,18 @@ namespace Education.Controllers
         {
             return _essentialData.TeacherSortZtai(ztai, id);
         }
+        /// <summary>
+        /// 教师类别表根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TeacherSortSelectById")]
+        [HttpGet]
+        public TeacherTypeMod TeacherSortSelectById(int id)
+        {
+            return _essentialData.TeacherSortSelectById(id);
+        }
+
         //教师水平级别管理
         /// <summary>
         /// 教师水平级别显示
@@ -187,6 +210,17 @@ namespace Education.Controllers
         {
             return _essentialData.TeacherLevelZtai(ztai, id);
         }
+        /// <summary>
+        /// 教师水平表根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TeachinglevelMod")]
+        [HttpGet]
+        public TeachinglevelMod TeacherLevelSelectById(int id)
+        {
+            return _essentialData.TeacherLevelSelectById(id);
+        }
 
         //教师教学风格管理
         /// <summary>
@@ -230,6 +264,18 @@ namespace Education.Controllers
             return _essentialData.TTeacherStyleUpt(s);
         }
         /// <summary>
+        /// 教师风格根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TeacherStyleSelectById")]
+        [HttpGet]
+        public TeachingStyleMod TeacherStyleSelectById(int id)
+        {
+            return _essentialData.TeacherStyleSelectById(id);
+        }
+
+        /// <summary>
         /// 教师教学风格修改状态
         /// </summary>
         /// <param name="s"></param>
@@ -249,7 +295,7 @@ namespace Education.Controllers
         [Route("/api/ClassTypeShow")]
         public string ClassTypeShow()
         {
-            List<HourTypeMod> ss = _essentialData.ClassTypeShow();
+            List<Subjects_HourT_Mod> ss = _essentialData.ClassTypeShow();
             var date = new
             {
                 code = 0,
@@ -292,6 +338,18 @@ namespace Education.Controllers
         {
             return _essentialData.ClassTypeZtai(ztai, id);
         }
+        /// <summary>
+        /// 课时表根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/ClassTypeSelectById")]
+        [HttpGet]
+        public HourTypeMod ClassTypeSelectById(int id)
+        {
+            return _essentialData.ClassTypeSelectById(id);
+        }
+
         //班型管理
         /// <summary>
         /// 班型管理显示
@@ -363,6 +421,18 @@ namespace Education.Controllers
         {
             return _essentialData.PriceLevelZtai(ztai, id);
         }
+        /// <summary>
+        /// 价格级别表根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/PriceLevelSelectById")]
+        [HttpPost]
+        public PriceRankMod PriceLevelSelectById(int id)
+        {
+            return _essentialData.PriceLevelSelectById(id);
+        }
+
         //定价管理
         /// <summary>
         /// 定价管理显示
