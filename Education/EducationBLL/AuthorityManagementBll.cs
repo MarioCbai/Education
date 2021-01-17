@@ -17,6 +17,12 @@ namespace EducationBLL
     public class AuthorityManagementBll: IAuthorityManagement
     {
         Authority authoritys = new AuthorityPlant();
+        //添加角色
+        public int AddPart(PartMod dt)
+        {
+            int permission = authoritys.Role().AddPart(dt);
+            return permission;
+        }
 
         //全部角色
         public List<PartMod> PartShow()
@@ -42,6 +48,11 @@ namespace EducationBLL
         {
             return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
         }
+        //忘记密码/修改
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
+        }
 
         //查询权限
         public List<MenuMod> SelPermission(int id)
@@ -58,10 +69,13 @@ namespace EducationBLL
         }
 
         //用户角色添加
-        public List<ConsumerMod> UserPartAdd()
+        public int UserAdd(UserPardMod u)
         {
-            throw new NotImplementedException();
+            UserRoles user = authoritys.UserRoles();
+            return user.UserAdd(u);
         }
+
+
         /// <summary>
         /// 用户角色显示分页
         /// </summary>
@@ -75,10 +89,11 @@ namespace EducationBLL
         /// 用户角色总条数
         /// </summary>
         /// <returns></returns>
-        public int UserPartShows()
+        public int UserPartShows(string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime)
         {
             UserRoles user = authoritys.UserRoles();
-            return user.UserPartShows();
+            string sname = name;
+            return user.UserPartShows(sname,Iphone,PartName,State,StartTime, EndTime);
         }
 
         //用户的全部显示
