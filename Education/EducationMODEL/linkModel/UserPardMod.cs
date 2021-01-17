@@ -7,9 +7,11 @@ namespace EducationMODEL.linkModel
     public class UserPardMod
     {
         public int CPId { get; set; }//主键id
-
+        public string  date { get; set; }//日期
+        public int Count { get; set; }//数量
+        public string Zhuang { get; set; }//状态
         public int Consumer { get; set; }//用户表（外键）
-
+        public string  Parts { get; set; }
         public int Part { get; set; }//角色表（外键）
         public int CPState { get; set; }//状态
         public DateTime Createtime { get; set; }//创建时间

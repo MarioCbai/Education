@@ -1,5 +1,6 @@
 ﻿using EducationDAL.AuthorityManagement;
 using EducationDAL.AuthorityManagement.Permissions;
+using EducationDAL.AuthorityManagement.Roles;
 using EducationDAL.AuthorityManagement.UserRoleses;
 using EducationDAL.AuthorityManagement.Users;
 using EducationMODEL;
@@ -16,6 +17,19 @@ namespace EducationBLL
     public class AuthorityManagementBll: IAuthorityManagement
     {
         Authority authoritys = new AuthorityPlant();
+        //添加角色
+        public int AddPart(PartMod dt)
+        {
+            int permission = authoritys.Role().AddPart(dt);
+            return permission;
+        }
+
+        //全部角色
+        public List<PartMod> PartShow()
+        {
+            Role permission = authoritys.Role();
+            return permission.PartShow();
+        }
 
         //权限菜单的树显示
         public List<MenuMod> PermissionShow()
@@ -29,6 +43,16 @@ namespace EducationBLL
             Permission permission = authoritys.Permission();
             return  permission.PermissionShowNT();
         }
+        //登录
+        public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
+        }
+        //忘记密码/修改
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
+        }
 
         //查询权限
         public List<MenuMod> SelPermission(int id)
@@ -36,19 +60,40 @@ namespace EducationBLL
             Permission permission = authoritys.Permission();
             return permission.SelPermission(id);
         }
-        //用户角色添加
-        public List<ConsumerMod> UserPartAdd()
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// 用户角色显示
-        /// </summary>
-        /// <returns></returns>
-        public List<UserPardMod> UserPartShow()
+
+        //权限状态的修改
+        public void State(int id,int val)
         {
             UserRoles user = authoritys.UserRoles();
-            return user.UserPartShow();
+            user.State(id,val);
+        }
+
+        //用户角色添加
+        public int UserAdd(UserPardMod u)
+        {
+            UserRoles user = authoritys.UserRoles();
+            return user.UserAdd(u);
+        }
+
+
+        /// <summary>
+        /// 用户角色显示分页
+        /// </summary>
+        /// <returns></returns>
+        public List<UserPardMod> UserPartShow(int PageIndex, int PageSize,string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime)
+        {
+            UserRoles user = authoritys.UserRoles();
+            return user.UserPartShow(PageIndex, PageSize, name, Iphone, PartName, State, StartTime, EndTime);
+        }
+        /// <summary>
+        /// 用户角色总条数
+        /// </summary>
+        /// <returns></returns>
+        public int UserPartShows(string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime)
+        {
+            UserRoles user = authoritys.UserRoles();
+            string sname = name;
+            return user.UserPartShows(sname,Iphone,PartName,State,StartTime, EndTime);
         }
 
         //用户的全部显示
