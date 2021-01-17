@@ -58,10 +58,13 @@ namespace EducationBLL
         }
 
         //用户角色添加
-        public List<ConsumerMod> UserPartAdd()
+        public int UserAdd(UserPardMod u)
         {
-            throw new NotImplementedException();
+            UserRoles user = authoritys.UserRoles();
+            return user.UserAdd(u);
         }
+
+
         /// <summary>
         /// 用户角色显示分页
         /// </summary>

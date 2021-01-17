@@ -1,4 +1,5 @@
 ﻿using EducationMODEL;
+using EducationMODEL.AuthorityManagement;
 using EducationMODEL.linkModel;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,28 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
         public override void State(int id,int val)
         {
             DapperHelper.Execute("update ConsumerPart set CPState=@Value where CPId=@Id", new { Value = val, Id = id });
+        }
+        //用户角色添加
+        public override int UserAdd(UserPardMod u)
+        {
+            int o=DapperHelper.Execute("insert into Consumer values(@ConsumerName,@ConsumerIPhone,@ConsumerRemark,@ConsumerPwd,@ConsumerSection)", u);
+            u.Consumer =DapperHelper.QueryFirst<ConsumerMod>("select max(ConsumerId) from Consumer",new { }).ConsumerId;
+            int oo = 0;
+            string[] strArray = u.Parts.Split(",");
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                u.Part = int.Parse(strArray[i]);
+                oo+= DapperHelper.Execute("insert into ConsumerPart values (@Consumer,@Part,@CPState,@Createtime,@Handlers)", u);
+            }
+            if (oo== strArray.Length&& o>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
 
         //用户角色显示

@@ -9,6 +9,8 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
     //角色用户方法声明
     public abstract class UserRoles
     {
+        //角色用户添加
+        public abstract int UserAdd(UserPardMod u);
         //用户角色显示分页
         public abstract List<UserPardMod> UserPartShow(int PageIndex, int PageSize, string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
         //用户角色状态

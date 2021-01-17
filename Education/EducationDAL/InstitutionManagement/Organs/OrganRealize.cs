@@ -12,8 +12,9 @@ namespace EducationDAL.InstitutionManagement.Organs
         //机构管理显示
         public override List<OrganMod> GetOrganMods()
         {
-            return DapperHelper.Query<OrganMod>("select *from Organ", " ");
+            return DapperHelper.Query<OrganMod>("select * from Organ", " ");
         }
+
         //添加机构管理信息
         public override int AddOrganes(OrganMod organ)
         {

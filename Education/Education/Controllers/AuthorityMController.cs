@@ -28,12 +28,35 @@ namespace Education.Controllers
         {
             _authorityManagement = authorityManagement;
         }
+
+
+
+        /// <summary>
+        /// 用户角色添加
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/UserAdd")]
+        public int UserAdd([FromBody] UserPardMod u)
+        {
+            u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
+            u.Createtime = DateTime.Now;
+            u.CPState = 0;
+            return _authorityManagement.UserAdd(u);
+        }
+
         /// <summary>
         /// 全部角色
         /// </summary>
         [HttpGet]
         [Route("/api/PartShow")]
         public List<PartMod> PartShow()
+        {
+            return _authorityManagement.PartShow();
+        }
+        [HttpGet]
+        [Route("/api/PartShows")]
+        public List<PartMod> PartShows()
         {
             return _authorityManagement.PartShow();
         }
