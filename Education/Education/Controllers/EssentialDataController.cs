@@ -362,6 +362,7 @@ namespace Education.Controllers
             List<ClassModelMod_BusinessTypeMod> ss = _essentialData.ClasstypeManagementShow();
             var date = new
             {
+
                 code = 0,
                 msg = "",
                 count = ss.Count,
