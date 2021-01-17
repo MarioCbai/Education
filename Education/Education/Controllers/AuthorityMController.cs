@@ -151,5 +151,30 @@ namespace Education.Controllers
             return list;
         }
 
+        /// <summary>
+        ///  忘记密码/修改
+        /// </summary>
+        /// <param name="ConsumerIPhone"></param>
+        /// <param name="ConsumerPwd"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/AuthorityM/RetrievePassword")]
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+           int i=_authorityManagement.RetrievePassword(ConsumerIPhone, ConsumerPwd);
+            return i;
+        }
+        //添加角色
+      
+        [Route("/AuthorityM/AddPart")]
+        [HttpPost]
+        public int AddPart(PartMod dt)
+        {
+            int permission = _authorityManagement.AddPart(dt);
+            return permission;
+        }
+
+        
+
     }
 }

@@ -33,10 +33,10 @@ namespace IEducation
         //登录
         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
 
-
-
-
-
+        //忘记密码,修改密码
+        int RetrievePassword(string ConsumerIPhone, string ConsumerPwd);
+        //添加角色
+        int AddPart(PartMod dt);
 
     }
 }

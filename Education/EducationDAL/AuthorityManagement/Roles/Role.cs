@@ -10,5 +10,7 @@ namespace EducationDAL.AuthorityManagement.Roles
     {
         //角色查询
         public abstract List<PartMod> PartShow();
+        //角色添加
+        public abstract int AddPart(PartMod dt);
     }
 }

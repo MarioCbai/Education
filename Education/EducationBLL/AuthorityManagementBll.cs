@@ -17,6 +17,12 @@ namespace EducationBLL
     public class AuthorityManagementBll: IAuthorityManagement
     {
         Authority authoritys = new AuthorityPlant();
+        //添加角色
+        public int AddPart(PartMod dt)
+        {
+            int permission = authoritys.Role().AddPart(dt);
+            return permission;
+        }
 
         //全部角色
         public List<PartMod> PartShow()
@@ -41,6 +47,11 @@ namespace EducationBLL
         public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
         {
             return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
+        }
+        //忘记密码/修改
+        public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
+        {
+            return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
         }
 
         //查询权限
