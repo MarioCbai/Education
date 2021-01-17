@@ -96,6 +96,73 @@ namespace Education.Controllers
             _logger.LogInformation("删除机构管理信息");
             return _institutionManagement.DeleteOrganes(ids);
         }
+        //反填机构管理状态
+        [HttpPost]
+        [Route("api/ModiyIdStates")]
+        public OrganMod ModiyIdStates(int orgids)
+        {
+            _logger.LogInformation("反填机构管理状态信息");
+            return _institutionManagement.ModiyIdStates(orgids);
+        }
+        //修改机构管理状态
+        [HttpGet]
+        [Route("api/ModiyStates")]
+        public int ModiyStates(OrganMod organ)
+        {
+            _logger.LogInformation("修改机构管理状态信息");
+            return _institutionManagement.ModiyStates(organ);
+        }
+
+        //查询顶级节点
+        [Route("api/GetLists")]
+        [HttpGet]
+        public List<OrganMod> GetLists()
+        {
+            //记录日志
+            _logger.LogInformation("机构递归管理显示");
+            List<OrganMod> Organs = _institutionManagement.GetList();
+            return Organs;
+        }
+        //绑定上级机构
+        [Route("api/GetOrganName")]
+        [HttpGet]
+        public string GetOrganName()
+        {
+            _logger.LogInformation("机构递归管理显示");
+            return JsonConvert.SerializeObject(_institutionManagement.GetOrganName());
+        }
+        //绑定机构类型
+        [Route("api/GetInstitutionalMods")]
+        [HttpGet]
+        public string GetInstitutionalMods()
+        {
+            _logger.LogInformation("机构类型显示");
+            return JsonConvert.SerializeObject(_institutionManagement.GetInstitutionalMods());
+        }
+        //绑定省
+        [Route("api/GetProvinceId")]
+        [HttpGet]
+        public string GetProvinceId()
+        {
+            _logger.LogInformation("省");
+            return JsonConvert.SerializeObject(_institutionManagement.GetProvinceId());
+        }
+        //绑定市
+        [Route("api/GetCity")]
+        [HttpGet]
+        public string GetCity()
+        {
+            _logger.LogInformation("市");
+            return JsonConvert.SerializeObject(_institutionManagement.GetCity());
+        }
+        //绑定区
+        [Route("api/GetDistrict")]
+        [HttpGet]
+        public string GetDistrict()
+        {
+            _logger.LogInformation("区");
+            return JsonConvert.SerializeObject(_institutionManagement.GetDistrict());
+        }
         #endregion
     }
 }

@@ -37,6 +37,51 @@ namespace EducationBLL
         {
             return institutions.Organ().DeleteOrganes(ids);
         }
+        //反填机构管理状态
+        public OrganMod ModiyIdStates(int orgids)
+        {
+            return institutions.Organ().ModiyIdStates(orgids);
+        }
+        //修改机构管理状态
+        public int ModiyStates(OrganMod organ)
+        {
+            return institutions.Organ().ModiyStates(organ);
+        }
+        //查询顶级节点
+        public List<OrganMod> GetList()
+        {
+            return institutions.Organ().GetList();
+        }
+        //查询子节点
+        public List<OrganMod> Gets(int id)
+        {
+            return institutions.Organ().Gets(id);
+        }
+        //绑定上级机构
+        public List<OrganMod> GetOrganName()
+        {
+            return institutions.Organ().GetOrganName();
+        }
+        //绑定机构类型
+        public List<InstitutionalMod> GetInstitutionalMods()
+        {
+            return institutions.OrganesType().GetInstitutionalMods();
+        }
+        //绑定省
+        public List<OrganMod> GetProvinceId()
+        {
+            return institutions.Organ().GetProvinceId();
+        }
+        //绑定市
+        public List<OrganMod> GetCity()
+        {
+            return institutions.Organ().GetCity();
+        }
+        //绑定区
+        public List<OrganMod> GetDistrict()
+        {
+            return institutions.Organ().GetDistrict();
+        }
         #endregion
     }
 }
