@@ -26,6 +26,7 @@ namespace EducationMODEL.organizational
 
         public int City { get; set; }//市Id地区绑定三级联动
 
+        public string SitesName { get; set; }//省Id名称
         public int District { get; set; }//区Id --地区表外键 绑定下拉
 
         public string OrganRemark { get; set; }//备注
