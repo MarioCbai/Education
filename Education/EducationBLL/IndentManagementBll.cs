@@ -2,6 +2,8 @@
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
+using EducationMODEL.students;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -35,10 +37,19 @@ namespace EducationBLL
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        public List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = 0, int classModelId = 0, int stID = 0)
+        public List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1)
         {
             return indents.Orders().GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID);
         }
+        /// <summary>
+        /// 查询出所有的机构
+        /// </summary>
+        /// <returns></returns>
+        public List<OrganMod> GetOrganes()
+        {
+            return indents.Orders().GetOrganes();
+        }
+
         /// <summary>
         /// 退款信息的显示
         /// </summary>
@@ -46,6 +57,14 @@ namespace EducationBLL
         public List<OrderaViewModel> GetRefundMod()
         {
             return indents.Refund().GetRefundMod();
+        }
+        /// <summary>
+        /// 根据参数查询出是意向/正式学员
+        /// </summary>
+        /// <returns></returns>
+        public List<StudentViewModel>  GetStudentMods(int studentKind = -1)
+        {
+            return indents.Orders().GetStudents(studentKind);
         }
 
         /// <summary>
