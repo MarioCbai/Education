@@ -52,6 +52,12 @@ namespace IEducation
         /// </summary>
         /// <returns></returns>
         public abstract List<OrganMod> GetOrganes();
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<StudentViewModel> GetStudentModsById(int id);
 
     }
 }

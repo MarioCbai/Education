@@ -48,6 +48,12 @@ namespace EducationDAL.IndentManagement.Orderses
         /// </summary>
         /// <returns></returns>
         public abstract List<OrganMod> GetOrganes();
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public abstract List<StudentViewModel> GetStudentModsById(int id);
 
 
     }
