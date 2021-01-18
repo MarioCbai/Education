@@ -1,6 +1,7 @@
 ﻿using EducationMODEL.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EducationDAL.EssentialData.TeacherLevels
@@ -13,6 +14,12 @@ namespace EducationDAL.EssentialData.TeacherLevels
         {
             return DapperHelper.Execute("insert into Teachinglevel values(@LeveName,@Sort,@Ztai)", t);
         }
+        //来源表根据id查询反填
+        public override TeachinglevelMod TeacherLevelSelectById(int id)
+        {
+            return DapperHelper.Query<TeachinglevelMod>("select * from Teachinglevel where LevelId=@LevelId", new { LevelId = id }).FirstOrDefault();
+        }
+
         //教师水平显示
         public override List<TeachinglevelMod> TeacherLevelShow()
         {

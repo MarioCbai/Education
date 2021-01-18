@@ -7,5 +7,6 @@ namespace EducationDAL.Finances.AuditTables
     //学员余额
     public abstract class AuditTable
     {
+
     }
 }

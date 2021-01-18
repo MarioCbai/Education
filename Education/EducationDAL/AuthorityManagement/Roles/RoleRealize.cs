@@ -20,5 +20,11 @@ namespace EducationDAL.AuthorityManagement.Roles
         {
            return  DapperHelper.Query<PartMod>("select * from Part",new { });
         }
+
+        //角色状态修改
+        public override void RoleState(int id, int val)
+        {
+            DapperHelper.Execute("update Part set PMState=@Value where PartId=@Id", new { Value = val, Id = id });
+        }
     }
 }

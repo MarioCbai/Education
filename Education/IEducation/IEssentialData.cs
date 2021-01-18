@@ -11,14 +11,15 @@ namespace IEducation
     {
         //来源管理
         //显示
-        List<SourceMod> SourceShow();
+        List<SourceMod> SourceShow(string name = null);
         //添加
         int SourceAdd(SourceMod s);
         //修改
         int SourceUpt(SourceMod s);
         //修改状态
         int SourceZtai(int ztai, int id);
-
+        //来源表根据id查询反填
+        public abstract SourceMod SourceSelectById(int id);
 
         //教师类别管理
         //显示
@@ -29,6 +30,9 @@ namespace IEducation
         int TeacherSortUpt(TeacherTypeMod t);
         //修改状态
         int TeacherSortZtai(int ztai, int id);
+        //教师类别表根据id查询反填
+        public abstract TeacherTypeMod TeacherSortSelectById(int id);
+
 
         //教师水平级别管理
         //显示
@@ -39,6 +43,9 @@ namespace IEducation
         int TeacherLevelUpt(TeachinglevelMod t);
         //修改状态
         int TeacherLevelZtai(int ztai, int id);
+        //来源表根据id查询反填
+        public abstract TeachinglevelMod TeacherLevelSelectById(int id);
+
 
         //教师教学风格管理
         //显示
@@ -49,17 +56,20 @@ namespace IEducation
         int TTeacherStyleUpt(TeachingStyleMod t);
         //修改状态
         int TeacherStyleZtai(int ztai, int id);
-
+        //教师风格根据id查询反填
+        public abstract TeachingStyleMod TeacherStyleSelectById(int id);
 
         //课时类型管理
         //添加
-        List<HourTypeMod> ClassTypeShow();
+        List<Subjects_HourT_Mod> ClassTypeShow();
         //显示
         int ClassTypeAdd(HourTypeMod h);
         //修改
         int ClassTypeUpt(HourTypeMod h);
         //修改状态
         int ClassTypeZtai(int ztai, int id);
+        //课时表根据id查询反填
+        public abstract HourTypeMod ClassTypeSelectById(int id);
 
         //班型管理
         //显示
@@ -74,6 +84,8 @@ namespace IEducation
         int PriceLevelUpt(PriceRankMod p);
         //修改状态
         int PriceLevelZtai(int ztai, int id);
+        //价格级别表根据id查询反填
+        public abstract PriceRankMod PriceLevelSelectById(int id);
 
         //定价管理
         //显示查询

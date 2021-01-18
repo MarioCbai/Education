@@ -20,5 +20,8 @@ namespace EducationDAL.EssentialData.TeacherLevels
 
         //教师水平表状态修改
         public abstract int TeacherLevelZtai(int ztai, int id);
+
+        //来源表根据id查询反填
+        public abstract TeachinglevelMod TeacherLevelSelectById(int id);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EducationMODEL.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EducationDAL.EssentialData.TeacherSorts
@@ -13,6 +14,12 @@ namespace EducationDAL.EssentialData.TeacherSorts
         {
             return DapperHelper.Execute("insert into TeacherType values(@TeacherTypeName,@Sort,@Ztai)", t);
         }
+        //教师类别表根据id查询反填
+        public override TeacherTypeMod TeacherSortSelectById(int id)
+        {
+            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherType where TeacherTypeId=@TeacherTypeId", new { TeacherTypeId = id }).FirstOrDefault();
+        }
+
         //教师类别显示
         public override List<TeacherTypeMod> TeacherSortShow()
         {

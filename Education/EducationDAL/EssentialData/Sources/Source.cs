@@ -10,7 +10,7 @@ namespace EducationDAL.EssentialData.Sources
     {
         //来源增删改声明
         //来源表显示
-        public abstract List<SourceMod> SourceShow();
+        public abstract List<SourceMod> SourceShow(string name=null);
 
         //来源表添加
         public abstract int SourceAdd(SourceMod s);
@@ -20,5 +20,8 @@ namespace EducationDAL.EssentialData.Sources
 
         //来源表状态修改
         public abstract int SourceZtai(int ztai,int id);
+
+        //来源表根据id查询反填
+        public abstract SourceMod SourceSelectById(int id);
     }
 }

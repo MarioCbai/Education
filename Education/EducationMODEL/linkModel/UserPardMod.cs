@@ -24,6 +24,7 @@ namespace EducationMODEL.linkModel
 
         public string ConsumerRemark { get; set; }//备注
 
+        public int OrganId { get; set; }
         public string ConsumerPwd { get; set; }//密码
 
         public int ConsumerSection { get; set; }//权限部门，按照机构来
@@ -32,5 +33,7 @@ namespace EducationMODEL.linkModel
         public string PartName { get; set; }//角色名称
 
         public string PartDescribe { get; set; }//角色描述
+
+        public string OrganName { get; set; }//权限部门
     }
 }

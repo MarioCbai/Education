@@ -20,5 +20,8 @@ namespace EducationDAL.EssentialData.PriceLevels
 
         //价格级别表状态修改
         public abstract int PriceLevelZtai(int ztai, int id);
+
+        //价格级别表根据id查询反填
+        public abstract PriceRankMod PriceLevelSelectById(int id);
     }
 }

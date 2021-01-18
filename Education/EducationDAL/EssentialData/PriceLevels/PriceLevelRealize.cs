@@ -1,6 +1,7 @@
 ﻿using EducationMODEL.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EducationDAL.EssentialData.PriceLevels
@@ -13,6 +14,12 @@ namespace EducationDAL.EssentialData.PriceLevels
         {
             return DapperHelper.Execute("insert into PriceRank values(@PriceRankName,@Sort,@Ztai)", p);
         }
+        //价格级别表根据id查询反填
+        public override PriceRankMod PriceLevelSelectById(int id)
+        {
+            return DapperHelper.Query<PriceRankMod>("select * from PriceRank where PriceRankId=@PriceRankId", new { PriceRankId = id }).FirstOrDefault();
+        }
+
         //价格级别显示
         public override List<PriceRankMod> PriceLevelShow()
         {

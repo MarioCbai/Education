@@ -29,11 +29,18 @@ namespace EducationBLL
         {
             return essentials.ClasstypeManagement().ClasstypeManagementShow();
         }
+
+        //课时表根据id查询反填
+        public HourTypeMod ClassTypeSelectById(int id)
+        {
+            return essentials.ClassType().ClassTypeSelectById(id);
+        }
+
         /// <summary>
         /// 课时表显示
         /// </summary>
         /// <returns></returns>
-        public List<HourTypeMod> ClassTypeShow()
+        public List<Subjects_HourT_Mod> ClassTypeShow()
         {
             return essentials.ClassType().ClassTypeShow();
         }
@@ -64,6 +71,11 @@ namespace EducationBLL
         public int PriceLevelAdd(PriceRankMod p)
         {
             return essentials.PriceLevel().PriceLevelAdd(p);
+        }
+        //价格级别表根据id查询反填
+        public PriceRankMod PriceLevelSelectById(int id)
+        {
+            return essentials.PriceLevel().PriceLevelSelectById(id);
         }
 
         /// <summary>
@@ -116,12 +128,22 @@ namespace EducationBLL
             return essentials.Source().SourceAdd(s);
         }
         /// <summary>
+        /// //来源表根据id查询反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public SourceMod SourceSelectById(int id)
+        {
+            return essentials.Source().SourceSelectById(id);
+        }
+
+        /// <summary>
         /// 来源表显示
         /// </summary>
         /// <returns></returns>
-        public List<SourceMod> SourceShow()
+        public List<SourceMod> SourceShow(string name = null)
         {
-            return essentials.Source().SourceShow();
+            return essentials.Source().SourceShow(name);
         }
         /// <summary>
         /// 来源表修改
@@ -151,6 +173,12 @@ namespace EducationBLL
         {
             return essentials.TeacherLevel().TeacherLevelAdd(t);
         }
+        //教师水平表根据id查询反填
+        public TeachinglevelMod TeacherLevelSelectById(int id)
+        {
+            return essentials.TeacherLevel().TeacherLevelSelectById(id);
+        }
+
         /// <summary>
         /// 教师水平表显示
         /// </summary>
@@ -187,6 +215,12 @@ namespace EducationBLL
         {
             return essentials.TeacherSort().TeacherSortAdd(t);
         }
+        //教师类别表根据id查询反填
+        public TeacherTypeMod TeacherSortSelectById(int id)
+        {
+            return essentials.TeacherSort().TeacherSortSelectById(id);
+        }
+
         /// <summary>
         /// 教师类别显示
         /// </summary>
@@ -223,6 +257,12 @@ namespace EducationBLL
         {
             return essentials.TeacherStyle().TeacherStyleAdd(t);
         }
+        //教师风格根据id查询反填
+        public TeachingStyleMod TeacherStyleSelectById(int id)
+        {
+            return essentials.TeacherStyle().TeacherStyleSelectById(id);
+        }
+
         /// <summary>
         /// 教师风格显示
         /// </summary>

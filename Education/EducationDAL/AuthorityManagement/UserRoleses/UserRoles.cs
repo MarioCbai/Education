@@ -9,6 +9,11 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
     //角色用户方法声明
     public abstract class UserRoles
     {
+        //用户角色修改
+        public abstract int UptUserPart(UserPardMod u);
+
+        //用户角色查询
+        public abstract UserPardMod UserPartSel(int id);
         //角色用户添加
         public abstract int UserAdd(UserPardMod u);
         //用户角色显示分页
