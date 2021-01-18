@@ -58,6 +58,31 @@ namespace IEducation
         /// <param name="id"></param>
         /// <returns></returns>
         public List<StudentViewModel> GetStudentModsById(int id);
+        /// <summary>
+        /// 根据班型,学段,课时类型来查询出课时单价
+        /// </summary>
+        /// <param name="classModelId"></param>
+        /// <param name="StID"></param>
+        /// <param name="HourTypeId"></param>
+        /// <returns></returns>
+        public List<PricingMod> GetPricingMods(int classModelId,int stID,int hourTypeId,int priceRankId);
+        /// <summary>
+        /// 查询所有价格级别
+        /// </summary>
+        /// <returns></returns>
+        public  List<PriceRankMod> GetPriceRanks();
+        /// <summary>
+        /// 根据id查询订单信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<OrderaViewModel> GetOrderaViews(int id);
+        /// <summary>
+        /// 根据id查询退款信息信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        List<OrderaViewModel> GetRefundMod(int id);
 
     }
 }

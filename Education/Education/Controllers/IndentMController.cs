@@ -147,12 +147,64 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetStudentsById")]
         [HttpGet]
-        public string GetStudentsById(int id)
+        public List<StudentViewModel> GetStudentsById(int id)
         {
             _logger.LogInformation("反填学生信息");
             List<StudentViewModel> list = _indentManagement.GetStudentModsById(id);
+            return list;
+        }
+        /// <summary>
+        /// 根据班型,学段,课时类型来查询出课时单价
+        /// </summary>
+        /// <param name="classModelId"></param>
+        /// <param name="StID"></param>
+        /// <param name="HourTypeId"></param>
+        /// <returns></returns>
+        [Route("/api/GetPricing")]
+        [HttpGet]
+        public string GetPricingMods(int classModelId, int stID, int hourTypeId, int priceRankId)
+        {
+            _logger.LogInformation("根据班型,学段,课时类型来查询出课时单价");
+            List<PricingMod> list = _indentManagement.GetPricingMods(classModelId, stID, hourTypeId, priceRankId);
             return JsonConvert.SerializeObject(list);
         }
+        /// <summary>
+        /// 查询所有价格级别
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetPriceRank")]
+        [HttpGet]
+        public string GetPriceRanks()
+        {
+            _logger.LogInformation("查询所有价格级别");
+            List<PriceRankMod> list = _indentManagement.GetPriceRanks();
+            return JsonConvert.SerializeObject(list);
+        }
+        /// <summary>
+        /// 根据id查询订单信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/GetOrderaViews")]
+        [HttpGet]
+        public string GetOrderaViews(int id)
+        {
+            _logger.LogInformation("根据id查询订单信息");
+            List<OrderaViewModel> list = _indentManagement.GetOrderaViews(id);
+            var JsonData = new
+            {
+                code = 0, //解析接口状态
+                msg = "", //解析提示文本
+                count = list.Count, //解析数据长度
+                data = list//解析数据列表
+            };
+            return JsonConvert.SerializeObject(JsonData);
+        }
+
+
+
+
+
         #endregion
 
         #region  退款操作
@@ -164,7 +216,7 @@ namespace Education.Controllers
         [HttpGet]
         public string GetRefundMod()
         {
-            _logger.LogInformation("订单的显示以及查询记录");
+            _logger.LogInformation("退款订单的显示以及查询记录");
             List<OrderaViewModel> list = _indentManagement.GetRefundMod();
             var JsonData = new
             {
@@ -175,6 +227,29 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(JsonData);
         }
+
+        /// <summary>
+        /// 根据id查询退款信息信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/GetRefundById")]
+        [HttpGet]
+        public string GetRefundMod(int id)
+        {
+            _logger.LogInformation("退款订单的显示以及查询记录");
+            List<OrderaViewModel> list = _indentManagement.GetRefundMod(id);
+            var JsonData = new
+            {
+                code = 0, //解析接口状态
+                msg = "", //解析提示文本
+                count = list.Count, //解析数据长度
+                data = list//解析数据列表
+            };
+            return JsonConvert.SerializeObject(JsonData);
+        }
+
+
         #endregion
 
 
