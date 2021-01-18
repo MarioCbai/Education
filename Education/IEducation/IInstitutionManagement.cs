@@ -19,6 +19,39 @@ namespace IEducation
         int ModiyOrganes(OrganMod organ);
         //单删除机构管理信息
         int DeleteOrganes(int ids);
+        //反填机构管理状态
+        OrganMod ModiyIdStates(int orgids);
+
+        //修改机构管理状态
+        int ModiyStates(OrganMod organ);
+
+        //绑定上级机构
+        List<OrganMod> GetOrganName();
+
+        //查询顶级节点
+        List<OrganMod> GetList();
+        //查询子节点
+        List<OrganMod> Gets(int id);
+        //机构类型表
+        List<InstitutionalMod> GetInstitutionalMods();
+        //绑定省
+        List<OrganMod> GetProvinceId();
+        //绑定市
+        List<OrganMod> GetCity();
+        //绑定区
+        List<OrganMod> GetDistrict();
+        #endregion
+        #region 班级管理
+        //班级管理显示
+        List<ClassRoomMod> GetClassRooms();
+        //添加班级管理信息
+        int AddClassRooms(ClassRoomMod Room);
+        //反填班级管理信息
+        ClassRoomMod ModifyIdClassRoomMod(int id);
+        //修改班级管理信息
+        int ModifyClassRoomMod(ClassRoomMod Room);
+        //删除班级管理信息
+        int DeleteClassRoomMod(int ids);
         #endregion
     }
 }
