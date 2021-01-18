@@ -99,5 +99,14 @@ namespace EducationDAL.IndentManagement.Orderses
         {
             return DapperHelper.Query<OrganMod>("select * from Organ", new { });
         }
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override List<StudentViewModel> GetStudentModsById(int id)
+        {
+            return DapperHelper.Query<StudentViewModel>("select * from Student student join Study study on student.StID = study.StID join Organ organ on student.Institution = organ.OrganId where student.StudentId=@StudentId", new { StudentId=id });
+        }
     }
 }

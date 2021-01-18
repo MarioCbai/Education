@@ -10,11 +10,19 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
+        //用户角色修改
+        int UptUserPart(UserPardMod u);
+
+        //用户角色查询
+        UserPardMod UserPartSel(int id);
         //用户角色添加
         int UserAdd(UserPardMod u);
 
         //用户角色状态修改
         void State(int id,int val);
+        //角色权限状态
+        void CPState(int id, int val);
+
         //用户角色显示
         List<UserPardMod> UserPartShow(int PageIndex, int PageSize, string name, string Iphone, string PartName, string State, DateTime? StartTime, DateTime? EndTime);
         //用户数据总条数

@@ -66,6 +66,15 @@ namespace EducationBLL
         {
             return indents.Orders().GetStudents(studentKind);
         }
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<StudentViewModel> GetStudentModsById(int id)
+        {
+            return indents.Orders().GetStudentModsById(id);
+        }
 
         /// <summary>
         /// 查询出所有学段

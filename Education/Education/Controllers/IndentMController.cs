@@ -48,7 +48,7 @@ namespace Education.Controllers
         {
             _logger.LogInformation("班型的显示(绑定下拉)");
             List<ClassModelMod> list = _indentManagement.GetClassModelMods();
-            return JsonConvert.SerializeObject(list) ;
+            return JsonConvert.SerializeObject(list);
         }
         /// <summary>
         /// 业务类型的显示(绑定下拉)
@@ -139,6 +139,19 @@ namespace Education.Controllers
                 data = list//解析数据列表
             };
             return JsonConvert.SerializeObject(JsonData);
+        }
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/GetStudentsById")]
+        [HttpGet]
+        public string GetStudentsById(int id)
+        {
+            _logger.LogInformation("反填学生信息");
+            List<StudentViewModel> list = _indentManagement.GetStudentModsById(id);
+            return JsonConvert.SerializeObject(list);
         }
         #endregion
 
