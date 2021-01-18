@@ -24,6 +24,8 @@ namespace EducationMODEL.linkModel
 
         public int SubjectsId { get; set; }//主键
 
+        public int SHState { get; set; }//状态
+
         public string SubjectsName { get; set; }//科目名称
     }
 }

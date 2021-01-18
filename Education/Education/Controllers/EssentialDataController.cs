@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.organizational;
 using IEducation;
 using log4net.Core;
 using Microsoft.AspNetCore.Http;
@@ -215,7 +217,7 @@ namespace Education.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Route("/api/TeachinglevelMod")]
+        [Route("/api/TeacherLevelSelectById")]
         [HttpGet]
         public TeachinglevelMod TeacherLevelSelectById(int id)
         {
@@ -312,7 +314,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeAdd")]
         [HttpPost]
-        public int ClassTypeAdd(HourTypeMod s)
+        public int ClassTypeAdd(SubjectsHourTypeMod s)
         {
             return _essentialData.ClassTypeAdd(s);
         }
@@ -336,7 +338,7 @@ namespace Education.Controllers
         [HttpPost]
         public int ClassTypeZtai(int ztai, int id)
         {
-            return _essentialData.ClassTypeZtai(ztai, id);
+            return _essentialData.ClassTypeZtai(ztai,id);
         }
         /// <summary>
         /// 课时表根据id查询反填
@@ -348,6 +350,26 @@ namespace Education.Controllers
         public HourTypeMod ClassTypeSelectById(int id)
         {
             return _essentialData.ClassTypeSelectById(id);
+        }
+        /// <summary>
+        /// 查询科目表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/ClassTypeSelectAll")]
+        [HttpGet]
+        public List<SubjectsMod> ClassTypeSelectAll()
+        {
+            return _essentialData.ClassTypeSelectAll();
+        }
+        /// <summary>
+        /// 查询课时表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/HourTypeSelectAll")]
+        [HttpGet]
+        public List<HourTypeMod> HourTypeSelectAll()
+        {
+            return _essentialData.HourTypeSelectAll();
         }
 
         //班型管理

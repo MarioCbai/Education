@@ -1,5 +1,7 @@
-﻿using EducationMODEL.Infrastructure;
+﻿using EducationMODEL;
+using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.organizational;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -63,13 +65,17 @@ namespace IEducation
         //添加
         List<Subjects_HourT_Mod> ClassTypeShow();
         //显示
-        int ClassTypeAdd(HourTypeMod h);
+        int ClassTypeAdd(SubjectsHourTypeMod h);
         //修改
         int ClassTypeUpt(HourTypeMod h);
         //修改状态
         int ClassTypeZtai(int ztai, int id);
         //课时表根据id查询反填
         public abstract HourTypeMod ClassTypeSelectById(int id);
+        //查询科目表绑定下拉
+        public abstract List<SubjectsMod> ClassTypeSelectAll();
+        //查询课时表绑定下拉
+        public abstract List<HourTypeMod> HourTypeSelectAll();
 
         //班型管理
         //显示

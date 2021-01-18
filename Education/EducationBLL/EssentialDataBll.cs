@@ -1,6 +1,8 @@
 ﻿using EducationDAL.EssentialData;
+using EducationMODEL;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.organizational;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace EducationBLL
         /// </summary>
         /// <param name="h"></param>
         /// <returns></returns>
-        public int ClassTypeAdd(HourTypeMod h)
+        public int ClassTypeAdd(SubjectsHourTypeMod h)
         {
             return essentials.ClassType().ClassTypeAdd(h);
         }
@@ -28,6 +30,11 @@ namespace EducationBLL
         public List<ClassModelMod_BusinessTypeMod> ClasstypeManagementShow()
         {
             return essentials.ClasstypeManagement().ClasstypeManagementShow();
+        }
+        //查询科目表绑定下拉
+        public List<SubjectsMod> ClassTypeSelectAll()
+        {
+            return essentials.ClassType().ClassTypeSelectAll();
         }
 
         //课时表根据id查询反填
@@ -63,6 +70,12 @@ namespace EducationBLL
         {
             return essentials.ClassType().ClassTypeZtai(ztai,id);
         }
+        //查询课时表绑定下拉
+        public List<HourTypeMod> HourTypeSelectAll()
+        {
+            return essentials.ClassType().HourTypeSelectAll();
+        }
+
         /// <summary>
         /// 价格级别表添加
         /// </summary>
