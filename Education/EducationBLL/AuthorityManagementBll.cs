@@ -1,5 +1,6 @@
 ﻿using EducationDAL.AuthorityManagement;
 using EducationDAL.AuthorityManagement.Permissions;
+using EducationDAL.AuthorityManagement.RolePermissions;
 using EducationDAL.AuthorityManagement.Roles;
 using EducationDAL.AuthorityManagement.UserRoleses;
 using EducationDAL.AuthorityManagement.Users;
@@ -22,6 +23,13 @@ namespace EducationBLL
         {
             int permission = authoritys.Role().AddPart(dt);
             return permission;
+        }
+
+        //角色权限状态
+        public void CPState(int id, int val)
+        {
+            Role ss = authoritys.Role();
+            ss.RoleState(id, val);
         }
 
         //全部角色
@@ -67,12 +75,33 @@ namespace EducationBLL
             UserRoles user = authoritys.UserRoles();
             user.State(id,val);
         }
+        /// <summary>
+        /// 用户角色修改
+        /// </summary>
+        /// <param name="u"></param>
+        /// <returns></returns>
+        public int UptUserPart(UserPardMod u)
+        {
+            UserRoles user = authoritys.UserRoles();
+            return user.UptUserPart(u);
+        }
 
         //用户角色添加
         public int UserAdd(UserPardMod u)
         {
             UserRoles user = authoritys.UserRoles();
             return user.UserAdd(u);
+        }
+
+        /// <summary>
+        /// 用户角色查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserPardMod UserPartSel(int id)
+        {
+            UserRoles user = authoritys.UserRoles();
+            return user.UserPartSel(id);
         }
 
 

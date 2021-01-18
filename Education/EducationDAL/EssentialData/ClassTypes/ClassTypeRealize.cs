@@ -1,6 +1,8 @@
 ﻿using EducationMODEL.Infrastructure;
+using EducationMODEL.linkModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EducationDAL.EssentialData.ClassTypes
@@ -13,10 +15,16 @@ namespace EducationDAL.EssentialData.ClassTypes
         {
             return DapperHelper.Execute("insert into HourType values(@HourTypeName,@Sort,@Proportion,@Ztai)", h);
         }
-        //课时表显示
-        public override List<HourTypeMod> ClassTypeShow()
+        //课时表根据id查询反填
+        public override HourTypeMod ClassTypeSelectById(int id)
         {
-            return DapperHelper.Query<HourTypeMod>("select * from SubjectsHourType a join ClassModel b on a.SHId=b.ClassModelId join Subjects c on a.SHId=c.SubjectsId", "");
+            return DapperHelper.Query<HourTypeMod>("select * from HourType where HourTypeId=@HourTypeId", new { HourTypeId = id }).FirstOrDefault();
+        }
+
+        //课时表显示
+        public override List<Subjects_HourT_Mod> ClassTypeShow()
+        {
+            return DapperHelper.Query<Subjects_HourT_Mod>("select * from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId", "");
         }
         //课时表修改
         public override int ClassTypeUpt(HourTypeMod h)

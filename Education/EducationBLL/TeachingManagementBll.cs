@@ -1,4 +1,5 @@
 ﻿using EducationDAL.TeachingManagement;
+using EducationMODEL.linkModel;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,10 @@ namespace EducationBLL
     public class TeachingManagementBll:ITeachingManagement
     {
         Teaching teachings = new TeachingPlant();
+        //课堂管理显示
+        public List<ClassroomManagement> ManagementShow()
+        {
+            return teachings.Classroom().ManagementShow();
+        }
     }
 }

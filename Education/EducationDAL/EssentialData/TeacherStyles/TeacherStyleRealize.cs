@@ -1,6 +1,7 @@
 ﻿using EducationMODEL.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EducationDAL.EssentialData.TeacherStyles
@@ -13,6 +14,12 @@ namespace EducationDAL.EssentialData.TeacherStyles
         {
             return DapperHelper.Execute("insert into TeachingStyle values(@TeachingStyleName,@Sort,@Ztai)", t);
         }
+        //教师风格根据id查询反填
+        public override TeachingStyleMod TeacherStyleSelectById(int id)
+        {
+            return DapperHelper.Query<TeachingStyleMod>("select * from TeachingStyle where TeachingStyleId=@TeachingStyleId", new { TeachingStyleId = id }).FirstOrDefault();
+        }
+
         //教师教学风格显示
         public override List<TeachingStyleMod> TeacherStyleShow()
         {

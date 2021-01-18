@@ -21,5 +21,8 @@ namespace EducationDAL.EssentialData.TeacherStyles
 
         //教师风格状态修改
         public abstract int TeacherStyleZtai(int ztai, int id);
+
+        //教师风格根据id查询反填
+        public abstract TeachingStyleMod TeacherStyleSelectById(int id);
     }
 }

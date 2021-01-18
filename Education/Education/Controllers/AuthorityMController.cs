@@ -29,7 +29,40 @@ namespace Education.Controllers
             _authorityManagement = authorityManagement;
         }
 
+        /// <summary>
+        /// 角色权限状态修改
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/CPState")]
+        public void  CPState(int id, int val)
+        {
+            _authorityManagement.CPState(id, val);
+        }
 
+        /// <summary>
+        /// 角色用户修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/UptUserPart")]
+        public int UptUserPart(UserPardMod u)
+        {
+            u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
+            u.Createtime = DateTime.Now;
+            return _authorityManagement.UptUserPart(u);
+        }
+
+        /// <summary>
+        /// 用户角色查询
+        /// </summary>
+        [HttpPost]
+        [Route("/api/UserPartSel")]
+        public UserPardMod UserPartSel(int id)
+        {
+            return _authorityManagement.UserPartSel(id);
+        }
 
         /// <summary>
         /// 用户角色添加
