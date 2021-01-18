@@ -32,6 +32,15 @@ namespace EducationBLL
         {
             return indents.Orders().GetClassModelMods();
         }
+        /// <summary>
+        /// 根据id查询订单信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<OrderaViewModel> GetOrderaViews(int id)
+        {
+            return indents.Orders().GetOrderaViews(id);
+        }
 
         /// <summary>
         /// 订单的显示以及查询
@@ -49,6 +58,26 @@ namespace EducationBLL
         {
             return indents.Orders().GetOrganes();
         }
+        /// <summary>
+        /// 查询所有价格级别
+        /// </summary>
+        /// <returns></returns>
+        public List<PriceRankMod> GetPriceRanks()
+        {
+            return indents.Orders().GetPriceRanks();
+        }
+
+        /// <summary>
+        /// 根据班型,学段,课时类型来查询出课时单价
+        /// </summary>
+        /// <param name="classModelId"></param>
+        /// <param name="StID"></param>
+        /// <param name="HourTypeId"></param>
+        /// <returns></returns>
+        public List<PricingMod> GetPricingMods(int classModelId, int stID, int hourTypeId,int priceRankId)
+        {
+            return indents.Orders().GetPricingMods(classModelId,stID,hourTypeId,priceRankId);
+        }
 
         /// <summary>
         /// 退款信息的显示
@@ -59,12 +88,31 @@ namespace EducationBLL
             return indents.Refund().GetRefundMod();
         }
         /// <summary>
+        /// 根据id查询退款信息信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<OrderaViewModel> GetRefundMod(int id)
+        {
+            return indents.Refund().GetRefundMod(id);
+        }
+
+        /// <summary>
         /// 根据参数查询出是意向/正式学员
         /// </summary>
         /// <returns></returns>
         public List<StudentViewModel>  GetStudentMods(int studentKind = -1)
         {
             return indents.Orders().GetStudents(studentKind);
+        }
+        /// <summary>
+        /// 根据id查学生
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<StudentViewModel> GetStudentModsById(int id)
+        {
+            return indents.Orders().GetStudentModsById(id);
         }
 
         /// <summary>
@@ -83,5 +131,6 @@ namespace EducationBLL
         {
             return indents.Orders().GetTypeMods();
         }
+        
     }
 }

@@ -13,6 +13,11 @@ namespace EducationDAL.IndentManagement.Refunds
         /// </summary>
         /// <returns></returns>
         public abstract List<OrderaViewModel> GetRefundMod();
-
+        /// <summary>
+        /// 根据id查询退款信息信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public abstract List<OrderaViewModel> GetRefundMod(int id);
     }
 }
