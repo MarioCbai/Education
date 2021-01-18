@@ -10,11 +10,20 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
     //角色用户方法实现
     public class UserRolesRealize : UserRoles
     {
+        
+
         //用户状态修改
         public override void State(int id,int val)
         {
             DapperHelper.Execute("update ConsumerPart set CPState=@Value where CPId=@Id", new { Value = val, Id = id });
         }
+
+        //用户角色修改
+        public override int UptUserPart(UserPardMod u)
+        {
+            return DapperHelper.Execute("update Consumer set ConsumerName=@ConsumerName,ConsumerIPhone=@ConsumerIPhone,ConsumerRemark=@ConsumerRemark,ConsumerSection=@ConsumerSection,ConsumerPwd=@ConsumerPwd where ConsumerId=@ConsumerId", u);
+        }
+
         //用户角色添加
         public override int UserAdd(UserPardMod u)
         {
@@ -36,6 +45,11 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
                 return 0;
             }
             
+        }
+        //用户角色查询
+        public override UserPardMod UserPartSel(int id)
+        {
+            return DapperHelper.QueryFirst<UserPardMod>("select * from ConsumerPart a join Consumer b on a.Consumer=b.ConsumerId join Part c on a.Part=c.PartId join Organ d on b.ConsumerSection = d.OrganId where CPId =@id", new { id });
         }
 
         //用户角色显示
