@@ -24,9 +24,9 @@ namespace EducationDAL.EssentialData.ClassTypes
         }
 
         //课时表根据id查询反填
-        public override HourTypeMod ClassTypeSelectById(int id)
+        public override SubjectsHourTypeMod ClassTypeSelectById(int id)
         {
-            return DapperHelper.Query<HourTypeMod>("select * from SubjectsHourType where HourTypeId=@HourTypeId", new { HourTypeId = id }).FirstOrDefault();
+            return DapperHelper.Query<SubjectsHourTypeMod>("select * from SubjectsHourType where SHId=@SHId", new { SHId = id }).FirstOrDefault();
         }
 
         //课时表显示
@@ -35,9 +35,9 @@ namespace EducationDAL.EssentialData.ClassTypes
             return DapperHelper.Query<Subjects_HourT_Mod>("select a.*,b.SubjectsName,c.HourTypeName,c.Proportion from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId", "");
         }
         //课时表修改
-        public override int ClassTypeUpt(HourTypeMod h)
+        public override int ClassTypeUpt(SubjectsHourTypeMod h)
         {
-            return DapperHelper.Execute("update SubjectsHourType set HourType=@HourType,Subjects=@Subjects where HourTypeId=@HourTypeId", h);
+            return DapperHelper.Execute("update SubjectsHourType set HourType=@HourType,Subjects=@Subjects where SHId=@SHId", h);
         }
         //课时表的修改状态
         public override int ClassTypeZtai(int ztai, int id)

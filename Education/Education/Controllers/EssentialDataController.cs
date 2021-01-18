@@ -325,7 +325,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeUpt")]
         [HttpPost]
-        public int ClassTypeUpt(HourTypeMod s)
+        public int ClassTypeUpt(SubjectsHourTypeMod s)
         {
             return _essentialData.ClassTypeUpt(s);
         }
@@ -347,7 +347,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeSelectById")]
         [HttpGet]
-        public HourTypeMod ClassTypeSelectById(int id)
+        public SubjectsHourTypeMod ClassTypeSelectById(int id)
         {
             return _essentialData.ClassTypeSelectById(id);
         }
@@ -450,7 +450,7 @@ namespace Education.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("/api/PriceLevelSelectById")]
-        [HttpPost]
+        [HttpGet]
         public PriceRankMod PriceLevelSelectById(int id)
         {
             return _essentialData.PriceLevelSelectById(id);

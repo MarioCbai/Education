@@ -67,11 +67,11 @@ namespace IEducation
         //显示
         int ClassTypeAdd(SubjectsHourTypeMod h);
         //修改
-        int ClassTypeUpt(HourTypeMod h);
+        int ClassTypeUpt(SubjectsHourTypeMod h);
         //修改状态
         int ClassTypeZtai(int ztai, int id);
         //课时表根据id查询反填
-        public abstract HourTypeMod ClassTypeSelectById(int id);
+        public abstract SubjectsHourTypeMod ClassTypeSelectById(int id);
         //查询科目表绑定下拉
         public abstract List<SubjectsMod> ClassTypeSelectAll();
         //查询课时表绑定下拉

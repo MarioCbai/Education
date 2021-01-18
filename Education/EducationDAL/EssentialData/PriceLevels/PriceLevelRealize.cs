@@ -28,12 +28,12 @@ namespace EducationDAL.EssentialData.PriceLevels
         //价格级别修改
         public override int PriceLevelUpt(PriceRankMod p)
         {
-            return DapperHelper.Execute("update PriceRank set SourceName=@SourceName,Sort=@Sort where PriceRankId=@PriceRankId", p);
+            return DapperHelper.Execute("update PriceRank set PriceRankName=@PriceRankName,Sort=@Sort where PriceRankId=@PriceRankId", p);
         }
         //价格级别修改状态
         public override int PriceLevelZtai(int ztai, int id)
         {
-            return DapperHelper.Execute("update PriceRank set Ztai=@Ztai where PriceRankId=@PriceRankId", new { Ztai = ztai, SourceId = id });
+            return DapperHelper.Execute("update PriceRank set Ztai=@Ztai where PriceRankId=@PriceRankId", new { Ztai = ztai, PriceRankId = id });
         }
     }
 }

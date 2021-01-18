@@ -19,13 +19,13 @@ namespace EducationDAL.EssentialData.ClassTypes
         public abstract int ClassTypeAdd(SubjectsHourTypeMod h);
 
         //课时表编辑
-        public abstract int ClassTypeUpt(HourTypeMod h);
+        public abstract int ClassTypeUpt(SubjectsHourTypeMod h);
 
         //课时表状态修改
         public abstract int ClassTypeZtai(int ztai, int id);
 
         //课时表根据id查询反填
-        public abstract HourTypeMod ClassTypeSelectById(int id);
+        public abstract SubjectsHourTypeMod ClassTypeSelectById(int id);
 
         //查询科目表绑定下拉
         public abstract List<SubjectsMod> ClassTypeSelectAll();

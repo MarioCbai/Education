@@ -38,7 +38,7 @@ namespace EducationBLL
         }
 
         //课时表根据id查询反填
-        public HourTypeMod ClassTypeSelectById(int id)
+        public SubjectsHourTypeMod ClassTypeSelectById(int id)
         {
             return essentials.ClassType().ClassTypeSelectById(id);
         }
@@ -56,7 +56,7 @@ namespace EducationBLL
         /// </summary>
         /// <param name="h"></param>
         /// <returns></returns>
-        public int ClassTypeUpt(HourTypeMod h)
+        public int ClassTypeUpt(SubjectsHourTypeMod h)
         {
             return essentials.ClassType().ClassTypeUpt(h);
         }
