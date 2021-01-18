@@ -8,7 +8,7 @@ namespace EducationMODEL.TeacherManagement
     {
         public int TeacherId { get; set; }//教师表序号主键
 
-        public int InstitutionalId { get; set; }//机构外键
+        public int OrganId { get; set; }//机构外键
 
         public string TeacherName { get; set; }//教师名称
 

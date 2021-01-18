@@ -25,11 +25,19 @@ namespace EducationMODEL.TeacherManagement
         public string TeacherStyle { get; set; }//教学风格
 
         public int SubjectsId { get; set; }//学科外键
+        public string SubjectsName { get; set; }//学科名称
 
-        public int VersionsId { get; set; }//版本外键
+        public int TextbookId { get; set; }//版本外键
+        public string TextbookName { get; set; }//版本名称
 
         public DateTime TeacherTime { get; set; }//注册时间
 
         public int Teacher { get; set; }//教师基本表外键
+        public string TeacherName { get; set; }//教师基本表外键
+        public int OrganId { get; set; }//机构表外键
+        public string OrganName { get; set; }//教师基本表外键
+        public string TeacherPhone { get; set; }//手机号
+        public bool TeacherState { get; set; }//用户状态1启用 0禁用
+
     }
 }
