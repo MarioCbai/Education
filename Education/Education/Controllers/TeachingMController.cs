@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL.linkModel;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
+using Newtonsoft.Json;
 namespace Education.Controllers
 {
     /// <summary>
@@ -26,6 +27,22 @@ namespace Education.Controllers
         {
             _logger = logger;
             _teachingManagement = teachingManagement;
+        }
+       
+       //课堂管理显示
+       [HttpGet]
+       [Route("/TeachingM/ManagementShow")]
+        public string ManagementShow()
+        {
+            List<ClassroomManagement> list = _teachingManagement.ManagementShow();
+            var cc = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(cc);
         }
     }
 }

@@ -37,6 +37,78 @@ namespace EducationBLL
         {
             return institutions.Organ().DeleteOrganes(ids);
         }
+        //反填机构管理状态
+        public OrganMod ModiyIdStates(int orgids)
+        {
+            return institutions.Organ().ModiyIdStates(orgids);
+        }
+        //修改机构管理状态
+        public int ModiyStates(OrganMod organ)
+        {
+            return institutions.Organ().ModiyStates(organ);
+        }
+        //查询顶级节点
+        public List<OrganMod> GetList()
+        {
+            return institutions.Organ().GetList();
+        }
+        //查询子节点
+        public List<OrganMod> Gets(int id)
+        {
+            return institutions.Organ().Gets(id);
+        }
+        //绑定上级机构
+        public List<OrganMod> GetOrganName()
+        {
+            return institutions.Organ().GetOrganName();
+        }
+        //绑定机构类型
+        public List<InstitutionalMod> GetInstitutionalMods()
+        {
+            return institutions.OrganesType().GetInstitutionalMods();
+        }
+        //绑定省
+        public List<OrganMod> GetProvinceId()
+        {
+            return institutions.Organ().GetProvinceId();
+        }
+        //绑定市
+        public List<OrganMod> GetCity()
+        {
+            return institutions.Organ().GetCity();
+        }
+        //绑定区
+        public List<OrganMod> GetDistrict()
+        {
+            return institutions.Organ().GetDistrict();
+        }
+        #endregion
+        #region 班级管理
+        //班级管理显示
+        public List<ClassRoomMod> GetClassRooms()
+        {
+            return institutions.ClassManagement().GetClassRooms();
+        }
+        //添加班级管理数据
+        public int AddClassRooms(ClassRoomMod Room)
+        {
+            return institutions.ClassManagement().AddClassRooms(Room);
+        }
+        //反填班级管理
+        public ClassRoomMod ModifyIdClassRoomMod(int id)
+        {
+            return institutions.ClassManagement().ModifyIdClassRoomMod(id);
+        }
+        //修改班级管理数据
+        public int ModifyClassRoomMod(ClassRoomMod Room)
+        {
+            return institutions.ClassManagement().ModifyClassRoomMod(Room);
+        }
+        //删除班级管理数据
+        public int DeleteClassRoomMod(int ids)
+        {
+            return institutions.ClassManagement().DeleteClassRoomMod(ids);
+        }
         #endregion
     }
 }
