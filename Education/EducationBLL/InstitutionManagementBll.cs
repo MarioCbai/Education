@@ -83,5 +83,32 @@ namespace EducationBLL
             return institutions.Organ().GetDistrict();
         }
         #endregion
+        #region 班级管理
+        //班级管理显示
+        public List<ClassRoomMod> GetClassRooms()
+        {
+            return institutions.ClassManagement().GetClassRooms();
+        }
+        //添加班级管理数据
+        public int AddClassRooms(ClassRoomMod Room)
+        {
+            return institutions.ClassManagement().AddClassRooms(Room);
+        }
+        //反填班级管理
+        public ClassRoomMod ModifyIdClassRoomMod(int id)
+        {
+            return institutions.ClassManagement().ModifyIdClassRoomMod(id);
+        }
+        //修改班级管理数据
+        public int ModifyClassRoomMod(ClassRoomMod Room)
+        {
+            return institutions.ClassManagement().ModifyClassRoomMod(Room);
+        }
+        //删除班级管理数据
+        public int DeleteClassRoomMod(int ids)
+        {
+            return institutions.ClassManagement().DeleteClassRoomMod(ids);
+        }
+        #endregion
     }
 }

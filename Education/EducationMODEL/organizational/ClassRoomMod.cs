@@ -14,7 +14,7 @@ namespace EducationMODEL.organizational
 
         public int SubjectsId { get; set; }//科目 科目表外键
 
-        public int VersionsId { get; set; }//版本 版本表外键
+        public int TextbookId { get; set; }//版本 版本表外键
 
         public int SemesterId { get; set; }//学期 学期表外键
 
@@ -23,5 +23,17 @@ namespace EducationMODEL.organizational
         public int HourId { get; set; }//课时 课时包表外键 
 
         public int OrganId { get; set; }//机构  机构表外键
+
+
+        public DateTime HourBeginTime { get; set; }//课时包表有效期开始时间
+
+        public DateTime HourEngTime { get; set; }//课时包表有效期结束时间
+        public string SemesterName { get; set; }//学期表名称
+        public string SubjectsName { get; set; }//科目名称
+        public string TeacherName { get; set; }//教师名称
+        public string StudyName { get; set; }//年级名称
+        public string TextbookName { get; set; }//版本名称
+        public string OrganName { get; set; }//机构名称
+
     }
 }

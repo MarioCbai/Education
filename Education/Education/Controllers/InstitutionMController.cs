@@ -14,7 +14,7 @@ namespace Education.Controllers
     /// <summary>
     /// 机构管理管理控制器
     /// </summary>
-    [Route("api/[controller]/[action]")]
+    //[Route("api/[controller]/[action]")]
     [ApiController]
     public class InstitutionMController : ControllerBase
     {
@@ -47,17 +47,6 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(list);
         }
-
-        ////机构管理显示
-        //[HttpGet]
-        //[Route("api/GetOrganMod")]
-        //public List<OrganMod> GetOrganMod()
-        //{
-        //    //记录日志
-        //    _logger.LogInformation("机构管理显示");
-        //    List<OrganMod> Organs = _institutionManagement.GetOrganMods();        
-        //    return Organs;
-        //}
         [HttpPost]
         [Route("api/AddOrganes")]
         //添加机构管理
@@ -162,6 +151,61 @@ namespace Education.Controllers
         {
             _logger.LogInformation("区");
             return JsonConvert.SerializeObject(_institutionManagement.GetDistrict());
+        }
+        #endregion
+        #region 班级管理
+        [Route("api/GetClassRooms")]
+        [HttpGet]
+        //班级管理显示
+        public string GetClassRooms()
+        {
+            //记录日志
+            _logger.LogInformation("班级管理显示");
+            List<ClassRoomMod> classRooms = _institutionManagement.GetClassRooms();
+            var list = new
+            {
+                code = 0,
+                msg = "",
+                count = classRooms.Count(),
+                data = classRooms,
+            };
+            return JsonConvert.SerializeObject(list);
+        }
+        //添加班级管理数据       
+        [Route("api/AddClassRooms")]
+        [HttpPost]
+        public int AddClassRooms(ClassRoomMod Room)
+        {
+            //记录日志
+            _logger.LogInformation("添加班级管理数据");
+            return _institutionManagement.AddClassRooms(Room);
+        }
+        //反填班级管理
+        
+        [Route("api/ModifyIdClassRoomMod")]
+        [HttpGet]
+        public ClassRoomMod ModifyIdClassRoomMod(int id)
+        {
+            _logger.LogInformation("反填班级管理数据");
+            return _institutionManagement.ModifyIdClassRoomMod(id);
+        }
+        //修改班级管理数据
+       
+        [Route("api/ModifyClassRoomMod")]
+        [HttpPost]
+        public int ModifyClassRoomMod(ClassRoomMod Room)
+        {
+            _logger.LogInformation("修改班级管理数据");
+            return _institutionManagement.ModifyClassRoomMod(Room);
+        }
+        //单删除机构管理信息
+
+        [Route("api/DeleteClassRoomMod")]
+        [HttpPost]
+        public int DeleteClassRoomMod(int ids)
+        {
+            _logger.LogInformation("删除班级管理数据");
+            return _institutionManagement.DeleteClassRoomMod(ids);
         }
         #endregion
     }

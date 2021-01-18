@@ -41,5 +41,17 @@ namespace IEducation
         //绑定区
         List<OrganMod> GetDistrict();
         #endregion
+        #region 班级管理
+        //班级管理显示
+        List<ClassRoomMod> GetClassRooms();
+        //添加班级管理信息
+        int AddClassRooms(ClassRoomMod Room);
+        //反填班级管理信息
+        ClassRoomMod ModifyIdClassRoomMod(int id);
+        //修改班级管理信息
+        int ModifyClassRoomMod(ClassRoomMod Room);
+        //删除班级管理信息
+        int DeleteClassRoomMod(int ids);
+        #endregion
     }
 }
