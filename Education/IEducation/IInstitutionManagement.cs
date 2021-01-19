@@ -19,11 +19,8 @@ namespace IEducation
         int ModiyOrganes(OrganMod organ);
         //单删除机构管理信息
         int DeleteOrganes(int ids);
-        //反填机构管理状态
-        OrganMod ModiyIdStates(int orgids);
-
         //修改机构管理状态
-        int ModiyStates(OrganMod organ);
+        int ModiyStates(int status, int orgid);
 
         //绑定上级机构
         List<OrganMod> GetOrganName();
