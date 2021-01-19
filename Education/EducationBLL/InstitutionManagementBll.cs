@@ -1,5 +1,7 @@
 ﻿using EducationDAL.InstitutionManagement;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
+using EducationMODEL.students;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -108,6 +110,30 @@ namespace EducationBLL
         public int DeleteClassRoomMod(int ids)
         {
             return institutions.ClassManagement().DeleteClassRoomMod(ids);
+        }
+        //绑定年级下拉
+        public  List<Study> GetRoomStudys()
+        {
+            return institutions.ClassManagement().GetRoomStudys();
+        }
+        //绑定版本下拉
+        public  List<TextbookMod> GetTextbookMod()
+        {
+            return institutions.ClassManagement().GetTextbookMod();
+        }
+        #endregion
+        #region 科目表
+        //科目表显示
+        public  List<SubjectsMod> GetSubjects()
+        {
+            return institutions.Subject().GetSubjects();
+        }
+        #endregion
+        #region 学期表
+        //学期表显示
+        public  List<SemesterMod> GetSemesters()
+        {
+            return institutions.Semester().GetSemesters();
         }
         #endregion
     }

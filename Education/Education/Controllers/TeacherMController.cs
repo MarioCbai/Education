@@ -29,7 +29,40 @@ namespace Education.Controllers
             _logger = logger;
             _teacherManagement = teacherManagement;
         }
-
+        #region 教师管理信息
+        //添加教师管理信息
+        [Route("api/AddTeacherMod")]
+        [HttpGet]
+        public int AddTeacherMod(TeacherMod t)
+        {
+            _logger.LogInformation("添加教师管理日志");
+            return _teacherManagement.AddTeacherMod(t);
+        }
+        //删除教师管理信息
+        [Route("api/DeleteTeacherMod")]
+        [HttpPost]
+        public int DeleteTeacherMod(int ids)
+        {
+            _logger.LogInformation("删除教师管理日志");
+            return _teacherManagement.DeleteTeacherMod(ids);
+        }
+        //反填教师管理信息
+        [Route("api/ModifyIdTeacherMod")]
+        [HttpGet]
+        public TeacherMod ModifyIdTeacherMod(int id)
+        {
+            _logger.LogInformation("反填教师管理日志");
+            return _teacherManagement.ModifyIdTeacherMod(id);
+        }
+        //修改教师管理信息
+        [Route("api/ModifyTeacherMod")]
+        [HttpPost]
+        public int ModifyTeacherMod(TeacherMod t)
+        {
+            _logger.LogInformation("修改教师管理日志");
+            return _teacherManagement.ModifyTeacherMod(t);
+        }
+        #endregion
         //教学信息显示
         [Route("api/GetTeaches")]
         [HttpGet]
@@ -46,6 +79,14 @@ namespace Education.Controllers
                 data = teaches,
             };
             return JsonConvert.SerializeObject(list);
+        }
+        //教师管理显示1
+        [Route("api/GetTeacherMods")]
+        [HttpGet]
+        public List<TeacherMod> GetTeacherMods()
+        {
+            _logger.LogInformation("显示教师管理日志");
+            return _teacherManagement.GetTeacherMods();
         }
     }
 }

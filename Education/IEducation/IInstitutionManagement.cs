@@ -1,4 +1,6 @@
-﻿using EducationMODEL.organizational;
+﻿using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
+using EducationMODEL.students;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,6 +51,18 @@ namespace IEducation
         int ModifyClassRoomMod(ClassRoomMod Room);
         //删除班级管理信息
         int DeleteClassRoomMod(int ids);
+        //绑定班级下拉
+        List<Study> GetRoomStudys();
+        //绑定版本下拉
+        List<TextbookMod> GetTextbookMod();
+        #endregion
+        #region 科目表
+        //科目表显示
+        List<SubjectsMod> GetSubjects();
+        #endregion
+        #region 学期表
+        //学期表显示
+        List<SemesterMod> GetSemesters();
         #endregion
     }
 }

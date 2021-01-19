@@ -1,4 +1,6 @@
-﻿using EducationMODEL.organizational;
+﻿using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
+using EducationMODEL.students;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,5 +21,9 @@ namespace EducationDAL.InstitutionManagement.ClassManagements
         public abstract int ModifyClassRoomMod(ClassRoomMod Room);
         //删除班级管理信息
         public abstract int DeleteClassRoomMod(int ids);
+        //绑定年级下拉
+        public abstract List<Study> GetRoomStudys();
+        //绑定版本下拉
+        public abstract List<TextbookMod> GetTextbookMod();
     }
 }

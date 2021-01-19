@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
+using EducationMODEL.students;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -199,7 +201,7 @@ namespace Education.Controllers
             _logger.LogInformation("修改班级管理数据");
             return _institutionManagement.ModifyClassRoomMod(Room);
         }
-        //单删除机构管理信息
+        //单删除班级管理信息
 
         [Route("api/DeleteClassRoomMod")]
         [HttpPost]
@@ -207,6 +209,42 @@ namespace Education.Controllers
         {
             _logger.LogInformation("删除班级管理数据");
             return _institutionManagement.DeleteClassRoomMod(ids);
+        }
+        //绑定年级下拉
+        [Route("api/GetRoomStudys")]
+        [HttpGet]
+        public List<Study> GetRoomStudys()
+        {
+            _logger.LogInformation("下拉班级数据");
+            return _institutionManagement.GetRoomStudys();
+        }
+        //绑定版本下拉
+        [Route("api/GetTextbookMod")]
+        [HttpGet]
+        public List<TextbookMod> GetTextbookMod()
+        {
+            _logger.LogInformation("下拉版本数据");
+            return _institutionManagement.GetTextbookMod();
+        }
+        #endregion
+        #region 科目表
+        //科目表显示
+        [Route("api/GetSubjects")]
+        [HttpGet]
+        public List<SubjectsMod> GetSubjects()
+        {
+            _logger.LogInformation("查询科目表数据");
+            return _institutionManagement.GetSubjects();
+        }
+        #endregion
+        #region 学期表
+        //学期表显示
+        [Route("api/GetSemesters")]
+        [HttpGet]
+        public List<SemesterMod> GetSemesters()
+        {
+            _logger.LogInformation("查询科目表数据");
+            return _institutionManagement.GetSemesters();
         }
         #endregion
     }
