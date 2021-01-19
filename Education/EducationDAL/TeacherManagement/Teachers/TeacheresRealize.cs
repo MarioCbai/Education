@@ -39,7 +39,8 @@ namespace EducationDAL.TeacherManagement.Teachers
         //修改教师管理信息
         public override int ModifyTeacherMod(TeacherMod t)
         {
-            var result = DapperHelper.Execute("update Teacher set @OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom, @TeacherCard where TeacherId=@TeacherId",
+            var result = DapperHelper.Execute("update Teacher set OrganId=@OrganId,TeacherName=@TeacherName,TeacherOuter=@TeacherOuter,TeacherSex=@TeacherSex,TeachereducationId=@TeachereducationId,TeacherQQ=@TeacherQQ,TeacherWeChat=@TeacherWeChat," +
+                "ProvinceId=@ProvinceId,City=@City,District=@District,TeacherTitle=@TeacherTitle,TeacherPhone@TeacherPhone,TeacherIDnumber=@TeacherIDnumber,TeacherGraduate=@TeacherGraduate,TeacherResume=@TeacherResume,TeacherCom=@TeacherCom,TeacherCard=@TeacherCard where TeacherId=@TeacherId",
             new { t.OrganId, t.TeacherName, t.TeacherOuter, t.TeacherSex, t.TeachereducationId, t.TeacherQQ, t.TeacherWeChat, t.ProvinceId, t.City, t.District, t.TeacherTitle, t.TeacherPhone, t.TeacherIDnumber, t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherId });
             return result;
         }
