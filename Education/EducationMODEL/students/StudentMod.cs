@@ -41,5 +41,7 @@ namespace EducationMODEL.students
         public int Institution { get; set; }//所+属机构
 
         public int StudentKind { get; set; }//学员状态是否成单：1成 0意向
+        public string Counselor { get; set; }//咨询师
+
     }
 }
