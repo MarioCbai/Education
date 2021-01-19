@@ -30,6 +30,18 @@ namespace Education.Controllers
             _institutionManagement = institutionManagement;
         }
         #region 机构管理
+
+        //机构管理显示陈
+        [Route("api/GetOrganMod")]
+        [HttpGet]
+        public List<OrganMod> GetOrganMod()
+        {
+            //记录日志
+            _logger.LogInformation("机构管理显示");
+            List<OrganMod> Organs = _institutionManagement.GetOrganMods();
+            return Organs;
+        }
+
         //机构管理显示
         [Route("api/GetOrganMods")]
         [HttpGet]

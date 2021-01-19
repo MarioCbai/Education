@@ -28,6 +28,55 @@ namespace Education.Controllers
         {
             _authorityManagement = authorityManagement;
         }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/UptPart")]
+        public int UptPart(PartMod dt)
+        {
+            dt.PMState = 0;
+            dt.PCreateTime = DateTime.Now;
+            return _authorityManagement.UptPart(dt);
+        }
+
+        /// <summary>
+        /// 角色状态修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="val"></param>
+        [HttpPost]
+        [Route("/api/PartState")]
+        public void PartState(int id, int val)
+        {
+            _authorityManagement.PartState(id, val);
+        }
+
+
+        /// <summary>
+        /// 角色查看
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/PartSel")]
+        public PartMod PartSel(int id)
+        {
+            return _authorityManagement.SelPart(id);
+        }
+
+        /// <summary>
+        /// 角色删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/DelPart")]
+        public int DelPart(int id)
+        {
+            return _authorityManagement.DelPart(id);
+        }
+
 
         /// <summary>
         /// 角色权限状态修改
@@ -83,10 +132,30 @@ namespace Education.Controllers
         /// </summary>
         [HttpGet]
         [Route("/api/PartShow")]
-        public List<PartMod> PartShow()
+        public string PartShow(string PartName,string PMState)
         {
-            return _authorityManagement.PartShow();
+            List<PartMod> list = _authorityManagement.PartShow(PartName, PMState);
+            foreach (var item in list)
+            {
+                if (item.PMState == 1)
+                {
+                    item.Zhuang = "启用";
+                }
+                else
+                {
+                    item.Zhuang = "禁用";
+                }
+                item.date = item.PCreateTime.ToString("yyyy-MM-dd");
+            }
+            var da =new {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(da);
         }
+        //
         [HttpGet]
         [Route("/api/PartShows")]
         public List<PartMod> PartShows()
@@ -203,6 +272,8 @@ namespace Education.Controllers
         [HttpPost]
         public int AddPart(PartMod dt)
         {
+            dt.PMState = 0;
+            dt.PCreateTime = DateTime.Now;
             int permission = _authorityManagement.AddPart(dt);
             return permission;
         }
