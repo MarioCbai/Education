@@ -11,7 +11,7 @@ namespace EducationDAL.TeacherManagement.Teachers
         //教师管理显示
         public override List<TeachMod> GetTeaches()
         {
-            return DapperHelper.Query<TeachMod>("select *from Teach tea join Teacher ter on tea.Teacher=ter.TeacherId", "");
+            return DapperHelper.Query<TeachMod>("select *from Teach tea join Teacher ter on tea.Teacher = ter.TeacherId join Organ org on ter.OrganId = org.OrganId", "");
         }
     }
 }

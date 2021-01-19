@@ -67,6 +67,7 @@ namespace Education.Controllers
             //添加日志
             _logger.LogInformation("添加机构管理信息");
             organ.OrganBeginTime = DateTime.Now;
+            organ.PriceRankId = 1;
             return _institutionManagement.AddOrganes(organ);
         }
         //反填机构管理信息 
@@ -97,23 +98,23 @@ namespace Education.Controllers
             _logger.LogInformation("删除机构管理信息");
             return _institutionManagement.DeleteOrganes(ids);
         }
-        //反填机构管理状态
-        [HttpPost]
-        [Route("api/ModiyIdStates")]
-        public OrganMod ModiyIdStates(int orgids)
-        {
-            _logger.LogInformation("反填机构管理状态信息");
-            return _institutionManagement.ModiyIdStates(orgids);
-        }
+        ////反填机构管理状态
+        //[HttpPost]
+        //[Route("api/ModiyIdStates")]
+        //public OrganMod ModiyIdStates(int orgids)
+        //{
+        //    _logger.LogInformation("反填机构管理状态信息");
+        //    return _institutionManagement.ModiyIdStates(orgids);
+        //}
+
         //修改机构管理状态
-        [HttpGet]
+        [HttpPost]
         [Route("api/ModiyStates")]
-        public int ModiyStates(OrganMod organ)
+        public int ModiyStates(int status, int orgid)
         {
             _logger.LogInformation("修改机构管理状态信息");
-            return _institutionManagement.ModiyStates(organ);
+            return _institutionManagement.ModiyStates(status, orgid);
         }
-
         //查询顶级节点
         [Route("api/GetLists")]
         [HttpGet]

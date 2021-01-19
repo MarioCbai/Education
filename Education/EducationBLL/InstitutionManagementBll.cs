@@ -37,15 +37,15 @@ namespace EducationBLL
         {
             return institutions.Organ().DeleteOrganes(ids);
         }
-        //反填机构管理状态
-        public OrganMod ModiyIdStates(int orgids)
-        {
-            return institutions.Organ().ModiyIdStates(orgids);
-        }
+        ////反填机构管理状态
+        //public OrganMod ModiyIdStates(int orgids)
+        //{
+        //    return institutions.Organ().ModiyIdStates(orgids);
+        //}
         //修改机构管理状态
-        public int ModiyStates(OrganMod organ)
+        public int ModiyStates(int status, int orgid)
         {
-            return institutions.Organ().ModiyStates(organ);
+            return institutions.Organ().ModiyStates(status, orgid);
         }
         //查询顶级节点
         public List<OrganMod> GetList()

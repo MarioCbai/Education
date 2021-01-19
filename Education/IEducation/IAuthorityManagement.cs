@@ -60,6 +60,8 @@ namespace IEducation
         int RetrievePassword(string ConsumerIPhone, string ConsumerPwd);
         //添加角色
         int AddPart(PartMod dt);
-
+        //查询用户表
+        List<ConsumerMod> Register1(string ConsumerIPhone);
+     
     }
 }

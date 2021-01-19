@@ -13,15 +13,13 @@ namespace EducationDAL.InstitutionManagement.Organs
         //添加机构管理信息
         public abstract int AddOrganes(OrganMod organ);
         //反填机构管理信息
-        public abstract OrganMod ModiyIdOrganes(int id);
+        public abstract OrganMod ModiyIdOrganes(int orgid);
         //编辑机构管理信息
         public abstract int ModiyOrganes(OrganMod organ);
         //删除机构管理信息
         public abstract int DeleteOrganes(int ids);
-        //反填机构管理状态
-        public abstract OrganMod ModiyIdStates(int orgids);
         //修改机构管理状态
-        public abstract int ModiyStates(OrganMod organ);
+        public abstract int ModiyStates(int status, int orgid);
 
         //查询顶级节点
         public abstract List<OrganMod> GetMods();

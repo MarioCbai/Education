@@ -277,8 +277,16 @@ namespace Education.Controllers
             int permission = _authorityManagement.AddPart(dt);
             return permission;
         }
+        //查询用户表
+        [HttpGet]
+        [Route("/AuthorityM/Register1")]
+        public List<ConsumerMod> Register1(string ConsumerIPhone)
+        {
+            List<ConsumerMod> list = _authorityManagement.Register1(ConsumerIPhone);
+            return list;
+        }
 
-        
+
 
     }
 }
