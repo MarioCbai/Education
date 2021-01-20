@@ -19,6 +19,11 @@ namespace EducationBLL
         {
             return institutions.Organ().GetOrganMods();
         }
+        //机构管理下拉
+        public List<OrganMod> OrganMods()
+        {
+            return institutions.Organ().OrganMods();
+        }
         //添加机构管理
         public int AddOrganes(OrganMod organ)
         {
@@ -134,6 +139,24 @@ namespace EducationBLL
         public  List<SemesterMod> GetSemesters()
         {
             return institutions.Semester().GetSemesters();
+        }
+        #endregion
+
+        #region 课时包
+        //课时包显示
+        public  List<HourTableMod> HourTableMods()
+        {
+            return institutions.HourTable().HourTableMods();
+        }
+        //课时包反填
+        public HourTableMod ModifyIdHourTableMods(int id)
+        {
+            return institutions.HourTable().ModifyIdHourTableMods(id);
+        }
+        //课时包修改
+        public int ModifyHourTableMods(HourTableMod hour)
+        {
+            return institutions.HourTable().ModifyHourTableMods(hour);
         }
         #endregion
     }

@@ -10,6 +10,8 @@ namespace EducationDAL.InstitutionManagement.Organs
     {
         //机构管理显示
         public abstract List<OrganMod> GetOrganMods();
+        //机构管理显示绑定下拉机构
+        public abstract List<OrganMod> OrganMods();
         //添加机构管理信息
         public abstract int AddOrganes(OrganMod organ);
         //反填机构管理信息

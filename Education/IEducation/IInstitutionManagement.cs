@@ -13,6 +13,8 @@ namespace IEducation
         #region 机构管理
         //机构管理显示
         List<OrganMod> GetOrganMods();
+        //机构管理下拉
+        List<OrganMod> OrganMods();
         //添加机构信息
         int AddOrganes(OrganMod organ);
         //反填机构管理信息
@@ -63,6 +65,14 @@ namespace IEducation
         #region 学期表
         //学期表显示
         List<SemesterMod> GetSemesters();
+        #endregion
+        #region 课时包
+        //课时包显示
+        List<HourTableMod> HourTableMods();
+        //课时包反填
+        HourTableMod ModifyIdHourTableMods(int id);
+        //课时包修改
+        int ModifyHourTableMods(HourTableMod hour);
         #endregion
     }
 }
