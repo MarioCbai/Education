@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
+using EducationMODEL.students;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +32,27 @@ namespace Education.Controllers
             _institutionManagement = institutionManagement;
         }
         #region 机构管理
+
+        //机构管理显示陈
+        [Route("api/GetOrganMod")]
+        [HttpGet]
+        public List<OrganMod> GetOrganMod()
+        {
+            //记录日志
+            _logger.LogInformation("机构管理显示");
+            List<OrganMod> Organs = _institutionManagement.GetOrganMods();
+            return Organs;
+        }
+        //机构管理下拉
+        [Route("api/OrganMods")]
+        [HttpGet]
+        public List<OrganMod> OrganMods()
+        {
+            _logger.LogInformation("机构管理显示下拉");
+            List<OrganMod> Organs = _institutionManagement.OrganMods();
+            return Organs;
+        }
+
         //机构管理显示
         [Route("api/GetOrganMods")]
         [HttpGet]
@@ -55,6 +78,7 @@ namespace Education.Controllers
             //添加日志
             _logger.LogInformation("添加机构管理信息");
             organ.OrganBeginTime = DateTime.Now;
+            organ.PriceRankId = 1;
             return _institutionManagement.AddOrganes(organ);
         }
         //反填机构管理信息 
@@ -85,23 +109,23 @@ namespace Education.Controllers
             _logger.LogInformation("删除机构管理信息");
             return _institutionManagement.DeleteOrganes(ids);
         }
-        //反填机构管理状态
-        [HttpPost]
-        [Route("api/ModiyIdStates")]
-        public OrganMod ModiyIdStates(int orgids)
-        {
-            _logger.LogInformation("反填机构管理状态信息");
-            return _institutionManagement.ModiyIdStates(orgids);
-        }
+        ////反填机构管理状态
+        //[HttpPost]
+        //[Route("api/ModiyIdStates")]
+        //public OrganMod ModiyIdStates(int orgids)
+        //{
+        //    _logger.LogInformation("反填机构管理状态信息");
+        //    return _institutionManagement.ModiyIdStates(orgids);
+        //}
+
         //修改机构管理状态
-        [HttpGet]
+        [HttpPost]
         [Route("api/ModiyStates")]
-        public int ModiyStates(OrganMod organ)
+        public int ModiyStates(int status, int orgid)
         {
             _logger.LogInformation("修改机构管理状态信息");
-            return _institutionManagement.ModiyStates(organ);
+            return _institutionManagement.ModiyStates(status, orgid);
         }
-
         //查询顶级节点
         [Route("api/GetLists")]
         [HttpGet]
@@ -198,7 +222,7 @@ namespace Education.Controllers
             _logger.LogInformation("修改班级管理数据");
             return _institutionManagement.ModifyClassRoomMod(Room);
         }
-        //单删除机构管理信息
+        //单删除班级管理信息
 
         [Route("api/DeleteClassRoomMod")]
         [HttpPost]
@@ -206,6 +230,76 @@ namespace Education.Controllers
         {
             _logger.LogInformation("删除班级管理数据");
             return _institutionManagement.DeleteClassRoomMod(ids);
+        }
+        //绑定年级下拉
+        [Route("api/GetRoomStudys")]
+        [HttpGet]
+        public List<Study> GetRoomStudys()
+        {
+            _logger.LogInformation("下拉班级数据");
+            return _institutionManagement.GetRoomStudys();
+        }
+        //绑定版本下拉
+        [Route("api/GetTextbookMod")]
+        [HttpGet]
+        public List<TextbookMod> GetTextbookMod()
+        {
+            _logger.LogInformation("下拉版本数据");
+            return _institutionManagement.GetTextbookMod();
+        }
+        #endregion
+        #region 科目表
+        //科目表显示
+        [Route("api/GetSubjects")]
+        [HttpGet]
+        public List<SubjectsMod> GetSubjects()
+        {
+            _logger.LogInformation("查询科目表数据");
+            return _institutionManagement.GetSubjects();
+        }
+        #endregion
+        #region 学期表
+        //学期表显示
+        [Route("api/GetSemesters")]
+        [HttpGet]
+        public List<SemesterMod> GetSemesters()
+        {
+            _logger.LogInformation("查询科目表数据");
+            return _institutionManagement.GetSemesters();
+        }
+        #endregion
+        #region 课时包
+        //课时包显示
+        [Route("api/HourTableMods")]
+        [HttpGet]
+        public string HourTableMods()
+        {
+            _logger.LogInformation("查询课时包数据");
+            List<HourTableMod> hours = _institutionManagement.HourTableMods();
+            var list = new
+            {
+                code = 0,
+                msg = "",
+                count = hours.Count(),
+                data = hours,
+            };
+            return JsonConvert.SerializeObject(list);
+        }
+        //课时包反填
+        [Route("api/ModifyIdHourTableMods")]
+        [HttpGet]
+        public HourTableMod ModifyIdHourTableMods(int id)
+        {
+            _logger.LogInformation("反填课时包数据");
+            return _institutionManagement.ModifyIdHourTableMods(id);
+        }
+        //课时包修改
+        [Route("api/ModifyHourTableMods")]
+        [HttpPost]
+        public int ModifyHourTableMods(HourTableMod hour)
+        {
+            _logger.LogInformation("修改课时包数据");            
+            return _institutionManagement.ModifyHourTableMods(hour);
         }
         #endregion
     }

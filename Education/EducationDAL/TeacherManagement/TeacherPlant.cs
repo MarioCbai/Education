@@ -16,7 +16,8 @@ namespace EducationDAL.TeacherManagement
         /// <returns></returns>
         public override Credentials Credentials()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return new CredentialsRealize();
         }
 
         /// <summary>

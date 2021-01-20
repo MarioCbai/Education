@@ -12,5 +12,6 @@ namespace EducationDAL.EssentialData.ClasstypeManagements
         //班型管理表显示
         public abstract List<ClassModelMod_BusinessTypeMod> ClasstypeManagementShow();
 
+
     }
 }
