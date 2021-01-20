@@ -32,11 +32,32 @@ namespace EducationBLL
             ss.RoleState(id, val);
         }
 
+        //角色删除
+        public int DelPart(int id)
+        {
+            Role role = authoritys.Role();
+            return role.DelPart(id);
+        }
+
         //全部角色
         public List<PartMod> PartShow()
         {
             Role permission = authoritys.Role();
             return permission.PartShow();
+        }
+
+        //角色查询
+        public List<PartMod> PartShow(string PartName = "", string PMState = "")
+        {
+            Role role = authoritys.Role();
+            return role.GetParts(PartName, PMState);
+        }
+
+        //角色状态修改
+        public void PartState(int id, int val)
+        {
+            Role role = authoritys.Role();
+            role.PartState(id,val);
         }
 
         //权限菜单的树显示
@@ -67,6 +88,12 @@ namespace EducationBLL
         {
             return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
         }
+        //角色查看
+        public PartMod SelPart(int id)
+        {
+            Role role = authoritys.Role();
+            return role.PartSel(id);
+        }
 
         //查询权限
         public List<MenuMod> SelPermission(int id)
@@ -81,6 +108,17 @@ namespace EducationBLL
             UserRoles user = authoritys.UserRoles();
             user.State(id,val);
         }
+        /// <summary>
+        /// 角色修改
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public int UptPart(PartMod p)
+        {
+            Role role = authoritys.Role();
+            return role.UptPart(p);
+        }
+
         /// <summary>
         /// 用户角色修改
         /// </summary>

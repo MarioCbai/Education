@@ -16,7 +16,7 @@ namespace EducationMODEL.TeacherManagement
 
         public bool TeacherSex { get; set; }//性别
 
-        public string Teachereducation { get; set; }//学历  中专，大专，本科，硕士，博士，其他
+        public int TeachereducationId { get; set; }//学历  中专，大专，本科，硕士，博士，其他
 
         public string TeacherQQ { get; set; }//老师QQ
 

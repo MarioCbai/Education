@@ -10,6 +10,21 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
+        //角色修改
+        int UptPart(PartMod p);
+
+        //角色状态修改
+        void PartState(int id, int val);
+
+        //角色查询
+       List<PartMod> PartShow(string PartName="",string PMState="");
+
+        //角色查看
+        PartMod SelPart(int id);
+
+        //角色删除
+        int DelPart(int id);
+
         //用户角色修改
         int UptUserPart(UserPardMod u);
 

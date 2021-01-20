@@ -1,4 +1,6 @@
-﻿using EducationMODEL.organizational;
+﻿using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
+using EducationMODEL.students;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,5 +48,16 @@ namespace EducationDAL.InstitutionManagement.ClassManagements
         {
             return DapperHelper.Execute("delete from ClassRoom where ClassRoomId=@ClassRoomId", new { ClassRoomId = ids });
         }
+        //绑定年级下拉
+        public override List<Study> GetRoomStudys()
+        {
+            return DapperHelper.Query<Study>("select *from Study where StudyId!=0", "");
+        }
+        //绑定版本下拉
+        public override List<TextbookMod> GetTextbookMod()
+        {
+            return DapperHelper.Query<TextbookMod>("select *from Textbook", "");
+        }
+
     }
 }
