@@ -98,9 +98,18 @@ namespace Education.Controllers
         [Route("/api/UptUserPart")]
         public int UptUserPart(UserPardMod u)
         {
-            u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
-            u.Createtime = DateTime.Now;
-            return _authorityManagement.UptUserPart(u);
+            try
+            {
+                u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
+                u.Createtime = DateTime.Now;
+                return _authorityManagement.UptUserPart(u);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         /// <summary>

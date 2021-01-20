@@ -1,5 +1,7 @@
 ﻿using EducationDAL.StudentManagement;
+using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.organizational;
 using EducationMODEL.students;
 using IEducation;
 using System;
@@ -12,6 +14,31 @@ namespace EducationBLL
     public class StudentManagementBll: IStudentManagement
     {
         Student students = new StudentPlant();
+
+        //地址
+        public List<SitesMod> Dizhi(int id)
+        {
+            return students.Students().Dizhi(id);
+        }
+
+        /// <summary>
+        /// 来源显示
+        /// </summary>
+        /// <returns></returns>
+        public List<SourceMod> LaiShow()
+        {
+            return students.Students().LaiShow();
+        }
+
+        /// <summary>
+        /// 学员添加
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int StudentAdd(StudentMod s)
+        {
+            return students.Students().StudentAdd(s);
+        }
 
         /// <summary>
         /// 意向学员显示
