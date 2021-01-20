@@ -15,12 +15,14 @@ namespace EducationMODEL.linkModel
         public int StID { get; set; }//学段（外键）
 
         public int Grade { get; set; }//年级（外键）
+        public string Data { get; set; }//年级（外键）
 
         public string AuditionClass { get; set; }//上课主题
 
         public DateTime AuditionDate { get; set; }//上课日期
 
         public object AuditionTime { get; set; }//上课时间
+      
 
         public int AuditionState { get; set; }//课堂状态 ,1已上课，2已排课，3以备课，4以上课，5未上课，6已取消，7以退课,8返还课
 
@@ -36,7 +38,7 @@ namespace EducationMODEL.linkModel
 
         public int ClassModelId { get; set; }//班型表
 
-
+        public int PeriodNum { get; set; } //课时数
         //试听课学生关系表课堂管理
         public int ASID { get; set; }
         public int Audition { get; set; }

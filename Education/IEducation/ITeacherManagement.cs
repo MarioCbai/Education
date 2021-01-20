@@ -1,4 +1,5 @@
-﻿using EducationMODEL.TeacherManagement;
+﻿using EducationMODEL.linkModel;
+using EducationMODEL.TeacherManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;

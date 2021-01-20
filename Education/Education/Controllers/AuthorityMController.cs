@@ -98,9 +98,18 @@ namespace Education.Controllers
         [Route("/api/UptUserPart")]
         public int UptUserPart(UserPardMod u)
         {
-            u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
-            u.Createtime = DateTime.Now;
-            return _authorityManagement.UptUserPart(u);
+            try
+            {
+                u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
+                u.Createtime = DateTime.Now;
+                return _authorityManagement.UptUserPart(u);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         /// <summary>
@@ -182,6 +191,7 @@ namespace Education.Controllers
         [Route("/api/UserPartShow")]
         public string UserPartShow(int PageIndex=1,int PageSize=3,string name="",string Iphone="",string PartName="",string State="全部",DateTime? StartTime= null, DateTime? EndTime=null)
         {
+     
             List<UserPardMod> list= _authorityManagement.UserPartShow( PageIndex, PageSize, name, Iphone, PartName, State, StartTime, EndTime);
             foreach (var item in list)
             {

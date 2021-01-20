@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.organizational;
 using EducationMODEL.students;
 using IEducation;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +32,56 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+
+        /// <summary>
+        /// 地址
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [HttpGet]
+        [Route("/api/Dizhi")]
+        public List<SitesMod> Dizhi(int id)
+        {
+            return _studentManagement.Dizhi(id);
+        }
+
+
+
+        /// <summary>
+        /// 学员添加
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [HttpPost]
+        [Route("/api/StudentAdd")]
+        public int StudentAdd(StudentMod ss)
+        {
+            try
+            {
+                ss.StudentPwd = ss.StudentIphone.Substring(5, ss.StudentIphone.Length);
+                ss.Counselor = "ccc";
+                return _studentManagement.StudentAdd(ss);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
+        }
+
+        /// <summary>
+        /// 来源显示
+        /// </summary>
+        /// 
+        [HttpGet]
+        [Route("/api/LaiShow")]
+        public List<SourceMod> LaiShow()
+        {
+            return _studentManagement.LaiShow();
+        }
+
+
         //学员显示查询
         [HttpGet]
         [Route("/api/StudentShow")]
