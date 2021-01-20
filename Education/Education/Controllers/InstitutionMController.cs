@@ -43,6 +43,15 @@ namespace Education.Controllers
             List<OrganMod> Organs = _institutionManagement.GetOrganMods();
             return Organs;
         }
+        //机构管理下拉
+        [Route("api/OrganMods")]
+        [HttpGet]
+        public List<OrganMod> OrganMods()
+        {
+            _logger.LogInformation("机构管理显示下拉");
+            List<OrganMod> Organs = _institutionManagement.OrganMods();
+            return Organs;
+        }
 
         //机构管理显示
         [Route("api/GetOrganMods")]
@@ -193,6 +202,7 @@ namespace Education.Controllers
         {
             //记录日志
             _logger.LogInformation("添加班级管理数据");
+            Room.HourId = 4;
             return _institutionManagement.AddClassRooms(Room);
         }
         //反填班级管理
@@ -257,6 +267,33 @@ namespace Education.Controllers
         {
             _logger.LogInformation("查询科目表数据");
             return _institutionManagement.GetSemesters();
+        }
+        #endregion
+        #region 课时包
+        //课时包显示
+        [Route("api/HourTableMods")]
+        [HttpGet]
+        public List<HourTableMod> HourTableMods()
+        {
+            _logger.LogInformation("查询科目表数据");
+
+            return _institutionManagement.HourTableMods();
+        }
+        //课时包反填
+        [Route("api/ModifyIdHourTableMods")]
+        [HttpGet]
+        public HourTableMod ModifyIdHourTableMods(int id)
+        {
+            _logger.LogInformation("反填科目表数据");
+            return _institutionManagement.ModifyIdHourTableMods(id);
+        }
+        //课时包修改
+        [Route("api/ModifyHourTableMods")]
+        [HttpPost]
+        public int ModifyHourTableMods(HourTableMod hour)
+        {
+            _logger.LogInformation("反填科目表数据");
+            return _institutionManagement.ModifyHourTableMods(hour);
         }
         #endregion
     }

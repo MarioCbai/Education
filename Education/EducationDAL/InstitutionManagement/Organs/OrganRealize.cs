@@ -14,7 +14,11 @@ namespace EducationDAL.InstitutionManagement.Organs
         {
             return DapperHelper.Query<OrganMod>("select org.OrganName as aa,* from Organ org join Organ b on org.OrganId=b.PId  join Institutional ins on org.InstitutionalId = ins.InstitutionalId join PriceRank pri on org.PriceRankId = pri.PriceRankId join Sites pro on pro.SiID = org.ProvinceId join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District", " ");
         }
-
+        //机构管理下拉
+        public override List<OrganMod> OrganMods()
+        {
+            return DapperHelper.Query<OrganMod>("select * from Organ", " ");
+        }
         //添加机构管理信息
         public override int AddOrganes(OrganMod organ)
         {
@@ -39,11 +43,6 @@ namespace EducationDAL.InstitutionManagement.Organs
         {
             return DapperHelper.Execute("delete from Organ where OrganId=@OrganId", new { OrganId = ids });
         }
-        ////反填机构管理状态
-        //public override OrganMod ModiyIdStates(int orgids)
-        //{
-        //    return DapperHelper.Query<OrganMod>("select *from Organ where OrganId=@OrganId", new { OrganId = orgids }).FirstOrDefault();
-        //}
         //修改机构管理状态
         public override int ModiyStates(int status,int orgid)
         {

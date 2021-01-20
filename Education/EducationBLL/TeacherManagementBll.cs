@@ -11,6 +11,7 @@ namespace EducationBLL
     public class TeacherManagementBll: ITeacherManagement
     {
         Teacher teachers = new TeacherPlant();
+        #region 教师管理
         //教师管理显示
         public List<TeachMod> GetTeaches()
         {
@@ -41,5 +42,29 @@ namespace EducationBLL
         {
             return teachers.Teacheres().ModifyTeacherMod(t);
         }
+        #endregion
+        #region 认证信息
+        //认证信息显示
+        public  List<ApproveMod> GetApproveMods()
+        {
+            return teachers.Credentials().GetApproveMods();
+        }
+        //认证信息添加
+        public int AddApproveMod(ApproveMod ap)
+        {
+            return teachers.Credentials().AddApproveMod(ap);
+        }
+        //认证信息的反填
+        public ApproveMod ModifyIdApproveMod(int id)
+        {
+            return teachers.Credentials().ModifyIdApproveMod(id);
+        }
+        //认证信息的修改
+        public int ModifyApproveMod(ApproveMod ap)
+        {
+            return teachers.Credentials().ModifyApproveMod(ap); 
+        }
+        #endregion
+
     }
 }
