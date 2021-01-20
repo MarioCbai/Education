@@ -1,4 +1,5 @@
 ﻿using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,5 +20,11 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <param name="id"></param>
         /// <returns></returns>
         public abstract List<OrderaViewModel> GetRefundMod(int id);
+        /// <summary>
+        /// 添加退款订单
+        /// </summary>
+        /// <param name="refund"></param>
+        /// <returns></returns>
+        public abstract int AddRefund(RefundMod refund);
     }
 }

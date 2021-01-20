@@ -49,9 +49,9 @@ namespace EducationDAL.IndentManagement.Orderses
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        public override List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1)
+        public override List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string consumerName = null, int organId = -1)
         {
-            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId join SubjectsHourType subjectshourtype on subjectshourtype.HourType = HourType.HourTypeId join Subjects subjects on subjects.SubjectsId = subjectshourtype.Subjects where 1 =1";
+            string sql = "select  * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where 1 =1";
             //判断查询条件是否为空
             if (!string.IsNullOrEmpty(studentIphone)) //学生账号(手机号)
             {
@@ -74,8 +74,24 @@ namespace EducationDAL.IndentManagement.Orderses
             {
                 sql += " and study.StID=@StID";
             }
+            if (orderStatus>-1)
+            {
+                sql += " and orders.orderStatus=@OrderStatus";
+            }
+            if (stateOfPayment > -1)
+            {
+                sql += " and orders.stateOfPayment=@StateOfPayment";
+            }
+            if (!string.IsNullOrEmpty(consumerName))  //添加人姓名
+            {
+                sql += " and consumer.consumerName like concat('%',@ConsumerName,'%')";
+            }
+            if (organId > -1)
+            {
+                sql += " and Organ.OrganId=@OrganId";
+            }
 
-            return DapperHelper.Query<OrderaViewModel>(sql, new { StudentIphone = studentIphone, StudentName = studentName, BusinessTypeId = businessTypeId, ClassModelId = classModelId, StID = stID });
+            return DapperHelper.Query<OrderaViewModel>(sql, new { StudentIphone = studentIphone, StudentName = studentName, BusinessTypeId = businessTypeId, ClassModelId = classModelId, StID = stID, OrderStatus= orderStatus , StateOfPayment = stateOfPayment , ConsumerName = consumerName , OrganId = organId });
         }
         /// <summary>
         /// 根据参数查询出是意向/正式学员
@@ -110,18 +126,6 @@ namespace EducationDAL.IndentManagement.Orderses
             return DapperHelper.Query<StudentViewModel>(sql, new { StudentId=id });
         }
         /// <summary>
-        /// 根据班型,学段,课时类型来查询出课时单价
-        /// </summary>
-        /// <param name="classModelId"></param>
-        /// <param name="StID"></param>
-        /// <param name="HourTypeId"></param>
-        /// <returns></returns>
-        public override List<PricingMod> GetPricingMods(int classModelId, int stID, int hourTypeId,int priceRankId)
-        {
-            string sql = "select * from Pricing where ClassModelId=@classModelId and StID=@StID and HourTypeId=@HourTypeId and PriceRankId=@PriceRankId";
-            return DapperHelper.Query<PricingMod>(sql, new { ClassModelId=classModelId, StID= stID, HourTypeId= hourTypeId , PriceRankId = priceRankId });
-        }
-        /// <summary>
         /// 查询所有价格级别
         /// </summary>
         /// <returns></returns>
@@ -136,8 +140,77 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override List<OrderaViewModel> GetOrderaViews(int id)
         {
-            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId join SubjectsHourType subjectshourtype on subjectshourtype.HourType = HourType.HourTypeId join Subjects subjects on subjects.SubjectsId = subjectshourtype.Subjects where orders.OrderId=@OrderId";
+            string sql = "select  * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where orders.OrderId=@OrderId";
             return DapperHelper.Query<OrderaViewModel>(sql, new { OrderId =id});
+        }
+        /// <summary>
+        /// 订单审核的状态修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="orderStatus"></param>
+        /// <returns></returns>
+        public override int UpdateOrderStatus(int id, int orderStatus)
+        {
+            string sql = "update Orders Set OrderStatus=@OrderStatus where OrderId=OrderId ";
+            return DapperHelper.Execute(sql,new { OrderStatus= orderStatus , OrderId =id});
+        }
+        /// <summary>
+        /// 根据id查询出订单信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override OrderaViewModel GetOrderaViewModelById(int id)
+        {
+            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId join SubjectsHourType subjectshourtype on subjectshourtype.HourType = HourType.HourTypeId join Subjects subjects on subjects.SubjectsId = subjectshourtype.Subjects where orders.OrderId=@OrderId";
+            return DapperHelper.QueryFirstOrDefault<OrderaViewModel>(sql,new { OrderId =id});
+        }
+        /// <summary>
+        /// 修改订单信息
+        /// </summary>
+        /// <param name="ovm"></param>
+        /// <returns></returns>
+        public override int EditOrders(OrdersMod  orders)
+        {
+            return DapperHelper.Execute("update Orders Set BusinessTypeId=@BusinessTypeId,PriceRankId=@PriceRankId,ClassModelId=@ClassModelId,StID=@StID,HourTypeId=@HourTypeId,PeriodNum=@PeriodNum,ComplimentaryPeriod=@ComplimentaryPeriod,CommodityPrice=@CommodityPrice,PreferentialPrice=@PreferentialPrice,OrdersRemark=@OrdersRemark where OrderId=@OrderId",orders);
+        }
+        /// <summary>
+        /// 根据下拉框该变查询出课时单价
+        /// </summary>
+        /// <param name="priceRankId"></param>
+        /// <param name="classModelId"></param>
+        /// <param name="stID"></param>
+        /// <param name="hourTypeId"></param>
+        /// <returns></returns>
+        public override PricingMod GetPricingMods(int priceRankId = -1, int classModelId = -1, int stID = -1, int hourTypeId = -1)
+        {
+            string sql = "select * from Pricing where 1=1";
+            //判断参数是否符合
+            if (priceRankId>-1)
+            {
+                sql += " and PriceRankId=@PriceRankId";
+            }
+            if (classModelId>-1)
+            {
+                sql += "  and ClassModelId=@ClassModelId";
+            }
+            if (stID>-1)
+            {
+                sql += " and StID=@StID ";
+            }
+            if (hourTypeId>-1)
+            {
+                sql += " and HourTypeId=@HourTypeId";
+            }
+            return DapperHelper.QueryFirstOrDefault<PricingMod>(sql,new { PriceRankId= priceRankId , ClassModelId=classModelId, StID=stID, HourTypeId=hourTypeId });
+        }
+        /// <summary>
+        /// 添加订单信息
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <returns></returns>
+        public override int AddOrders(OrdersMod orders)
+        {
+            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@Amountcaually,@OrderStatus,@StateOfPayment,@ConsumerId,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
         }
     }
 }
