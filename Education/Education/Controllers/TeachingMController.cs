@@ -25,7 +25,7 @@ namespace Education.Controllers
         /// <param name="teachingManagement"></param>
         public TeachingMController(ITeachingManagement teachingManagement, ILogger<TeachingMController> logger)
         {
-            _logger = logger;s
+            _logger = logger;
             _teachingManagement = teachingManagement;
         }
        

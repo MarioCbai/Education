@@ -23,6 +23,18 @@ namespace IEducation
         //修改教师管理信息
         int ModifyTeacherMod(TeacherMod t);
         #endregion
+        #region 教学基本信息
+        //教学基本信息显示
+        List<TeachMod> GetTeachMods();
+        //教学基本信息新增
+        int AddTeachMod(TeachMod tea);
+        //教学基本信息反填
+        TeachMod ModifyIdTeachMod(int id);
+        //教学基本信息修改
+        int ModifyTeachMod(TeachMod tea);
+        //教学基本信息删除
+        int DeleteTeachMod(int ids);
+        #endregion
         #region 认证信息
         //认证信息显示
         List<ApproveMod> GetApproveMods();
