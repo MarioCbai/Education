@@ -25,6 +25,12 @@ namespace EducationBLL
             return permission;
         }
 
+        //添加角色权限
+        public int AddPart(JueseP j)
+        {
+            return authoritys.RolePermission().AddPart(j);
+        }
+
         //角色权限状态
         public void CPState(int id, int val)
         {

@@ -10,6 +10,9 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
+        //角色添加权限
+        int AddPart(JueseP j);
+
         //角色修改
         int UptPart(PartMod p);
 

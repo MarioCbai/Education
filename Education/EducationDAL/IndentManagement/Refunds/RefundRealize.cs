@@ -1,4 +1,5 @@
 ﻿using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <returns></returns>
         public override List<OrderaViewModel> GetRefundMod()
         {
-            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId join SubjectsHourType subjectshourtype on subjectshourtype.HourType = HourType.HourTypeId join Subjects subjects on subjects.SubjectsId = subjectshourtype.Subjects where 1 =1";
+            string sql = " select * from Refund a  join Orders b on a.OrderId=b.OrderId join Student c on b.StudentId=c.StudentId join Organ d on b.RecursionId=d.OrganId where 1 =1";
             return DapperHelper.Query<OrderaViewModel>(sql, new { });
         }
         /// <summary>
@@ -24,8 +25,28 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <returns></returns>
         public override List<OrderaViewModel> GetRefundMod(int id)
         {
-            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId join SubjectsHourType subjectshourtype on subjectshourtype.HourType = HourType.HourTypeId join Subjects subjects on subjects.SubjectsId = subjectshourtype.Subjects where refund.RefundId=@RefundId";
+            string sql = " select * from Refund a  join Orders b on a.OrderId=b.OrderId join Student c on b.StudentId=c.StudentId join Organ d on b.RecursionId=d.OrganId join Study e on b.StID=e.StID where a.RefundId=@RefundId";
             return DapperHelper.Query<OrderaViewModel>(sql, new { RefundId=id });
+        }
+        /// <summary>
+        /// 添加退款订单
+        /// </summary>
+        /// <param name="refund"></param>
+        /// <returns></returns>
+        public override int AddRefund(RefundMod refund)
+        {
+            return DapperHelper.Execute("insert into Refund values(@OrderId,@RefundAmount,@RefundRemark,@Refundperson,@RefundTime,@RefundState)", refund);
+        }
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        public override int EditRefund(RefundMod refund)
+        {
+            return DapperHelper.Execute("update Refund Set RefundAmount=@RefundAmount,RefundRemark=@RefundRemark,RefundState=@RefundState where RefundId=@RefundId", refund);
         }
     }
 }
