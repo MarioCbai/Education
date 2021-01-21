@@ -6,10 +6,16 @@ namespace EducationMODEL.TeachingManagement
 {
     public class DropClassMod//退课申请表
     {
-        public int DCId				 { get; set; }              
-        public int ASID				 { get; set; }               //课堂管理
-        public int OrganId				 { get; set; }           //机构表
-        public string  AuditorDrop			 { get; set; }       //审核人
-        public DateTime AuditorDropdateTime { get; set; }        //审核时间
+        public int DCId { get; set; }
+        public int ASID { get; set; }
+        public int OrganId { get; set; }
+        public string AuditorDrop { get; set; }
+        public string AuditorDropdateTime { get; set; }
+        public string Remark { get; set; }
+        public bool DropClassstate { get; set; }
+        public string proposer { get; set; }
+        public decimal AmountActually { get; set; }
+        public int OrderId { get; set; }
+      
     }
 }

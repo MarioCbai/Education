@@ -1,4 +1,5 @@
 ﻿using EducationMODEL.linkModel;
+using EducationMODEL.TeachingManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,5 +30,9 @@ namespace IEducation
 
         //学科下拉
         List<Managethedrop_down> Subjects();
+        //添加申请退款
+        int DropClass(DropClassMod dt);
+        //退课申请单
+        List<DropClassModShow> DropClassModShow();
     }
 }

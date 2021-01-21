@@ -1,4 +1,6 @@
 ﻿using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
+using EducationMODEL.TeachingManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -104,7 +106,26 @@ namespace EducationDAL.TeachingManagement.Classrooms
         {
             return DapperHelper.Query<Managethedrop_down>("select *from Subjects", new { });
         }
+        //添加申请退款
+        public override int DropClass(DropClassMod dt)
+        {
+            int i = DapperHelper.Execute("insert into DropClass values (@ASID,@OrganId,@AuditorDrop,@AuditorDropdateTime,@Remark,@DropClassstate,@proposer)", dt);
+            if (i>0)
+            {
+                //添加退款订单
+                List<OrdersMod> dd = DapperHelper.Query<OrdersMod>("select Orders.OrderId,AmountActually from AuditionStudent join Audition on AuditionStudent.Audition=Audition.AuditionID join Student on AuditionStudent.Student = Student.StudentId join Organ on Student.Institution = Organ.OrganId join Study on Student.StID = Study.StID  join  Subjects on Audition.SubjectsId = Subjects.SubjectsId join Teacher on Audition.TeacherId = Teacher.TeacherId join HourType on  Audition.HourTypeId = HourType.HourTypeId join BusinessType on Audition.BusinessTypeId = BusinessType.BusinessTypeId  join ClassModel on Audition.ClassModelId = ClassModel.ClassModelId join DropClass on AuditionStudent.ASID = DropClass.ASID  join Orders on   Orders.StudentId = Student.StudentId  ", new { });
+                dt.OrderId = dd[0].OrderId;
+                dt.AmountActually = dd[0].AmountActually;
+                DapperHelper.Execute("insert into Refund values(@OrderId,@AmountActually,@Remark,@proposer,@AuditorDropdateTime,0)", dt);
+            }
+            return i;
+        }
+        //退课申请单
+        public override List<DropClassModShow> DropClassModShow()
+        {
+            List<DropClassModShow> lsit = DapperHelper.Query<DropClassModShow>("select  *from  DropClass join AuditionStudent on DropClass.ASID=AuditionStudent.ASID join Student on AuditionStudent.Student=Student.StudentId  join Organ on Student.Institution=Organ.OrganId", new { });
+            return lsit;
+        }
 
-       
     }
 }

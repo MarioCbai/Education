@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EducationMODEL.linkModel;
+using EducationMODEL.TeachingManagement;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -129,6 +130,30 @@ namespace Education.Controllers
         {
             List<Managethedrop_down> list = _teachingManagement.Subjects();
             return list;
+        }
+        //添加申请退款
+        [HttpPost]
+        [Route("/TeachingM/DropClass")]
+        public int DropClass(DropClassMod DropClass)
+        {
+            int i = _teachingManagement.DropClass(DropClass);
+            return i;
+        }
+
+        //退课申请单查看
+        [HttpGet]
+        [Route("/TeachingM/DropClassModShow")]
+        public string DropClassModShow()
+        {
+            List<DropClassModShow> lsit= _teachingManagement.DropClassModShow();
+            var cc = new
+            {
+                code = 0,
+                msg = "",
+                count = lsit.Count,
+                data = lsit
+            };
+            return JsonConvert.SerializeObject(cc);
         }
     }
 }
