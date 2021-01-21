@@ -28,6 +28,19 @@ namespace Education.Controllers
         {
             _authorityManagement = authorityManagement;
         }
+
+        /// <summary>
+        /// 添加角色权限
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/AddPart")]
+        public int AddPart(JueseP j)
+        {
+            j.data = j.data1.Split(',');
+            return _authorityManagement.AddPart(j);
+        }
+
         /// <summary>
         /// 修改
         /// </summary>
