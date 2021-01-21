@@ -22,6 +22,8 @@ namespace IEducation
         TeacherMod ModifyIdTeacherMod(int id);
         //修改教师管理信息
         int ModifyTeacherMod(TeacherMod t);
+        //修改教师管理状态
+        int ModifyTeacherState(int status, int teaid);
         #endregion
         #region 教学基本信息
         //教学基本信息显示
