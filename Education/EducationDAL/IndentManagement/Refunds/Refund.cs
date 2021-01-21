@@ -26,5 +26,13 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <param name="refund"></param>
         /// <returns></returns>
         public abstract int AddRefund(RefundMod refund);
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        public abstract int EditRefund(RefundMod refund);
     }
 }

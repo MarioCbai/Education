@@ -37,5 +37,16 @@ namespace EducationDAL.IndentManagement.Refunds
         {
             return DapperHelper.Execute("insert into Refund values(@OrderId,@RefundAmount,@RefundRemark,@Refundperson,@RefundTime,@RefundState)", refund);
         }
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        public override int EditRefund(RefundMod refund)
+        {
+            return DapperHelper.Execute("update Refund Set RefundAmount=@RefundAmount,RefundRemark=@RefundRemark,RefundState=@RefundState where RefundId=@RefundId", refund);
+        }
     }
 }

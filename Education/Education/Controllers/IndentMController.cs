@@ -150,7 +150,7 @@ namespace Education.Controllers
         public string GetStudentsById(int id)
         {
             _logger.LogInformation("反填学生信息");
-            List<StudentViewModel> list = _indentManagement.GetStudentModsById(id);
+            StudentViewModel list = _indentManagement.GetStudentModsById(id);
             return JsonConvert.SerializeObject(list);
         }
         /// <summary>
@@ -193,10 +193,11 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/UpdateOrderStatus")]
         [HttpPost]
-        public int UpdateOrderStatus(int id, int orderStatus)
+        public int UpdateOrderStatus(OrdersMod orders)
         {
+            orders.AuditDateTime = DateTime.Now;
             _logger.LogInformation("订单的审核操作");
-            int row = _indentManagement.UpdateOrderStatus(id,orderStatus);
+            int row = _indentManagement.UpdateOrderStatus(orders);
             return row;
         }
         /// <summary>
@@ -213,7 +214,7 @@ namespace Education.Controllers
             return JsonConvert.SerializeObject(list);
         }
         /// <summary>
-        /// 修改订单信息/未完成
+        /// 修改订单信息
         /// </summary>
         /// <param name="ovm"></param>
         /// <returns></returns>  
@@ -250,12 +251,35 @@ namespace Education.Controllers
         [HttpPost]
         public int AddOrders(OrdersMod orders)
         {
+            Random random = new Random();
+            if (orders.BusinessTypeId==1)
+            {
+                string name = "XS";
+                string year = DateTime.Now.ToString("yyyy");
+                string month= DateTime.Now.ToString("MM");
+                string day = DateTime.Now.ToString("dd");
+                int num = random.Next(1000000);
+                orders.OrderNO = name + year+month+day+num;
+            }
+            else
+            {
+                string name = "XX";
+                string year = DateTime.Now.ToString("yyyy");
+                string month = DateTime.Now.ToString("MM");
+                string day = DateTime.Now.ToString("dd");
+                int num = random.Next(1000000);
+                orders.OrderNO = name + year + month + day + num;
+            }
+            orders.OrderStatus = 0;  //订单状态
+            orders.StateOfPayment = 0;//支付状态
+            orders.buyer = "田七";    //下单人
+            orders.OrderTime = DateTime.Now;   //下单时间
+            orders.AuditDateTime = DateTime.Now;   //审核时间
+            orders.SubjectsId = 1;   //科目表主键
             _logger.LogInformation("添加订单信息");
             int row = _indentManagement.AddOrders(orders);
             return row;
         }
-
-
         #endregion
 
         #region  退款操作
@@ -310,11 +334,29 @@ namespace Education.Controllers
         {
             _logger.LogInformation("添加退款订单");
             refund.RefundTime = DateTime.Now;
-            refund.Refundperson = "张三";
+            refund.Refundperson = "李四";
             refund.RefundState = 0;
             int row = _indentManagement.AddRefund(refund);
             return row;
         }
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        [Route("/api/EditRefund")]
+        [HttpPost]
+        public int EditRefund(RefundMod refund)
+        {
+            _logger.LogInformation("编辑退款订单的审核状态");
+            int row = _indentManagement.EditRefund(refund);
+            return row;
+        }
+
+
+
 
         #endregion
 

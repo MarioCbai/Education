@@ -42,6 +42,17 @@ namespace EducationBLL
         {
             return indents.Orders().EditOrders(orders);
         }
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        public int EditRefund(RefundMod refund)
+        {
+            return indents.Refund().EditRefund(refund);
+        }
 
         /// <summary>
         /// 查询所有业务类型的数据
@@ -148,11 +159,10 @@ namespace EducationBLL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<StudentViewModel> GetStudentModsById(int id)
+        public StudentViewModel GetStudentModsById(int id)
         {
             return indents.Orders().GetStudentModsById(id);
         }
-
         /// <summary>
         /// 查询出所有学段
         /// </summary>
@@ -175,9 +185,9 @@ namespace EducationBLL
         /// <param name="id"></param>
         /// <param name="orderStatus"></param>
         /// <returns></returns>
-        public int UpdateOrderStatus(int id, int orderStatus)
+        public int UpdateOrderStatus(OrdersMod orders)
         {
-            return indents.Orders().UpdateOrderStatus(id,orderStatus);
+            return indents.Orders().UpdateOrderStatus(orders);
         }
     }
 }

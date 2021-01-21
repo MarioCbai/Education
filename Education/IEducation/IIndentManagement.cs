@@ -57,7 +57,7 @@ namespace IEducation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<StudentViewModel> GetStudentModsById(int id);
+        public StudentViewModel GetStudentModsById(int id);
         /// <summary>
         /// 根据班型,学段,课时类型来查询出课时单价
         /// </summary>
@@ -89,7 +89,7 @@ namespace IEducation
         /// <param name="id"></param>
         /// <param name="orderStatus"></param>
         /// <returns></returns>
-        public int UpdateOrderStatus(int id,int orderStatus);
+        public int UpdateOrderStatus(OrdersMod orders);
         /// <summary>
         /// 根据id查询出订单信息
         /// </summary>
@@ -123,8 +123,14 @@ namespace IEducation
         /// <param name="refund"></param>
         /// <returns></returns>
         public int AddRefund(RefundMod refund);
-
-
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        public  int EditRefund(RefundMod refund);
 
     }
 }

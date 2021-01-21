@@ -51,7 +51,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string consumerName = null, int organId = -1)
         {
-            string sql = "select  * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where 1 =1";
+            string sql = "select * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Organ organ on organ.OrganId = orders.RecursionId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where 1 =1";
             //判断查询条件是否为空
             if (!string.IsNullOrEmpty(studentIphone)) //学生账号(手机号)
             {
@@ -120,10 +120,10 @@ namespace EducationDAL.IndentManagement.Orderses
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public override List<StudentViewModel> GetStudentModsById(int id)
+        public override StudentViewModel GetStudentModsById(int id)
         {
             string sql = "select * from Student student join Study study on student.StID = study.StID join Organ organ on student.Institution = organ.OrganId where student.StudentId=@StudentId";
-            return DapperHelper.Query<StudentViewModel>(sql, new { StudentId=id });
+            return DapperHelper.QueryFirstOrDefault<StudentViewModel>(sql, new { StudentId=id });
         }
         /// <summary>
         /// 查询所有价格级别
@@ -140,7 +140,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override List<OrderaViewModel> GetOrderaViews(int id)
         {
-            string sql = "select  * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Payment payment on payment.PaymentOrderId = orders.OrderId join Organ organ on organ.OrganId = orders.RecursionId join Consumer consumer on consumer.ConsumerId = orders.ConsumerId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where orders.OrderId=@OrderId";
+            string sql = "select  * from Orders orders join Student student on orders.StudentId = student.StudentId join BusinessType businessType on orders.BusinessTypeId = businessType.BusinessTypeId join ClassModel classmodel on orders.ClassModelId = classmodel.ClassModelId join Study study on orders.StID = study.StID join Organ organ on organ.OrganId = orders.RecursionId join Refund refund on refund.RefundId = orders.OrderId join HourType hourType on hourType.HourTypeId = orders.HourTypeId join PriceRank pricerank on pricerank.PriceRankId = orders.PriceRankId join Pricing pricing on pricing.PricingId = orders.PricingId where 1 =1";
             return DapperHelper.Query<OrderaViewModel>(sql, new { OrderId =id});
         }
         /// <summary>
@@ -149,10 +149,9 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <param name="id"></param>
         /// <param name="orderStatus"></param>
         /// <returns></returns>
-        public override int UpdateOrderStatus(int id, int orderStatus)
+        public override int UpdateOrderStatus(OrdersMod orders)
         {
-            string sql = "update Orders Set OrderStatus=@OrderStatus where OrderId=OrderId ";
-            return DapperHelper.Execute(sql,new { OrderStatus= orderStatus , OrderId =id});
+            return DapperHelper.Execute("update Orders Set AuditDateTime=@AuditDateTime,OrdersRemark=@OrdersRemark,OrderStatus=@OrderStatus where OrderId=OrderId", orders);
         }
         /// <summary>
         /// 根据id查询出订单信息
@@ -210,7 +209,10 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override int AddOrders(OrdersMod orders)
         {
-            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@Amountcaually,@OrderStatus,@StateOfPayment,@ConsumerId,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
+            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
         }
+        
+        
+
     }
 }

@@ -53,7 +53,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public abstract List<StudentViewModel> GetStudentModsById(int id);
+        public abstract StudentViewModel GetStudentModsById(int id);
         /// <summary>
         /// 根据班型,学段,课时类型来查询出课时单价
         /// </summary>
@@ -79,7 +79,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <param name="id"></param>
         /// <param name="orderStatus"></param>
         /// <returns></returns>
-        public abstract int UpdateOrderStatus(int id, int orderStatus);
+        public abstract int UpdateOrderStatus(OrdersMod orders);
         /// <summary>
         /// 根据id查询出订单信息
         /// </summary>
