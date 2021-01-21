@@ -22,8 +22,8 @@ namespace EducationDAL.InstitutionManagement.HourTables
         //课时包修改
         public override int ModifyHourTableMods(HourTableMod hour)
         {
-            var result = DapperHelper.Execute("update HourTable set HourName=@HourName,HourBeginTime=@HourBeginTime,HourEngTime=@HourEngTime where HourId=@HourId",
-            new { hour.HourName, hour.HourBeginTime, hour.HourEngTime, hour.HourId });
+            var result = DapperHelper.Execute("update HourTable set HourBeginTime=@BeginTime,HourEngTime=@EngTime where HourId=@HourId",
+            new { hour.HourName,hour.BeginTime, hour.EngTime, hour.HourId});
             return result;
         }
 

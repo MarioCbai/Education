@@ -202,7 +202,6 @@ namespace Education.Controllers
         {
             //记录日志
             _logger.LogInformation("添加班级管理数据");
-            Room.HourId = 4;
             return _institutionManagement.AddClassRooms(Room);
         }
         //反填班级管理
@@ -273,18 +272,25 @@ namespace Education.Controllers
         //课时包显示
         [Route("api/HourTableMods")]
         [HttpGet]
-        public List<HourTableMod> HourTableMods()
+        public string HourTableMods()
         {
-            _logger.LogInformation("查询科目表数据");
-
-            return _institutionManagement.HourTableMods();
+            _logger.LogInformation("查询课时包数据");
+            List<HourTableMod> hours = _institutionManagement.HourTableMods();
+            var list = new
+            {
+                code = 0,
+                msg = "",
+                count = hours.Count(),
+                data = hours,
+            };
+            return JsonConvert.SerializeObject(list);
         }
         //课时包反填
         [Route("api/ModifyIdHourTableMods")]
         [HttpGet]
         public HourTableMod ModifyIdHourTableMods(int id)
         {
-            _logger.LogInformation("反填科目表数据");
+            _logger.LogInformation("反填课时包数据");
             return _institutionManagement.ModifyIdHourTableMods(id);
         }
         //课时包修改
@@ -292,7 +298,7 @@ namespace Education.Controllers
         [HttpPost]
         public int ModifyHourTableMods(HourTableMod hour)
         {
-            _logger.LogInformation("反填科目表数据");
+            _logger.LogInformation("修改课时包数据");            
             return _institutionManagement.ModifyHourTableMods(hour);
         }
         #endregion
