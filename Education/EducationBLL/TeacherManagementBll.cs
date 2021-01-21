@@ -42,6 +42,11 @@ namespace EducationBLL
         {
             return teachers.Teacheres().ModifyTeacherMod(t);
         }
+        //修改教师管理状态
+        public int ModifyTeacherState(int status, int teaid)
+        {
+            return teachers.Teacheres().ModifyTeacherState(status, teaid);
+        }
         #endregion
         #region 教学基本信息
         //教学基本信息显示

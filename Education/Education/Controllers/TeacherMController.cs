@@ -87,6 +87,14 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(list);
         }
+        //修改教师管理状态
+        [Route("api/ModifyTeacherState")]
+        [HttpPost]
+        public int ModifyTeacherState(int status, int teaid)
+        {
+            _logger.LogInformation("教学修改状态管理日志");
+            return _teacherManagement.ModifyTeacherState(status, teaid);
+        }
         #region 教学基本信息
         //教学基本信息显示
         [Route("api/GetTeachMods")]
