@@ -32,7 +32,7 @@ namespace Education.Controllers
         #region 教师管理信息
         //添加教师管理信息
         [Route("api/AddTeacherMod")]
-        [HttpGet]
+        [HttpPost]
         public int AddTeacherMod(TeacherMod t)
         {
             _logger.LogInformation("添加教师管理日志");
@@ -87,6 +87,56 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(list);
         }
+        //修改教师管理状态
+        [Route("api/ModifyTeacherState")]
+        [HttpPost]
+        public int ModifyTeacherState(int status, int teaid)
+        {
+            _logger.LogInformation("教学修改状态管理日志");
+            return _teacherManagement.ModifyTeacherState(status, teaid);
+        }
+        #region 教学基本信息
+        //教学基本信息显示
+        [Route("api/GetTeachMods")]
+        [HttpGet]
+        public List<TeachMod> GetTeachMods()
+        {
+            _logger.LogInformation("教学管理日志");
+            return _teacherManagement.GetTeachMods();
+        }
+        //教学基本信息新增
+        [Route("api/AddTeachMod")]
+        [HttpPost]
+        public int AddTeachMod(TeachMod tea)
+        {
+            _logger.LogInformation("添加教学管理日志");
+            return _teacherManagement.AddTeachMod(tea);
+        }
+        //教学基本信息反填
+        [Route("api/ModifyIdTeachMod")]
+        [HttpGet]
+        public TeachMod ModifyIdTeachMod(int id)
+        {
+            _logger.LogInformation("反填教学管理日志");
+            return _teacherManagement.ModifyIdTeachMod(id);
+        }
+        //教学基本信息修改
+        [Route("api/ModifyTeachMod")]
+        [HttpPost]
+        public int ModifyTeachMod(TeachMod tea)
+        {
+            _logger.LogInformation("修改教学管理日志");
+            return _teacherManagement.ModifyTeachMod(tea);
+        }
+        //教学基本信息删除
+        [Route("api/DeleteTeachMod")]
+        [HttpPost]
+        public int DeleteTeachMod(int ids)
+        {
+            _logger.LogInformation("添加教学管理日志");
+            return _teacherManagement.DeleteTeachMod(ids);
+        }
+        #endregion
         #region 认证信息
         //认证信息显示
         [Route("api/GetApproveMods")]

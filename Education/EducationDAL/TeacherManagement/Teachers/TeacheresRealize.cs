@@ -44,5 +44,10 @@ namespace EducationDAL.TeacherManagement.Teachers
             new { t.OrganId, t.TeacherName, t.TeacherOuter, t.TeacherSex, t.TeachereducationId, t.TeacherQQ, t.TeacherWeChat, t.ProvinceId, t.City, t.District, t.TeacherTitle, t.TeacherPhone, t.TeacherIDnumber, t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherId });
             return result;
         }
+        //修改教师管理状态
+        public override int ModifyTeacherState(int status, int teaid)
+        {
+            return DapperHelper.Execute("update Teacher set TeacherState=@TeacherState  where TeacherId=@TeacherId", new { TeacherState = status, TeacherId = teaid });
+        }
     }
 }

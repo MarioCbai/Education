@@ -44,6 +44,6 @@ namespace EducationMODEL.TeacherManagement
 
         public string TeacherResume { get; set; }//个人简介
 
-        public bool TeacherState { get; set; }//用户状态1启用 0禁用
+        public int TeacherState { get; set; }//用户状态1启用 0禁用
     }
 }

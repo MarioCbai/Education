@@ -42,10 +42,42 @@ namespace EducationBLL
         {
             return teachers.Teacheres().ModifyTeacherMod(t);
         }
+        //修改教师管理状态
+        public int ModifyTeacherState(int status, int teaid)
+        {
+            return teachers.Teacheres().ModifyTeacherState(status, teaid);
+        }
+        #endregion
+        #region 教学基本信息
+        //教学基本信息显示
+        public List<TeachMod> GetTeachMods()
+        {
+            return teachers.TeachingInformation().GetTeachMods();
+        }
+        //教学基本信息新增
+        public int AddTeachMod(TeachMod tea)
+        {
+            return teachers.TeachingInformation().AddTeachMod(tea);
+        }
+        //教学基本信息反填
+        public TeachMod ModifyIdTeachMod(int id)
+        {
+            return teachers.TeachingInformation().ModifyIdTeachMod(id);
+        }
+        //教学基本信息修改
+        public int ModifyTeachMod(TeachMod tea)
+        {
+            return teachers.TeachingInformation().ModifyTeachMod(tea);
+        }
+        //教学基本信息删除
+        public int DeleteTeachMod(int ids)
+        {
+            return teachers.TeachingInformation().DeleteTeachMod(ids);
+        }
         #endregion
         #region 认证信息
         //认证信息显示
-        public  List<ApproveMod> GetApproveMods()
+        public List<ApproveMod> GetApproveMods()
         {
             return teachers.Credentials().GetApproveMods();
         }

@@ -65,6 +65,7 @@ namespace IEducation
         int AddPart(PartMod dt);
         //查询用户表
         List<ConsumerMod> Register1(string ConsumerIPhone);
+
      
     }
 }
