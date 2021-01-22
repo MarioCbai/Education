@@ -34,5 +34,16 @@ namespace IEducation
         int DropClass(DropClassMod dt);
         //退课申请单
         List<DropClassModShow> DropClassModShow();
+        //返还课申请单
+        List<ClassroomManagement> ReturnClass();
+        //添加返还课
+        int FAFSAAdd(FAFSAMod dt);
+        //查询反填课
+        List<ClassroomManagement> FAFSAShow(string OrganName = "", string BusinessTypeName = "", string ClassModelName = "", string AuditionType = "", string HourTypeName = "", string AuditionState = "", string StudyName = "", string SubjectsName = "", string OrganPhoneName = "", string TeacherName = "", DateTime? AuditionTime1 = null, DateTime? AuditionTime = null, string StudentName = "");
+        //删除反填课
+        int FAFSADel(int id);
+        //返还表的审核//修改
+        int FAFSAUpt(int tate, string id);
+
     }
 }
