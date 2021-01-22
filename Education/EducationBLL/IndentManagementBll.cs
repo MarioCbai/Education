@@ -95,9 +95,9 @@ namespace EducationBLL
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        public List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string consumerName = null, int organId = -1)
+        public List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string buyer = null, int organId = -1, string orderTime = null)
         {
-            return indents.Orders().GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID);
+            return indents.Orders().GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID, orderStatus, stateOfPayment, buyer, organId, orderTime);
         }
         /// <summary>
         /// 查询出所有的机构
@@ -132,9 +132,9 @@ namespace EducationBLL
         /// 退款信息的显示
         /// </summary>
         /// <returns></returns>
-        public List<OrderaViewModel> GetRefundMod()
+        public List<OrderaViewModel> GetRefundMod(string studentIphone = null, string studentName = null, string refundperson = null, int refundState = -1, int recursionId = -1, string refundTime = null)
         {
-            return indents.Refund().GetRefundMod();
+            return indents.Refund().GetRefundMod( studentIphone, studentName  ,  refundperson  ,  refundState  ,  recursionId,  refundTime );
         }
         /// <summary>
         /// 根据id查询退款信息信息
@@ -163,6 +163,15 @@ namespace EducationBLL
         {
             return indents.Orders().GetStudentModsById(id);
         }
+        /// <summary>
+        /// 首页显示课时小于十五的学生信息
+        /// </summary>
+        /// <returns></returns>
+        public List<OrderaViewModel> GetStudentOrder()
+        {
+            return indents.Refund().GetStudentOrder();
+        }
+
         /// <summary>
         /// 查询出所有学段
         /// </summary>

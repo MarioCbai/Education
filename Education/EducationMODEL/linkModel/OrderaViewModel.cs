@@ -145,5 +145,31 @@ namespace EducationMODEL.linkModel
         public int Institution { get; set; }//所+属机构
 
         public int StudentKind { get; set; }//学员状态是否成单：1成 0意向
+        public int AuditionID { get; set; }//主键
+
+        public string AuditionType { get; set; }//课程类别 试听课和正式课
+
+        public int Grade { get; set; }//年级（外键）
+
+        public string AuditionClass { get; set; }//上课主题
+
+        public string AuditionDate { get; set; }//上课日期
+
+        public string AuditionTime { get; set; }//上课时间
+
+        public int AuditionState { get; set; }//课堂状态 ,1已上课，2已排课，3以备课，4以上课，5未上课，6已取消，7以退课,8返还课
+
+        public string AuditionRemark { get; set; }//备注
+
+        public int TeacherId { get; set; }//教师
+
+        public int ASID { get; set; }//主键id
+
+        public int Audition { get; set; }//课程表（外键）
+
+        public int Student { get; set; }//学生表（外键）
+        public DateTime AuditTime { get; set; }//审核时间
+
+
     }
 }
