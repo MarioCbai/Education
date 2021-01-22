@@ -33,9 +33,9 @@ namespace EducationBLL
             return teachers.Teacheres().DeleteTeacherMod(ids);
         }
         //反填教师管理信息
-        public TeacherMod ModifyIdTeacherMod(int id)
+        public TeacherMod ModifyIdTeacherMod(int teacherid)
         {
-            return teachers.Teacheres().ModifyIdTeacherMod(id);
+            return teachers.Teacheres().ModifyIdTeacherMod(teacherid);
         }
         //修改教师管理信息
         public int ModifyTeacherMod(TeacherMod t)

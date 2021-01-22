@@ -38,6 +38,7 @@ namespace EducationMODEL.TeacherManagement
         public string OrganName { get; set; }//教师基本表外键
         public string TeacherPhone { get; set; }//手机号
         public int TeacherState { get; set; }//用户状态1启用 0禁用
+        public string TeacherTitle { get; set; }//老师职称教师助教1教师0助教
 
     }
 }

@@ -32,9 +32,9 @@ namespace EducationDAL.TeacherManagement.Teachers
             return DapperHelper.Execute("delete from Teacher where TeacherId=@TeacherId", new { TeacherId = ids });
         }
         //反填教师管理信息
-        public override TeacherMod ModifyIdTeacherMod(int id)
+        public override TeacherMod ModifyIdTeacherMod(int teacherid)
         {
-            return DapperHelper.Query<TeacherMod>("select *from Teacher where TeacherId=@TeacherId", new { TeacherId = id }).FirstOrDefault();
+            return DapperHelper.Query<TeacherMod>("select *from Teacher where TeacherId=@TeacherId", new { TeacherId = teacherid }).FirstOrDefault();
         }
         //修改教师管理信息
         public override int ModifyTeacherMod(TeacherMod t)

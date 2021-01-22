@@ -141,7 +141,6 @@ namespace EducationBLL
             return institutions.Semester().GetSemesters();
         }
         #endregion
-
         #region 课时包
         //课时包显示
         public  List<HourTableMod> HourTableMods()

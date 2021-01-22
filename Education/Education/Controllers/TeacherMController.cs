@@ -61,7 +61,16 @@ namespace Education.Controllers
         {
             _logger.LogInformation("修改教师管理日志");
             return _teacherManagement.ModifyTeacherMod(t);
-        } 
+        }
+        //绑定教师管理显示1
+        [Route("api/TeacherMods")]
+        [HttpGet]
+        public List<TeacherMod> TeacherMods()
+        {
+            _logger.LogInformation("教师管理显示下拉");
+            List<TeacherMod> Organs = _teacherManagement.GetTeacherMods();
+            return Organs;
+        }
         //教师管理显示1
         [Route("api/GetTeacherMod")]
         [HttpGet]
@@ -108,10 +117,18 @@ namespace Education.Controllers
         //教学基本信息显示
         [Route("api/GetTeachMods")]
         [HttpGet]
-        public List<TeachMod> GetTeachMods()
+        public string GetTeachMods()
         {
             _logger.LogInformation("教学管理日志");
-            return _teacherManagement.GetTeachMods();
+            List<TeachMod> teaches = _teacherManagement.GetTeachMods();
+            var list = new
+            {
+                code = 0,
+                msg = "",
+                count = teaches.Count(),
+                data = teaches,
+            };
+            return JsonConvert.SerializeObject(list);
         }
         //教学基本信息新增
         [Route("api/AddTeachMod")]
@@ -119,6 +136,7 @@ namespace Education.Controllers
         public int AddTeachMod(TeachMod tea)
         {
             _logger.LogInformation("添加教学管理日志");
+            tea.TeacherTime = DateTime.Now;
             return _teacherManagement.AddTeachMod(tea);
         }
         //教学基本信息反填
