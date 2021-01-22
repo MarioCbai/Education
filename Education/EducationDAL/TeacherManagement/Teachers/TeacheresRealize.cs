@@ -17,13 +17,13 @@ namespace EducationDAL.TeacherManagement.Teachers
         //教师管理显示1
         public override List<TeacherMod> GetTeacherMods()
         {
-            return DapperHelper.Query<TeacherMod>("select *from Teacher", "");
+            return DapperHelper.Query<TeacherMod>("select * from Teacher ter join  Teachereducation  duc on ter.TeachereducationId=duc.TeachereducationId join  Organ  org on org.OrganId = ter.OrganId", "");
         }
         //添加教师管理信息
         public override int AddTeacherMod(TeacherMod t)
         {            
-           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom, @TeacherCard)", 
-           new {t.OrganId,t.TeacherName,t.TeacherOuter, t.TeacherSex, t.TeachereducationId,t.TeacherQQ,t.TeacherWeChat,t.ProvinceId,t.City,t.District,t.TeacherTitle,t.TeacherPhone,t.TeacherIDnumber,t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard });
+           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom,@TeacherPwd,@TeacherState, @TeacherCard)", 
+           new {t.OrganId,t.TeacherName,t.TeacherOuter, t.TeacherSex, t.TeachereducationId,t.TeacherQQ,t.TeacherWeChat,t.ProvinceId,t.City,t.District,t.TeacherTitle,t.TeacherPhone,t.TeacherIDnumber,t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherPwd,t.TeacherState });
            return result;
         }
         //删除教师管理信息
@@ -40,8 +40,8 @@ namespace EducationDAL.TeacherManagement.Teachers
         public override int ModifyTeacherMod(TeacherMod t)
         {
             var result = DapperHelper.Execute("update Teacher set OrganId=@OrganId,TeacherName=@TeacherName,TeacherOuter=@TeacherOuter,TeacherSex=@TeacherSex,TeachereducationId=@TeachereducationId,TeacherQQ=@TeacherQQ,TeacherWeChat=@TeacherWeChat," +
-                "ProvinceId=@ProvinceId,City=@City,District=@District,TeacherTitle=@TeacherTitle,TeacherPhone@TeacherPhone,TeacherIDnumber=@TeacherIDnumber,TeacherGraduate=@TeacherGraduate,TeacherResume=@TeacherResume,TeacherCom=@TeacherCom,TeacherCard=@TeacherCard where TeacherId=@TeacherId",
-            new { t.OrganId, t.TeacherName, t.TeacherOuter, t.TeacherSex, t.TeachereducationId, t.TeacherQQ, t.TeacherWeChat, t.ProvinceId, t.City, t.District, t.TeacherTitle, t.TeacherPhone, t.TeacherIDnumber, t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherId });
+                "ProvinceId=@ProvinceId,City=@City,District=@District,TeacherTitle=@TeacherTitle,TeacherPhone=@TeacherPhone,TeacherIDnumber=@TeacherIDnumber,TeacherGraduate=@TeacherGraduate,TeacherResume=@TeacherResume,TeacherCom=@TeacherCom,TeacherCard=@TeacherCard,TeacherPwd=@TeacherPwd,TeacherState=@TeacherState where TeacherId=@TeacherId",
+            new { t.OrganId, t.TeacherName, t.TeacherOuter, t.TeacherSex, t.TeachereducationId, t.TeacherQQ, t.TeacherWeChat, t.ProvinceId, t.City, t.District, t.TeacherTitle, t.TeacherPhone, t.TeacherIDnumber, t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherId,t.TeacherPwd,t.TeacherState });
             return result;
         }
         //修改教师管理状态

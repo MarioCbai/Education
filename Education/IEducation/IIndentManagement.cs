@@ -16,7 +16,7 @@ namespace IEducation
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string consumerName = null, int organId = -1);
+        List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string buyer = null, int organId = -1, string orderTime = null);
         /// <summary>
         /// 查询所有业务类型的数据
         /// </summary>
@@ -36,7 +36,7 @@ namespace IEducation
         /// 退款信息的显示
         /// </summary>
         /// <returns></returns>
-        List<OrderaViewModel> GetRefundMod();
+        List<OrderaViewModel> GetRefundMod(string studentIphone = null, string studentName = null, string refundperson = null, int refundState = -1, int recursionId = -1, string refundTime = null);
         /// <summary>
         /// 查询出所有课时类型
         /// </summary>
@@ -131,6 +131,11 @@ namespace IEducation
         /// <param name="RefundRemark"></param>
         /// <returns></returns>
         public  int EditRefund(RefundMod refund);
+        /// <summary>
+        /// 首页显示课时小于十五的学生信息
+        /// </summary>
+        /// <returns></returns>
+        public  List<OrderaViewModel> GetStudentOrder();
 
     }
 }
