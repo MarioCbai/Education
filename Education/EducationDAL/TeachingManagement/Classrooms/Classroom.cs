@@ -4,7 +4,7 @@ using System.Text;
 using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
-
+using EducationMODEL.TeachingManagement;
 
 namespace EducationDAL.TeachingManagement.Classrooms
 {
@@ -27,6 +27,10 @@ namespace EducationDAL.TeachingManagement.Classrooms
         public abstract List<Managethedrop_down> Study();
         //学科//科目  Subjects
         public abstract List<Managethedrop_down> Subjects();
+        //添加申请退款
+        public abstract int DropClass(DropClassMod dt);
+        //退课申请单
+        public abstract List<DropClassModShow> DropClassModShow();
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EducationDAL.TeachingManagement;
 using EducationMODEL.linkModel;
+using EducationMODEL.TeachingManagement;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,18 @@ namespace EducationBLL
         public List<Managethedrop_down> Subjects()
         {         
             List<Managethedrop_down> list = teachings.Classroom().Subjects();
+            return list;
+        }
+        //添加申请退款
+        public  int DropClass(DropClassMod dt)
+        {
+            int i = teachings.Classroom().DropClass(dt);
+            return i;
+        }
+        //退课申请单
+        public  List<DropClassModShow> DropClassModShow()
+        {
+            List<DropClassModShow> list = teachings.Classroom().DropClassModShow();
             return list;
         }
     }

@@ -49,10 +49,10 @@ namespace Education.Controllers
         //反填教师管理信息
         [Route("api/ModifyIdTeacherMod")]
         [HttpGet]
-        public TeacherMod ModifyIdTeacherMod(int id)
+        public TeacherMod ModifyIdTeacherMod(int teacherid)
         {
             _logger.LogInformation("反填教师管理日志");
-            return _teacherManagement.ModifyIdTeacherMod(id);
+            return _teacherManagement.ModifyIdTeacherMod(teacherid);
         }
         //修改教师管理信息
         [Route("api/ModifyTeacherMod")]
@@ -61,13 +61,22 @@ namespace Education.Controllers
         {
             _logger.LogInformation("修改教师管理日志");
             return _teacherManagement.ModifyTeacherMod(t);
-        } //教师管理显示1
-        [Route("api/GetTeacherMods")]
+        } 
+        //教师管理显示1
+        [Route("api/GetTeacherMod")]
         [HttpGet]
-        public List<TeacherMod> GetTeacherMods()
+        public string GetTeacherMods()
         {
             _logger.LogInformation("显示教师管理日志");
-            return _teacherManagement.GetTeacherMods();
+            List<TeacherMod> teaches = _teacherManagement.GetTeacherMods();
+            var list = new
+            {
+                code = 0,
+                msg = "",
+                count = teaches.Count(),
+                data = teaches,
+            };
+            return JsonConvert.SerializeObject(list);
         }
         #endregion
         //教学信息显示

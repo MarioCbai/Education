@@ -9,14 +9,16 @@ namespace EducationMODEL.TeacherManagement
         public int TeacherId { get; set; }//教师表序号主键
 
         public int OrganId { get; set; }//机构外键
+        public string OrganName { get; set; }//机构外键
 
         public string TeacherName { get; set; }//教师名称
 
         public string TeacherOuter { get; set; }//对外显示姓名
 
-        public bool TeacherSex { get; set; }//性别
+        public int TeacherSex { get; set; }//性别
 
         public int TeachereducationId { get; set; }//学历  中专，大专，本科，硕士，博士，其他
+        public string TeachereducationName { get; set; }//学历  中专，大专，本科，硕士，博士，其他
 
         public string TeacherQQ { get; set; }//老师QQ
 
@@ -28,7 +30,7 @@ namespace EducationMODEL.TeacherManagement
 
         public int District { get; set; }//区Id
 
-        public bool TeacherTitle { get; set; }//老师职称教师助教1教师0助教
+        public int TeacherTitle { get; set; }//老师职称教师助教1教师0助教
 
         public string TeacherPhone { get; set; }//手机号
 
@@ -38,7 +40,7 @@ namespace EducationMODEL.TeacherManagement
 
         public string TeacherCom { get; set; }//邮箱
 
-        public bool TeacherCard { get; set; }//教师资格证
+        public int TeacherCard { get; set; }//教师资格证
 
         public string TeacherPwd { get; set; }//密码
 
