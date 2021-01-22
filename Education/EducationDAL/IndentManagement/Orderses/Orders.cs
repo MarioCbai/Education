@@ -17,7 +17,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// 订单的显示以及查询
         /// </summary>
         /// <returns></returns>
-        public abstract List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1,int orderStatus=-1,int stateOfPayment=-1,string consumerName=null,int organId=-1);
+        public abstract List<OrderaViewModel> GetOrdersMods(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1,int orderStatus=-1,int stateOfPayment=-1,string buyer = null,int organId=-1,string orderTime=null);
         /// <summary>
         /// 查询出所有业务类型
         /// </summary>

@@ -126,10 +126,10 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetOrders")]
         [HttpGet]
-        public string GetOrders(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string consumerName = null, int organId = -1)
+        public string GetOrders(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string buyer = null, int organId = -1, string orderTime = null)
         {
             _logger.LogInformation("订单的显示以及查询记录");
-            List<OrderaViewModel> list = _indentManagement.GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID);
+            List<OrderaViewModel> list = _indentManagement.GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID, orderStatus, stateOfPayment, buyer, organId, orderTime);
             //layui显示的转换
             var JsonData = new
             {
@@ -201,7 +201,7 @@ namespace Education.Controllers
             return row;
         }
         /// <summary>
-        /// 根据id查询出订单信息
+        /// 根据id查询出订单信息/填充
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -289,10 +289,10 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetRefund")]
         [HttpGet]
-        public string GetRefundMod()
+        public string GetRefundMod(string studentIphone = null, string studentName = null, string refundperson = null, int refundState = -1, int recursionId = -1, string refundTime = null)
         {
             _logger.LogInformation("退款订单的显示以及查询记录");
-            List<OrderaViewModel> list = _indentManagement.GetRefundMod();
+            List<OrderaViewModel> list = _indentManagement.GetRefundMod( studentIphone , studentName , refundperson , refundState, recursionId, refundTime );
             var JsonData = new
             {
                 code = 0, //解析接口状态
@@ -354,7 +354,25 @@ namespace Education.Controllers
             int row = _indentManagement.EditRefund(refund);
             return row;
         }
-
+        /// <summary>
+        /// 首页显示课时小于十五的学生信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetStudentOrde")]
+        [HttpGet]
+        public string GetStudentOrder()
+        {
+            _logger.LogInformation("显示出课时小于15的学生信息");
+            List<OrderaViewModel> list = _indentManagement.GetStudentOrder();
+            var JsonData = new
+            {
+                code = 0, //解析接口状态
+                msg = "", //解析提示文本
+                count = list.Count, //解析数据长度
+                data = list//解析数据列表
+            };
+            return JsonConvert.SerializeObject(JsonData);
+        }
 
 
 

@@ -154,7 +154,18 @@ namespace EducationMODEL.linkModel
         public string ClassModels { get; set; }  //进入课堂形式
         public int ClassModelNumber { get; set; }  //容纳学员人数
 
-      
+
+  
+
+        public string Auditor { get; set; }//审核人
+
+    
+        public string AuditorPTime { get; set; }//审核时间
+
+        public int AuditStatus { get; set; }//审核状态
+        public string FAFSAremark { get; set; } //备注
+        public string FAFStype { get; set; } //申请类型
+        public string Audittime { get; set; }  //申请时间
 
 
     }
