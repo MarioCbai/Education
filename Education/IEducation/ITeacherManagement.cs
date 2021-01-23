@@ -19,7 +19,7 @@ namespace IEducation
         //删除教师管理信息
         int DeleteTeacherMod(int ids);
         //反填教师管理信息
-        TeacherMod ModifyIdTeacherMod(int id);
+        TeacherMod ModifyIdTeacherMod(int teacherid);
         //修改教师管理信息
         int ModifyTeacherMod(TeacherMod t);
         //修改教师管理状态

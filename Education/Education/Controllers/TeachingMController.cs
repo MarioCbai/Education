@@ -155,5 +155,67 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(cc);
         }
+        //返还课申请单
+        [HttpGet]
+        [Route("/TeachingM/ReturnClass")]
+        public string ReturnClass()
+        {
+            List<ClassroomManagement> lsit = _teachingManagement.ReturnClass();
+            foreach (var item in lsit)
+            {
+                item.Data = item.AuditionDate.ToString("yyyy-MM-dd");
+            }
+            var cc = new
+            {
+                code = 0,
+                msg = "",
+                count = lsit.Count,
+                data = lsit
+            };
+            return JsonConvert.SerializeObject(cc);
+        }
+        //添加返还课
+        [HttpPost]
+        [Route("/TeachingM/FAFSAAdd")]
+        public  int FAFSAAdd(FAFSAMod FAFSAAdd)
+        {
+            int i = _teachingManagement.FAFSAAdd(FAFSAAdd);
+            return i;
+        }
+        //查询反还课
+        [HttpGet]
+        [Route("/TeachingM/FAFSAShow")]
+        public string FAFSAShow(string OrganName = "", string BusinessTypeName = "", string ClassModelName = "", string AuditionType = "", string HourTypeName = "", string AuditionState = "", string StudyName = "", string SubjectsName = "", string OrganPhoneName = "", string TeacherName = "", DateTime? AuditionTime1 = null, DateTime? AuditionTime = null, string StudentName = "")
+        {
+            List<ClassroomManagement> list= _teachingManagement.FAFSAShow(OrganName, BusinessTypeName, ClassModelName, AuditionType, HourTypeName, AuditionState, StudyName, SubjectsName, OrganPhoneName, TeacherName, AuditionTime1, AuditionTime, StudentName);
+            foreach (var item in list)
+            {
+                item.Data = item.AuditionDate.ToString("yyyy-MM-dd");
+            }
+            var cc = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(cc);
+        }
+        //删除反填课
+        [HttpGet]
+        [Route("/TeachingM/FAFSADel")]
+        public  int FAFSADel(int id)
+        {
+            int i = _teachingManagement.FAFSADel(id);
+            return i;
+        }
+        //返还表的审核//修改
+        [HttpGet]
+        [Route("/TeachingM/FAFSAUpt")]
+        public int FAFSAUpt(int tate, string id)
+        {
+            int i = _teachingManagement.FAFSAUpt(tate,id);
+            return i;
+        }
     }
 }

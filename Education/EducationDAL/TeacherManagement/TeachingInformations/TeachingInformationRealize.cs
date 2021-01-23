@@ -17,8 +17,7 @@ namespace EducationDAL.TeacherManagement.TeachingInformations
         //教学基本信息新增
         public override int AddTeachMod(TeachMod tea)
         {
-            var result = DapperHelper.Execute("insert into Teach values(@TeacherType,@TeacherRank,@TeacherShowKe,@TeacherLink,@TeacherYType,@RecursionId,@TeacherAge,@TeacherStyle, @SubjectsId, @TextbookId, @TeacherTime, @Teacher)",
-            new { tea.TeacherType,tea.TeacherRank,tea.TeacherShowKe,tea.TeacherLink,tea.TeacherYType,tea.RecursionId,tea.TeacherAge,tea.TeacherStyle,tea.SubjectsId,tea.TextbookId,tea.TeacherTime,tea.Teacher});
+            var result = DapperHelper.Execute("insert into teach values(@TeacherType,@TeacherRank,@TeacherShowKe,@TeacherLink,@RecursionId,@TeacherYType,@TeacherAge,@TeacherStyle,@SubjectsId,@TextbookId,@TeacherTime,@Teacher)", tea);
             return result;
         }
         //教学基本信息反填
@@ -29,8 +28,8 @@ namespace EducationDAL.TeacherManagement.TeachingInformations
         //教学基本信息修改
         public override int ModifyTeachMod(TeachMod tea)
         {
-            var result = DapperHelper.Execute("update Teach set TeacherType=@TeacherType,TeacherRank=@TeacherRank,TeacherShowKe=@TeacherShowKe,TeacherLink=@TeacherLink,TeacherYType=@TeacherYType,RecursionId=@RecursionId,TeacherAge=@TeacherAge,TeacherStyle=@TeacherStyle, SubjectsId=@SubjectsId, TextbookId=@TextbookId, TeacherTime=@TeacherTime, Teacher=@Teacher where TeachId=@TeachId",
-            new { tea.TeacherType, tea.TeacherRank, tea.TeacherShowKe, tea.TeacherLink, tea.TeacherYType, tea.RecursionId, tea.TeacherAge, tea.TeacherStyle, tea.SubjectsId, tea.TextbookId, tea.TeacherTime, tea.Teacher });
+            var result = DapperHelper.Execute("update Teach set TeacherType=@TeacherType,TeacherRank=@TeacherRank,TeacherShowKe=@TeacherShowKe,TeacherLink=@TeacherLink,RecursionId=@RecursionId,TeacherYType=@TeacherYType,TeacherAge=@TeacherAge,TeacherStyle=@TeacherStyle,SubjectsId=@SubjectsId,TextbookId=@TextbookId,Teacher=@Teacher where TeachId=@TeachId",
+            new { tea.TeacherType, tea.TeacherRank, tea.TeacherShowKe, tea.TeacherLink, tea.RecursionId, tea.TeacherYType, tea.TeacherAge, tea.TeacherStyle, tea.SubjectsId, tea.TextbookId, tea.Teacher,tea.TeachId });
             return result;
         }
         //教学基本信息删除

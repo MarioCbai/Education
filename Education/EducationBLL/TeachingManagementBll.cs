@@ -72,6 +72,33 @@ namespace EducationBLL
             List<DropClassModShow> list = teachings.Classroom().DropClassModShow();
             return list;
         }
+        //返还课申请单
+        public  List<ClassroomManagement> ReturnClass()
+        {
+            List<ClassroomManagement> lsit = teachings.Classroom().ReturnClass();
+            return lsit;
+        }
+        //添加返还课
+        public  int FAFSAAdd(FAFSAMod dt)
+        {
+            int i = teachings.Classroom().FAFSAAdd(dt);
+            return i;
+        }
+        //查询反还课
+        public  List<ClassroomManagement> FAFSAShow(string OrganName = "", string BusinessTypeName = "", string ClassModelName = "", string AuditionType = "", string HourTypeName = "", string AuditionState = "", string StudyName = "", string SubjectsName = "", string OrganPhoneName = "", string TeacherName = "", DateTime? AuditionTime1 = null, DateTime? AuditionTime = null, string StudentName = "")
+        {
+            return teachings.Classroom().FAFSAShow(OrganName, BusinessTypeName, ClassModelName, AuditionType, HourTypeName, AuditionState, StudyName, SubjectsName, OrganPhoneName, TeacherName, AuditionTime1, AuditionTime, StudentName);
+        }
+        //删除反填课
+        public  int FAFSADel(int id)
+        {
+            return teachings.Classroom().FAFSADel(id);
+        }
+        //返还表的审核//修改
+        public  int FAFSAUpt(int tate, string id)
+        {
+            return teachings.Classroom().FAFSAUpt(tate,id);
+        }
     }
 }
 

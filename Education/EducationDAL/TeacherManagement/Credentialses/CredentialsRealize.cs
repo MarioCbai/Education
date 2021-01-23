@@ -12,7 +12,7 @@ namespace EducationDAL.TeacherManagement.Credentialses
         //认证信息显示
         public override List<ApproveMod> GetApproveMods()
         {
-            return DapperHelper.Query<ApproveMod>("select *from Approve", " ");
+            return DapperHelper.Query<ApproveMod>("select *from Approve app join Teacher tea on app.Teacher=tea.TeacherId", " ");
         }
         //认证信息添加
         public override int AddApproveMod(ApproveMod ap)
