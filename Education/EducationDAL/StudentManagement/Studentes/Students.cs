@@ -1,5 +1,6 @@
 ﻿using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
 using System;
@@ -22,5 +23,10 @@ namespace EducationDAL.StudentManagement.Studentes
 
         //地址
         public abstract List<SitesMod> Dizhi(int id);
+
+        //学员查询
+        public abstract StudentMod ShowSan(int id);
+
+        public abstract List<Study> Xue(int id);
     }
 }

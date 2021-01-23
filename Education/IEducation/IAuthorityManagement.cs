@@ -53,7 +53,7 @@ namespace IEducation
         List<MenuMod> PermissionShow();
 
         //权限全显示
-        List<MenuMod> PermissionShowNT();
+        List<MenuMod> PermissionShowNT(string iphone);
         //全部角色
         List<PartMod> PartShow();
         //登录

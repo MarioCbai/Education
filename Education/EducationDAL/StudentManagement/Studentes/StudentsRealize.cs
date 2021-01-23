@@ -1,5 +1,6 @@
 ﻿using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
 using System;
@@ -21,6 +22,12 @@ namespace EducationDAL.StudentManagement.Studentes
         public override List<SourceMod> LaiShow()
         {
            return DapperHelper.Query<SourceMod>("select * from Source", new { });
+        }
+
+        //学员查询
+        public override StudentMod ShowSan(int id)
+        {
+            return DapperHelper.QueryFirst<StudentMod>("select StudentName,StudentIphone,SourceId from Student where StudentId=@id", new {id });
         }
 
         //学员添加
@@ -59,6 +66,12 @@ namespace EducationDAL.StudentManagement.Studentes
             }
             return DapperHelper.Query<StudentLian>(sql, new { jigou, zi, zhi, nian ,name, iphone });
 
+        }
+
+        //学
+        public override List<Study> Xue(int id)
+        {
+            return DapperHelper.Query<Study>("select * from  Study where StudyId=@id", new { id });
         }
     }
 }

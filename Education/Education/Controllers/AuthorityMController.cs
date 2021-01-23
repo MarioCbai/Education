@@ -143,7 +143,7 @@ namespace Education.Controllers
         [Route("/api/UserAdd")]
         public int UserAdd([FromBody] UserPardMod u)
         {
-            u.ConsumerPwd = u.ConsumerIPhone.Substring(5, u.ConsumerIPhone.Length);
+            u.ConsumerPwd = u.ConsumerIPhone.Substring(5);
             u.Createtime = DateTime.Now;
             u.CPState = 0;
             return _authorityManagement.UserAdd(u);
@@ -258,9 +258,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/MenuShowNT")]
-        public List<MenuMod> MenuShowNT()
+        public List<MenuMod> MenuShowNT(string iphone)
         {
-            List<MenuMod> menuMods = _authorityManagement.PermissionShowNT();
+            List<MenuMod> menuMods = _authorityManagement.PermissionShowNT(iphone);
 
             return menuMods;
         }

@@ -1,6 +1,7 @@
 ﻿using EducationDAL.StudentManagement;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
 using IEducation;
@@ -15,10 +16,34 @@ namespace EducationBLL
     {
         Student students = new StudentPlant();
 
+        //添加家长
+        public int AddParetn(PatriarchMod p)
+        {
+            return students.Parents().AddParent(p);
+        }
+
+
+
+        //删除家长信息
+        public int DelPatrn(int id)
+        {
+            return students.Parents().DelParents(id);
+        }
+
         //地址
         public List<SitesMod> Dizhi(int id)
         {
             return students.Students().Dizhi(id);
+        }
+
+        /// <summary>
+        /// 家长信息反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PatriarchMod FanParent(int id)
+        {
+            return students.Parents().FanParent(id);
         }
 
         /// <summary>
@@ -28,6 +53,22 @@ namespace EducationBLL
         public List<SourceMod> LaiShow()
         {
             return students.Students().LaiShow();
+        }
+
+        /// <summary>
+        /// 家长信息显示
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<PatriarchMod> PartriarchShow(int id)
+        {
+            return students.Parents().ParentsShow(id);
+        }
+
+        //学员信息
+        public StudentMod ShowSan(int id)
+        {
+            return students.Students().ShowSan(id);
         }
 
         /// <summary>
@@ -53,6 +94,22 @@ namespace EducationBLL
         public List<StudentLian> StudentShow(int jigou, string zi, string zhi, int nian, string name, string iphone)
         {
             return students.Students().StudentShow(jigou,zi,zhi,nian,name,iphone);
+        }
+
+        /// <summary>
+        /// 家长信息修改
+        /// </summary>
+        /// <param name="pp"></param>
+        /// <returns></returns>
+        public int UptParent(PatriarchMod pp)
+        {
+            return students.Parents().UptParent(pp);
+        }
+
+        //学
+        public List<Study> Xue(int id)
+        {
+            return students.Students().Xue(id);
         }
     }
 }

@@ -11,16 +11,32 @@ namespace EducationDAL.AuthorityManagement.RolePermissions
         //添加角色权限
         public override int AddPart(JueseP j)
         {
-            int b=0;
-            for (int i = 0; i < j.data.Length; i++)
+            int b = 0;
+            List<PartMenuMod> list= DapperHelper.Query<PartMenuMod>("select * from PartMenu where PartMenuPartId =@id", new { j.id });
+            if (list.Count==0)
             {
-                b =DapperHelper.Execute("insert into PartMenu values(@PartMenuPartId,@PartMenuMenuId)", new { PartMenuPartId = j.id, PartMenuMenuId = int.Parse(j.data[i]) });
-                if (b!=1)
+                for (int i = 0; i < j.data.Length; i++)
                 {
-                    break;
+                    b = DapperHelper.Execute("insert into PartMenu values(@PartMenuPartId,@PartMenuMenuId)", new { PartMenuPartId = j.id, PartMenuMenuId = int.Parse(j.data[i]) });
+                    if (b != 1)
+                    {
+                        break;
+                    }
                 }
             }
-            return b; 
+            else
+            {
+                DapperHelper.Execute("delete PartMenu where PartMenuPartId=@id", new { j.id });
+                for (int i = 0; i < j.data.Length; i++)
+                {
+                    b = DapperHelper.Execute("insert into PartMenu values(@PartMenuPartId,@PartMenuMenuId)", new { PartMenuPartId = j.id, PartMenuMenuId = int.Parse(j.data[i]) });
+                    if (b != 1)
+                    {
+                        break;
+                    }
+                }
+            }
+            return b;
         }
 
         //角色权限状态

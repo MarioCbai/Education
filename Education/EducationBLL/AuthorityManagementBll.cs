@@ -73,10 +73,10 @@ namespace EducationBLL
             return permission.PermissionShow();
         }
         //权限菜单显示
-        public List<MenuMod> PermissionShowNT()
+        public List<MenuMod> PermissionShowNT(string iphone)
         {
             Permission permission = authoritys.Permission();
-            return  permission.PermissionShowNT();
+            return  permission.PermissionShowNT(iphone);
         }
         //登录
         public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
