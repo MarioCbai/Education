@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
 using IEducation;
@@ -33,6 +34,89 @@ namespace Education.Controllers
             _studentManagement = studentManagement;
         }
 
+        [HttpGet]
+        [Route("/api/Xue")]
+        public List<Study> Xue(int id)
+        {
+            return _studentManagement.Xue(id);
+        }
+
+
+        [HttpGet]
+        [Route("/api/ShowSan")]
+        public StudentMod ShowSan(int id)
+        {
+            return _studentManagement.ShowSan(id);
+        }
+
+        /// <summary>
+        /// 家长信息添加
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/ParentAdd")]
+        public int ParentAdd(PatriarchMod p)
+        {
+            return _studentManagement.AddParetn(p);
+        }
+
+
+        /// <summary>
+        /// 家长信息反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/FanParent")]
+        public  PatriarchMod FanParent(int id)
+        {
+           return  _studentManagement.FanParent(id);
+        }
+        /// <summary>
+        /// 修改家长信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/UptParent")]
+        public int UptParent(PatriarchMod p)
+        {
+            return _studentManagement.UptParent(p);
+        }
+
+        /// <summary>
+        /// 删除家长信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/DelParent")]
+        public int DelParent(int id)
+        {
+            return _studentManagement.DelPatrn(id);
+        }
+
+        /// <summary>
+        /// 家长显示
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/ParntShow")]
+        public string ParntShow(int id)
+        {
+            List<PatriarchMod> list= _studentManagement.PartriarchShow(id);
+            var ss = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(ss);
+        }
+
         /// <summary>
         /// 地址
         /// </summary>
@@ -58,7 +142,7 @@ namespace Education.Controllers
         {
             try
             {
-                ss.StudentPwd = ss.StudentIphone.Substring(5, ss.StudentIphone.Length);
+                ss.StudentPwd = ss.StudentIphone.Substring(5);
                 ss.Counselor = "ccc";
                 return _studentManagement.StudentAdd(ss);
             }

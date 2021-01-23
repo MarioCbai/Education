@@ -23,50 +23,51 @@ namespace EducationBLL
             return teachings.Classroom().Examine(StudentId);
         }
         //下拉机构下拉
-        public  List<Managethedrop_down> Organ()        {
-    
-            List<Managethedrop_down> list = teachings.Classroom().Organ();   
+        public List<Managethedrop_down> Organ()
+        {
+
+            List<Managethedrop_down> list = teachings.Classroom().Organ();
             return list;
 
         }
         //业务类型下拉
         public List<Managethedrop_down> BusinessType()
-        {       
-            List<Managethedrop_down> list = teachings.Classroom().BusinessType();    
+        {
+            List<Managethedrop_down> list = teachings.Classroom().BusinessType();
             return list;
         }
         //班型下拉
         public List<Managethedrop_down> ClassModel()
-        {       
-            List<Managethedrop_down> list = teachings.Classroom().ClassModel();      
+        {
+            List<Managethedrop_down> list = teachings.Classroom().ClassModel();
             return list;
         }
         //课时类型下拉
         public List<Managethedrop_down> HourType()
-        { 
-            List<Managethedrop_down> list = teachings.Classroom().HourType();        
+        {
+            List<Managethedrop_down> list = teachings.Classroom().HourType();
             return list;
         }
         //年级下拉
         public List<Managethedrop_down> Study()
-        {          
-            List<Managethedrop_down> list = teachings.Classroom().Study();         
+        {
+            List<Managethedrop_down> list = teachings.Classroom().Study();
             return list;
         }
         //学科下拉
         public List<Managethedrop_down> Subjects()
-        {         
+        {
             List<Managethedrop_down> list = teachings.Classroom().Subjects();
             return list;
         }
         //添加申请退款
-        public  int DropClass(DropClassMod dt)
+        public int DropClass(DropClassMod dt)
         {
             int i = teachings.Classroom().DropClass(dt);
             return i;
         }
         //退课申请单
-        public  List<DropClassModShow> DropClassModShow()
+        public List<DropClassModShow> DropClassModShow()
         {
             List<DropClassModShow> list = teachings.Classroom().DropClassModShow();
             return list;
@@ -100,3 +101,4 @@ namespace EducationBLL
         }
     }
 }
+
