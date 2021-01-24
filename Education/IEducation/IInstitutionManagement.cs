@@ -44,7 +44,7 @@ namespace IEducation
         #endregion
         #region 班级管理
         //班级管理显示
-        List<ClassRoomMod> GetClassRooms();
+        List<ClassRoomMod> GetClassRooms(string roomname = null, int sub = 0, int xq = 0);
         //添加班级管理信息
         int AddClassRooms(ClassRoomMod Room);
         //反填班级管理信息

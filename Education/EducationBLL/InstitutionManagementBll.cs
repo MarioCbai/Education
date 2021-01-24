@@ -92,9 +92,9 @@ namespace EducationBLL
         #endregion
         #region 班级管理
         //班级管理显示
-        public List<ClassRoomMod> GetClassRooms()
+        public List<ClassRoomMod> GetClassRooms(string roomname = null, int sub = 0, int xq = 0)
         {
-            return institutions.ClassManagement().GetClassRooms();
+            return institutions.ClassManagement().GetClassRooms(roomname,sub,xq);
         }
         //添加班级管理数据
         public int AddClassRooms(ClassRoomMod Room)

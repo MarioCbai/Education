@@ -186,11 +186,11 @@ namespace Education.Controllers
         [Route("api/GetClassRooms")]
         [HttpGet]
         //班级管理显示
-        public string GetClassRooms()
+        public string GetClassRooms(string roomname = null, int sub = 0, int xq = 0)
         {
             //记录日志
             _logger.LogInformation("班级管理显示");
-            List<ClassRoomMod> classRooms = _institutionManagement.GetClassRooms();
+            List<ClassRoomMod> classRooms = _institutionManagement.GetClassRooms(roomname,sub,xq);
             var list = new
             {
                 code = 0,
