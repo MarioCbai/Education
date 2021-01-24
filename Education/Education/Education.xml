@@ -15,10 +15,109 @@
             </summary>
             <param name="authorityManagement"></param>
         </member>
-        <member name="M:Education.Controllers.AuthorityMController.add">
+        <member name="M:Education.Controllers.AuthorityMController.AddPart(EducationMODEL.JueseP)">
             <summary>
-            
+            添加角色权限
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.UptPart(EducationMODEL.AuthorityManagement.PartMod)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.PartState(System.Int32,System.Int32)">
+            <summary>
+            角色状态修改
+            </summary>
+            <param name="id"></param>
+            <param name="val"></param>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.PartSel(System.Int32)">
+            <summary>
+            角色查看
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.DelPart(System.Int32)">
+            <summary>
+            角色删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.CPState(System.Int32,System.Int32)">
+            <summary>
+            角色权限状态修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.UptUserPart(EducationMODEL.linkModel.UserPardMod)">
+            <summary>
+            角色用户修改
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.UserPartSel(System.Int32)">
+            <summary>
+            用户角色查询
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.UserAdd(EducationMODEL.linkModel.UserPardMod)">
+            <summary>
+            用户角色添加
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.PartShow(System.String,System.String)">
+            <summary>
+            全部角色
+            </summary>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.State(System.Int32,System.Int32)">
+            <summary>
+            用户角色状态修改
+            </summary>
+            <param name=""></param>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.UserPartShow(System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            用户角色显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.SelMenu(System.Int32)">
+            <summary>
+            权限查询
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.MenuShow">
+            <summary>
+            权限菜单的树显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.MenuShowNT(System.String)">
+            <summary>
+            权限菜单的显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.Register(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.AuthorityMController.RetrievePassword(System.String,System.String)">
+            <summary>
+             忘记密码/修改
+            </summary>
+            <param name="ConsumerIPhone"></param>
+            <param name="ConsumerPwd"></param>
             <returns></returns>
         </member>
         <member name="T:Education.Controllers.EssentialDataController">
@@ -26,40 +125,404 @@
             基本数据管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.EssentialDataController.#ctor(IEducation.IEssentialData)">
+        <member name="M:Education.Controllers.EssentialDataController.#ctor(IEducation.IEssentialData,Microsoft.Extensions.Logging.ILogger{Education.Controllers.EssentialDataController})">
             <summary>
             基本数据管理控制器连接接口
             </summary>
             <param name="essentialData"></param>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.SourceShow(System.String)">
+            <summary>
+            来源管理显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.SourceAdd(EducationMODEL.Infrastructure.SourceMod)">
+            <summary>
+            来源管理添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.SourceUpt(EducationMODEL.Infrastructure.SourceMod)">
+            <summary>
+            来源管理修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.SourceZtai(System.Int32,System.Int32)">
+            <summary>
+            来源管理修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.SourceSelectById(System.Int32)">
+            <summary>
+            来源表根据id查询反填
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherSortShow">
+            <summary>
+            教师类别显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherSortAdd(EducationMODEL.Infrastructure.TeacherTypeMod)">
+            <summary>
+            教师类别添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherSortUpt(EducationMODEL.Infrastructure.TeacherTypeMod)">
+            <summary>
+            教师类别修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherSortZtai(System.Int32,System.Int32)">
+            <summary>
+            教师类别修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherSortSelectById(System.Int32)">
+            <summary>
+            教师类别表根据id查询反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherLevelShow">
+            <summary>
+            教师水平级别显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherLevelAdd(EducationMODEL.Infrastructure.TeachinglevelMod)">
+            <summary>
+            教师水平级别添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherLevelUpt(EducationMODEL.Infrastructure.TeachinglevelMod)">
+            <summary>
+            教师水平级别修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherLevelZtai(System.Int32,System.Int32)">
+            <summary>
+            教师水平级别修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherLevelSelectById(System.Int32)">
+            <summary>
+            教师水平表根据id查询反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherStyleShow">
+            <summary>
+            教师教学风格显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherStyleAdd(EducationMODEL.Infrastructure.TeachingStyleMod)">
+            <summary>
+            教师教学风格添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TTeacherStyleUpt(EducationMODEL.Infrastructure.TeachingStyleMod)">
+            <summary>
+            教师教学风格修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherStyleSelectById(System.Int32)">
+            <summary>
+            教师风格根据id查询反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.TeacherStyleZtai(System.Int32,System.Int32)">
+            <summary>
+            教师教学风格修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClassTypeShow">
+            <summary>
+            课时类型显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClassTypeAdd(EducationMODEL.Infrastructure.HourTypeMod)">
+            <summary>
+            课时类型添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClassTypeUpt(EducationMODEL.Infrastructure.HourTypeMod)">
+            <summary>
+            课时类型修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClassTypeZtai(System.Int32,System.Int32)">
+            <summary>
+            课时类型修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClassTypeSelectById(System.Int32)">
+            <summary>
+            课时表根据id查询反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.ClasstypeManagementShow">
+            <summary>
+            班型管理显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PriceLevelShow">
+            <summary>
+            价格级别显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PriceLevelAdd(EducationMODEL.Infrastructure.PriceRankMod)">
+            <summary>
+            价格级别添加
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PriceLevelUpt(EducationMODEL.Infrastructure.PriceRankMod)">
+            <summary>
+            价格级别修改
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PriceLevelZtai(System.Int32,System.Int32)">
+            <summary>
+            价格级别修改状态
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PriceLevelSelectById(System.Int32)">
+            <summary>
+            价格级别表根据id查询反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.EssentialDataController.PricingManagementShow(System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            定价管理显示
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Education.Controllers.FinancesController">
             <summary>
             财务管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.FinancesController.#ctor(IEducation.IFinances)">
+        <member name="M:Education.Controllers.FinancesController.#ctor(IEducation.IFinances,Microsoft.Extensions.Logging.ILogger{Education.Controllers.FinancesController})">
             <summary>
             财务管理控制器接口
             </summary>
             <param name="finances"></param>
+        </member>
+        <member name="M:Education.Controllers.FinancesController.OrganizationShow(System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            机构账户管理显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.FinancesController.OrganizationUpt(System.Int32,System.Int32)">
+            <summary>
+            机构账户充值
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Education.Controllers.IndentMController">
             <summary>
             订单管理
             </summary>
         </member>
-        <member name="M:Education.Controllers.IndentMController.#ctor(IEducation.IIndentManagement)">
+        <member name="M:Education.Controllers.IndentMController.#ctor(IEducation.IIndentManagement,Microsoft.Extensions.Logging.ILogger{Education.Controllers.IndentMController})">
             <summary>
             订单管理接口
             </summary>
             <param name="indentManagement"></param>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetClassModel">
+            <summary>
+            查询出所有的班型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetBusinessType">
+            <summary>
+            业务类型的显示(绑定下拉)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetStudy">
+            <summary>
+            学段的显示(绑定下拉)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetOrgane">
+            <summary>
+            查询出所有的机构
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetTypeMod">
+            <summary>
+            查询出所有的课时类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetStudent(System.Int32)">
+            <summary>
+            根据参数查询出是意向/正式学员
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetOrders(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            显示以及查询
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetStudentsById(System.Int32)">
+            <summary>
+            根据id查学生
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetPriceRanks">
+            <summary>
+            查询所有价格级别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetOrderaViews(System.Int32)">
+            <summary>
+            根据id查询订单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.UpdateOrderStatus(EducationMODEL.OrderManagement.OrdersMod)">
+            <summary>
+            订单审核的状态修改
+            </summary>
+            <param name="id"></param>
+            <param name="orderStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetOrderaViewModelById(System.Int32)">
+            <summary>
+            根据id查询出订单信息/填充
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.EditOrders(EducationMODEL.OrderManagement.OrdersMod)">
+            <summary>
+            修改订单信息
+            </summary>
+            <param name="ovm"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetPricingMods(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据下拉框该变查询出课时单价
+            </summary>
+            <param name="priceRankId"></param>
+            <param name="classModelId"></param>
+            <param name="stID"></param>
+            <param name="hourTypeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.AddOrders(EducationMODEL.OrderManagement.OrdersMod)">
+            <summary>
+            添加订单信息
+            </summary>
+            <param name="orders"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetRefundMod(System.String,System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            退款信息的显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetRefundMod(System.Int32)">
+            <summary>
+            根据id查询退款信息信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.AddRefund(EducationMODEL.OrderManagement.RefundMod)">
+            <summary>
+            添加退款订单
+            </summary>
+            <param name="refund"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.EditRefund(EducationMODEL.OrderManagement.RefundMod)">
+            <summary>
+            退款商品的审核
+            </summary>
+            <param name="refundId"></param>
+            <param name="refundAmount"></param>
+            <param name="RefundRemark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.IndentMController.GetStudentOrder">
+            <summary>
+            首页显示课时小于十五的学生信息
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Education.Controllers.InstitutionMController">
             <summary>
             机构管理管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.InstitutionMController.#ctor(IEducation.IInstitutionManagement)">
+        <member name="M:Education.Controllers.InstitutionMController.#ctor(IEducation.IInstitutionManagement,Microsoft.Extensions.Logging.ILogger{Education.Controllers.IndentMController})">
             <summary>
             机构管理管理控制器接口
             </summary>
@@ -70,18 +533,73 @@
             学员管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.StudentMController.#ctor(IEducation.IStudentManagement)">
+        <member name="M:Education.Controllers.StudentMController.#ctor(IEducation.IStudentManagement,Microsoft.Extensions.Logging.ILogger{Education.Controllers.StudentMController})">
             <summary>
             学员管理控制器接口
             </summary>
             <param name="studentManagement"></param>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.ParentAdd(EducationMODEL.students.PatriarchMod)">
+            <summary>
+            家长信息添加
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.FanParent(System.Int32)">
+            <summary>
+            家长信息反填
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.UptParent(EducationMODEL.students.PatriarchMod)">
+            <summary>
+            修改家长信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.DelParent(System.Int32)">
+            <summary>
+            删除家长信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.ParntShow(System.Int32)">
+            <summary>
+            家长显示
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Education.Controllers.StudentMController.Dizhi(System.Int32)">
+            <summary>
+            地址
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:Education.Controllers.StudentMController.StudentAdd(EducationMODEL.students.StudentMod)">
+            <summary>
+            学员添加
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:Education.Controllers.StudentMController.LaiShow">
+            <summary>
+            来源显示
+            </summary>
+            
         </member>
         <member name="T:Education.Controllers.TeacherMController">
             <summary>
             教师管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.TeacherMController.#ctor(IEducation.ITeacherManagement)">
+        <member name="M:Education.Controllers.TeacherMController.#ctor(IEducation.ITeacherManagement,Microsoft.Extensions.Logging.ILogger{Education.Controllers.TeacherMController})">
             <summary>
             教师管理控制器接口
             </summary>
@@ -92,7 +610,7 @@
             教学管理控制器
             </summary>
         </member>
-        <member name="M:Education.Controllers.TeachingMController.#ctor(IEducation.ITeachingManagement)">
+        <member name="M:Education.Controllers.TeachingMController.#ctor(IEducation.ITeachingManagement,Microsoft.Extensions.Logging.ILogger{Education.Controllers.TeachingMController})">
             <summary>
             教学管理控制器接口
             </summary>

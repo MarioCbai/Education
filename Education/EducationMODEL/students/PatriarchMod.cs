@@ -6,6 +6,8 @@ namespace EducationMODEL.students
 {
     public class PatriarchMod//家长表
     {
+        public int PSID { get; set; }
+        public int studentid { get; set; }
         public int PatriarchId { get; set; }//主键id
 
         public string PatriarchName { get; set; }//家长姓名

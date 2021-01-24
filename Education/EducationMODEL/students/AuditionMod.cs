@@ -8,7 +8,7 @@ namespace EducationMODEL.students
     {
         public int AuditionID { get; set; }//主键
 
-        public int AuditionType { get; set; }//课程类别 试听课和正式课
+        public string AuditionType { get; set; }//课程类别 试听课和正式课
 
         public int StID { get; set; }//学段（外键）
 
@@ -16,9 +16,9 @@ namespace EducationMODEL.students
 
         public string AuditionClass { get; set; }//上课主题
 
-        public DateTime AuditionDate { get; set; }//上课日期
+        public string AuditionDate { get; set; }//上课日期
 
-        public DateTime AuditionTime { get; set; }//上课时间
+        public string AuditionTime { get; set; }//上课时间
 
         public int AuditionState { get; set; }//课堂状态 ,1已上课，2已排课，3以备课，4以上课，5未上课，6已取消，7以退课,8返还课
 

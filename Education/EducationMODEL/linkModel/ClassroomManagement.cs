@@ -15,12 +15,14 @@ namespace EducationMODEL.linkModel
         public int StID { get; set; }//学段（外键）
 
         public int Grade { get; set; }//年级（外键）
+        public string Data { get; set; }//年级（外键）
 
         public string AuditionClass { get; set; }//上课主题
 
         public DateTime AuditionDate { get; set; }//上课日期
 
         public object AuditionTime { get; set; }//上课时间
+      
 
         public int AuditionState { get; set; }//课堂状态 ,1已上课，2已排课，3以备课，4以上课，5未上课，6已取消，7以退课,8返还课
 
@@ -36,12 +38,12 @@ namespace EducationMODEL.linkModel
 
         public int ClassModelId { get; set; }//班型表
 
-
+        public int PeriodNum { get; set; } //课时数
         //试听课学生关系表课堂管理
         public int ASID { get; set; }
         public int Audition { get; set; }
         public int Student { get; set; }
-        public DateTime AuditTime { get; set; }
+ 
 
         //学员表
         public int StudentId { get; set; }//主键Id
@@ -150,9 +152,17 @@ namespace EducationMODEL.linkModel
         //班型管理表
         public string ClassModelName { get; set; } //班型名称
         public string ClassModels { get; set; }  //进入课堂形式
-        public int ClassModelNumber { get; set; }  //容纳学员人数
+        public int ClassModelNumber { get; set; }  //容纳学员人数  
 
-      
+        public string Auditor { get; set; }//审核人
+
+    
+        public string AuditorPTime { get; set; }//审核时间
+
+        public int AuditStatus { get; set; }//审核状态
+        public string FAFSAremark { get; set; } //备注
+        public string FAFStype { get; set; } //申请类型
+        public string Audittime { get; set; }  //申请时间
 
 
     }

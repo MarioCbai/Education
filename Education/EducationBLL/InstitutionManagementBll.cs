@@ -1,5 +1,7 @@
 ﻿using EducationDAL.InstitutionManagement;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
+using EducationMODEL.students;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,11 @@ namespace EducationBLL
         public List<OrganMod> GetOrganMods()
         {
             return institutions.Organ().GetOrganMods();
+        }
+        //机构管理下拉
+        public List<OrganMod> OrganMods()
+        {
+            return institutions.Organ().OrganMods();
         }
         //添加机构管理
         public int AddOrganes(OrganMod organ)
@@ -37,15 +44,15 @@ namespace EducationBLL
         {
             return institutions.Organ().DeleteOrganes(ids);
         }
-        //反填机构管理状态
-        public OrganMod ModiyIdStates(int orgids)
-        {
-            return institutions.Organ().ModiyIdStates(orgids);
-        }
+        ////反填机构管理状态
+        //public OrganMod ModiyIdStates(int orgids)
+        //{
+        //    return institutions.Organ().ModiyIdStates(orgids);
+        //}
         //修改机构管理状态
-        public int ModiyStates(OrganMod organ)
+        public int ModiyStates(int status, int orgid)
         {
-            return institutions.Organ().ModiyStates(organ);
+            return institutions.Organ().ModiyStates(status, orgid);
         }
         //查询顶级节点
         public List<OrganMod> GetList()
@@ -108,6 +115,47 @@ namespace EducationBLL
         public int DeleteClassRoomMod(int ids)
         {
             return institutions.ClassManagement().DeleteClassRoomMod(ids);
+        }
+        //绑定年级下拉
+        public  List<Study> GetRoomStudys()
+        {
+            return institutions.ClassManagement().GetRoomStudys();
+        }
+        //绑定版本下拉
+        public  List<TextbookMod> GetTextbookMod()
+        {
+            return institutions.ClassManagement().GetTextbookMod();
+        }
+        #endregion
+        #region 科目表
+        //科目表显示
+        public  List<SubjectsMod> GetSubjects()
+        {
+            return institutions.Subject().GetSubjects();
+        }
+        #endregion
+        #region 学期表
+        //学期表显示
+        public  List<SemesterMod> GetSemesters()
+        {
+            return institutions.Semester().GetSemesters();
+        }
+        #endregion
+        #region 课时包
+        //课时包显示
+        public  List<HourTableMod> HourTableMods()
+        {
+            return institutions.HourTable().HourTableMods();
+        }
+        //课时包反填
+        public HourTableMod ModifyIdHourTableMods(int id)
+        {
+            return institutions.HourTable().ModifyIdHourTableMods(id);
+        }
+        //课时包修改
+        public int ModifyHourTableMods(HourTableMod hour)
+        {
+            return institutions.HourTable().ModifyHourTableMods(hour);
         }
         #endregion
     }

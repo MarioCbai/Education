@@ -25,11 +25,24 @@ namespace EducationBLL
             return permission;
         }
 
+        //添加角色权限
+        public int AddPart(JueseP j)
+        {
+            return authoritys.RolePermission().AddPart(j);
+        }
+
         //角色权限状态
         public void CPState(int id, int val)
         {
             Role ss = authoritys.Role();
             ss.RoleState(id, val);
+        }
+
+        //角色删除
+        public int DelPart(int id)
+        {
+            Role role = authoritys.Role();
+            return role.DelPart(id);
         }
 
         //全部角色
@@ -39,6 +52,20 @@ namespace EducationBLL
             return permission.PartShow();
         }
 
+        //角色查询
+        public List<PartMod> PartShow(string PartName = "", string PMState = "")
+        {
+            Role role = authoritys.Role();
+            return role.GetParts(PartName, PMState);
+        }
+
+        //角色状态修改
+        public void PartState(int id, int val)
+        {
+            Role role = authoritys.Role();
+            role.PartState(id,val);
+        }
+
         //权限菜单的树显示
         public List<MenuMod> PermissionShow()
         {
@@ -46,20 +73,32 @@ namespace EducationBLL
             return permission.PermissionShow();
         }
         //权限菜单显示
-        public List<MenuMod> PermissionShowNT()
+        public List<MenuMod> PermissionShowNT(string iphone)
         {
             Permission permission = authoritys.Permission();
-            return  permission.PermissionShowNT();
+            return  permission.PermissionShowNT(iphone);
         }
         //登录
         public List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
         {
             return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
         }
+        //查询用户表
+        public  List<ConsumerMod> Register1(string ConsumerIPhone)
+        {
+            return authoritys.User().Register1(ConsumerIPhone);
+        }
+
         //忘记密码/修改
         public int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
         {
             return authoritys.User().RetrievePassword(ConsumerIPhone, ConsumerPwd);
+        }
+        //角色查看
+        public PartMod SelPart(int id)
+        {
+            Role role = authoritys.Role();
+            return role.PartSel(id);
         }
 
         //查询权限
@@ -75,6 +114,17 @@ namespace EducationBLL
             UserRoles user = authoritys.UserRoles();
             user.State(id,val);
         }
+        /// <summary>
+        /// 角色修改
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public int UptPart(PartMod p)
+        {
+            Role role = authoritys.Role();
+            return role.UptPart(p);
+        }
+
         /// <summary>
         /// 用户角色修改
         /// </summary>

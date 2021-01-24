@@ -11,7 +11,7 @@ namespace EducationDAL.AuthorityManagement.Permissions
         //权限的树显示
         public abstract List<MenuMod> PermissionShow();
         //全部显示
-        public abstract List<MenuMod> PermissionShowNT();
+        public abstract List<MenuMod> PermissionShowNT(string iphone);
         //权限查询
         public abstract List<MenuMod> SelPermission(int id);
     }

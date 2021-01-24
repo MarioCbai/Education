@@ -10,6 +10,24 @@ namespace IEducation
     //权限管理
     public interface IAuthorityManagement
     {
+        //角色添加权限
+        int AddPart(JueseP j);
+
+        //角色修改
+        int UptPart(PartMod p);
+
+        //角色状态修改
+        void PartState(int id, int val);
+
+        //角色查询
+       List<PartMod> PartShow(string PartName="",string PMState="");
+
+        //角色查看
+        PartMod SelPart(int id);
+
+        //角色删除
+        int DelPart(int id);
+
         //用户角色修改
         int UptUserPart(UserPardMod u);
 
@@ -35,7 +53,7 @@ namespace IEducation
         List<MenuMod> PermissionShow();
 
         //权限全显示
-        List<MenuMod> PermissionShowNT();
+        List<MenuMod> PermissionShowNT(string iphone);
         //全部角色
         List<PartMod> PartShow();
         //登录
@@ -45,6 +63,9 @@ namespace IEducation
         int RetrievePassword(string ConsumerIPhone, string ConsumerPwd);
         //添加角色
         int AddPart(PartMod dt);
+        //查询用户表
+        List<ConsumerMod> Register1(string ConsumerIPhone);
 
+     
     }
 }

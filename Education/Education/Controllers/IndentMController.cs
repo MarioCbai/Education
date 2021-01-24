@@ -126,10 +126,10 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetOrders")]
         [HttpGet]
-        public string GetOrders(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1)
+        public string GetOrders(string studentIphone = null, string studentName = null, int businessTypeId = -1, int classModelId = -1, int stID = -1, int orderStatus = -1, int stateOfPayment = -1, string buyer = null, int organId = -1, string orderTime = null)
         {
             _logger.LogInformation("订单的显示以及查询记录");
-            List<OrderaViewModel> list = _indentManagement.GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID);
+            List<OrderaViewModel> list = _indentManagement.GetOrdersMods(studentIphone, studentName, businessTypeId, classModelId, stID, orderStatus, stateOfPayment, buyer, organId, orderTime);
             //layui显示的转换
             var JsonData = new
             {
@@ -147,25 +147,10 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetStudentsById")]
         [HttpGet]
-        public List<StudentViewModel> GetStudentsById(int id)
+        public string GetStudentsById(int id)
         {
             _logger.LogInformation("反填学生信息");
-            List<StudentViewModel> list = _indentManagement.GetStudentModsById(id);
-            return list;
-        }
-        /// <summary>
-        /// 根据班型,学段,课时类型来查询出课时单价
-        /// </summary>
-        /// <param name="classModelId"></param>
-        /// <param name="StID"></param>
-        /// <param name="HourTypeId"></param>
-        /// <returns></returns>
-        [Route("/api/GetPricing")]
-        [HttpGet]
-        public string GetPricingMods(int classModelId, int stID, int hourTypeId, int priceRankId)
-        {
-            _logger.LogInformation("根据班型,学段,课时类型来查询出课时单价");
-            List<PricingMod> list = _indentManagement.GetPricingMods(classModelId, stID, hourTypeId, priceRankId);
+            StudentViewModel list = _indentManagement.GetStudentModsById(id);
             return JsonConvert.SerializeObject(list);
         }
         /// <summary>
@@ -200,11 +185,101 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(JsonData);
         }
-
-
-
-
-
+        /// <summary>
+        /// 订单审核的状态修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="orderStatus"></param>
+        /// <returns></returns>
+        [Route("/api/UpdateOrderStatus")]
+        [HttpPost]
+        public int UpdateOrderStatus(OrdersMod orders)
+        {
+            orders.AuditDateTime = DateTime.Now;
+            _logger.LogInformation("订单的审核操作");
+            int row = _indentManagement.UpdateOrderStatus(orders);
+            return row;
+        }
+        /// <summary>
+        /// 根据id查询出订单信息/填充
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/GetOrderaViewModelById")]
+        [HttpGet]
+        public string GetOrderaViewModelById(int id)
+        {
+            _logger.LogInformation("根据id查询出订单信息");
+            OrderaViewModel list = _indentManagement.GetOrderaViewModelById(id);
+            return JsonConvert.SerializeObject(list);
+        }
+        /// <summary>
+        /// 修改订单信息
+        /// </summary>
+        /// <param name="ovm"></param>
+        /// <returns></returns>  
+        [Route("/api/EditOrder")]
+        [HttpPost]
+        public int EditOrders(OrdersMod orders)
+        {
+            _logger.LogInformation("订单的编辑操作");
+            int row = _indentManagement.EditOrders(orders);
+            return row;
+        }
+        /// <summary>
+        /// 根据下拉框该变查询出课时单价
+        /// </summary>
+        /// <param name="priceRankId"></param>
+        /// <param name="classModelId"></param>
+        /// <param name="stID"></param>
+        /// <param name="hourTypeId"></param>
+        /// <returns></returns>
+        [Route("/api/GetPricing")]
+        [HttpGet]
+        public string GetPricingMods(int priceRankId = -1, int classModelId = -1, int stID = -1, int hourTypeId = -1)
+        {
+            _logger.LogInformation("根据下拉查询课时单价");
+           PricingMod list = _indentManagement.GetPricingMods(priceRankId,classModelId,stID,hourTypeId);
+            return JsonConvert.SerializeObject(list);
+        }
+        /// <summary>
+        /// 添加订单信息
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <returns></returns>
+        [Route("/api/AddOrders")]
+        [HttpPost]
+        public int AddOrders(OrdersMod orders)
+        {
+            Random random = new Random();
+            if (orders.BusinessTypeId==1)
+            {
+                string name = "XS";
+                string year = DateTime.Now.ToString("yyyy");
+                string month= DateTime.Now.ToString("MM");
+                string day = DateTime.Now.ToString("dd");
+                int num = random.Next(1000000);
+                orders.OrderNO = name + year+month+day+num;
+            }
+            else
+            {
+                string name = "XX";
+                string year = DateTime.Now.ToString("yyyy");
+                string month = DateTime.Now.ToString("MM");
+                string day = DateTime.Now.ToString("dd");
+                int num = random.Next(1000000);
+                orders.OrderNO = name + year + month + day + num;
+            }
+            orders.OrderStatus = 0;  //订单状态
+            orders.StateOfPayment = 0;//支付状态
+            orders.buyer = "田七";    //下单人
+            orders.OrderTime = DateTime.Now;   //下单时间
+            orders.AuditDateTime = DateTime.Now;   //审核时间
+            orders.SubjectsId = 1;   //科目表主键
+            _logger.LogInformation("添加订单信息");
+            int row = _indentManagement.AddOrders(orders);
+            return row;
+        }
         #endregion
 
         #region  退款操作
@@ -214,10 +289,10 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/GetRefund")]
         [HttpGet]
-        public string GetRefundMod()
+        public string GetRefundMod(string studentIphone = null, string studentName = null, string refundperson = null, int refundState = -1, int recursionId = -1, string refundTime = null)
         {
             _logger.LogInformation("退款订单的显示以及查询记录");
-            List<OrderaViewModel> list = _indentManagement.GetRefundMod();
+            List<OrderaViewModel> list = _indentManagement.GetRefundMod( studentIphone , studentName , refundperson , refundState, recursionId, refundTime );
             var JsonData = new
             {
                 code = 0, //解析接口状态
@@ -248,6 +323,57 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(JsonData);
         }
+        /// <summary>
+        /// 添加退款订单
+        /// </summary>
+        /// <param name="refund"></param>
+        /// <returns></returns>
+        [Route("/api/AddRefund")]
+        [HttpPost]
+        public int AddRefund(RefundMod refund)
+        {
+            _logger.LogInformation("添加退款订单");
+            refund.RefundTime = DateTime.Now;
+            refund.Refundperson = "李四";
+            refund.RefundState = 0;
+            int row = _indentManagement.AddRefund(refund);
+            return row;
+        }
+        /// <summary>
+        /// 退款商品的审核
+        /// </summary>
+        /// <param name="refundId"></param>
+        /// <param name="refundAmount"></param>
+        /// <param name="RefundRemark"></param>
+        /// <returns></returns>
+        [Route("/api/EditRefund")]
+        [HttpPost]
+        public int EditRefund(RefundMod refund)
+        {
+            _logger.LogInformation("编辑退款订单的审核状态");
+            int row = _indentManagement.EditRefund(refund);
+            return row;
+        }
+        /// <summary>
+        /// 首页显示课时小于十五的学生信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetStudentOrde")]
+        [HttpGet]
+        public string GetStudentOrder()
+        {
+            _logger.LogInformation("显示出课时小于15的学生信息");
+            List<OrderaViewModel> list = _indentManagement.GetStudentOrder();
+            var JsonData = new
+            {
+                code = 0, //解析接口状态
+                msg = "", //解析提示文本
+                count = list.Count, //解析数据长度
+                data = list//解析数据列表
+            };
+            return JsonConvert.SerializeObject(JsonData);
+        }
+
 
 
         #endregion

@@ -13,6 +13,12 @@ namespace EducationDAL.AuthorityManagement.Users
         {
             return DapperHelper.Query<ConsumerMod>("select *from Consumer where ConsumerIPhone=@ConsumerIPhone	and ConsumerPwd=@ConsumerPwd", new { ConsumerIPhone = ConsumerIPhone, ConsumerPwd = ConsumerPwd });
         }
+        //查询用户表
+        public override List<ConsumerMod> Register1(string ConsumerIPhone)
+        {
+            return DapperHelper.Query<ConsumerMod>("select *from Consumer where ConsumerIPhone=@ConsumerIPhone", new { ConsumerIPhone = ConsumerIPhone });
+        }
+
         //修改密码
         public override int RetrievePassword(string ConsumerIPhone, string ConsumerPwd)
         {

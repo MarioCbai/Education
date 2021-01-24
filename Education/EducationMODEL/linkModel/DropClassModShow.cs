@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EducationMODEL.OrderManagement
+namespace EducationMODEL.linkModel
 {
-    public class OrdersMod//订单管理表
+   public  class DropClassModShow
     {
+        public int DCId { get; set; }
+        public int ASID { get; set; }
+        public int OrganId { get; set; }
+        public string AuditorDrop { get; set; }
+        public string AuditorDropdateTime { get; set; }
+        public string Remark { get; set; }
+        public bool DropClassstate { get; set; }
+        public string proposer { get; set; }
         public int OrderId { get; set; }//主键
 
         public string OrderNO { get; set; }//订单编号(自动生成)
@@ -28,7 +36,7 @@ namespace EducationMODEL.OrderManagement
 
         public int StateOfPayment { get; set; }//支付状态(1:已支付;2:已返还,3未支付)
 
-        public string buyer { get; set; }//下单人
+        public int ConsumerId { get; set; }//用户表外键
 
         public int RecursionId { get; set; }//机构递归表外键
 
@@ -53,5 +61,11 @@ namespace EducationMODEL.OrderManagement
         public decimal PreferentialPrice { get; set; }//优惠价
 
         public string OrdersRemark { get; set; }//备注
+        public string OrganName { get; set; }  //机构名称
+
+        public int RefundState { get; set; }
+        public string StudentName { get; set; }   //学生姓名
+
+        public string OrganPhoneName { get; set; }
     }
 }

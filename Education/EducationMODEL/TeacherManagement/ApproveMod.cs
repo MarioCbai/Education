@@ -15,5 +15,6 @@ namespace EducationMODEL.TeacherManagement
         public string IdentificationPic { get; set; }//教师身份证明
 
         public int Teacher { get; set; }//教师基本表外键
+        public string TeacherName { get; set; }//教师基本表外键
     }
 }

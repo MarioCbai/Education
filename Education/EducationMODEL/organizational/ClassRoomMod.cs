@@ -24,7 +24,10 @@ namespace EducationMODEL.organizational
 
         public int OrganId { get; set; }//机构  机构表外键
 
+        public string HourName { get; set; }//课时包名称
 
+        public string BeginTime { get { return HourBeginTime.ToString("yyyy-MM-dd"); } set { HourBeginTime = Convert.ToDateTime(value); } }//课时包名称
+        public string EngTime { get { return HourBeginTime.ToString("yyyy-MM-dd"); } set { HourBeginTime = Convert.ToDateTime(value); } }//课时包名称
         public DateTime HourBeginTime { get; set; }//课时包表有效期开始时间
 
         public DateTime HourEngTime { get; set; }//课时包表有效期结束时间

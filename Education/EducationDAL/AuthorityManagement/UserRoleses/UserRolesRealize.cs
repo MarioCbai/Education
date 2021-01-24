@@ -28,7 +28,7 @@ namespace EducationDAL.AuthorityManagement.UserRoleses
         public override int UserAdd(UserPardMod u)
         {
             int o=DapperHelper.Execute("insert into Consumer values(@ConsumerName,@ConsumerIPhone,@ConsumerRemark,@ConsumerPwd,@ConsumerSection)", u);
-            u.Consumer =DapperHelper.QueryFirst<ConsumerMod>("select max(ConsumerId) from Consumer",new { }).ConsumerId;
+            u.Consumer =DapperHelper.QueryFirst<ConsumerMod>("select max(ConsumerId) as ConsumerId from Consumer", new { }).ConsumerId;
             int oo = 0;
             string[] strArray = u.Parts.Split(",");
             for (int i = 0; i < strArray.Length; i++)

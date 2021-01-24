@@ -10,5 +10,6 @@ namespace EducationMODEL.organizational
         public string SitesName { get; set; }//地址名称
         public int SitesId { get; set; }//父级id
 
+
     }
 }
