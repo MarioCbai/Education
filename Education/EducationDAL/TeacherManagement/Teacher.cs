@@ -4,6 +4,7 @@ using System.Text;
 using EducationDAL.TeacherManagement.Credentialses;
 using EducationDAL.TeacherManagement.Teachers;
 using EducationDAL.TeacherManagement.TeachingInformations;
+using EducationMODEL.TeacherManagement;
 
 namespace EducationDAL.TeacherManagement
 {
@@ -24,5 +25,7 @@ namespace EducationDAL.TeacherManagement
         /// </summary>
         /// <returns></returns>
         public abstract Credentials Credentials();
+
+   
     }
 }

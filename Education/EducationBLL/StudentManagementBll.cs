@@ -4,6 +4,7 @@ using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
+using EducationMODEL.TeacherManagement;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -95,6 +96,8 @@ namespace EducationBLL
         {
             return students.Students().StudentShow(jigou,zi,zhi,nian,name,iphone);
         }
+
+        
 
         /// <summary>
         /// 家长信息修改

@@ -93,6 +93,14 @@ namespace Education.Controllers
         {
             return _essentialData.SourceSelectById(id);
         }
+        [HttpGet]
+        [Route("/api/TeacherSortShows")]
+        public List<TeacherTypeMod> TeacherSortShows()
+        {
+            List<TeacherTypeMod> ss = _essentialData.TeacherSortShow();
+
+            return ss;
+        }
 
         //教师类别管理
         /// <summary>
@@ -156,6 +164,14 @@ namespace Education.Controllers
         public TeacherTypeMod TeacherSortSelectById(int id)
         {
             return _essentialData.TeacherSortSelectById(id);
+        }
+        [HttpGet]
+        [Route("/api/TeacherLevelShows")]
+        public List<TeachinglevelMod> TeacherLevelShows()
+        {
+            List<TeachinglevelMod> ss = _essentialData.TeacherLevelShow();
+
+            return ss;
         }
 
         //教师水平级别管理
@@ -222,6 +238,19 @@ namespace Education.Controllers
             return _essentialData.TeacherLevelSelectById(id);
         }
 
+        //教师教学风格管理
+        /// <summary>
+        /// 教师教学风格显示
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/TeacherStyleShows")]
+        public List<TeachingStyleMod> TeacherStyleShows()
+        {
+            List<TeachingStyleMod> ss = _essentialData.TeacherStyleShow();
+            
+            return ss;
+        }
         //教师教学风格管理
         /// <summary>
         /// 教师教学风格显示

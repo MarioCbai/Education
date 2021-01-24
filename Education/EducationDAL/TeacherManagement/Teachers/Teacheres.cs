@@ -22,6 +22,11 @@ namespace EducationDAL.TeacherManagement.Teachers
         public abstract int ModifyTeacherState(int status, int id);
         //删除教师管理信息
         public abstract int DeleteTeacherMod(int ids);
+        /// <summary>
+        /// 教师信息显示
+        /// </summary>
+        /// <returns></returns>
+        public abstract List<TeacherMod> TeacherShow();
 
     }
 }
