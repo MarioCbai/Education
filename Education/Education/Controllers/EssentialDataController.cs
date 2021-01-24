@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EducationMODEL;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using IEducation;
 using log4net.Core;
@@ -39,9 +40,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/SourceShow")]
         [HttpGet]
-        public string SourceShow(string name = null)
+        public string SourceShow()
         {
-            List<SourceMod> ss = _essentialData.SourceShow(name);
+            List<SourceMod> ss = _essentialData.SourceShow();
             var date = new
             {
                 code = 0,
@@ -51,6 +52,14 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(date);
         }
+        [Route("/api/SourceShowName")]
+        [HttpGet]
+        public string SourceShowName(string name)
+        {
+            List<SourceMod> ss = _essentialData.SourceShowName(name);
+            return JsonConvert.SerializeObject(ss);
+        }
+
         /// <summary>
         /// 来源管理添加
         /// </summary>
@@ -159,6 +168,13 @@ namespace Education.Controllers
         {
             return _essentialData.TeacherSortSelectById(id);
         }
+        [Route("/api/TeacherShow")]
+        [HttpGet]
+        public List<TeacherTypeMod> TeacherShow(string name)
+        {
+            return _essentialData.TeacherShow(name);
+        }
+
 
         //教师水平级别管理
         /// <summary>
@@ -222,6 +238,12 @@ namespace Education.Controllers
         public TeachinglevelMod TeacherLevelSelectById(int id)
         {
             return _essentialData.TeacherLevelSelectById(id);
+        }
+        [Route("/api/TeacherModShow")]
+        [HttpGet]
+        public List<TeachinglevelMod> TeacherModShow(string name)
+        {
+            return _essentialData.TeacherModShow(name);
         }
 
         //教师教学风格管理
@@ -288,6 +310,13 @@ namespace Education.Controllers
         {
             return _essentialData.TeacherStyleZtai(ztai, id);
         }
+        [Route("/api/TeacherStyleShowName")]
+        [HttpGet]
+        public List<TeachingStyleMod> TeacherStyleShowName(string name)
+        {
+            return _essentialData.TeacherStyleShowName(name);
+        }
+
         //课时类型管理
         /// <summary>
         /// 课时类型显示
@@ -297,7 +326,7 @@ namespace Education.Controllers
         [Route("/api/ClassTypeShow")]
         public string ClassTypeShow()
         {
-            List<Subjects_HourT_Mod> ss = _essentialData.ClassTypeShow();
+            List<IGHourType_Subjects> ss = _essentialData.ClassTypeShow();
             var date = new
             {
                 code = 0,
@@ -357,9 +386,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeSelectAll")]
         [HttpGet]
-        public List<SubjectsMod> ClassTypeSelectAll()
+        public string ClassTypeSelectAll()
         {
-            return _essentialData.ClassTypeSelectAll();
+            return JsonConvert.SerializeObject(_essentialData.ClassTypeSelectAll());
         }
         /// <summary>
         /// 查询课时表绑定下拉
@@ -367,9 +396,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/HourTypeSelectAll")]
         [HttpGet]
-        public List<HourTypeMod> HourTypeSelectAll()
+        public string HourTypeSelectAll()
         {
-            return _essentialData.HourTypeSelectAll();
+            return JsonConvert.SerializeObject(_essentialData.HourTypeSelectAll());
         }
 
         //班型管理
@@ -455,6 +484,13 @@ namespace Education.Controllers
         {
             return _essentialData.PriceLevelSelectById(id);
         }
+        [Route("/api/PriceLevelShowName")]
+        [HttpGet]
+        public List<PriceRankMod> PriceLevelShowName(string name)
+        {
+            return _essentialData.PriceLevelShowName(name);
+        }
+
 
         //定价管理
         /// <summary>
@@ -463,9 +499,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/PricingManagementShow")]
-        public string PricingManagementShow(int price = -1, int studying = -1, int hour = -1, int? hourprice = null, int? pricehour = null)
+        public string PricingManagementShow(int hourprice=0, int pricehour=0 ,int price = 0,string name=null, int studying =0, int hour = 0)
         {
-            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow(price, studying, hour, hourprice, pricehour);
+            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow( hourprice, pricehour,name, price, studying, hour);
             var date = new
             {
                 code = 0,
@@ -475,6 +511,47 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(date);
         }
-        
+        /// <summary>
+        /// 修改课时单价
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/PricingManagementUpt")]
+        public int PricingManagementUpt(PricingMod m)
+        {
+            return _essentialData.PricingManagementUpt(m);
+        }
+
+        /// <summary>
+        /// 查询价格级别表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/SelectPriceRankModAll")]
+        public string SelectPriceRankModAll()
+        {
+            return JsonConvert.SerializeObject(_essentialData.SelectPriceRankModAll());
+        }
+        /// <summary>
+        /// 查询学段表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/SelectStudyModAll")]
+        public string SelectStudyModAll()
+        {
+            return JsonConvert.SerializeObject(_essentialData.SelectStudyModAll());
+        }
+        /// <summary>
+        /// 查询课时表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/HourTypeModAll")]
+        public string HourTypeModAll()
+        {
+            return JsonConvert.SerializeObject(_essentialData.HourTypeModAll());
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace EducationDAL.EssentialData.ClassTypes
     {
         //课时类型增删改查
         //课时表显示
-        public abstract List<Subjects_HourT_Mod> ClassTypeShow();
+        public abstract List<IGHourType_Subjects> ClassTypeShow();
 
         //课时表添加
         public abstract int ClassTypeAdd(SubjectsHourTypeMod h);

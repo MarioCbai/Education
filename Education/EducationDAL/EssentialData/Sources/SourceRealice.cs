@@ -21,14 +21,15 @@ namespace EducationDAL.EssentialData.Sources
         }
 
         //来源表显示
-        public override List<SourceMod> SourceShow(string name = null)
+        public override List<SourceMod> SourceShow()
         {
-            string sql = "select* from Source where 1=1";
-            if (!string.IsNullOrEmpty(name))
-            {
-                sql += " and SourceName like concat('%',@SourceName,'%')";
-            }
-            return DapperHelper.Query<SourceMod>(sql,new { SourceName=name });
+            string sql = "select * from Source order by Ztai,Sort";
+            return DapperHelper.Query<SourceMod>(sql,"");
+        }
+
+        public override List<SourceMod> SourceShowName(string name)
+        {
+            return DapperHelper.Query<SourceMod>("select * from Source where SourceName=@SourceName",new { SourceName =name});
         }
 
         public override int SourceUpt(SourceMod s)

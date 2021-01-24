@@ -24,5 +24,7 @@ namespace EducationDAL.EssentialData.TeacherStyles
 
         //教师风格根据id查询反填
         public abstract TeachingStyleMod TeacherStyleSelectById(int id);
+
+        public abstract List<TeachingStyleMod> TeacherStyleShowName(string name);
     }
 }

@@ -23,8 +23,14 @@ namespace EducationDAL.EssentialData.TeacherSorts
         //教师类别显示
         public override List<TeacherTypeMod> TeacherSortShow()
         {
-            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherType", "");
+            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherType order by Ztai,Sort", "");
         }
+
+        public override List<TeacherTypeMod> TeacherShow(string name)
+        {
+            return DapperHelper.Query<TeacherTypeMod>("select * from TeacherType where TeacherTypeName=@TeacherTypeName",new { TeacherTypeName =name});
+        }
+
         //教师类别修改
         public override int TeacherSortUpt(TeacherTypeMod t)
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EducationMODEL.linkModel
 {
-   public class Organ_Inst_Organ//机构类型+机构递归+机构账户
+    public class Organ_Inst_Organ//机构类型+机构递归+机构账户
     {
         public string InstitutionalName { get; set; }//机构类型名称
 
@@ -19,5 +19,12 @@ namespace EducationMODEL.linkModel
         public string OrganizationRemark { get; set; }//备注
 
         public string OrganName { get; set; }//机构名称
+
+        public int AauditId { get; set; }//机构审核表id
+        public string AauditName { get; set; }//审核人
+        public DateTime AauditDateTiem { get; set; }//审核时间
+        public int AauditZtai { get; set; }//审核状态
+
+        public DateTime time { get; set; }
     }
 }
