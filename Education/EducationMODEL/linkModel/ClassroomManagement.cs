@@ -43,7 +43,7 @@ namespace EducationMODEL.linkModel
         public int ASID { get; set; }
         public int Audition { get; set; }
         public int Student { get; set; }
-        public DateTime AuditTime { get; set; }
+ 
 
         //学员表
         public int StudentId { get; set; }//主键Id
@@ -152,10 +152,7 @@ namespace EducationMODEL.linkModel
         //班型管理表
         public string ClassModelName { get; set; } //班型名称
         public string ClassModels { get; set; }  //进入课堂形式
-        public int ClassModelNumber { get; set; }  //容纳学员人数
-
-
-  
+        public int ClassModelNumber { get; set; }  //容纳学员人数  
 
         public string Auditor { get; set; }//审核人
 

@@ -14,7 +14,6 @@ namespace EducationMODEL.FinancialManagement
 
         public decimal OrganizationMoney { get; set; }//账户金额
 
-        public string OrganizationRemark { get; set; }//备注
 
     }
 }

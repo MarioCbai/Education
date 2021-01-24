@@ -1,6 +1,9 @@
 ﻿using EducationDAL.EssentialData;
+using EducationMODEL;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
+using EducationMODEL.OrderManagement;
+using EducationMODEL.organizational;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -17,7 +20,7 @@ namespace EducationBLL
         /// </summary>
         /// <param name="h"></param>
         /// <returns></returns>
-        public int ClassTypeAdd(HourTypeMod h)
+        public int ClassTypeAdd(SubjectsHourTypeMod h)
         {
             return essentials.ClassType().ClassTypeAdd(h);
         }
@@ -29,9 +32,14 @@ namespace EducationBLL
         {
             return essentials.ClasstypeManagement().ClasstypeManagementShow();
         }
+        //查询科目表绑定下拉
+        public List<SubjectsMod> ClassTypeSelectAll()
+        {
+            return essentials.ClassType().ClassTypeSelectAll();
+        }
 
         //课时表根据id查询反填
-        public HourTypeMod ClassTypeSelectById(int id)
+        public SubjectsHourTypeMod ClassTypeSelectById(int id)
         {
             return essentials.ClassType().ClassTypeSelectById(id);
         }
@@ -40,7 +48,7 @@ namespace EducationBLL
         /// 课时表显示
         /// </summary>
         /// <returns></returns>
-        public List<Subjects_HourT_Mod> ClassTypeShow()
+        public List<IGHourType_Subjects> ClassTypeShow()
         {
             return essentials.ClassType().ClassTypeShow();
         }
@@ -49,7 +57,7 @@ namespace EducationBLL
         /// </summary>
         /// <param name="h"></param>
         /// <returns></returns>
-        public int ClassTypeUpt(HourTypeMod h)
+        public int ClassTypeUpt(SubjectsHourTypeMod h)
         {
             return essentials.ClassType().ClassTypeUpt(h);
         }
@@ -63,6 +71,15 @@ namespace EducationBLL
         {
             return essentials.ClassType().ClassTypeZtai(ztai,id);
         }
+
+        
+
+        //查询课时表绑定下拉
+        public List<HourTypeMod> HourTypeSelectAll()
+        {
+            return essentials.ClassType().HourTypeSelectAll();
+        }
+
         /// <summary>
         /// 价格级别表添加
         /// </summary>
@@ -105,6 +122,11 @@ namespace EducationBLL
         {
             return essentials.PriceLevel().PriceLevelZtai(ztai,id);
         }
+        public List<PriceRankMod> PriceLevelShowName(string name)
+        {
+            return essentials.PriceLevel().PriceLevelShowName(name);
+        }
+
         /// <summary>
         /// 定价表显示
         /// </summary>
@@ -114,9 +136,24 @@ namespace EducationBLL
         /// <param name="hourprice"></param>
         /// <param name="pricehour"></param>
         /// <returns></returns>
-        public List<Subjects_HourT_Mod> PricingManagementShow(int price = -1, int studying = -1, int hour = -1, int? hourprice = null, int? pricehour = null)
+        public List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price = -1, int studying = -1, int hour = -1)
         {
-            return essentials.PricingManagement().PricingManagementShow(price, studying, hour, hourprice, pricehour);
+            return essentials.PricingManagement().PricingManagementShow(hourprice, pricehour, name,price, studying, hour);
+        }
+        //查询价格级别表绑定下拉
+        public List<PriceRankMod> SelectPriceRankModAll()
+        {
+            return essentials.PricingManagement().SelectPriceRankModAll();
+        }
+        //查询学段表绑定下拉
+        public List<Study> SelectStudyModAll()
+        {
+            return essentials.PricingManagement().SelectStudyModAll();
+        }
+        //查询课时表绑定下拉
+        public List<HourTypeMod> HourTypeModAll()
+        {
+            return essentials.PricingManagement().HourTypeModAll();
         }
         /// <summary>
         /// 来源表添加
@@ -141,9 +178,14 @@ namespace EducationBLL
         /// 来源表显示
         /// </summary>
         /// <returns></returns>
-        public List<SourceMod> SourceShow(string name = null)
+        public List<SourceMod> SourceShow()
         {
-            return essentials.Source().SourceShow(name);
+            return essentials.Source().SourceShow();
+        }
+
+        public List<SourceMod> SourceShowName(string name)
+        {
+            return essentials.Source().SourceShowName(name);
         }
         /// <summary>
         /// 来源表修改
@@ -206,6 +248,11 @@ namespace EducationBLL
         {
             return essentials.TeacherLevel().TeacherLevelZtai(ztai,id);
         }
+        public List<TeachinglevelMod> TeacherModShow(string name)
+        {
+            return essentials.TeacherLevel().TeacherModShow(name);
+        }
+
         /// <summary>
         /// 教师类别添加
         /// </summary>
@@ -248,6 +295,11 @@ namespace EducationBLL
         {
             return essentials.TeacherSort().TeacherSortZtai(ztai,id);
         }
+        public List<TeacherTypeMod> TeacherShow(string name)
+        {
+            return essentials.TeacherSort().TeacherShow(name);
+        }
+
         /// <summary>
         /// 教师风格添加
         /// </summary>
@@ -290,5 +342,17 @@ namespace EducationBLL
         {
             return essentials.TeacherStyle().TTeacherStyleUpt(t);
         }
+        public List<TeachingStyleMod> TeacherStyleShowName(string name)
+        {
+            return essentials.TeacherStyle().TeacherStyleShowName(name);
+        }
+
+        //修改课时单价
+        public int PricingManagementUpt(PricingMod m)
+        {
+            return essentials.PricingManagement().PricingManagementUpt(m);
+        }
+
+        
     }
 }

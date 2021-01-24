@@ -14,7 +14,7 @@ namespace EducationDAL.EssentialData.TeacherLevels
         {
             return DapperHelper.Execute("insert into Teachinglevel values(@LeveName,@Sort,@Ztai)", t);
         }
-        //来源表根据id查询反填
+        //教师水平表根据id查询反填
         public override TeachinglevelMod TeacherLevelSelectById(int id)
         {
             return DapperHelper.Query<TeachinglevelMod>("select * from Teachinglevel where LevelId=@LevelId", new { LevelId = id }).FirstOrDefault();
@@ -23,7 +23,7 @@ namespace EducationDAL.EssentialData.TeacherLevels
         //教师水平显示
         public override List<TeachinglevelMod> TeacherLevelShow()
         {
-            return DapperHelper.Query<TeachinglevelMod>("select * from Teachinglevel", "");
+            return DapperHelper.Query<TeachinglevelMod>("select * from Teachinglevel order by Ztai,Sort", "");
         }
         //教师水平修改
         public override int TeacherLevelUpt(TeachinglevelMod t)
@@ -34,6 +34,11 @@ namespace EducationDAL.EssentialData.TeacherLevels
         public override int TeacherLevelZtai(int ztai,int id)
         {
             return DapperHelper.Execute("update Teachinglevel set Ztai=@Ztai where LevelId=@LevelId", new { Ztai = ztai, LevelId = id });
+        }
+
+        public override List<TeachinglevelMod> TeacherModShow(string name)
+        {
+            return DapperHelper.Query<TeachinglevelMod>("select * from Teachinglevel where LeveName=@LeveName", new { LeveName = name });
         }
     }
 }
