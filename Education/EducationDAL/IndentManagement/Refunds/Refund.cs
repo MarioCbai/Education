@@ -39,7 +39,11 @@ namespace EducationDAL.IndentManagement.Refunds
         /// </summary>
         /// <returns></returns>
         public abstract List<OrderaViewModel> GetStudentOrder();
-
+        /// <summary>
+        /// 查询出本月的退款数据
+        /// </summary>
+        /// <returns></returns>
+        public abstract  List<RefundMod> GetRefunds();
 
 
 

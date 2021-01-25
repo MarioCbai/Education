@@ -136,6 +136,17 @@ namespace IEducation
         /// </summary>
         /// <returns></returns>
         public  List<OrderaViewModel> GetStudentOrder();
+        /// <summary>
+        /// 查询出本月的订单数据
+        /// </summary>
+        /// <returns></returns>
+        public List<OrdersMod> GetOrders();
+        /// <summary>
+        /// 查询出本月的退款数据
+        /// </summary>
+        /// <returns></returns>
+        public List<RefundMod> GetRefunds();
+
 
     }
 }

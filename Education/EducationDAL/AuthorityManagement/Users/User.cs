@@ -14,6 +14,7 @@ namespace EducationDAL.AuthorityManagement.Users
         public abstract List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
         //忘记密码,修改密码
         public abstract int RetrievePassword(string ConsumerIPhone, string ConsumerPwd);
-
+        //查询用户名
+        public abstract List<ConsumerMod> Register2(string ConsumerIPhone);
     }
 }

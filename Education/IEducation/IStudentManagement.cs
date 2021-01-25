@@ -14,6 +14,9 @@ namespace IEducation
     public interface IStudentManagement
     {
 
+        //添加试听课表
+        int ScheduleAdd(AuditionMod aa);
+
         //学段年级
         List<Study> Xue(int id);
         //家长信息

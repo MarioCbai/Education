@@ -48,7 +48,7 @@ namespace IEducation
         int ModifyApproveMod(ApproveMod ap);
         #endregion
         //教师
-        List<TeacherMod> TeacherShow();
+        List<TeacherMod> TeacherShow(int jibie , int leibie , string iphone , string name );
 
     }
 }

@@ -54,9 +54,27 @@ namespace EducationDAL.TeacherManagement.Teachers
         /// 教师显示
         /// </summary>
         /// <returns></returns>
-        public override List<TeacherMod> TeacherShow()
+        public override List<TeacherMod> TeacherShow(int jibie, int leibie, string iphone, string name)
         {
-            return DapperHelper.Query<TeacherMod>("select * from Teacher a join Teach b on a.TeacherId=b.Teacher join TeacherType c on b.TeacherType=c.TeacherTypeId join Teachinglevel d on d.LevelId=b.TeacherRank", new { });
+            string sql = "select * from Teacher a join Teach b on a.TeacherId=b.Teacher join TeacherType c on b.TeacherType=c.TeacherTypeId join Teachinglevel d on d.LevelId=b.TeacherRank where 1=1";
+            if (jibie != 0)
+            {
+                sql += " and b.TeacherRank=@jibie";
+            }
+            if (leibie != 0)
+            {
+                sql += " and b.TeacherType=@leibie";
+            }
+            if (iphone!="" && iphone!=null)
+            {
+                sql += " and a.TeacherPhone=@iphone";
+            }
+            if (name!=null && name!="")
+            {
+                sql += " and a.TeacherName like concat('%',@name,'%')";
+            }
+
+            return DapperHelper.Query<TeacherMod>(sql, new {jibie,leibie,iphone,name });
         }
     }
 }
