@@ -72,6 +72,18 @@ namespace EducationBLL
             return students.Students().ScheduleAdd(aa);
         }
 
+        //学员详细信息
+        public StudentLian SelStudent(int id)
+        {
+            return students.Students().SelStudent(id);
+        }
+
+        //正式学员显示
+        public List<StudentLian> ShowOfficial(int jigou, string zi, string zhi, int nian, string name, string iphone)
+        {
+            return students.Students().ShowOfficial(jigou, zi, zhi, nian, name, iphone);
+        }
+
         //学员信息
         public StudentMod ShowSan(int id)
         {
@@ -103,7 +115,13 @@ namespace EducationBLL
             return students.Students().StudentShow(jigou,zi,zhi,nian,name,iphone);
         }
 
-        
+        //学员显示
+        public List<StudentLian> StudentShow(int zhuang, int jigou, string zi, string zhi, int nian, string name, string iphone)
+        {
+            return students.Students().StudentShow(zhuang,jigou, zi, zhi, nian, name, iphone);
+        }
+
+
 
         /// <summary>
         /// 家长信息修改

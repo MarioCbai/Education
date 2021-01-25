@@ -34,13 +34,13 @@ namespace EducationDAL.StudentManagement.Studentes
         //学员添加
         public override int StudentAdd(StudentMod s)
         {
-            return DapperHelper.Execute("insert into Student values (@StudentName,@StudentIDNo,@StudentBirthday,@StID,@StudentWeChat,@StudentQQ,@StudentIphone,@StudentPwd,@StudentSex,@StudentSchool,@Province,@City,@County,@StudentSite,@Counselor,@StudentQuality,@Institution,@StudentKind,@SourceId)", s);
+            return DapperHelper.Execute("insert into Student values (@StudentName,@StudentIDNo,@StudentBirthday,@StID,@StudentWeChat,@StudentQQ,@StudentIphone,@StudentPwd,@StudentSex,@StudentSchool,@Province,@City,@County,@StudentSite,@StudentQuality,@Institution,@StudentKind,@Counselor,@SourceId)", s);
         }
 
         //查询学生
         public override List<StudentLian> StudentShow(int jigou, string zi, string zhi, int nian, string name, string iphone)
         {
-            string sql = "select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where 1=1";
+            string sql = "select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where 1=1 and a.StudentKind=0";
             if (jigou!=0)
             {
                 sql += " and a.Institution=@jigou";
@@ -100,6 +100,78 @@ namespace EducationDAL.StudentManagement.Studentes
                 return 0;
             }
             
+        }
+
+        //正式学员
+        public override List<StudentLian> ShowOfficial(int jigou, string zi, string zhi, int nian, string name, string iphone)
+        {
+            string sql = "select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where 1=1 and a.StudentKind=1";
+            if (jigou != 0)
+            {
+                sql += " and a.Institution=@jigou";
+            }
+            if (zi != null && zi != "")
+            {
+                sql += " and a.Counselor like concat('%',@zi,'%')";
+            }
+            if (zhi != null && zhi != "")
+            {
+                sql += " and a.StudentQuality=@zhi";
+            }
+            if (nian != 0)
+            {
+                sql += " and a.StID=@nian";
+            }
+            if (name != null && name != "")
+            {
+                sql += " and a.StudentName like concat('',@name,'')";
+            }
+            if (iphone != null && iphone != "")
+            {
+                sql += " and a.StudentIphone=@iphone";
+            }
+            return DapperHelper.Query<StudentLian>(sql, new { jigou, zi, zhi, nian, name, iphone });
+        }
+
+        //学员显示
+        public override List<StudentLian> StudentShow(int zhuang, int jigou, string zi, string zhi, int nian, string name, string iphone)
+        {
+            string sql = "select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where 1=1";
+            if (zhuang!=-1)
+            {
+                sql += " and a.StudentKind=@zhuang";
+            }
+            if (jigou != 0)
+            {
+                sql += " and a.Institution=@jigou";
+            }
+            if (zi != null && zi != "")
+            {
+                sql += " and a.Counselor like concat('%',@zi,'%')";
+            }
+            if (zhi != null && zhi != "")
+            {
+                sql += " and a.StudentQuality=@zhi";
+            }
+            if (nian != 0)
+            {
+                sql += " and a.StID=@nian";
+            }
+            if (name != null && name != "")
+            {
+                sql += " and a.StudentName like concat('',@name,'')";
+            }
+            if (iphone != null && iphone != "")
+            {
+                sql += " and a.StudentIphone=@iphone";
+            }
+            return DapperHelper.Query<StudentLian>(sql, new { zhuang,jigou, zi, zhi, nian, name, iphone });
+        }
+
+        //学员详细信息
+        public override StudentLian SelStudent(int id)
+        {
+            return DapperHelper.QueryFirst<StudentLian>("select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where a.StudentId=@id", new { id });
         }
     }
 }
