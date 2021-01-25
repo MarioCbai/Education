@@ -35,6 +35,16 @@ namespace Education.Controllers
             _studentManagement = studentManagement;
         }
 
+        //添加试听课表
+
+        [HttpPost]
+        [Route("/api/ScheduleAdd")]
+        public int ScheduleAdd(AuditionMod aa)
+        {
+            return _studentManagement.ScheduleAdd(aa);
+        }
+
+
 
         [HttpGet]
         [Route("/api/Xue")]

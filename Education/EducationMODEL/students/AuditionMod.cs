@@ -33,5 +33,7 @@ namespace EducationMODEL.students
         public int BusinessTypeId { get; set; }//业务类型 线上线下
 
         public int ClassModelId { get; set; }//班型表
+
+        public int StudentId { get; set; } //学员表Id
     }
 }

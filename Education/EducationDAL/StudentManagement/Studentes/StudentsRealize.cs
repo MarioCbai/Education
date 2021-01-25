@@ -12,6 +12,7 @@ namespace EducationDAL.StudentManagement.Studentes
     //学生方法实现
     public class StudentsRealize : Students
     {
+
         //地区
         public override List<SitesMod> Dizhi(int id)
         {
@@ -72,6 +73,33 @@ namespace EducationDAL.StudentManagement.Studentes
         public override List<Study> Xue(int id)
         {
             return DapperHelper.Query<Study>("select * from  Study where StudyId=@id", new { id });
+        }
+
+        //添加试听课表
+        public override int ScheduleAdd(AuditionMod aa)
+        {
+            int i = DapperHelper.QueryFirst<StudentMod>("select StudentKind from Student where StudentId=@StudentId", new { aa.StudentId }).StudentKind;
+            if (i==1)
+            {
+                aa.AuditionType = "正式课";
+            }
+            else
+            {
+                aa.AuditionType = "试听课";
+            }
+
+            int a=DapperHelper.Execute("insert into Audition values(@AuditionType,@StID,@Grade,@AuditionClass,@AuditionDate,@AuditionTime,@AuditionState,@AuditionRemark,@TeacherId,@SubjectsId,@HourTypeId,@BusinessTypeId,@ClassModelId)", aa);
+             int c =DapperHelper.QueryFirst<AuditionMod>("select max(AuditionID)as AuditionID from Audition", new { }).AuditionID;
+            int b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,null)", new { Audition = c, SId = aa.StudentId });
+            if (a>0&&b>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
     }
 }
