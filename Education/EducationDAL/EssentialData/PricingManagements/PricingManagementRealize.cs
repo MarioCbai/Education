@@ -16,7 +16,7 @@ namespace EducationDAL.EssentialData.PricingManagements
             return DapperHelper.Query<HourTypeMod>("select * from HourType", "");
         }
 
-        public override List<Subjects_HourT_Mod> PricingManagementShow(int hourprice=0, int pricehour=0,string name=null,int price =0, int studying =0, int hour =0)
+        public override List<Subjects_HourT_Mod> PricingManagementShow(int ? hourprice=null, int ? pricehour=null,string name=null,int price =0, int studying =0, int hour =0)
         {
             string sql = "select a.*,b.PriceRankName,c.ClassModelName,d.StudyName,e.HourTypeName " +
                 "from Pricing a join PriceRank b on a.PriceRankId = b.PriceRankId join " +
@@ -35,23 +35,23 @@ namespace EducationDAL.EssentialData.PricingManagements
                 sql += " and e.HourTypeId=@HourTypeId";
             }
 
-            if (hourprice>0 && pricehour>0)
+            if (hourprice!=null && pricehour!=null)
             {
-                sql += " and a.PricingPrice >=@PriceReigth and a.PricingPrice <= @PriceLefght";
+                sql += " and a.PricingPrice between @PriceReigth and  @PriceLefght";
             }
-           else  if (hourprice>0)
+           else  if (hourprice!=null)
             {
-                sql += " and a.PricingPrice>=@PriceLefght";
+                sql += " and a.PricingPrice>=@PriceReigth";
             }
-            else if (pricehour>0)
+            else if (pricehour!=null)
             {
-                sql += " and a.PricingPrice<=@PriceReigth";
+                sql += " and a.PricingPrice<=@PriceLefght";
             }
             if (!string.IsNullOrEmpty(name))
             {
                 sql += " and c.ClassModelName=@ClassModelName";
             }
-            return DapperHelper.Query<Subjects_HourT_Mod>(sql,new { PriceLefght = hourprice, PriceReigth = pricehour, ClassModelName=name,PriceRankId= price, StID= studying, HourTypeId= hour });
+            return DapperHelper.Query<Subjects_HourT_Mod>(sql,new { PriceReigth = hourprice ,PriceLefght = pricehour, ClassModelName=name,PriceRankId= price, StID= studying, HourTypeId= hour });
         }
         //修改课时单价
         public override int PricingManagementUpt(PricingMod m)
