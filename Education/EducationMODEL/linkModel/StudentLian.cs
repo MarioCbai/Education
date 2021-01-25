@@ -7,6 +7,9 @@ namespace EducationMODEL.linkModel
 {
     public class StudentLian
     {
+        public string  tiem { get; set; }
+        public string  zhuang { get; set; }
+
         public int StudentId { get; set; }//主键Id
 
         public string StudentName { get; set; }//学员姓名
