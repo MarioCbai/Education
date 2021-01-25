@@ -27,6 +27,8 @@ namespace EducationDAL.TeacherManagement.Teachers
         /// </summary>
         /// <returns></returns>
         public abstract List<TeacherMod> TeacherShow(int jibie, int leibie, string iphone, string name);
+        //学历表
+        public abstract List<TeachereducationMod> GetTeachereducations();
 
     }
 }

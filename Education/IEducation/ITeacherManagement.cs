@@ -49,6 +49,10 @@ namespace IEducation
         #endregion
         //教师
         List<TeacherMod> TeacherShow(int jibie , int leibie , string iphone , string name );
+        #region 学历管理
+        //学历表
+        List<TeachereducationMod> GetTeachereducations();
+        #endregion
 
     }
 }
