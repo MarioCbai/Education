@@ -12,7 +12,7 @@ namespace EducationDAL.Finances.Recharges
         //机构账户充值
         public abstract int AauditAdd(AauditMod am);
         //机构充值审核显示和查询
-        public abstract List<Aaudit_OrganiMod> AauditShow(int id=0,string dm=null,string name=null,DateTime ? time=null);
+        public abstract List<Aaudit_OrganiMod> AauditShow(int ? id=null,string dm=null,string name=null,DateTime ? time=null);
 
         //充值审核
         public abstract int AauditSHerUpt(AauditMod am);

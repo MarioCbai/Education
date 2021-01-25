@@ -27,11 +27,11 @@ namespace EducationDAL.Finances.Recharges
         }
 
         //机构充值审核显示和查询
-        public override List<Aaudit_OrganiMod> AauditShow(int id = 0, string dm = null, string name = null, DateTime? time = null)
+        public override List<Aaudit_OrganiMod> AauditShow(int ? id =null, string dm = null, string name = null, DateTime? time = null)
         {
             string sql = "select a.*,b.OrganizationCode,c.OrganName,d.InstitutionalName from Aaudit a join Organization b on a.OrganizationId=b.OrganizationId join Organ c on b.OrganId=c.OrganId join "
                             + " Institutional d on c.InstitutionalId = d.InstitutionalId where 1=1";
-            if (id>0)
+            if (id!=null)
             {
                 sql += " and d.InstitutionalId=@InstitutionalId";
             }

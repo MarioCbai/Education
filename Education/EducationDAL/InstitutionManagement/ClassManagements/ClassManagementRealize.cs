@@ -12,17 +12,37 @@ namespace EducationDAL.InstitutionManagement.ClassManagements
     public class ClassManagementRealize:ClassManagement
     {
         //班级管理显示
-        public override List<ClassRoomMod> GetClassRooms()
+        public override List<ClassRoomMod> GetClassRooms(string roomname,int sub, int jigou,int stid, DateTime? HourBeginTime, DateTime? HourEngTime)
         {
-
-            return DapperHelper.Query<ClassRoomMod>("select *from ClassRoom cls " +
+            string sql = "select *from ClassRoom cls " +
                  "join Study st on cls.StID = st.StID " +
                  "join Subjects sub on cls.SubjectsId = sub.SubjectsId " +
                  "join Textbook tex on cls.TextbookId = tex.TextbookId " +
                  "join Semester sem on cls.SemesterId = sem.SemesterId " +
                  "join Teacher tea on cls.TeacherId = tea.TeacherId " +
                  "join HourTable hou on cls.HourId = hou.HourId " +
-                 "join Organ org on cls.OrganId = org.OrganId", "");
+                 "join Organ org on cls.OrganId = org.OrganId where 1=1";
+            if (roomname != null && roomname != "")
+            {
+                sql += " and ClassRoomName like concat('%',@roomname,'%')";
+            }
+            if (sub!=0)
+            {
+                sql += " and sub.SubjectsId=@sub";
+            }
+            if (stid!=0)
+            {
+                sql += " and st.StID=@stid";
+            }
+            if (jigou!=0)
+            {
+                sql += " and org.OrganId=@jigou";
+            }
+            if (HourBeginTime != null && HourEngTime != null)
+            {
+                sql += " and  hou.HourBeginTime>=@HourBeginTime and hou.HourEngTime<=@HourEngTime";
+            }
+            return DapperHelper.Query<ClassRoomMod>(sql,new { roomname,sub, jigou, stid, HourBeginTime, HourEngTime });
         }
         //添加班级管理信息
         public override int AddClassRooms(ClassRoomMod Room)

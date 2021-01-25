@@ -23,6 +23,7 @@ namespace IEducation
         int SourceZtai(int ztai, int id);
         //来源表根据id查询反填
         public abstract SourceMod SourceSelectById(int id);
+        //来源表判断名称唯一性
         public abstract List<SourceMod> SourceShowName(string name);
 
         //教师类别管理
@@ -36,6 +37,7 @@ namespace IEducation
         int TeacherSortZtai(int ztai, int id);
         //教师类别表根据id查询反填
         public abstract TeacherTypeMod TeacherSortSelectById(int id);
+        //教师类别表判断名称唯一性
         public abstract List<TeacherTypeMod> TeacherShow(string name);
 
         //教师水平级别管理
@@ -49,6 +51,7 @@ namespace IEducation
         int TeacherLevelZtai(int ztai, int id);
         //来源表根据id查询反填
         public abstract TeachinglevelMod TeacherLevelSelectById(int id);
+        //教师水平表判断名称唯一性
         public abstract List<TeachinglevelMod> TeacherModShow(string name);
 
         //教师教学风格管理
@@ -62,19 +65,20 @@ namespace IEducation
         int TeacherStyleZtai(int ztai, int id);
         //教师风格根据id查询反填
         public abstract TeachingStyleMod TeacherStyleSelectById(int id);
+        //教师风格表判断名称唯一性
         public abstract List<TeachingStyleMod> TeacherStyleShowName(string name);
 
         //课时类型管理
-        //添加
-        List<Subjects_HourT_Mod> ClassTypeShow();
         //显示
+        List<GG_SubjectsHourType> ClassTypeShow();
+        //添加
         int ClassTypeAdd(SubjectsHourTypeMod h);
         //修改
         int ClassTypeUpt(SubjectsHourTypeMod h);
         //修改状态
         int ClassTypeZtai(int ztai, int id);
         //课时表根据id查询反填
-        public abstract SubjectsHourTypeMod ClassTypeSelectById(int id);
+        public abstract GG_SubjectsHourType ClassTypeSelectById(int id);
         //查询科目表绑定下拉
         public abstract List<SubjectsMod> ClassTypeSelectAll();
         //查询课时表绑定下拉
@@ -84,7 +88,7 @@ namespace IEducation
         //显示
         List<ClassModelMod_BusinessTypeMod> ClasstypeManagementShow();
 
-        //定价级别管理
+        //价格级别管理
         //显示
         List<PriceRankMod> PriceLevelShow();
         //添加
@@ -95,8 +99,7 @@ namespace IEducation
         int PriceLevelZtai(int ztai, int id);
         //价格级别表根据id查询反填
         public abstract PriceRankMod PriceLevelSelectById(int id);
-        //修改课时单价
-        public abstract int PricingManagementUpt(PricingMod m);
+        //价格级别表判断名称唯一性
         public abstract List<PriceRankMod> PriceLevelShowName(string name);
 
         //定价管理
@@ -108,5 +111,8 @@ namespace IEducation
         public abstract List<Study> SelectStudyModAll();
         //查询课时表绑定下拉
         public abstract List<HourTypeMod> HourTypeModAll();
+
+        //修改课时单价
+        public abstract int PricingManagementUpt(PricingMod m);
     }
 }
