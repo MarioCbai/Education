@@ -23,5 +23,7 @@ namespace EducationDAL.EssentialData.TeacherLevels
 
         //来源表根据id查询反填
         public abstract TeachinglevelMod TeacherLevelSelectById(int id);
+
+        public abstract List<TeachinglevelMod> TeacherModShow(string name);
     }
 }

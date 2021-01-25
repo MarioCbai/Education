@@ -11,5 +11,7 @@ namespace EducationMODEL
         public int HourType { get; set; }//课时类型(外键)
 
         public int Subjects { get; set; }//科目(外键)
+
+        public int SHState { get; set; }//状态
     }
 }

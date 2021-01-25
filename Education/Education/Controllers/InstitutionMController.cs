@@ -56,11 +56,16 @@ namespace Education.Controllers
         //机构管理显示
         [Route("api/GetOrganMods")]
         [HttpGet]
-        public string GetOrganMods()
+        public string GetOrganMods(int OrganId)
         {
             //记录日志
             _logger.LogInformation("机构管理显示");
+
             List<OrganMod> Organs = _institutionManagement.GetOrganMods();
+            if(OrganId != 0)
+            {
+                Organs = Organs.Where(p => p.OrganId.Equals(OrganId)).ToList();
+            }           
             var list = new
             {
                 code = 0,

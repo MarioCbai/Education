@@ -4,6 +4,7 @@ using System.Text;
 using EducationDAL.TeacherManagement.Credentialses;
 using EducationDAL.TeacherManagement.Teachers;
 using EducationDAL.TeacherManagement.TeachingInformations;
+using EducationMODEL.TeacherManagement;
 
 namespace EducationDAL.TeacherManagement
 {
@@ -29,6 +30,7 @@ namespace EducationDAL.TeacherManagement
             return new TeacheresRealize();
         }
 
+
         /// <summary>
         /// 教师教学信息
         /// </summary>
@@ -37,5 +39,8 @@ namespace EducationDAL.TeacherManagement
         {
             return new TeachingInformationRealize();
         }
+
+
+
     }
 }

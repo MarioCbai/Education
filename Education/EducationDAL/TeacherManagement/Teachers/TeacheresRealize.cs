@@ -49,5 +49,14 @@ namespace EducationDAL.TeacherManagement.Teachers
         {
             return DapperHelper.Execute("update Teacher set TeacherState=@TeacherState  where TeacherId=@TeacherId", new { TeacherState = status, TeacherId = teaid });
         }
+
+        /// <summary>
+        /// 教师显示
+        /// </summary>
+        /// <returns></returns>
+        public override List<TeacherMod> TeacherShow()
+        {
+            return DapperHelper.Query<TeacherMod>("select * from Teacher a join Teach b on a.TeacherId=b.Teacher join TeacherType c on b.TeacherType=c.TeacherTypeId join Teachinglevel d on d.LevelId=b.TeacherRank", new { });
+        }
     }
 }

@@ -23,5 +23,7 @@ namespace EducationDAL.EssentialData.PriceLevels
 
         //价格级别表根据id查询反填
         public abstract PriceRankMod PriceLevelSelectById(int id);
+
+        public abstract List<PriceRankMod> PriceLevelShowName(string name);
     }
 }

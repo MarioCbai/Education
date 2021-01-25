@@ -96,6 +96,15 @@ namespace EducationBLL
         {
             return teachers.Credentials().ModifyApproveMod(ap); 
         }
+
+        /// <summary>
+        /// 教师显示
+        /// </summary>
+        /// <returns></returns>
+        public List<TeacherMod> TeacherShow()
+        {
+            return teachers.Teacheres().TeacherShow();
+        }
         #endregion
 
     }

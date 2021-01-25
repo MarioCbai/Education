@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationMODEL;
 using EducationMODEL.Infrastructure;
 using EducationMODEL.linkModel;
 using IEducation;
@@ -37,9 +38,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/SourceShow")]
         [HttpGet]
-        public string SourceShow(string name = null)
+        public string SourceShow()
         {
-            List<SourceMod> ss = _essentialData.SourceShow(name);
+            List<SourceMod> ss = _essentialData.SourceShow();
             var date = new
             {
                 code = 0,
@@ -92,6 +93,14 @@ namespace Education.Controllers
         public SourceMod SourceSelectById(int id)
         {
             return _essentialData.SourceSelectById(id);
+        }
+        [HttpGet]
+        [Route("/api/TeacherSortShows")]
+        public List<TeacherTypeMod> TeacherSortShows()
+        {
+            List<TeacherTypeMod> ss = _essentialData.TeacherSortShow();
+
+            return ss;
         }
 
         //教师类别管理
@@ -156,6 +165,14 @@ namespace Education.Controllers
         public TeacherTypeMod TeacherSortSelectById(int id)
         {
             return _essentialData.TeacherSortSelectById(id);
+        }
+        [HttpGet]
+        [Route("/api/TeacherLevelShows")]
+        public List<TeachinglevelMod> TeacherLevelShows()
+        {
+            List<TeachinglevelMod> ss = _essentialData.TeacherLevelShow();
+
+            return ss;
         }
 
         //教师水平级别管理
@@ -222,6 +239,19 @@ namespace Education.Controllers
             return _essentialData.TeacherLevelSelectById(id);
         }
 
+        //教师教学风格管理
+        /// <summary>
+        /// 教师教学风格显示
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/TeacherStyleShows")]
+        public List<TeachingStyleMod> TeacherStyleShows()
+        {
+            List<TeachingStyleMod> ss = _essentialData.TeacherStyleShow();
+            
+            return ss;
+        }
         //教师教学风格管理
         /// <summary>
         /// 教师教学风格显示
@@ -312,7 +342,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeAdd")]
         [HttpPost]
-        public int ClassTypeAdd(HourTypeMod s)
+        public int ClassTypeAdd(SubjectsHourTypeMod s)
         {
             return _essentialData.ClassTypeAdd(s);
         }
@@ -323,8 +353,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeUpt")]
         [HttpPost]
-        public int ClassTypeUpt(HourTypeMod s)
+        public int ClassTypeUpt(SubjectsHourTypeMod s)
         {
+
             return _essentialData.ClassTypeUpt(s);
         }
         /// <summary>
@@ -345,7 +376,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeSelectById")]
         [HttpGet]
-        public HourTypeMod ClassTypeSelectById(int id)
+        public SubjectsHourTypeMod ClassTypeSelectById(int id)
         {
             return _essentialData.ClassTypeSelectById(id);
         }
@@ -441,9 +472,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/PricingManagementShow")]
-        public string PricingManagementShow(int price = -1, int studying = -1, int hour = -1, int? hourprice = null, int? pricehour = null)
+        public string PricingManagementShow(int price = -1, int studying = -1, string name = null, int  hourprice=0, int pricehour=0,int hour = 0)
         {
-            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow(price, studying, hour, hourprice, pricehour);
+            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow(price, studying,name,hourprice, pricehour, hour);
             var date = new
             {
                 code = 0,
