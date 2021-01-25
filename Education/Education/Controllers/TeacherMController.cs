@@ -93,7 +93,7 @@ namespace Education.Controllers
         //教师管理显示1
         [Route("api/GetTeacherMod")]
         [HttpGet]
-        public string GetTeacherMods(string teaname, string phone, int jigou, int tduid)
+        public string GetTeacherMods(string teaname, string phone, int jigou, int tduid, int PageIndex = 1, int PageSize = 1)
         {
             _logger.LogInformation("显示教师管理日志");
             List<TeacherMod> teaches = _teacherManagement.GetTeacherMods(teaname, phone, jigou, tduid);
@@ -102,7 +102,7 @@ namespace Education.Controllers
                 code = 0,
                 msg = "",
                 count = teaches.Count(),
-                data = teaches,
+                data = teaches.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }
@@ -110,7 +110,7 @@ namespace Education.Controllers
         //教学信息显示
         [Route("api/GetTeaches")]
         [HttpGet]
-        public string GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state)
+        public string GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state, int PageIndex = 1, int PageSize = 1)
         {
             //记录日志
             _logger.LogInformation("教学管理显示");
@@ -120,7 +120,7 @@ namespace Education.Controllers
                 code = 0,
                 msg = "",
                 count = teaches.Count(),
-                data = teaches,
+                data = teaches.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }

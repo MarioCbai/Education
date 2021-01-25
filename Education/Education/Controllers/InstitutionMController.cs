@@ -56,7 +56,7 @@ namespace Education.Controllers
         //机构管理显示
         [Route("api/GetOrganMods")]
         [HttpGet]
-        public string GetOrganMods(int OrganId, string name = null)
+        public string GetOrganMods(int OrganId, string name = null, int PageIndex = 1, int PageSize = 1)
         {
             //记录日志
             _logger.LogInformation("机构管理显示");
@@ -71,7 +71,7 @@ namespace Education.Controllers
                 code = 0,
                 msg = "",
                 count = Organs.Count(),
-                data = Organs,
+                data = Organs.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }
@@ -186,7 +186,7 @@ namespace Education.Controllers
         [Route("api/GetClassRooms")]
         [HttpGet]
         //班级管理显示
-        public string GetClassRooms(string roomname, int sub, int jigou, int stid, DateTime? HourBeginTime, DateTime? HourEngTime)
+        public string GetClassRooms(string roomname, int sub, int jigou, int stid, DateTime? HourBeginTime, DateTime? HourEngTime, int PageIndex = 1, int PageSize = 1)
         {
             //记录日志
             _logger.LogInformation("班级管理显示");
@@ -196,7 +196,7 @@ namespace Education.Controllers
                 code = 0,
                 msg = "",
                 count = classRooms.Count(),
-                data = classRooms,
+                data = classRooms.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }
