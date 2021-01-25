@@ -107,6 +107,13 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <param name="orders"></param>
         /// <returns></returns>
         public abstract int AddOrders(OrdersMod orders);
+        /// <summary>
+        /// 查询出本月的订单数据
+        /// </summary>
+        /// <returns></returns>
+        public abstract List<OrdersMod> GetOrders();
+
+
 
     }
 }
