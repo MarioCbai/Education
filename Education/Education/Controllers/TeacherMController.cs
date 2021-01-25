@@ -36,9 +36,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/TeacherShow")]
         [HttpGet]
-        public string TeacherShow()
+        public string TeacherShow(int jibie=0,int leibie=0,string iphone="",string name="")
         {
-            List<TeacherMod> ll= _teacherManagement.TeacherShow();
+            List<TeacherMod> ll= _teacherManagement.TeacherShow(jibie, leibie, iphone, name);
             var data = new {
                 code = 0,
                 msg = "",

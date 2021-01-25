@@ -101,9 +101,9 @@ namespace EducationBLL
         /// 教师显示
         /// </summary>
         /// <returns></returns>
-        public List<TeacherMod> TeacherShow()
+        public List<TeacherMod> TeacherShow(int jibie, int leibie, string iphone, string name)
         {
-            return teachers.Teacheres().TeacherShow();
+            return teachers.Teacheres().TeacherShow( jibie,  leibie,  iphone,  name);
         }
         #endregion
 
