@@ -45,7 +45,7 @@ namespace EducationDAL.Finances.Recharges
             }
             if (time!=null)
             {
-                sql += " and a.AauditDateTiem like concat('%',@AauditDateTiem,'%')";
+                sql += " and a.AauditDateTiem=@AauditDateTiem";
             }
             return DapperHelper.Query<Aaudit_OrganiMod>(sql,new { InstitutionalId =id, OrganizationCode =dm, OrganName=name, AauditDateTiem =time});
         }

@@ -12,8 +12,17 @@ namespace EducationDAL.StudentManagement.Studentes
     //学员增删改查 声明
     public abstract class Students
     {
+
+
+        //学员详细信息
+        public abstract StudentLian SelStudent(int id);
+        //学员显示
+        public abstract List<StudentLian> StudentShow(int zhuang, int jigou, string zi, string zhi, int nian, string name, string iphone);
         //添加试听课表
         public abstract int ScheduleAdd(AuditionMod aa);
+
+        //正式学员
+        public abstract List<StudentLian> ShowOfficial(int jigou, string zi, string zhi, int nian, string name, string iphone);
 
         //意向学员方法的声明
         public abstract List<StudentLian> StudentShow(int jigou, string zi, string  zhi, int nian, string name, string iphone);

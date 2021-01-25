@@ -94,7 +94,6 @@ namespace Education.Controllers
         public int AauditAdd(AauditMod am)
         {
             am.AauditDateTiem =Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-            am.AauditName = "张三";
             return _finances.AauditAdd(am);
         }
 

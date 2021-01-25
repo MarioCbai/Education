@@ -104,7 +104,7 @@ namespace IEducation
 
         //定价管理
         //显示查询
-        List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price =0, int studying =0, int hour =0);
+        List<Subjects_HourT_Mod> PricingManagementShow(int ? hourprice =null, int ? pricehour =null, string name=null,int price =0, int studying =0, int hour =0);
         //查询价格级别表绑定下拉
         public abstract List<PriceRankMod> SelectPriceRankModAll();
         //查询学段表绑定下拉

@@ -34,6 +34,167 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+        //正式课
+        [HttpGet]
+        [Route("/api/ApplyFormallessons")]
+        public string ApplyFormallessons()
+        {
+            List<StudentLian> list = _studentManagement.TrialClasss();
+            foreach (var item in list)
+            {
+                if (item.State == 1)
+                {
+                    item.shen = "通过";
+                }
+                else if (item.State == 2)
+                {
+                    item.shen = "驳回";
+                }
+                else
+                {
+                    item.shen = "待审核";
+                }
+
+                if (item.AuditionState == 1)
+                {
+                    item.kezhuang = "已上课";
+                }
+                else if (item.AuditionState == 2)
+                {
+                    item.kezhuang = "待上课";
+                }
+                else
+                {
+                    item.kezhuang = "已取消";
+                }
+                item.tiem = item.AuditionDate;
+
+            }
+            var ss = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+
+            return JsonConvert.SerializeObject(ss);
+        }
+
+
+        // 试听课
+        [HttpGet]
+        [Route("/api/TrialClass")]
+        public string TrialClass()
+        {
+            try
+            {
+                List<StudentLian> list = _studentManagement.TrialClass();
+                foreach (var item in list)
+                {
+                    if (item.State == 1)
+                    {
+                        item.shen = "通过";
+                    }
+                    else if (item.State == 2)
+                    {
+                        item.shen = "驳回";
+                    }
+                    else
+                    {
+                        item.shen = "待审核";
+                    }
+
+                    if (item.AuditionState == 1)
+                    {
+                        item.kezhuang = "已上课";
+                    }
+                    else if (item.AuditionState == 2)
+                    {
+                        item.kezhuang = "待上课";
+                    }
+                    else
+                    {
+                        item.kezhuang = "已取消";
+                    }
+                    item.tiem = item.AuditionDate;
+                   
+                }
+                var ss = new
+                {
+                    code = 0,
+                    msg = "",
+                    count = list.Count,
+                    data = list
+                };
+
+                return JsonConvert.SerializeObject(ss);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+        }
+
+
+        //学员详情信息
+        [HttpPost]
+        [Route("/api/SelStudent")]
+        public StudentLian SelStudent(int id)
+        {
+            StudentLian ll = _studentManagement.SelStudent(id);
+            ll.tiem = ll.StudentBirthday.ToString("yyyy-MM-dd");
+            return ll;
+        }
+
+
+        //所有学员显示
+        [HttpGet]
+        [Route("/api/StudentShow")]
+        public string StudentShow(int zhuang=-1,int jigou=0, string zi="", string zhi="", int nian=0, string name="", string iphone="")
+        {
+            List<StudentLian> list = _studentManagement.StudentShow(zhuang, jigou, zi, zhi, nian, name, iphone);
+            foreach (var item in list)
+            {
+                if (item.StudentKind==1)
+                {
+                    item.zhuang = "成单学员";
+                }
+                else
+                {
+                    item.zhuang = "意向学员";
+                }
+                
+            }
+            var ss = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(ss);
+        }
+
+
+        //正式学员显示
+        [HttpGet]
+        [Route("/api/ShowOfficial")]
+        public string ShowOfficial(int jigou, string zi, string zhi, int nian, string name, string iphone)
+        {
+            List<StudentLian> list = _studentManagement.ShowOfficial(jigou, zi, zhi, nian, name, iphone);
+            var ss = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(ss);
+        }
+
 
         //添加试听课表
 
@@ -109,6 +270,16 @@ namespace Education.Controllers
             return _studentManagement.DelPatrn(id);
         }
 
+        //家长信息
+        [HttpGet]
+        [Route("/api/ParntShows")]
+        public List<PatriarchMod> ParntShows(int id)
+        {
+            List<PatriarchMod> list = _studentManagement.PartriarchShow(id);
+          
+            return list;
+        }
+
         /// <summary>
         /// 家长显示
         /// </summary>
@@ -159,6 +330,7 @@ namespace Education.Controllers
             {
                 ss.StudentPwd = ss.StudentIphone.Substring(5);
                 ss.Counselor = "ccc";
+                ss.StudentKind = 0;
                 return _studentManagement.StudentAdd(ss);
             }
             catch (Exception)
@@ -183,7 +355,7 @@ namespace Education.Controllers
 
         //学员显示查询
         [HttpGet]
-        [Route("/api/StudentShow")]
+        [Route("/api/StudentShows")]
         public string StudentShow(int jigou, string zi, string zhi, int nian, string name, string iphone)
         {
             List<StudentLian> list = _studentManagement.StudentShow(jigou, zi, zhi, nian, name, iphone);
