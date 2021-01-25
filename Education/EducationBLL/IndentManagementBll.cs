@@ -90,6 +90,14 @@ namespace EducationBLL
         {
             return indents.Orders().GetOrderaViews(id);
         }
+        /// <summary>
+        /// 本月订单
+        /// </summary>
+        /// <returns></returns>
+        public List<OrdersMod> GetOrders()
+        {
+            return indents.Orders().GetOrders();
+        }
 
         /// <summary>
         /// 订单的显示以及查询
@@ -144,6 +152,14 @@ namespace EducationBLL
         public List<OrderaViewModel> GetRefundMod(int id)
         {
             return indents.Refund().GetRefundMod(id);
+        }
+        /// <summary>
+        /// 本月退款
+        /// </summary>
+        /// <returns></returns>
+        public List<RefundMod> GetRefunds()
+        {
+            return indents.Refund().GetRefunds();
         }
 
         /// <summary>

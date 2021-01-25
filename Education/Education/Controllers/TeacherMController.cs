@@ -29,6 +29,25 @@ namespace Education.Controllers
             _logger = logger;
             _teacherManagement = teacherManagement;
         }
+        /// <summary>
+        /// 教师信息显示
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        [Route("/api/TeacherShow")]
+        [HttpGet]
+        public string TeacherShow(int jibie=0,int leibie=0,string iphone="",string name="")
+        {
+            List<TeacherMod> ll= _teacherManagement.TeacherShow(jibie, leibie, iphone, name);
+            var data = new {
+                code = 0,
+                msg = "",
+                count = ll.Count(),
+                data = ll,
+            };
+            return JsonConvert.SerializeObject(data);
+        }
+
         #region 教师管理信息
         //添加教师管理信息
         [Route("api/AddTeacherMod")]

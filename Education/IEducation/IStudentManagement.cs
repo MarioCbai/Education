@@ -3,6 +3,7 @@ using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
+using EducationMODEL.TeacherManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,9 +13,12 @@ namespace IEducation
     //学员管理
     public interface IStudentManagement
     {
+
+        //添加试听课表
+        int ScheduleAdd(AuditionMod aa);
+
         //学段年级
         List<Study> Xue(int id);
-
         //家长信息
         int DelPatrn(int id);
         //意向学员查询

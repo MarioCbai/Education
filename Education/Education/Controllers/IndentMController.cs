@@ -280,6 +280,24 @@ namespace Education.Controllers
             int row = _indentManagement.AddOrders(orders);
             return row;
         }
+        /// <summary>
+        /// 本月订单
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetOrder")]
+        [HttpGet]
+        public string GetOrders()
+        {
+            _logger.LogInformation("订单的显示以及查询记录");
+            List<OrdersMod> list = _indentManagement.GetOrders();
+            return JsonConvert.SerializeObject(list);
+        }
+
+
+
+
+
+
         #endregion
 
         #region  退款操作
@@ -373,6 +391,22 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(JsonData);
         }
+
+        /// <summary>
+        /// 本月退款
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/GetRefunds")]
+        [HttpGet]
+        public string GetRefunds()
+        {
+            _logger.LogInformation("退款订单的显示以及查询记录");
+            List<RefundMod> list = _indentManagement.GetRefunds();
+            return JsonConvert.SerializeObject(list);
+        }
+
+
+
 
 
 

@@ -47,6 +47,8 @@ namespace IEducation
         //认证信息的修改
         int ModifyApproveMod(ApproveMod ap);
         #endregion
+        //教师
+        List<TeacherMod> TeacherShow(int jibie , int leibie , string iphone , string name );
 
     }
 }

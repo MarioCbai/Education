@@ -7,6 +7,7 @@ using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
+using EducationMODEL.TeacherManagement;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,17 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+
+        //添加试听课表
+
+        [HttpPost]
+        [Route("/api/ScheduleAdd")]
+        public int ScheduleAdd(AuditionMod aa)
+        {
+            return _studentManagement.ScheduleAdd(aa);
+        }
+
+
 
         [HttpGet]
         [Route("/api/Xue")]
@@ -116,6 +128,9 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(ss);
         }
+
+
+
 
         /// <summary>
         /// 地址

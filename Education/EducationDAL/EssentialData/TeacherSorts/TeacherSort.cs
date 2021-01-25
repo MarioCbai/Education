@@ -23,5 +23,7 @@ namespace EducationDAL.EssentialData.TeacherSorts
 
         //教师类别表根据id查询反填
         public abstract TeacherTypeMod TeacherSortSelectById(int id);
+
+        public abstract List<TeacherTypeMod> TeacherShow(string name);
     }
 }

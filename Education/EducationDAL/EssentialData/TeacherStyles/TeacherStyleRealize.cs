@@ -23,12 +23,18 @@ namespace EducationDAL.EssentialData.TeacherStyles
         //教师教学风格显示
         public override List<TeachingStyleMod> TeacherStyleShow()
         {
-            return DapperHelper.Query<TeachingStyleMod>("select * from TeachingStyle", "");
+            return DapperHelper.Query<TeachingStyleMod>("select * from TeachingStyle order by Ztai,Sort", "");
         }
-        //教师教学风格修改状态
-        public override int TeacherStyleZtai(int ztai, int id)
+
+        public override List<TeachingStyleMod> TeacherStyleShowName(string name)
         {
-            return DapperHelper.Execute("update TeacherType set Ztai=@Ztai where TeachingStyleId=@TeachingStyleId", new { Ztai = ztai, TeachingStyleId = id });
+            return DapperHelper.Query<TeachingStyleMod>("select * from TeachingStyle where TeachingStyleName=@TeachingStyleName", new { TeachingStyleName = name });
+        }
+
+        //教师教学风格修改状态
+        public override int TeacherStyleZtai(int ztai,int id)
+        {
+            return DapperHelper.Execute("update TeachingStyle set Ztai=@Ztai where TeachingStyleId=@TeachingStyleId", new { Ztai = ztai, TeachingStyleId = id });
         }
         //教师教学风格修改
         public override int TTeacherStyleUpt(TeachingStyleMod t)

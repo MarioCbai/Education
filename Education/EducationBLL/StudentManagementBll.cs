@@ -4,6 +4,7 @@ using EducationMODEL.linkModel;
 using EducationMODEL.OrderManagement;
 using EducationMODEL.organizational;
 using EducationMODEL.students;
+using EducationMODEL.TeacherManagement;
 using IEducation;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,12 @@ namespace EducationBLL
             return students.Parents().ParentsShow(id);
         }
 
+        //添加课表
+        public int ScheduleAdd(AuditionMod aa)
+        {
+            return students.Students().ScheduleAdd(aa);
+        }
+
         //学员信息
         public StudentMod ShowSan(int id)
         {
@@ -95,6 +102,8 @@ namespace EducationBLL
         {
             return students.Students().StudentShow(jigou,zi,zhi,nian,name,iphone);
         }
+
+        
 
         /// <summary>
         /// 家长信息修改

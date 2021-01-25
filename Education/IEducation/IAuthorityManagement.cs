@@ -58,7 +58,8 @@ namespace IEducation
         List<PartMod> PartShow();
         //登录
         List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd);
-
+        //查询用户名
+        List<ConsumerMod> Register2(string ConsumerIPhone);
         //忘记密码,修改密码
         int RetrievePassword(string ConsumerIPhone, string ConsumerPwd);
         //添加角色

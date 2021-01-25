@@ -215,8 +215,13 @@ namespace EducationDAL.IndentManagement.Orderses
         {
             return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
         }
-        
-        
-
+        /// <summary>
+        /// 本月订单
+        /// </summary>
+        /// <returns></returns>
+        public override List<OrdersMod> GetOrders()
+        {
+            return DapperHelper.Query<OrdersMod>("select * from Orders where datediff(Month,OrderTime,getdate())=0 and OrderStatus=2", new { });
+        }
     }
 }
