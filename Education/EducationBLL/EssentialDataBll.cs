@@ -332,7 +332,7 @@ namespace EducationBLL
         /// <param name="hourprice"></param>
         /// <param name="pricehour"></param>
         /// <returns></returns>
-        public List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name = null, int price = 0, int studying = 0, int hour = 0)
+        public List<Subjects_HourT_Mod> PricingManagementShow(int ? hourprice =null, int ? pricehour =null, string name = null, int price = 0, int studying = 0, int hour = 0)
         {
             return essentials.PricingManagement().PricingManagementShow(hourprice, pricehour, name, price, studying, hour);
         }

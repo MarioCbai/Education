@@ -527,9 +527,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/PricingManagementShow")]
         [HttpGet]
-        public string PricingManagementShow(int price = -1, int studying = -1, string name = null, int hourprice = 0, int pricehour = 0, int hour = 0)
+        public string PricingManagementShow(int ? hourprice =null, int ? pricehour =null, string name = null,int price =0, int studying =0,int hour = 0)
         {
-            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow(price, studying, name, hourprice, pricehour, hour);
+            List<Subjects_HourT_Mod> ss = _essentialData.PricingManagementShow(hourprice,pricehour, name, price ,studying,hour);
             var date = new
             {
                 code = 0,
