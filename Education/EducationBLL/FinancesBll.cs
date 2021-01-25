@@ -30,7 +30,7 @@ namespace EducationBLL
         }
 
         //机构充值审核显示和查询
-        public List<Aaudit_OrganiMod> AauditShow(int id = 0, string dm = null, string name = null, DateTime? time = null)
+        public List<Aaudit_OrganiMod> AauditShow(int ? id =null, string dm = null, string name = null, DateTime? time = null)
         {
             return finances.Recharge().AauditShow(id,dm,name,time);
         }

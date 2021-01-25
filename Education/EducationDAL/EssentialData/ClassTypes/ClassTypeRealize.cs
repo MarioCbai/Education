@@ -24,15 +24,15 @@ namespace EducationDAL.EssentialData.ClassTypes
         }
 
         //课时表根据id查询反填
-        public override SubjectsHourTypeMod ClassTypeSelectById(int id)
+        public override GG_SubjectsHourType ClassTypeSelectById(int id)
         {
-            return DapperHelper.Query<SubjectsHourTypeMod>("select * from SubjectsHourType where SHId=@SHId", new { SHId = id }).FirstOrDefault();
+            return DapperHelper.Query<GG_SubjectsHourType>("select * from SubjectsHourType where SHId=@SHId", new { SHId = id }).FirstOrDefault();
         }
 
         //课时表显示
-        public override List<Subjects_HourT_Mod> ClassTypeShow()
+        public override List<GG_SubjectsHourType> ClassTypeShow()
         {
-            return DapperHelper.Query<Subjects_HourT_Mod>("select a.*,b.SubjectsName,c.HourTypeName,c.Proportion,c.Sort from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId order by a.SHState,c.Sort ", "");
+            return DapperHelper.Query<GG_SubjectsHourType>("select a.*,b.SubjectsName,c.HourTypeName,c.Proportion,c.Sort from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId order by a.SHState,c.Sort ", "");
         }
         //课时表修改
         public override int ClassTypeUpt(SubjectsHourTypeMod h)
