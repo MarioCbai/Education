@@ -26,7 +26,6 @@ namespace Education.Controllers
         /// <param name="authorityManagement"></param>
         public AuthorityMController(IAuthorityManagement authorityManagement)
         {
-
             _authorityManagement = authorityManagement;
         }
 
