@@ -93,8 +93,7 @@ namespace Education.Controllers
         [HttpPost]
         public int AauditAdd(AauditMod am)
         {
-            am.AauditDateTiem = DateTime.Now;
-            am.AauditName = "张三";
+            am.AauditDateTiem =Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
             return _finances.AauditAdd(am);
         }
 
@@ -108,7 +107,7 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/AauditShow")]
         [HttpGet]
-        public string AauditShow(int id = 0, string dm = null, string name = null, DateTime? time = null)
+        public string AauditShow(int ? id =null, string dm = null, string name = null, DateTime? time = null)
         {
             List<Aaudit_OrganiMod> ss =_finances.AauditShow(id, dm, name, time);
             foreach (var item in ss)

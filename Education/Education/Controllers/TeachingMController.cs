@@ -201,6 +201,26 @@ namespace Education.Controllers
             };
             return JsonConvert.SerializeObject(cc);
         }
+        //查询通过的返还课
+        [HttpGet]
+        [Route("/TeachingM/FAFSAShow1")]
+        public string FAFSAShow1(string OrganName = "", string BusinessTypeName = "", string ClassModelName = "", string AuditionType = "", string HourTypeName = "", string AuditionState = "", string StudyName = "", string SubjectsName = "", string OrganPhoneName = "", string TeacherName = "", DateTime? AuditionTime1 = null, DateTime? AuditionTime = null, string StudentName = "")
+        {
+            List<ClassroomManagement> list = _teachingManagement.FAFSAShow(OrganName, BusinessTypeName, ClassModelName, AuditionType, HourTypeName, AuditionState, StudyName, SubjectsName, OrganPhoneName, TeacherName, AuditionTime1, AuditionTime, StudentName);
+            list = list.Where(p => p.AuditStatus.Equals(1)).ToList();            
+            foreach (var item in list)
+            {
+                item.Data = item.AuditionDate.ToString("yyyy-MM-dd");
+            }
+            var cc = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+            return JsonConvert.SerializeObject(cc);
+        }
         //删除反填课
         [HttpGet]
         [Route("/TeachingM/FAFSADel")]
@@ -212,9 +232,10 @@ namespace Education.Controllers
         //返还表的审核//修改
         [HttpGet]
         [Route("/TeachingM/FAFSAUpt")]
-        public int FAFSAUpt(int tate, string id)
+        public int FAFSAUpt(int tate, string id, string name)
         {
-            int i = _teachingManagement.FAFSAUpt(tate,id);
+            int i = _teachingManagement.FAFSAUpt(tate,id, name);
+
             return i;
         }
     }

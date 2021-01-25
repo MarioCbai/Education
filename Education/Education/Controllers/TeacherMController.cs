@@ -84,25 +84,25 @@ namespace Education.Controllers
         //绑定教师管理显示1
         [Route("api/TeacherMods")]
         [HttpGet]
-        public List<TeacherMod> TeacherMods()
+        public List<TeacherMod> TeacherMods(string teaname, string phone, int jigou, int tduid)
         {
             _logger.LogInformation("教师管理显示下拉");
-            List<TeacherMod> Organs = _teacherManagement.GetTeacherMods();
+            List<TeacherMod> Organs = _teacherManagement.GetTeacherMods(teaname, phone, jigou, tduid);
             return Organs;
         }
         //教师管理显示1
         [Route("api/GetTeacherMod")]
         [HttpGet]
-        public string GetTeacherMods()
+        public string GetTeacherMods(string teaname, string phone, int jigou, int tduid, int PageIndex = 1, int PageSize = 1)
         {
             _logger.LogInformation("显示教师管理日志");
-            List<TeacherMod> teaches = _teacherManagement.GetTeacherMods();
+            List<TeacherMod> teaches = _teacherManagement.GetTeacherMods(teaname, phone, jigou, tduid);
             var list = new
             {
                 code = 0,
                 msg = "",
                 count = teaches.Count(),
-                data = teaches,
+                data = teaches.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }
@@ -110,17 +110,17 @@ namespace Education.Controllers
         //教学信息显示
         [Route("api/GetTeaches")]
         [HttpGet]
-        public string GetTeaches()
+        public string GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state, int PageIndex = 1, int PageSize = 1)
         {
             //记录日志
             _logger.LogInformation("教学管理显示");
-            List<TeachMod> teaches = _teacherManagement.GetTeaches();
+            List<TeachMod> teaches = _teacherManagement.GetTeaches(teaname, phone, jigou, sub, bookid, state);
             var list = new
             {
                 code = 0,
                 msg = "",
                 count = teaches.Count(),
-                data = teaches,
+                data = teaches.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList(),
             };
             return JsonConvert.SerializeObject(list);
         }

@@ -275,7 +275,14 @@ namespace Education.Controllers
             List<ConsumerMod> list = _authorityManagement.Register(ConsumerIPhone, ConsumerPwd);
             return list;
         }
-
+        //查询用户名
+        [HttpGet]
+        [Route("/AuthorityM/Register2")]
+        public List<ConsumerMod> Register2(string ConsumerIPhone)
+        {
+            List<ConsumerMod> list = _authorityManagement.Register2(ConsumerIPhone);
+            return list;
+        }
         /// <summary>
         ///  忘记密码/修改
         /// </summary>

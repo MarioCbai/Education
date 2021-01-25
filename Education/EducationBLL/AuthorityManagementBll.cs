@@ -83,6 +83,11 @@ namespace EducationBLL
         {
             return authoritys.User().Register(ConsumerIPhone, ConsumerPwd);
         }
+        //查询用户名
+        public  List<ConsumerMod> Register2(string ConsumerIPhone)
+        {
+            return authoritys.User().Register2(ConsumerIPhone);
+        }
         //查询用户表
         public  List<ConsumerMod> Register1(string ConsumerIPhone)
         {

@@ -10,9 +10,14 @@ namespace EducationDAL.InstitutionManagement.Organs
     public class OrganRealize:Organes
     {
         //机构管理显示
-        public override List<OrganMod> GetOrganMods()
+        public override List<OrganMod> GetOrganMods(string name = null)
         {
-            return DapperHelper.Query<OrganMod>("select org.OrganName as aa,* from Organ org join Organ b on org.OrganId=b.PId  join Institutional ins on org.InstitutionalId = ins.InstitutionalId join PriceRank pri on org.PriceRankId = pri.PriceRankId join Sites pro on pro.SiID = org.ProvinceId join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District", " ");
+            string sql = "select org.OrganName as aa,* from Organ org join Institutional ins on org.InstitutionalId = ins.InstitutionalId join PriceRank pri on org.PriceRankId = pri.PriceRankId join Sites pro on pro.SiID = org.ProvinceId join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District where 1=1";
+            if (name != null && name != "")
+            {
+                sql += " and org.OrganName=@name";
+            }
+            return DapperHelper.Query<OrganMod>(sql,new { name });
         }
         //机构管理下拉
         public override List<OrganMod> OrganMods()
