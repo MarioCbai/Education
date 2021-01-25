@@ -202,9 +202,11 @@ namespace EducationDAL.TeachingManagement.Classrooms
             return i;
         }
         //返还表的审核//修改
-        public override int FAFSAUpt(int tate,string id)
+        public override int FAFSAUpt(int tate,string id,string name)
         {
-            int i = DapperHelper.Execute(" update FAFSA set AuditStatus=@tate where AuditionID in  (@id)", new { tate = tate, id = id });
+            var date = DateTime.Now;          
+            int i = DapperHelper.Execute(" update FAFSA  set AuditStatus=@tate,AuditorPTime=@date,Auditor=@name where AuditionID in  (@id)", new { tate = tate, id = id, date= date, name= name });
+
             return i;
         }
  

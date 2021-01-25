@@ -12,7 +12,7 @@ namespace IEducation
     {
         #region 机构管理
         //机构管理显示
-        List<OrganMod> GetOrganMods();
+        List<OrganMod> GetOrganMods(string name = null);
         //机构管理下拉
         List<OrganMod> OrganMods();
         //添加机构信息
@@ -44,7 +44,7 @@ namespace IEducation
         #endregion
         #region 班级管理
         //班级管理显示
-        List<ClassRoomMod> GetClassRooms();
+        List<ClassRoomMod> GetClassRooms(string roomname, int sub, int jigou, int stid, DateTime? HourBeginTime, DateTime? HourEngTime);
         //添加班级管理信息
         int AddClassRooms(ClassRoomMod Room);
         //反填班级管理信息

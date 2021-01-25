@@ -13,14 +13,14 @@ namespace EducationBLL
         Teacher teachers = new TeacherPlant();
         #region 教师管理
         //教师管理显示
-        public List<TeachMod> GetTeaches()
+        public List<TeachMod> GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state)
         {
-            return teachers.Teacheres().GetTeaches();
+            return teachers.Teacheres().GetTeaches(teaname, phone, jigou, sub, bookid, state);
         }
         //教师管理显示1
-        public  List<TeacherMod> GetTeacherMods()
+        public  List<TeacherMod> GetTeacherMods(string teaname, string phone, int jigou, int tduid)
         {
-            return teachers.Teacheres().GetTeacherMods();
+            return teachers.Teacheres().GetTeacherMods(teaname, phone, jigou, tduid);
         }
         //添加教师管理信息
         public int AddTeacherMod(TeacherMod t)

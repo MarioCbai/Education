@@ -95,9 +95,9 @@ namespace EducationBLL
             return teachings.Classroom().FAFSADel(id);
         }
         //返还表的审核//修改
-        public  int FAFSAUpt(int tate, string id)
+        public  int FAFSAUpt(int tate, string id, string name)
         {
-            return teachings.Classroom().FAFSAUpt(tate,id);
+            return teachings.Classroom().FAFSAUpt(tate,id, name);
         }
     }
 }

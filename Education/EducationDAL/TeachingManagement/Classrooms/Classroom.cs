@@ -40,6 +40,6 @@ namespace EducationDAL.TeachingManagement.Classrooms
         //删除反填课
         public abstract int FAFSADel(int id);
         //返还表的审核//修改
-        public abstract int FAFSAUpt(int tate, string id);
+        public abstract int FAFSAUpt(int tate, string id, string name);
     }
 }
