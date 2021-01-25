@@ -355,6 +355,7 @@ namespace Education.Controllers
         [HttpPost]
         public int ClassTypeUpt(SubjectsHourTypeMod s)
         {
+
             return _essentialData.ClassTypeUpt(s);
         }
         /// <summary>
