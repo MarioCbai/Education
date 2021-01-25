@@ -8,10 +8,10 @@ namespace EducationDAL.TeacherManagement.Teachers
     //教师方法声明
     public abstract class Teacheres
     {
-        //教师管理显示
-        public abstract List<TeachMod> GetTeaches();
+        //教师/学管理显示
+        public abstract List<TeachMod> GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state);
         //教师管理显示1
-        public abstract List<TeacherMod> GetTeacherMods();
+        public abstract List<TeacherMod> GetTeacherMods(string teaname, string phone, int jigou, int tduid);
         //添加教师管理信息
         public abstract int AddTeacherMod(TeacherMod t);
         //反填教师管理信息

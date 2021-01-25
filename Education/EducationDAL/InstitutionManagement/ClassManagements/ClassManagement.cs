@@ -12,7 +12,7 @@ namespace EducationDAL.InstitutionManagement.ClassManagements
     {
         //班级管理增删改查
         //班级管理显示
-        public abstract List<ClassRoomMod> GetClassRooms(string roomname=null,int sub=0,int xq=0);
+        public abstract List<ClassRoomMod> GetClassRooms(string roomname,int sub,int jigou, int stid, DateTime? HourBeginTime, DateTime? HourEngTime);
         //添加班级管理信息
         public abstract int AddClassRooms(ClassRoomMod Room);
         //反填班级管理信息

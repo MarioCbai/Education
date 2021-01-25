@@ -10,14 +10,59 @@ namespace EducationDAL.TeacherManagement.Teachers
     public class TeacheresRealize : Teacheres
     {
         //教师管理显示
-        public override List<TeachMod> GetTeaches()
+        public override List<TeachMod> GetTeaches(string teaname=null,string phone=null, int jigou=0,int sub=0,int bookid=0,int state=0)
         {
-            return DapperHelper.Query<TeachMod>("select *from Teach tea join Teacher ter on tea.Teacher = ter.TeacherId join Organ org on ter.OrganId = org.OrganId", "");
+            string sql = "select *from Teach tea  join Teacher ter on tea.Teacher=ter.TeacherId " +
+                " join Organ org on ter.OrganId=org.OrganId " +
+                "join Subjects sub on tea.SubjectsId=sub.SubjectsId " +
+                "join Textbook book on tea.TextbookId=book.TextbookId  where 1=1";
+            if (teaname != null && teaname != "")
+            {
+                sql += " and ter.TeacherName like concat('%',@teaname,'%')";
+            }
+            if (phone != null && phone != "")
+            {
+                sql += " and ter.TeacherPhone=@phone";
+            }
+            if (jigou != 0)
+            {
+                sql += " and org.OrganId=@jigou";
+            }
+            if (sub != 0)
+            {
+                sql += " and sub.SubjectsId=@sub";
+            }
+            if (bookid != 0)
+            {
+                sql += " and book.TextbookId=@bookid";
+            }
+            if (state != 0)
+            {
+                sql += " and ter.TeacherState=@state";
+            }
+            return DapperHelper.Query<TeachMod>(sql,new { teaname, phone,jigou, sub, bookid,state });
         }
         //教师管理显示1
-        public override List<TeacherMod> GetTeacherMods()
+        public override List<TeacherMod> GetTeacherMods(string teaname=null, string phone=null, int jigou=0, int tduid=0)
         {
-            return DapperHelper.Query<TeacherMod>("select * from Teacher ter join  Teachereducation  duc on ter.TeachereducationId=duc.TeachereducationId join  Organ  org on org.OrganId = ter.OrganId", "");
+            string sql = "select * from Teacher ter join  Teachereducation  duc on ter.TeachereducationId=duc.TeachereducationId join  Organ  org on org.OrganId = ter.OrganId where 1=1";
+            if (teaname != null && teaname != "")
+            {
+                sql += " and ter.TeacherName like concat('%',@teaname,'%')";
+            }
+            if (phone != null && phone != "")
+            {
+                sql += " and ter.TeacherPhone=@phone";
+            }
+            if (jigou != 0)
+            {
+                sql += " and org.OrganId=@jigou";
+            }
+            if (tduid != 0)
+            {
+                sql += " and duc.TeachereducationId=@tduid";
+            }
+            return DapperHelper.Query<TeacherMod>(sql,new { teaname, phone, jigou, tduid });
         }
         //添加教师管理信息
         public override int AddTeacherMod(TeacherMod t)

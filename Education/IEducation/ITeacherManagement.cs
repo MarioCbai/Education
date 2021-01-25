@@ -11,9 +11,9 @@ namespace IEducation
     {
         #region 教师管理
         //教师管理显示
-        List<TeachMod> GetTeaches();
+        List<TeachMod> GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state);
         //教师管理显示1
-        List<TeacherMod> GetTeacherMods();
+        List<TeacherMod> GetTeacherMods(string teaname, string phone, int jigou, int tduid);
         //添加教师管理信息
         int AddTeacherMod(TeacherMod t);
         //删除教师管理信息

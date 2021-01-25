@@ -15,9 +15,9 @@ namespace EducationBLL
         Institution institutions = new InstitutionPlant();
         #region 机构管理
         //机构管理显示
-        public List<OrganMod> GetOrganMods()
+        public List<OrganMod> GetOrganMods(string name = null)
         {
-            return institutions.Organ().GetOrganMods();
+            return institutions.Organ().GetOrganMods(name);
         }
         //机构管理下拉
         public List<OrganMod> OrganMods()
@@ -92,9 +92,9 @@ namespace EducationBLL
         #endregion
         #region 班级管理
         //班级管理显示
-        public List<ClassRoomMod> GetClassRooms(string roomname = null, int sub = 0, int xq = 0)
+        public List<ClassRoomMod> GetClassRooms(string roomname, int sub, int jigou, int stid, DateTime? HourBeginTime, DateTime? HourEngTime)
         {
-            return institutions.ClassManagement().GetClassRooms(roomname,sub,xq);
+            return institutions.ClassManagement().GetClassRooms(roomname,sub, jigou, stid,HourBeginTime,HourEngTime);
         }
         //添加班级管理数据
         public int AddClassRooms(ClassRoomMod Room)
