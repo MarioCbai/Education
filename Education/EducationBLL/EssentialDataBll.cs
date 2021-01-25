@@ -48,7 +48,7 @@ namespace EducationBLL
         /// 课时表显示
         /// </summary>
         /// <returns></returns>
-        public List<IGHourType_Subjects> ClassTypeShow()
+        public List<Subjects_HourT_Mod> ClassTypeShow()
         {
             return essentials.ClassType().ClassTypeShow();
         }
@@ -136,7 +136,7 @@ namespace EducationBLL
         /// <param name="hourprice"></param>
         /// <param name="pricehour"></param>
         /// <returns></returns>
-        public List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price = -1, int studying = -1, int hour = -1)
+        public List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price =0, int studying =0, int hour =0)
         {
             return essentials.PricingManagement().PricingManagementShow(hourprice, pricehour, name,price, studying, hour);
         }

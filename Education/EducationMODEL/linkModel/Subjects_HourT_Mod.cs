@@ -21,6 +21,7 @@ namespace EducationMODEL.linkModel
         public int PriceLefght { get; set; }
 
         public int PricingPrice { get; set; }//课时单价
+
         public string PriceRankName { get; set; }//价格级别
         public string ClassModelName { get; set; }//班型名称
         public string StudyName { get; set; }  //学段年级名称

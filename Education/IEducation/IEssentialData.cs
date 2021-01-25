@@ -66,7 +66,7 @@ namespace IEducation
 
         //课时类型管理
         //添加
-        List<IGHourType_Subjects> ClassTypeShow();
+        List<Subjects_HourT_Mod> ClassTypeShow();
         //显示
         int ClassTypeAdd(SubjectsHourTypeMod h);
         //修改
@@ -101,7 +101,7 @@ namespace IEducation
 
         //定价管理
         //显示查询
-        List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price = -1, int studying = -1, int hour = -1);
+        List<Subjects_HourT_Mod> PricingManagementShow(int hourprice = 0, int pricehour = 0, string name=null,int price =0, int studying =0, int hour =0);
         //查询价格级别表绑定下拉
         public abstract List<PriceRankMod> SelectPriceRankModAll();
         //查询学段表绑定下拉

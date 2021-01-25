@@ -30,9 +30,9 @@ namespace EducationDAL.EssentialData.ClassTypes
         }
 
         //课时表显示
-        public override List<IGHourType_Subjects> ClassTypeShow()
+        public override List<Subjects_HourT_Mod> ClassTypeShow()
         {
-            return DapperHelper.Query<IGHourType_Subjects>("select a.*,b.SubjectsName,c.HourTypeName,c.Proportion,c.Sort from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId order by a.SHState,c.Sort ", "");
+            return DapperHelper.Query<Subjects_HourT_Mod>("select a.*,b.SubjectsName,c.HourTypeName,c.Proportion,c.Sort from SubjectsHourType a join Subjects b on a.Subjects=b.SubjectsId join HourType c on a.HourType=c.HourTypeId order by a.SHState,c.Sort ", "");
         }
         //课时表修改
         public override int ClassTypeUpt(SubjectsHourTypeMod h)
