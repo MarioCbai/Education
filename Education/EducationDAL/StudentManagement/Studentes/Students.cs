@@ -12,6 +12,8 @@ namespace EducationDAL.StudentManagement.Studentes
     //学员增删改查 声明
     public abstract class Students
     {
+
+
         //学员详细信息
         public abstract StudentLian SelStudent(int id);
         //学员显示

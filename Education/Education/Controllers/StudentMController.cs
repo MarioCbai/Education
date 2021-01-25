@@ -34,8 +34,110 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+        //正式课
+        [HttpGet]
+        [Route("/api/ApplyFormallessons")]
+        public string ApplyFormallessons()
+        {
+            List<StudentLian> list = _studentManagement.TrialClasss();
+            foreach (var item in list)
+            {
+                if (item.State == 1)
+                {
+                    item.shen = "通过";
+                }
+                else if (item.State == 2)
+                {
+                    item.shen = "驳回";
+                }
+                else
+                {
+                    item.shen = "待审核";
+                }
 
-         
+                if (item.AuditionState == 1)
+                {
+                    item.kezhuang = "已上课";
+                }
+                else if (item.AuditionState == 2)
+                {
+                    item.kezhuang = "待上课";
+                }
+                else
+                {
+                    item.kezhuang = "已取消";
+                }
+                item.tiem = item.AuditionDate;
+
+            }
+            var ss = new
+            {
+                code = 0,
+                msg = "",
+                count = list.Count,
+                data = list
+            };
+
+            return JsonConvert.SerializeObject(ss);
+        }
+
+
+        // 试听课
+        [HttpGet]
+        [Route("/api/TrialClass")]
+        public string TrialClass()
+        {
+            try
+            {
+                List<StudentLian> list = _studentManagement.TrialClass();
+                foreach (var item in list)
+                {
+                    if (item.State == 1)
+                    {
+                        item.shen = "通过";
+                    }
+                    else if (item.State == 2)
+                    {
+                        item.shen = "驳回";
+                    }
+                    else
+                    {
+                        item.shen = "待审核";
+                    }
+
+                    if (item.AuditionState == 1)
+                    {
+                        item.kezhuang = "已上课";
+                    }
+                    else if (item.AuditionState == 2)
+                    {
+                        item.kezhuang = "待上课";
+                    }
+                    else
+                    {
+                        item.kezhuang = "已取消";
+                    }
+                    item.tiem = item.AuditionDate;
+                   
+                }
+                var ss = new
+                {
+                    code = 0,
+                    msg = "",
+                    count = list.Count,
+                    data = list
+                };
+
+                return JsonConvert.SerializeObject(ss);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+        }
+
 
         //学员详情信息
         [HttpPost]

@@ -12,5 +12,6 @@ namespace EducationMODEL
 
         public int Student { get; set; }//学生表（外键）
         public DateTime AuditTime { get; set; }//审核时间
+        public int State { get; set; }
     }
 }

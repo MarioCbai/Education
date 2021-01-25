@@ -13,6 +13,12 @@ namespace IEducation
     //学员管理
     public interface IStudentManagement
     {
+        //正式课
+        List<StudentLian> TrialClasss();
+
+        //试听课
+        List<StudentLian> TrialClass();
+
         StudentLian SelStudent(int id);
         //所有学员显示
         List<StudentLian> StudentShow(int zhuang, int jigou, string zi, string zhi, int nian, string name, string iphone);

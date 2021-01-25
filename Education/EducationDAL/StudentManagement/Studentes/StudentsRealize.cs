@@ -87,10 +87,18 @@ namespace EducationDAL.StudentManagement.Studentes
             {
                 aa.AuditionType = "试听课";
             }
-
+            int b = 0;
             int a=DapperHelper.Execute("insert into Audition values(@AuditionType,@StID,@Grade,@AuditionClass,@AuditionDate,@AuditionTime,@AuditionState,@AuditionRemark,@TeacherId,@SubjectsId,@HourTypeId,@BusinessTypeId,@ClassModelId)", aa);
              int c =DapperHelper.QueryFirst<AuditionMod>("select max(AuditionID)as AuditionID from Audition", new { }).AuditionID;
-            int b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,null)", new { Audition = c, SId = aa.StudentId });
+            if (i == 1)
+            {
+                b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,null,1)", new { Audition = c, SId = aa.StudentId });
+            }
+            else
+            {
+                b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,null,3)", new { Audition = c, SId = aa.StudentId });
+            }
+            
             if (a>0&&b>0)
             {
                 return 1;

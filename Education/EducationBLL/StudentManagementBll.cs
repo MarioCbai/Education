@@ -121,6 +121,18 @@ namespace EducationBLL
             return students.Students().StudentShow(zhuang,jigou, zi, zhi, nian, name, iphone);
         }
 
+        //试听课
+        public List<StudentLian> TrialClass()
+        {
+            return students.Scheduling().TrialClass();
+        }
+
+        //正式课
+        public List<StudentLian> TrialClasss()
+        {
+            return students.Scheduling().TrialClasss();
+        }
+
 
 
         /// <summary>
