@@ -82,5 +82,13 @@ namespace EducationDAL.IndentManagement.Refunds
             string sql = "select student.StudentIphone,student.StudentName,organ.OrganName,audition.AuditionClass,orders.PeriodNum  from Student student join AuditionStudent auditionStudent on student.StudentId = auditionStudent.Student join Audition audition on auditionStudent.Audition = audition.AuditionID join Organ organ on organ.OrganId = student.Institution join Orders orders on student.StudentId = orders.StudentId where orders.PeriodNum < 15";
             return DapperHelper.Query<OrderaViewModel>(sql,new { });
         }
+        /// <summary>
+        /// 本月退款
+        /// </summary>
+        /// <returns></returns>
+        public override List<RefundMod> GetRefunds()
+        {
+            return DapperHelper.Query<RefundMod>("select * from Refund where datediff(Month,RefundTime,getdate())=0 and RefundState=2 or RefundState=1", new { });
+        }
     }
 }
