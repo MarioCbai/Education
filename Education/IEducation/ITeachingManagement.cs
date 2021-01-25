@@ -43,7 +43,7 @@ namespace IEducation
         //删除反填课
         int FAFSADel(int id);
         //返还表的审核//修改
-        int FAFSAUpt(int tate, string id);
+        int FAFSAUpt(int tate, string id, string name);
 
     }
 }
