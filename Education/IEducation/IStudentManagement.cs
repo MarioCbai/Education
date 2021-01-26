@@ -13,6 +13,8 @@ namespace IEducation
     //学员管理
     public interface IStudentManagement
     {
+        //删除正式课
+        int shanchu(int id);
         //修改状态
         int xiugai(int i,int id);
 

@@ -7,6 +7,11 @@ namespace EducationDAL.StudentManagement.Schedulings
 {
     public class SchedulingRealize : Scheduling
     {
+        //删除正式课
+        public override int shanchu(int id)
+        {
+            return DapperHelper.Execute("delete Audition where AuditionID =@id", new { id });
+        }
 
         //试听课显示
         public override List<StudentLian> TrialClass()
