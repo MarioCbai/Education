@@ -13,6 +13,9 @@ namespace IEducation
     //学员管理
     public interface IStudentManagement
     {
+        //修改状态
+        int xiugai(int i,int id);
+
         //正式课
         List<StudentLian> TrialClasss();
 

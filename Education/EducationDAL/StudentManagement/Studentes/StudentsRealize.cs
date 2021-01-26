@@ -92,7 +92,7 @@ namespace EducationDAL.StudentManagement.Studentes
              int c =DapperHelper.QueryFirst<AuditionMod>("select max(AuditionID)as AuditionID from Audition", new { }).AuditionID;
             if (i == 1)
             {
-                b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,null,1)", new { Audition = c, SId = aa.StudentId });
+                b = DapperHelper.Execute("insert into AuditionStudent values(@Audition,@SId,Getdate(),1)", new { Audition = c, SId = aa.StudentId });
             }
             else
             {
