@@ -9,7 +9,7 @@ namespace EducationDAL.TeacherManagement.Teachers
     //教师方法实现
     public class TeacheresRealize : Teacheres
     {
-        //教师管理显示
+        //教学管理显示
         public override List<TeachMod> GetTeaches(string teaname=null,string phone=null, int jigou=0,int sub=0,int bookid=0,int state=0)
         {
             string sql = "select *from Teach tea  join Teacher ter on tea.Teacher=ter.TeacherId " +

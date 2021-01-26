@@ -34,7 +34,9 @@ namespace EducationDAL.InstitutionManagement.Organs
         //反填机构管理信息
         public override OrganMod ModiyIdOrganes(int orgid)
         {
-            return DapperHelper.Query<OrganMod>("select *from Organ where OrganId=@OrganId", new { OrganId = orgid }).FirstOrDefault();
+
+            OrganMod or = DapperHelper.Query<OrganMod>("select *from Organ where OrganId=@OrganId", new { OrganId = orgid }).FirstOrDefault();
+            return or;
         }
         //修改机构管理信息
         public override int ModiyOrganes(OrganMod organ)
