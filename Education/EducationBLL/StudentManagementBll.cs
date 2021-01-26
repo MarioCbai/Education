@@ -144,6 +144,11 @@ namespace EducationBLL
         {
             return students.Parents().UptParent(pp);
         }
+        //修改
+        public int xiugai(int i,int id)
+        {
+            return students.Scheduling().xiugai(i, id);
+        }
 
         //学
         public List<Study> Xue(int id)
