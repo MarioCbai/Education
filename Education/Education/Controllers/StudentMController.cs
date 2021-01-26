@@ -34,6 +34,9 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+
+
+
         [HttpGet]
         [Route("/api/ApplyFormallessonsess")]
         public List<StudentLian> ApplyFormallessonsess(int id)
