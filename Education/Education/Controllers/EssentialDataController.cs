@@ -97,6 +97,17 @@ namespace Education.Controllers
             return _essentialData.SourceSelectById(id);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/SourceDelt")]
+        [HttpPost]
+        public int SourceDelt(int id)
+        {
+            return _essentialData.SourceDelt(id);
+        }
+        /// <summary>
         /// 来源管理判断名称唯一性
         /// </summary>
         /// <param name="name"></param>
@@ -144,6 +155,17 @@ namespace Education.Controllers
         public int TeacherSortAdd(TeacherTypeMod s)
         {
             return _essentialData.TeacherSortAdd(s);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TeacherSortDelt")]
+        [HttpPost]
+        public int TeacherSortDelt(int id)
+        {
+            return _essentialData.TeacherSortDelt(id);
         }
         /// <summary>
         /// 教师类别修改
@@ -240,6 +262,17 @@ namespace Education.Controllers
             return _essentialData.TeacherLevelUpt(s);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TeacherLevelDelt")]
+        [HttpPost]
+        public int TeacherLevelDelt(int id)
+        {
+            return _essentialData.TeacherLevelDelt(id);
+        }
+        /// <summary>
         /// 教师水平级别修改状态
         /// </summary>
         /// <param name="s"></param>
@@ -303,6 +336,17 @@ namespace Education.Controllers
         public int TeacherStyleAdd(TeachingStyleMod s)
         {
             return _essentialData.TeacherStyleAdd(s);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/TTeacherStyleDelt")]
+        [HttpPost]
+        public int TTeacherStyleDelt(int id)
+        {
+            return _essentialData.TTeacherStyleDelt(id);
         }
         /// <summary>
         /// 教师教学风格修改
@@ -379,6 +423,17 @@ namespace Education.Controllers
         public int ClassTypeAdd(SubjectsHourTypeMod s)
         {
             return _essentialData.ClassTypeAdd(s);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/ClassTypeDelt")]
+        [HttpPost]
+        public int ClassTypeDelt(int id)
+        {
+            return _essentialData.ClassTypeDelt(id);
         }
         /// <summary>
         /// 课时类型修改
@@ -490,6 +545,17 @@ namespace Education.Controllers
             return _essentialData.PriceLevelAdd(s);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/PriceLevelDelt")]
+        [HttpPost]
+        public int PriceLevelDelt(int id)
+        {
+            return _essentialData.PriceLevelDelt(id);
+        }
+        /// <summary>
         /// 价格级别修改
         /// </summary>
         /// <param name="s"></param>
@@ -552,6 +618,17 @@ namespace Education.Controllers
                 data = ss.ToList(),
             };
             return JsonConvert.SerializeObject(date);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("/api/PricingManagementDelt")]
+        [HttpPost]
+        public int PricingManagementDelt(int id)
+        {
+            return _essentialData.PricingManagementDelt(id);
         }
         /// <summary>
         /// 查询价格级别表绑定下拉

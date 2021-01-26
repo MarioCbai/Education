@@ -23,7 +23,8 @@ namespace EducationDAL.EssentialData.ClassTypes
 
         //课时表状态修改
         public abstract int ClassTypeZtai(int ztai, int id);
-
+        //删除
+        public abstract int ClassTypeDelt(int id);
         //课时表根据id查询反填
         public abstract GG_SubjectsHourType ClassTypeSelectById(int id);
 

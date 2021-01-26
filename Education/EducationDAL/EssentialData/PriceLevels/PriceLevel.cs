@@ -14,7 +14,8 @@ namespace EducationDAL.EssentialData.PriceLevels
 
         //价格级别表添加
         public abstract int PriceLevelAdd(PriceRankMod p);
-
+        //删除
+        public abstract int PriceLevelDelt(int id);
         //价格级别表编辑
         public abstract int PriceLevelUpt(PriceRankMod p);
 

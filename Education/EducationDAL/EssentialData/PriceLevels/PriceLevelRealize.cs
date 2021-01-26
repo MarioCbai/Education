@@ -16,6 +16,11 @@ namespace EducationDAL.EssentialData.PriceLevels
            
             return DapperHelper.Execute("insert into PriceRank values(@PriceRankName,@Sort,@Ztai)", p);
         }
+        //删除
+        public override int PriceLevelDelt(int id)
+        {
+            return DapperHelper.Execute("delete from  PriceRank  where PriceRankId=@PriceRankId",new { PriceRankId =id});
+        }
 
 
         //价格级别表根据id查询反填

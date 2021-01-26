@@ -23,6 +23,8 @@ namespace EducationDAL.EssentialData.Sources
 
         //来源表根据id查询反填
         public abstract SourceMod SourceSelectById(int id);
+        //删除
+        public abstract int SourceDelt(int id);
 
         public abstract List<SourceMod> SourceShowName(string name);
     }
