@@ -169,7 +169,7 @@ namespace Education.Controllers
         // 试听课
         [HttpGet]
         [Route("/api/TrialClass")]
-        public string TrialClass()
+        public string TrialClass(int id)
         {
             try
             {
@@ -203,6 +203,11 @@ namespace Education.Controllers
                     }
                     item.tiem = item.AuditionDate;
                    
+                }
+
+                if (id!=0)
+                {
+                    list = list.Where(x => x.State == id).ToList();
                 }
                 var ss = new
                 {
