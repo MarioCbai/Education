@@ -116,7 +116,7 @@ namespace EducationDAL.TeachingManagement.Classrooms
                 List<OrdersMod> dd = DapperHelper.Query<OrdersMod>("select Orders.OrderId,AmountActually from AuditionStudent join Audition on AuditionStudent.Audition=Audition.AuditionID join Student on AuditionStudent.Student = Student.StudentId join Organ on Student.Institution = Organ.OrganId join Study on Student.StID = Study.StID  join  Subjects on Audition.SubjectsId = Subjects.SubjectsId join Teacher on Audition.TeacherId = Teacher.TeacherId join HourType on  Audition.HourTypeId = HourType.HourTypeId join BusinessType on Audition.BusinessTypeId = BusinessType.BusinessTypeId  join ClassModel on Audition.ClassModelId = ClassModel.ClassModelId join DropClass on AuditionStudent.ASID = DropClass.ASID  join Orders on   Orders.StudentId = Student.StudentId  ", new { });
                 dt.OrderId = dd[0].OrderId;
                 dt.AmountActually = dd[0].AmountActually;
-                DapperHelper.Execute("insert into Refund values(@OrderId,@AmountActually,@Remark,@proposer,@AuditorDropdateTime,0)", dt);
+                DapperHelper.Execute("insert into Refund values(@OrderId,@AmountActually,@Remark,@proposer,'',@AuditorDropdateTime,0)", dt);
             }
             return i;
         }

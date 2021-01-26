@@ -14,5 +14,7 @@ namespace EducationDAL.StudentManagement.Schedulings
         public abstract List<StudentLian> TrialClasss();
         //修改状态
         public abstract int xiugai(int i,int id);
+        //删除正式课
+        public abstract int shanchu(int id);
     }
 }

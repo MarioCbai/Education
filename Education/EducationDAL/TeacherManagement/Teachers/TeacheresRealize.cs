@@ -9,7 +9,7 @@ namespace EducationDAL.TeacherManagement.Teachers
     //教师方法实现
     public class TeacheresRealize : Teacheres
     {
-        //教学管理显示
+        //教管理显示
         public override List<TeachMod> GetTeaches(string teaname=null,string phone=null, int jigou=0,int sub=0,int bookid=0,int state=0)
         {
             string sql = "select *from Teach tea  join Teacher ter on tea.Teacher=ter.TeacherId " +
@@ -67,7 +67,8 @@ namespace EducationDAL.TeacherManagement.Teachers
         //添加教师管理信息
         public override int AddTeacherMod(TeacherMod t)
         {            
-           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom,@TeacherPwd,@TeacherState, @TeacherCard)",t);
+           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber,@TeacherGraduate, @TeacherCom,@TeacherCard,@TeacherPwd,@TeacherResume,@TeacherState)",
+               new { t.OrganId,t.TeacherName,t.TeacherOuter,t.TeacherSex,t.TeachereducationId,t.TeacherQQ,t.TeacherWeChat,t.ProvinceId,t.City,t.District,t.TeacherTitle,t.TeacherPhone,t.TeacherIDnumber,t.TeacherGraduate,t.TeacherCom, t.TeacherCard, t.TeacherPwd,t.TeacherState, t.TeacherResume});
            return result;
         }
         //删除教师管理信息
