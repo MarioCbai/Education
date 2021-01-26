@@ -34,6 +34,83 @@ namespace Education.Controllers
             _logger = logger;
             _studentManagement = studentManagement;
         }
+        [HttpGet]
+        [Route("/api/ApplyFormallessonsess")]
+        public List<StudentLian> ApplyFormallessonsess(int id)
+        {
+            List<StudentLian> list = _studentManagement.TrialClasss();
+            foreach (var item in list)
+            {
+                if (item.State == 1)
+                {
+                    item.shen = "通过";
+                }
+                else if (item.State == 2)
+                {
+                    item.shen = "驳回";
+                }
+                else
+                {
+                    item.shen = "待审核";
+                }
+
+                if (item.AuditionState == 1)
+                {
+                    item.kezhuang = "已上课";
+                }
+                else if (item.AuditionState == 2)
+                {
+                    item.kezhuang = "待上课";
+                }
+                else
+                {
+                    item.kezhuang = "已取消";
+                }
+                item.tiem = item.AuditionDate;
+
+            }
+            return list.Where(x => x.ASID == id).ToList();
+        }
+
+
+        [HttpGet]
+        [Route("/api/ApplyFormallessonses")]
+        public List<StudentLian> ApplyFormallessonses(int id)
+        {
+            List<StudentLian> list = _studentManagement.TrialClass();
+            foreach (var item in list)
+            {
+                if (item.State == 1)
+                {
+                    item.shen = "通过";
+                }
+                else if (item.State == 2)
+                {
+                    item.shen = "驳回";
+                }
+                else
+                {
+                    item.shen = "待审核";
+                }
+
+                if (item.AuditionState == 1)
+                {
+                    item.kezhuang = "已上课";
+                }
+                else if (item.AuditionState == 2)
+                {
+                    item.kezhuang = "待上课";
+                }
+                else
+                {
+                    item.kezhuang = "已取消";
+                }
+                item.tiem = item.AuditionDate;
+
+            }
+            return list.Where(x=>x.ASID==id).ToList();
+        }
+
         //正式课
         [HttpGet]
         [Route("/api/ApplyFormallessons")]
@@ -81,6 +158,13 @@ namespace Education.Controllers
             return JsonConvert.SerializeObject(ss);
         }
 
+        //修改状态
+        [HttpPost]
+        [Route("/api/xiugai")]
+        public int xiugai(int i,int id)
+        {
+            return _studentManagement.xiugai(i, id);
+        }
 
         // 试听课
         [HttpGet]

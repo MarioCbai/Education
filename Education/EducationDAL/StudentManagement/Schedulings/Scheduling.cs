@@ -12,5 +12,7 @@ namespace EducationDAL.StudentManagement.Schedulings
         public abstract List<StudentLian> TrialClass();
         //正式课
         public abstract List<StudentLian> TrialClasss();
+        //修改状态
+        public abstract int xiugai(int i,int id);
     }
 }
