@@ -66,7 +66,12 @@ namespace IEducation
         int AddPart(PartMod dt);
         //查询用户表
         List<ConsumerMod> Register1(string ConsumerIPhone);
+        //快速导航表显示
+        List<QuickNavigation> QuickNavigation(string QuickIName);
+        //添加快速导航
+        int QuickNavigationadd(string title, string href, string QuickIName);
+        //删除快速导航
+        int QuickNavigationDel(string id);
 
-     
     }
 }

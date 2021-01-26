@@ -15,7 +15,7 @@ namespace EducationMODEL.AuthorityManagement
         public int MenuCRUD { get; set; }//递归
         public int pId { get { return  MenuCRUD; } }
 
-
+        public int value { get { return MenuId; } }
         public List<MenuMod> children { get; set; }//子节点数据
     }
 }

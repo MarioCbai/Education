@@ -67,8 +67,7 @@ namespace EducationDAL.TeacherManagement.Teachers
         //添加教师管理信息
         public override int AddTeacherMod(TeacherMod t)
         {            
-           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom,@TeacherPwd,@TeacherState, @TeacherCard)", 
-           new {t.OrganId,t.TeacherName,t.TeacherOuter, t.TeacherSex, t.TeachereducationId,t.TeacherQQ,t.TeacherWeChat,t.ProvinceId,t.City,t.District,t.TeacherTitle,t.TeacherPhone,t.TeacherIDnumber,t.TeacherGraduate, t.TeacherResume, t.TeacherCom, t.TeacherCard,t.TeacherPwd,t.TeacherState });
+           var result = DapperHelper.Execute("insert into Teacher values(@OrganId,@TeacherName,@TeacherOuter,@TeacherSex,@TeachereducationId,@TeacherQQ,@TeacherWeChat,@ProvinceId, @City, @District, @TeacherTitle, @TeacherPhone, @TeacherIDnumber, @TeacherGraduate, @TeacherResume, @TeacherCom,@TeacherPwd,@TeacherState, @TeacherCard)",t);
            return result;
         }
         //删除教师管理信息
@@ -120,6 +119,11 @@ namespace EducationDAL.TeacherManagement.Teachers
             }
 
             return DapperHelper.Query<TeacherMod>(sql, new {jibie,leibie,iphone,name });
+        }
+        //学历表
+        public override List<TeachereducationMod> GetTeachereducations()
+        {
+            return DapperHelper.Query<TeachereducationMod>("select *from Teachereducation","");
         }
     }
 }

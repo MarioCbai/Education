@@ -158,5 +158,6 @@ namespace EducationBLL
             return institutions.HourTable().ModifyHourTableMods(hour);
         }
         #endregion
+
     }
 }

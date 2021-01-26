@@ -315,8 +315,28 @@ namespace Education.Controllers
             List<ConsumerMod> list = _authorityManagement.Register1(ConsumerIPhone);
             return list;
         }
+        //快速导航表显示
+        [HttpGet]
+        [Route("/AuthorityM/QuickNavigation")]
+        public List<QuickNavigation> QuickNavigation(string QuickIName)
+        {
+            List<QuickNavigation> list= _authorityManagement.QuickNavigation(QuickIName);
 
-
-
+            return list;
+        }
+        //添加快速导航
+        [HttpGet]
+        [Route("/AuthorityM/QuickNavigationadd")]
+        public int QuickNavigationadd(string title,string href,string QuickIName)
+        {
+            return _authorityManagement.QuickNavigationadd(title, href, QuickIName);
+        }
+        //删除快速导航
+        [HttpGet]
+        [Route("/AuthorityM/QuickNavigationDel")]
+        public int QuickNavigationDel(string id)
+        {
+            return _authorityManagement.QuickNavigationDel(id);
+        }
     }
 }

@@ -106,6 +106,13 @@ namespace EducationBLL
             return teachers.Teacheres().TeacherShow( jibie,  leibie,  iphone,  name);
         }
         #endregion
+        #region 学历管理
+        //学历表
+        public List<TeachereducationMod> GetTeachereducations()
+        {
+            return teachers.Teacheres().GetTeachereducations();
+        }
+        #endregion
 
     }
 }

@@ -186,5 +186,20 @@ namespace EducationBLL
              
             throw new NotImplementedException();
         }
+        //快速导航表显示
+        public  List<QuickNavigation> QuickNavigation(string QuickIName)
+        {
+            return authoritys.User().QuickNavigation(QuickIName);
+        }
+        //添加快速导航
+        public  int QuickNavigationadd(string title, string href, string QuickIName)
+        {
+            return authoritys.User().QuickNavigationadd(title, href, QuickIName);
+        }
+        //删除快速导航
+        public  int QuickNavigationDel(string id)
+        {
+            return authoritys.User().QuickNavigationDel(id);                                                                                           
+        }
     }
 }

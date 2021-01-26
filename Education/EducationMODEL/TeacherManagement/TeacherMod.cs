@@ -30,7 +30,7 @@ namespace EducationMODEL.TeacherManagement
 
         public int District { get; set; }//区Id
 
-        public string TeacherTitle { get; set; }//老师职称教师助教1教师2助教
+        public int TeacherTitle { get; set; }//老师职称教师助教1教师2助教
 
         public string TeacherPhone { get; set; }//手机号
 

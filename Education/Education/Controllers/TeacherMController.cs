@@ -55,6 +55,7 @@ namespace Education.Controllers
         public int AddTeacherMod(TeacherMod t)
         {
             _logger.LogInformation("添加教师管理日志");
+            t.TeacherPwd = "123456";
             return _teacherManagement.AddTeacherMod(t);
         }
         //删除教师管理信息
@@ -110,7 +111,7 @@ namespace Education.Controllers
         //教学信息显示
         [Route("api/GetTeaches")]
         [HttpGet]
-        public string GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state, int PageIndex = 1, int PageSize = 1)
+        public string GetTeaches(string teaname, string phone, int jigou, int sub, int bookid, int state, int PageIndex = 1, int PageSize = 10)
         {
             //记录日志
             _logger.LogInformation("教学管理显示");
@@ -215,6 +216,16 @@ namespace Education.Controllers
         {
             _logger.LogInformation("修改认证信息日志");
             return _teacherManagement.ModifyApproveMod(ap);
+        }
+        #endregion
+        #region 学历管理
+        //学历表
+        [Route("api/GetTeachereducations")]
+        [HttpGet]
+        public List<TeachereducationMod> GetTeachereducations()
+        {
+            _logger.LogInformation("学历管理管理日志");
+            return _teacherManagement.GetTeachereducations();
         }
         #endregion
 
