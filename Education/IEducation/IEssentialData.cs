@@ -78,7 +78,7 @@ namespace IEducation
 
         //课时类型管理
         //显示
-        List<GG_SubjectsHourType> ClassTypeShow();
+        List<GG_SubjectsHourType> ClassTypeShow(string name = null, int xk = 0, int? bl = null);
         //添加
         int ClassTypeAdd(SubjectsHourTypeMod h);
         //修改
@@ -93,6 +93,8 @@ namespace IEducation
         public abstract List<SubjectsMod> ClassTypeSelectAll();
         //查询课时表绑定下拉
         public abstract List<HourTypeMod> HourTypeSelectAll();
+        //查询学科表绑定下拉
+        public abstract List<SubjectsMod> SubjectsSelectAll();
 
         //班型管理
         //显示
