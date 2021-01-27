@@ -14,6 +14,12 @@ namespace EducationDAL.EssentialData.TeacherLevels
         {
             return DapperHelper.Execute("insert into Teachinglevel values(@LeveName,@Sort,@Ztai)", t);
         }
+        //删除
+        public override int TeacherLevelDelt(int id)
+        {
+            return DapperHelper.Execute("delete from Teachinglevel where LevelId=@LevelId",new { LevelId =id});
+        }
+
         //教师水平表根据id查询反填
         public override TeachinglevelMod TeacherLevelSelectById(int id)
         {

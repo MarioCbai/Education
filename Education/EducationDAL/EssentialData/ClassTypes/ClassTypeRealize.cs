@@ -17,6 +17,12 @@ namespace EducationDAL.EssentialData.ClassTypes
         {
             return DapperHelper.Execute("insert into SubjectsHourType values(@HourType,@Subjects,@SHState)", h);
         }
+        //删除
+        public override int ClassTypeDelt(int id)
+        {
+            return DapperHelper.Execute("delete from  SubjectsHourType where SHId=@SHId",new { SHId =id});
+        }
+
         //查询科目表绑定下拉
         public override List<SubjectsMod> ClassTypeSelectAll()
         {

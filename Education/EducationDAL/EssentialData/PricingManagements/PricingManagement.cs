@@ -17,6 +17,8 @@ namespace EducationDAL.EssentialData.PricingManagements
         public abstract List<PriceRankMod> SelectPriceRankModAll();
         //查询学段表绑定下拉
         public abstract List<Study> SelectStudyModAll();
+        //删除
+        public abstract int PricingManagementDelt(int id);
         //查询课时表绑定下拉
         public abstract List<HourTypeMod> HourTypeModAll();
         //修改课时单价

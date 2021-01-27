@@ -17,7 +17,8 @@ namespace EducationDAL.EssentialData.TeacherLevels
 
         //教师水平表编辑
         public abstract int TeacherLevelUpt(TeachinglevelMod t);
-
+        //删除
+        public abstract int TeacherLevelDelt(int id);
         //教师水平表状态修改
         public abstract int TeacherLevelZtai(int ztai, int id);
 
