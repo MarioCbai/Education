@@ -243,7 +243,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <param name="studentId"></param>
         /// <returns></returns>
         public override List<StudentViewModel> GetStudentAudition(int studentId)
-        {
+        {  
             string sql = " select * from AuditionStudent a join Student b on a.Student=b.StudentId join Audition c on a.Audition=c.AuditionID where b.StudentId=@StudentId and a.State=1";
             return DapperHelper.Query<StudentViewModel>(sql,new { StudentId=studentId});
         }
