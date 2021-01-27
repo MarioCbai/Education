@@ -12,7 +12,7 @@ namespace EducationDAL.InstitutionManagement.Organs
         //机构管理显示
         public override List<OrganMod> GetOrganMods(string name = null)
         {
-            string sql = "select org.OrganName as aa,* from Organ org join Institutional ins on org.InstitutionalId = ins.InstitutionalId join PriceRank pri on org.PriceRankId = pri.PriceRankId join Sites pro on pro.SiID = org.ProvinceId join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District where 1=1";
+            string sql = "select org.OrganName aa,b.OrganName,* from Organ org full join Organ b on org.OrganId=b.PId  join Institutional ins on org.InstitutionalId = ins.InstitutionalId join PriceRank pri on org.PriceRankId = pri.PriceRankId join Sites pro on pro.SiID = org.ProvinceId join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District where 1=1";
             if (name != null && name != "")
             {
                 sql += " and org.OrganName=@name";
@@ -60,28 +60,7 @@ namespace EducationDAL.InstitutionManagement.Organs
         public override List<OrganMod> GetOrganName()
         {
             return DapperHelper.Query<OrganMod>("select OrganId,OrganName from  Organ", " ");
-        }
-        ////绑定省
-        //public override List<OrganMod> GetProvinceId()
-        //{
-        //    return DapperHelper.Query<OrganMod>("select ProvinceId,pro.SitesName from Organ org" +
-        //        " join Sites pro on pro.SiID = org.ProvinceId" +
-        //        " join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District", "");
-        //}
-        ////绑定市
-        //public override List<OrganMod> GetCity()
-        //{
-        //    return DapperHelper.Query<OrganMod>("select city,city.SitesName from Organ org" +
-        //        " join Sites pro on pro.SiID = org.ProvinceId" +
-        //        " join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District", "");
-        //}
-        ////绑定区
-        //public override List<OrganMod> GetDistrict()
-        //{
-        //    return DapperHelper.Query<OrganMod>("select District,dis.SitesName from Organ org" +
-        //        " join Sites pro on pro.SiID = org.ProvinceId" +
-        //        " join Sites city on city.SiID = org.City join Sites dis on dis.SiID = org.District", "");
-        //}
+        }      
         //地区
         public override List<SitesMod> GetDizhi(int id)
         {
