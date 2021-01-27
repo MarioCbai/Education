@@ -161,6 +161,15 @@ namespace EducationBLL
         {
             return indents.Refund().GetRefunds();
         }
+        /// <summary>
+        /// 根据学生查询出学生有哪些课
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public List<StudentViewModel> GetStudentAudition(int studentId)
+        {
+            return indents.Orders().GetStudentAudition(studentId);
+        }
 
         /// <summary>
         /// 根据参数查询出是意向/正式学员

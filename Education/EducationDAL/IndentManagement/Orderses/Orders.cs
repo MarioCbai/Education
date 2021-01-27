@@ -112,7 +112,12 @@ namespace EducationDAL.IndentManagement.Orderses
         /// </summary>
         /// <returns></returns>
         public abstract List<OrdersMod> GetOrders();
-
+        /// <summary>
+        /// 根据学生查询出学生有哪些课
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public abstract List<StudentViewModel> GetStudentAudition(int studentId);
 
 
     }

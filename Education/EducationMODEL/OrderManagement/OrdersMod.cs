@@ -54,5 +54,6 @@ namespace EducationMODEL.OrderManagement
         public decimal PreferentialPrice { get; set; }//优惠价
 
         public string OrdersRemark { get; set; }//备注
+        public int AuditionId { get; set; }   //课表外键
     }
 }

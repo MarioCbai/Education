@@ -68,5 +68,45 @@ namespace EducationMODEL.linkModel
         public DateTime OrganBeginTime { get; set; }//创建时间 获取当前时间
 
         public int PId { get; set; }//递归表编号PId上级机构
+        public int AuditionID { get; set; }//主键
+
+        public string AuditionType { get; set; }//课程类别 试听课和正式课
+
+        public int Grade { get; set; }//年级（外键）
+
+        public string AuditionClass { get; set; }//上课主题
+
+        public string AuditionDate { get; set; }//上课日期
+
+        public string AuditionTime { get; set; }//上课时间
+
+        public int AuditionState { get; set; }//课堂状态 ,1已上课，2已排课，3以备课，4以上课，5未上课，6已取消，7以退课,8返还课
+
+        public string AuditionRemark { get; set; }//备注
+
+        public int TeacherId { get; set; }//教师
+
+        public int SubjectsId { get; set; }//学科
+
+        public int HourTypeId { get; set; }//课时类型
+
+        public int BusinessTypeId { get; set; }//业务类型 线上线下
+
+        public int ClassModelId { get; set; }//班型表
+
+        public int ASID { get; set; }//主键id
+
+        public int Audition { get; set; }//课程表（外键）
+
+        public int Student { get; set; }//学生表（外键）
+        public DateTime AuditTime { get; set; }//审核时间
+        public int State { get; set; }
+
+
+
+
+
+
+
     }
 }

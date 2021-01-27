@@ -37,6 +37,7 @@ namespace EducationMODEL.linkModel
         public DateTime AuditDateTime { get; set; }//审核时间
 
         public int PriceRankId { get; set; }//价格级别表外键
+        public int AuditionId { get; set; }   //课表外键
 
         public int HourTypeId { get; set; }//课时类型表外键
 

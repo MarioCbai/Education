@@ -103,7 +103,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override List<StudentViewModel> GetStudents(int studentKind = -1)
         {
-            string sql = "select * from Student student join Study study on student.StID = study.StID join Organ organ on student.Institution = organ.OrganId where 1 = 1 ";
+            string sql = "select * from Student student join Study study on student.StID = study.StID join Organ organ on student.Institution = organ.OrganId where 1 = 1 and student.StudentId in (select Student from AuditionStudent)";
             //判断传过来的参数
             if (studentKind>-1)
             {
@@ -227,7 +227,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override int AddOrders(OrdersMod orders)
         {
-            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@Auditor,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
+            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@Auditor,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark,@AuditionId)", orders);
         }
         /// <summary>
         /// 本月订单
@@ -236,6 +236,16 @@ namespace EducationDAL.IndentManagement.Orderses
         public override List<OrdersMod> GetOrders()
         {
             return DapperHelper.Query<OrdersMod>("select * from Orders where datediff(Month,OrderTime,getdate())=0 and OrderStatus=2", new { });
+        }
+        /// <summary>
+        /// 根据学生查询出学生有哪些课
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public override List<StudentViewModel> GetStudentAudition(int studentId)
+        {
+            string sql = " select * from AuditionStudent a join Student b on a.Student=b.StudentId join Audition c on a.Audition=c.AuditionID where b.StudentId=@StudentId and a.State=1";
+            return DapperHelper.Query<StudentViewModel>(sql,new { StudentId=studentId});
         }
     }
 }

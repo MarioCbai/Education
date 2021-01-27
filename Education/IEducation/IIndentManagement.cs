@@ -146,7 +146,12 @@ namespace IEducation
         /// </summary>
         /// <returns></returns>
         public List<RefundMod> GetRefunds();
-
+        /// <summary>
+        /// 根据学生查询出学生有哪些课
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public  List<StudentViewModel> GetStudentAudition(int studentId);
 
     }
 }

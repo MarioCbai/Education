@@ -296,7 +296,19 @@ namespace Education.Controllers
             return JsonConvert.SerializeObject(list);
         }
 
-
+        /// <summary>
+        /// 根据学生查询出学生有哪些课
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        [Route("/api/GetStudentAudition")]
+        [HttpGet]
+        public string GetStudentAudition(int studentId)
+        {
+            _logger.LogInformation("根据学生查询出学生有哪些课");
+            List<StudentViewModel> list = _indentManagement.GetStudentAudition(studentId);
+            return JsonConvert.SerializeObject(list);
+        }
 
 
 
