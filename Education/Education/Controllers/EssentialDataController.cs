@@ -401,9 +401,9 @@ namespace Education.Controllers
         /// <returns></returns>
         [Route("/api/ClassTypeShow")]
         [HttpGet]
-        public string ClassTypeShow()
+        public string ClassTypeShow(string name = null, int xk = 0, int? bl = null)
         {
-            List<GG_SubjectsHourType> ss = _essentialData.ClassTypeShow();
+            List<GG_SubjectsHourType> ss = _essentialData.ClassTypeShow(name,xk,bl);
             var date = new
             {
                 code = 0,
@@ -489,7 +489,16 @@ namespace Education.Controllers
         {
             return JsonConvert.SerializeObject(_essentialData.HourTypeSelectAll());
         }
-
+        /// <summary>
+        /// 查询学科表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        [Route("/api/SubjectsSelectAll")]
+        [HttpGet]
+        public string SubjectsSelectAll()
+        {
+            return JsonConvert.SerializeObject(_essentialData.SubjectsSelectAll());
+        }
 
 
         //班型管理

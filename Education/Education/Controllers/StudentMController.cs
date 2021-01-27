@@ -450,7 +450,6 @@ namespace Education.Controllers
             try
             {
                 ss.StudentPwd = ss.StudentIphone.Substring(5);
-                ss.Counselor = "ccc";
                 ss.StudentKind = 0;
                 return _studentManagement.StudentAdd(ss);
             }
