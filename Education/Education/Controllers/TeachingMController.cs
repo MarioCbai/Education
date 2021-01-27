@@ -135,7 +135,7 @@ namespace Education.Controllers
         [HttpPost]
         [Route("/TeachingM/DropClass")]
         public int DropClass(DropClassMod DropClass)
-        {
+         {
             int i = _teachingManagement.DropClass(DropClass);
             return i;
         }

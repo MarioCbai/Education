@@ -74,21 +74,21 @@ namespace EducationBLL
         {
             return institutions.OrganesType().GetInstitutionalMods();
         }
-        //绑定省
-        public List<OrganMod> GetProvinceId()
-        {
-            return institutions.Organ().GetProvinceId();
-        }
-        //绑定市
-        public List<OrganMod> GetCity()
-        {
-            return institutions.Organ().GetCity();
-        }
-        //绑定区
-        public List<OrganMod> GetDistrict()
-        {
-            return institutions.Organ().GetDistrict();
-        }
+        ////绑定省
+        //public List<OrganMod> GetProvinceId()
+        //{
+        //    return institutions.Organ().GetProvinceId();
+        //}
+        ////绑定市
+        //public List<OrganMod> GetCity()
+        //{
+        //    return institutions.Organ().GetCity();
+        //}
+        ////绑定区
+        //public List<OrganMod> GetDistrict()
+        //{
+        //    return institutions.Organ().GetDistrict();
+        //}
         #endregion
         #region 班级管理
         //班级管理显示
@@ -156,6 +156,12 @@ namespace EducationBLL
         public int ModifyHourTableMods(HourTableMod hour)
         {
             return institutions.HourTable().ModifyHourTableMods(hour);
+        }
+        #endregion
+        #region 地址
+        public List<SitesMod> GetDizhi(int id)
+        {
+            return institutions.Organ().GetDizhi(id);
         }
         #endregion
 

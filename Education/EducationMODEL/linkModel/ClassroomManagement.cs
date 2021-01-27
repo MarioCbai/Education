@@ -164,6 +164,6 @@ namespace EducationMODEL.linkModel
         public string FAFStype { get; set; } //申请类型
         public string Audittime { get; set; }  //申请时间
 
-
+        public int StudyId { get; set; }
     }
 }

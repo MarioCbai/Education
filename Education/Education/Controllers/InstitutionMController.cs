@@ -157,30 +157,30 @@ namespace Education.Controllers
             _logger.LogInformation("机构类型显示");
             return JsonConvert.SerializeObject(_institutionManagement.GetInstitutionalMods());
         }
-        //绑定省
-        [Route("api/GetProvinceId")]
-        [HttpGet]
-        public string GetProvinceId()
-        {
-            _logger.LogInformation("省");
-            return JsonConvert.SerializeObject(_institutionManagement.GetProvinceId());
-        }
-        //绑定市
-        [Route("api/GetCity")]
-        [HttpGet]
-        public string GetCity()
-        {
-            _logger.LogInformation("市");
-            return JsonConvert.SerializeObject(_institutionManagement.GetCity());
-        }
-        //绑定区
-        [Route("api/GetDistrict")]
-        [HttpGet]
-        public string GetDistrict()
-        {
-            _logger.LogInformation("区");
-            return JsonConvert.SerializeObject(_institutionManagement.GetDistrict());
-        }
+        ////绑定省
+        //[Route("api/GetProvinceId")]
+        //[HttpGet]
+        //public string GetProvinceId()
+        //{
+        //    _logger.LogInformation("省");
+        //    return JsonConvert.SerializeObject(_institutionManagement.GetProvinceId());
+        //}
+        ////绑定市
+        //[Route("api/GetCity")]
+        //[HttpGet]
+        //public string GetCity()
+        //{
+        //    _logger.LogInformation("市");
+        //    return JsonConvert.SerializeObject(_institutionManagement.GetCity());
+        //}
+        ////绑定区
+        //[Route("api/GetDistrict")]
+        //[HttpGet]
+        //public string GetDistrict()
+        //{
+        //    _logger.LogInformation("区");
+        //    return JsonConvert.SerializeObject(_institutionManagement.GetDistrict());
+        //}
         #endregion
         #region 班级管理
         [Route("api/GetClassRooms")]
@@ -313,6 +313,15 @@ namespace Education.Controllers
         {
             _logger.LogInformation("修改课时包数据");            
             return _institutionManagement.ModifyHourTableMods(hour);
+        }
+        #endregion
+        #region 地址
+        [Route("api/GetDizhi")]
+        [HttpGet]
+        public List<SitesMod> GetDizhi(int id)
+        {
+            _logger.LogInformation("地址显示");
+            return _institutionManagement.GetDizhi(id);
         }
         #endregion
     }
