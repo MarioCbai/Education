@@ -45,6 +45,8 @@ namespace EducationMODEL.linkModel
         public int PricingId { get; set; }//定价管理表外键(课时单价)
 
         public int PeriodNum { get; set; }//课时数
+        public string Auditor { get; set; } //审核人
+        public string Verifier { get; set; }  //审核人
 
         public int ComplimentaryPeriod { get; set; }//赠送课时
 

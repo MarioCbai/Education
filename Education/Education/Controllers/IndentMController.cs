@@ -276,6 +276,7 @@ namespace Education.Controllers
             orders.OrderTime = DateTime.Now;   //下单时间
             orders.AuditDateTime = DateTime.Now;   //审核时间
             orders.SubjectsId = 1;   //科目表主键
+            orders.Auditor = "";  //审核人
             _logger.LogInformation("添加订单信息");
             int row = _indentManagement.AddOrders(orders);
             return row;
@@ -354,6 +355,7 @@ namespace Education.Controllers
             refund.RefundTime = DateTime.Now;
             refund.Refundperson = "李四";
             refund.RefundState = 0;
+            refund.Verifier = "";  //审核人
             int row = _indentManagement.AddRefund(refund);
             return row;
         }

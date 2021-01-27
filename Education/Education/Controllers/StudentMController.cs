@@ -175,7 +175,6 @@ namespace Education.Controllers
                 count = list.Count,
                 data = list
             };
-
             return JsonConvert.SerializeObject(ss);
         }
 
