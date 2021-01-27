@@ -60,7 +60,7 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <returns></returns>
         public override int AddRefund(RefundMod refund)
         {
-            return DapperHelper.Execute("insert into Refund values(@OrderId,@RefundAmount,@RefundRemark,@Refundperson,@RefundTime,@RefundState)", refund);
+            return DapperHelper.Execute("insert into Refund values(@OrderId,@RefundAmount,@RefundRemark,@Refundperson,@Verifier,@RefundTime,@RefundState)", refund);
         }
         /// <summary>
         /// 退款商品的审核
@@ -71,7 +71,7 @@ namespace EducationDAL.IndentManagement.Refunds
         /// <returns></returns>
         public override int EditRefund(RefundMod refund)
         {
-            return DapperHelper.Execute("update Refund Set RefundAmount=@RefundAmount,RefundRemark=@RefundRemark,RefundState=@RefundState where RefundId=@RefundId", refund);
+            return DapperHelper.Execute("update Refund Set RefundAmount=@RefundAmount,RefundRemark=@RefundRemark,Verifier=@Verifier,RefundState=@RefundState where RefundId=@RefundId", refund);
         }
         /// <summary>
         /// 首页显示课时小于十五的学生信息

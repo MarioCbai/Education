@@ -35,12 +35,12 @@ namespace IEducation
         List<OrganMod> Gets(int id);
         //机构类型表
         List<InstitutionalMod> GetInstitutionalMods();
-        //绑定省
-        List<OrganMod> GetProvinceId();
-        //绑定市
-        List<OrganMod> GetCity();
-        //绑定区
-        List<OrganMod> GetDistrict();
+        ////绑定省
+        //List<OrganMod> GetProvinceId();
+        ////绑定市
+        //List<OrganMod> GetCity();
+        ////绑定区
+        //List<OrganMod> GetDistrict();
         #endregion
         #region 班级管理
         //班级管理显示
@@ -73,6 +73,9 @@ namespace IEducation
         HourTableMod ModifyIdHourTableMods(int id);
         //课时包修改
         int ModifyHourTableMods(HourTableMod hour);
+        #endregion
+        #region 地址
+        List<SitesMod> GetDizhi(int id);
         #endregion
     }
 }

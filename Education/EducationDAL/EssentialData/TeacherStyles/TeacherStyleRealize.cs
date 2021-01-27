@@ -36,6 +36,12 @@ namespace EducationDAL.EssentialData.TeacherStyles
         {
             return DapperHelper.Execute("update TeachingStyle set Ztai=@Ztai where TeachingStyleId=@TeachingStyleId", new { Ztai = ztai, TeachingStyleId = id });
         }
+        //删除
+        public override int TTeacherStyleDelt(int id)
+        {
+            return DapperHelper.Execute("delete from TeachingStyle where TeachingStyleId=@TeachingStyleId",new { TeachingStyleId=id });
+        }
+
         //教师教学风格修改
         public override int TTeacherStyleUpt(TeachingStyleMod t)
         {

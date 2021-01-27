@@ -35,6 +35,12 @@ namespace Education.Controllers
             _studentManagement = studentManagement;
         }
 
+        [HttpPost]
+        [Route("/api/shanchu")]
+        public int shanchu(int id)
+        {
+            return _studentManagement.shanchu(id);
+        }
 
 
         [HttpGet]
@@ -117,7 +123,7 @@ namespace Education.Controllers
         //正式课
         [HttpGet]
         [Route("/api/ApplyFormallessons")]
-        public string ApplyFormallessons()
+        public string ApplyFormallessons(string zhuti, string name, int nian)
         {
             List<StudentLian> list = _studentManagement.TrialClasss();
             foreach (var item in list)
@@ -150,6 +156,18 @@ namespace Education.Controllers
                 item.tiem = item.AuditionDate;
 
             }
+            if (zhuti != "" && zhuti!=null)
+            {
+                list = list.Where(x => x.AuditionClass.Contains(zhuti)).ToList();
+            }
+            if (name != "" && name!=null)
+            {
+                list = list.Where(x => x.TeacherName.Contains(name)).ToList();
+            }
+            if (nian != 0)
+            {
+                list = list.Where(x => x.Grade == nian).ToList();
+            }
             var ss = new
             {
                 code = 0,
@@ -157,7 +175,6 @@ namespace Education.Controllers
                 count = list.Count,
                 data = list
             };
-
             return JsonConvert.SerializeObject(ss);
         }
 
@@ -172,7 +189,7 @@ namespace Education.Controllers
         // 试听课
         [HttpGet]
         [Route("/api/TrialClass")]
-        public string TrialClass(int id)
+        public string TrialClass(int id,string zhuti,string name,int nian)
         {
             try
             {
@@ -211,6 +228,18 @@ namespace Education.Controllers
                 if (id!=0)
                 {
                     list = list.Where(x => x.State == id).ToList();
+                }
+                if (zhuti!="" && zhuti!=null)
+                {
+                    list = list.Where(x => x.AuditionClass.Contains(zhuti)).ToList();
+                }
+                if (name!="" && name!=null)
+                {
+                    list = list.Where(x => x.TeacherName.Contains(name)).ToList();
+                }
+                if (nian!=0)
+                {
+                    list = list.Where(x => x.Grade == nian).ToList();
                 }
                 var ss = new
                 {
@@ -421,7 +450,6 @@ namespace Education.Controllers
             try
             {
                 ss.StudentPwd = ss.StudentIphone.Substring(5);
-                ss.Counselor = "ccc";
                 ss.StudentKind = 0;
                 return _studentManagement.StudentAdd(ss);
             }

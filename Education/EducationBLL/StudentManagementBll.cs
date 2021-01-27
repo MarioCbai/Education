@@ -78,6 +78,12 @@ namespace EducationBLL
             return students.Students().SelStudent(id);
         }
 
+        //删除正式课
+        public int shanchu(int id)
+        {
+            return students.Scheduling().shanchu(id);
+        }
+
         //正式学员显示
         public List<StudentLian> ShowOfficial(int jigou, string zi, string zhi, int nian, string name, string iphone)
         {

@@ -41,5 +41,10 @@ namespace EducationDAL.EssentialData.TeacherSorts
         {
             return DapperHelper.Execute("update TeacherType set Ztai=@Ztai where TeacherTypeId=@TeacherTypeId", new { Ztai = ztai, TeacherTypeId = id });
         }
+        //删除
+        public override int TeacherSortDelt(int id)
+        {
+            return DapperHelper.Execute("delete from TeacherType where TeacherTypeId=@TeacherTypeId",new { TeacherTypeId =id});
+        }
     }
 }

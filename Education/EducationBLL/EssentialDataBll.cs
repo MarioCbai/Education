@@ -57,6 +57,15 @@ namespace EducationBLL
             return essentials.Source().SourceUpt(s);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int SourceDelt(int id)
+        {
+            return essentials.Source().SourceDelt(id);
+        }
+        /// <summary>
         /// 来源表修改状态
         /// </summary>
         /// <param name="ztai"></param>
@@ -99,6 +108,15 @@ namespace EducationBLL
             return essentials.TeacherSort().TeacherSortUpt(t);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int TeacherSortDelt(int id)
+        {
+            return essentials.TeacherSort().TeacherSortDelt(id);
+        }
+        /// <summary>
         /// 教师类别修改状态
         /// </summary>
         /// <param name="ztai"></param>
@@ -128,6 +146,15 @@ namespace EducationBLL
         public TeachinglevelMod TeacherLevelSelectById(int id)
         {
             return essentials.TeacherLevel().TeacherLevelSelectById(id);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int TeacherLevelDelt(int id)
+        {
+            return essentials.TeacherLevel().TeacherLevelDelt(id);
         }
         /// <summary>
         /// 教师水平表显示
@@ -186,6 +213,15 @@ namespace EducationBLL
             return essentials.TeacherStyle().TeacherStyleShow();
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int TTeacherStyleDelt(int id)
+        {
+            return essentials.TeacherStyle().TTeacherStyleDelt(id);
+        }
+        /// <summary>
         /// 教师风格修改状态
         /// </summary>
         /// <param name="ztai"></param>
@@ -230,9 +266,18 @@ namespace EducationBLL
         /// 课时表显示
         /// </summary>
         /// <returns></returns>
-        public List<GG_SubjectsHourType> ClassTypeShow()
+        public List<GG_SubjectsHourType> ClassTypeShow(string name = null, int xk = 0, int? bl = null)
         {
-            return essentials.ClassType().ClassTypeShow();
+            return essentials.ClassType().ClassTypeShow(name,xk,bl);
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int ClassTypeDelt(int id)
+        {
+            return essentials.ClassType().ClassTypeDelt(id);
         }
         /// <summary>
         /// 课时表修改
@@ -263,7 +308,14 @@ namespace EducationBLL
         {
             return essentials.ClassType().HourTypeSelectAll();
         }
-
+        /// <summary>
+        /// 查询学科表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        public List<SubjectsMod> SubjectsSelectAll()
+        {
+            return essentials.ClassType().SubjectsSelectAll();
+        }
 
         /// <summary>
         /// 班型显示
@@ -307,6 +359,15 @@ namespace EducationBLL
             return essentials.PriceLevel().PriceLevelUpt(p);
         }
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int PriceLevelDelt(int id)
+        {
+            return essentials.PriceLevel().PriceLevelDelt(id);
+        }
+        /// <summary>
         /// 价格级别修改状态
         /// </summary>
         /// <param name="ztai"></param>
@@ -336,6 +397,15 @@ namespace EducationBLL
         {
             return essentials.PricingManagement().PricingManagementShow(hourprice, pricehour, name, price, studying, hour);
         }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int PricingManagementDelt(int id)
+        {
+            return essentials.PricingManagement().PricingManagementDelt(id);
+        }
         //查询价格级别表绑定下拉
         public List<PriceRankMod> SelectPriceRankModAll()
         {
@@ -357,5 +427,7 @@ namespace EducationBLL
         {
             return essentials.PricingManagement().PricingManagementUpt(m);
         }
+
+        
     }
 }

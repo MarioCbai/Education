@@ -18,7 +18,8 @@ namespace EducationDAL.EssentialData.TeacherStyles
 
         //教师风格编辑
         public abstract int TTeacherStyleUpt(TeachingStyleMod t);
-
+        //删除
+        public abstract int TTeacherStyleDelt(int id);
         //教师风格状态修改
         public abstract int TeacherStyleZtai(int ztai, int id);
 

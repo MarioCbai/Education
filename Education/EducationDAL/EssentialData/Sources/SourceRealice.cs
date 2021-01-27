@@ -14,6 +14,12 @@ namespace EducationDAL.EssentialData.Sources
         {
             return DapperHelper.Execute("insert into Source values(@SourceName,@Sort,@Ztai)",s);
         }
+        //删除
+        public override int SourceDelt(int id)
+        {
+            return DapperHelper.Execute("delete from Source where SourceId=@SourceId",new { SourceId =id});
+        }
+
         //来源表根据id查询反填
         public override SourceMod SourceSelectById(int id)
         {

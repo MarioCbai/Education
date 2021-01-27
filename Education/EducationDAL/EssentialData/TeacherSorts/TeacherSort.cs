@@ -17,7 +17,8 @@ namespace EducationDAL.EssentialData.TeacherSorts
 
         //教师类别编辑
         public abstract int TeacherSortUpt(TeacherTypeMod t);
-
+        //删除
+        public abstract int TeacherSortDelt(int id);
         //教师类别状态修改
         public abstract int TeacherSortZtai(int ztai, int id);
 

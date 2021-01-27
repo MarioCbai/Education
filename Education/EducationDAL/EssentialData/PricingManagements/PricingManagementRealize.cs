@@ -15,6 +15,11 @@ namespace EducationDAL.EssentialData.PricingManagements
         {
             return DapperHelper.Query<HourTypeMod>("select * from HourType", "");
         }
+        //删除
+        public override int PricingManagementDelt(int id)
+        {
+            return DapperHelper.Execute("delete from Pricing where PricingId=@PricingId",new { PricingId =id});
+        }
 
         public override List<Subjects_HourT_Mod> PricingManagementShow(int ? hourprice=null, int ? pricehour=null,string name=null,int price =0, int studying =0, int hour =0)
         {
