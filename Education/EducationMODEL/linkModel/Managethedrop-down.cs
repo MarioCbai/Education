@@ -24,9 +24,12 @@ namespace EducationMODEL.linkModel
         //年级  Study
         public int StID { get; set; }
         public string StudyName { get; set; }     //年级名称
+        public int StudyId { get; set; }
         //学科//科目  Subjects
         public int SubjectsId { get; set; }
         public string SubjectsName { get; set; }   //科目名称    
+
+        
 
 
 
