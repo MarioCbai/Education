@@ -18,7 +18,6 @@ namespace EducationDAL.StudentManagement.Studentes
         {
             return DapperHelper.Query<SitesMod>("select * from Sites where SitesId=@id", new { id });
         }
-
         //来源查询
         public override List<SourceMod> LaiShow()
         {

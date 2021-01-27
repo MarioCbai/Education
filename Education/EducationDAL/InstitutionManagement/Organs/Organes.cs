@@ -31,11 +31,12 @@ namespace EducationDAL.InstitutionManagement.Organs
         public abstract List<OrganMod> Gets(int id);
         //绑定上级机构
         public abstract List<OrganMod> GetOrganName();
-        //绑定省
-        public abstract List<OrganMod> GetProvinceId();
-        //绑定市
-        public abstract List<OrganMod> GetCity();
-        //绑定区
-        public abstract List<OrganMod> GetDistrict();
+        ////绑定省
+        //public abstract List<OrganMod> GetProvinceId();
+        ////绑定市
+        //public abstract List<OrganMod> GetCity();
+        ////绑定区
+        //public abstract List<OrganMod> GetDistrict();
+        public abstract List<SitesMod> GetDizhi(int id);
     }
 }
