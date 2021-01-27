@@ -156,11 +156,11 @@ namespace Education.Controllers
                 item.tiem = item.AuditionDate;
 
             }
-            if (zhuti != "")
+            if (zhuti != "" && zhuti!=null)
             {
                 list = list.Where(x => x.AuditionClass.Contains(zhuti)).ToList();
             }
-            if (name != "")
+            if (name != "" && name!=null)
             {
                 list = list.Where(x => x.TeacherName.Contains(name)).ToList();
             }
@@ -230,11 +230,11 @@ namespace Education.Controllers
                 {
                     list = list.Where(x => x.State == id).ToList();
                 }
-                if (zhuti!="")
+                if (zhuti!="" && zhuti!=null)
                 {
                     list = list.Where(x => x.AuditionClass.Contains(zhuti)).ToList();
                 }
-                if (name!="")
+                if (name!="" && name!=null)
                 {
                     list = list.Where(x => x.TeacherName.Contains(name)).ToList();
                 }
@@ -451,7 +451,6 @@ namespace Education.Controllers
             try
             {
                 ss.StudentPwd = ss.StudentIphone.Substring(5);
-                ss.Counselor = "ccc";
                 ss.StudentKind = 0;
                 return _studentManagement.StudentAdd(ss);
             }
