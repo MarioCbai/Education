@@ -29,6 +29,7 @@ namespace EducationMODEL.OrderManagement
         public int StateOfPayment { get; set; }//支付状态(1:已支付;2:已返还,3未支付)
 
         public string buyer { get; set; }//下单人
+        public string Auditor { get; set; } //审核人
 
         public int RecursionId { get; set; }//机构递归表外键
 

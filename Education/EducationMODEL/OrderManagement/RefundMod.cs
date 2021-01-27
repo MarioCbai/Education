@@ -16,6 +16,7 @@ namespace EducationMODEL.OrderManagement
 
         public string Refundperson { get; set; }//申请人
 
+        public string Verifier { get; set; }  //审核人
         public DateTime RefundTime { get; set; }//申请退款时间
 
         public int RefundState { get; set; }//退款状态(0未退款,1部分退款,2全部退款)

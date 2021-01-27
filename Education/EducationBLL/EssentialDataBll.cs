@@ -266,9 +266,9 @@ namespace EducationBLL
         /// 课时表显示
         /// </summary>
         /// <returns></returns>
-        public List<GG_SubjectsHourType> ClassTypeShow()
+        public List<GG_SubjectsHourType> ClassTypeShow(string name = null, int xk = 0, int? bl = null)
         {
-            return essentials.ClassType().ClassTypeShow();
+            return essentials.ClassType().ClassTypeShow(name,xk,bl);
         }
         /// <summary>
         /// 删除
@@ -308,7 +308,14 @@ namespace EducationBLL
         {
             return essentials.ClassType().HourTypeSelectAll();
         }
-
+        /// <summary>
+        /// 查询学科表绑定下拉
+        /// </summary>
+        /// <returns></returns>
+        public List<SubjectsMod> SubjectsSelectAll()
+        {
+            return essentials.ClassType().SubjectsSelectAll();
+        }
 
         /// <summary>
         /// 班型显示
