@@ -277,6 +277,8 @@ namespace Education.Controllers
             orders.AuditDateTime = DateTime.Now;   //审核时间
             orders.SubjectsId = 1;   //科目表主键
             orders.Auditor = "";  //审核人
+            orders.AmountActually = (orders.AmountPayable - orders.PreferentialPrice);
+
             _logger.LogInformation("添加订单信息");
             int row = _indentManagement.AddOrders(orders);
             return row;

@@ -156,7 +156,7 @@ namespace EducationDAL.IndentManagement.Orderses
         public override int UpdateOrderStatus(OrdersMod orders)
         {
             int b = 0;
-            int a = DapperHelper.Execute("update Orders Set AuditDateTime=@AuditDateTime,OrdersRemark=@OrdersRemark,OrderStatus=@OrderStatus where OrderId=@OrderId", orders);
+            int a = DapperHelper.Execute("update Orders Set AuditDateTime=@AuditDateTime,OrdersRemark=@OrdersRemark,Auditor=@Auditor,OrderStatus=@OrderStatus where OrderId=@OrderId", orders);
             int id = DapperHelper.QueryFirst<StudentMod>("select StudentId from Orders where OrderStatus=2 and OrderId = @OrderId", new { orders.OrderId }).StudentId;
             if (id!=0)
             {
@@ -227,7 +227,7 @@ namespace EducationDAL.IndentManagement.Orderses
         /// <returns></returns>
         public override int AddOrders(OrdersMod orders)
         {
-            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
+            return DapperHelper.Execute(" insert into Orders values(@OrderNo,@StudentId,@BusinessTypeId,@ClassModelId,@StID,@OrderAmount,@AmountPayable,@AmountActually,@OrderStatus,@StateOfPayment,@buyer,@Auditor,@RecursionId,@OrderTime,@AuditDateTime,@PriceRankId,@HourTypeId,@SubjectsId,@PricingId,@PeriodNum,@ComplimentaryPeriod,@CommodityPrice,@PreferentialPrice,@OrdersRemark)", orders);
         }
         /// <summary>
         /// 本月订单
