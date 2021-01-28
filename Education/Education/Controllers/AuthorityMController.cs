@@ -20,14 +20,15 @@ namespace Education.Controllers
     [ApiController]
     public class AuthorityMController : ControllerBase
     {
-        private readonly ILogger<IndentMController> _logger;
+        private readonly ILogger<TeacherMController> _logger;
         private IAuthorityManagement _authorityManagement;
         /// <summary>
-        /// 连接口
+        /// 教师管理控制器接口
         /// </summary>
-        /// <param name="authorityManagement"></param>
-        public AuthorityMController(IAuthorityManagement authorityManagement)
+        /// <param name="teacherManagement"></param>
+        public AuthorityMController(IAuthorityManagement authorityManagement, ILogger<TeacherMController> logger)
         {
+            _logger = logger;
             _authorityManagement = authorityManagement;
         }
 
