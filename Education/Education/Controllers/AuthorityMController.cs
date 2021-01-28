@@ -81,7 +81,7 @@ namespace Education.Controllers
         [Route("/api/PartSel")]
         public PartMod PartSel(int id)
         {
-            _logger.LogInformation("查看角色");
+            
             return _authorityManagement.SelPart(id);
         }
 
