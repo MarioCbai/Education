@@ -92,7 +92,7 @@ namespace EducationDAL.TeacherManagement.Teachers
         //修改教师管理状态
         public override int ModifyTeacherState(int status, int teaid)
         {
-            return DapperHelper.Execute("update Teacher set TeacherState=@TeacherState  where TeacherId=@TeacherId", new { TeacherState = status, TeacherId = teaid });
+            return DapperHelper.Execute("update Teacher set TeacherState=@TeacherState where TeacherId=(select ter.TeacherId from Teach tea join Teacher ter on tea.Teacher = ter.TeacherId where TeachId=@TeacherId)", new { TeacherState = status, TeacherId = teaid });
         }
 
         /// <summary>
