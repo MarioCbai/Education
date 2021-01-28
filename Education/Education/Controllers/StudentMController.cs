@@ -35,6 +35,13 @@ namespace Education.Controllers
             _studentManagement = studentManagement;
         }
 
+        //删除学员
+        [HttpPost]
+        [Route("/api/DelStudent")]
+        public int DelStudent(int id) {
+            return _studentManagement.DelStudent(id);
+        }
+
         [HttpPost]
         [Route("/api/shanchu")]
         public int shanchu(int id)

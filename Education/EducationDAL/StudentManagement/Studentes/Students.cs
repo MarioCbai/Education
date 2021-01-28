@@ -13,6 +13,8 @@ namespace EducationDAL.StudentManagement.Studentes
     public abstract class Students
     {
 
+        //删除学员
+        public abstract int DelStudent(int id); 
 
         //学员详细信息
         public abstract StudentLian SelStudent(int id);
