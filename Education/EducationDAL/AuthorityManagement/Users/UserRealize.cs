@@ -12,7 +12,8 @@ namespace EducationDAL.AuthorityManagement.Users
         //登录
         public override List<ConsumerMod> Register(string ConsumerIPhone, string ConsumerPwd)
         {
-            return DapperHelper.Query<ConsumerMod>("select *from Consumer where ConsumerIPhone=@ConsumerIPhone	and ConsumerPwd=@ConsumerPwd", new { ConsumerIPhone = ConsumerIPhone, ConsumerPwd = ConsumerPwd });
+           return DapperHelper.Query<ConsumerMod>("select *from Consumer join ConsumerPart on Consumer.ConsumerId=ConsumerPart.Consumer where CPState=1 and ConsumerIPhone=@ConsumerIPhone	and ConsumerPwd=@ConsumerPwd", new { ConsumerIPhone = ConsumerIPhone, ConsumerPwd = ConsumerPwd });
+                     
         }
         //查询用户名
         public override List<ConsumerMod> Register2(string ConsumerIPhone)
