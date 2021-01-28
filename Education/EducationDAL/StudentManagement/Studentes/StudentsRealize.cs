@@ -180,5 +180,29 @@ namespace EducationDAL.StudentManagement.Studentes
         {
             return DapperHelper.QueryFirst<StudentLian>("select * from Student a join Organ b on a.Institution=b.OrganId join Study c on c.StID=a.StID where a.StudentId=@id", new { id });
         }
+
+        //删除学员
+        public override int DelStudent(int id)
+        {
+            try
+            {
+                int a = DapperHelper.Execute("delete Recharge where Student = @id", new { id });
+                int b = DapperHelper.Execute("delete AuditTable where Student = @id", new { id });
+                int c = DapperHelper.Execute("delete StudentTeacher where Student=@id", new { id });
+                int d = DapperHelper.Execute("delete StudentTeacher where Student=@id", new { id });
+                int e = DapperHelper.Execute("delete PatriarchStudent where Student=@id", new { id });
+                int f = DapperHelper.Execute("delete Grade where StudentId=@id", new { id });
+                int g = DapperHelper.Execute("delete Orders where StudentId=@id", new { id });
+                int h = DapperHelper.Execute("delete AuditionStudent where Student=@id", new { id });
+                int i = DapperHelper.Execute("delete Student where StudentId=@id", new { id });
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+       
+        }
     }
 }

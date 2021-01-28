@@ -101,7 +101,7 @@ namespace EducationDAL.TeacherManagement.Teachers
         /// <returns></returns>
         public override List<TeacherMod> TeacherShow(int jibie, int leibie, string iphone, string name)
         {
-            string sql = "select * from Teacher a join Teach b on a.TeacherId=b.Teacher join TeacherType c on b.TeacherType=c.TeacherTypeId join Teachinglevel d on d.LevelId=b.TeacherRank where 1=1";
+            string sql = "select * from Teacher a join Teach b on a.TeacherId=b.Teacher join TeacherType c on b.TeacherType=c.TeacherTypeId join Teachinglevel d on d.LevelId=b.TeacherRank where 1=1 and a.TeacherState=1";
             if (jibie != 0)
             {
                 sql += " and b.TeacherRank=@jibie";

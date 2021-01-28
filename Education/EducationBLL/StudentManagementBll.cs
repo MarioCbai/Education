@@ -31,6 +31,12 @@ namespace EducationBLL
             return students.Parents().DelParents(id);
         }
 
+        //删除学员
+        public int DelStudent(int id)
+        {
+            return students.Students().DelStudent(id);
+        }
+
         //地址
         public List<SitesMod> Dizhi(int id)
         {
