@@ -8,6 +8,7 @@ using EducationMODEL.linkModel;
 using IEducation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace Education.Controllers
@@ -19,6 +20,7 @@ namespace Education.Controllers
     [ApiController]
     public class AuthorityMController : ControllerBase
     {
+        private readonly ILogger<IndentMController> _logger;
         private IAuthorityManagement _authorityManagement;
         /// <summary>
         /// 连接口
@@ -37,6 +39,7 @@ namespace Education.Controllers
         [Route("/api/AddPart")]
         public int AddPart(JueseP j)
         {
+            _logger.LogInformation("添加角色");
             j.data = j.data1.Split(',');
             return _authorityManagement.AddPart(j);
         }
@@ -49,6 +52,7 @@ namespace Education.Controllers
         [Route("/api/UptPart")]
         public int UptPart(PartMod dt)
         {
+            _logger.LogInformation("修改角色");
             dt.PMState = 0;
             dt.PCreateTime = DateTime.Now;
             return _authorityManagement.UptPart(dt);
@@ -63,6 +67,7 @@ namespace Education.Controllers
         [Route("/api/PartState")]
         public void PartState(int id, int val)
         {
+            _logger.LogInformation("修改角色状态");
             _authorityManagement.PartState(id, val);
         }
 
@@ -75,6 +80,7 @@ namespace Education.Controllers
         [Route("/api/PartSel")]
         public PartMod PartSel(int id)
         {
+            _logger.LogInformation("查看角色");
             return _authorityManagement.SelPart(id);
         }
 
@@ -87,6 +93,7 @@ namespace Education.Controllers
         [Route("/api/DelPart")]
         public int DelPart(int id)
         {
+            _logger.LogInformation("删除角色");
             return _authorityManagement.DelPart(id);
         }
 
@@ -99,6 +106,7 @@ namespace Education.Controllers
         [Route("/api/CPState")]
         public void  CPState(int id, int val)
         {
+            _logger.LogInformation("角色权限状态修改");
             _authorityManagement.CPState(id, val);
         }
 
