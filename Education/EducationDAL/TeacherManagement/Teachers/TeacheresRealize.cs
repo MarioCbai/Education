@@ -15,7 +15,7 @@ namespace EducationDAL.TeacherManagement.Teachers
             string sql = "select *from Teach tea  join Teacher ter on tea.Teacher=ter.TeacherId " +
                 " join Organ org on ter.OrganId=org.OrganId " +
                 "join Subjects sub on tea.SubjectsId=sub.SubjectsId " +
-                "join Textbook book on tea.TextbookId=book.TextbookId  where 1=1";
+                "join Textbook book on tea.TextbookId=book.TextbookId join TeacherType ty  on ty.TeacherTypeId = tea.TeacherType  where 1=1";
             if (teaname != null && teaname != "")
             {
                 sql += " and ter.TeacherName like concat('%',@teaname,'%')";
@@ -45,7 +45,7 @@ namespace EducationDAL.TeacherManagement.Teachers
         //教师管理显示1
         public override List<TeacherMod> GetTeacherMods(string teaname=null, string phone=null, int jigou=0, int tduid=0)
         {
-            string sql = "select * from Teacher ter join  Teachereducation  duc on ter.TeachereducationId=duc.TeachereducationId join  Organ  org on org.OrganId = ter.OrganId where 1=1";
+            string sql = "select * from Teacher ter join  Teachereducation  duc on ter.TeachereducationId=duc.TeachereducationId join  Organ  org on org.OrganId = ter.OrganId  where 1=1";
             if (teaname != null && teaname != "")
             {
                 sql += " and ter.TeacherName like concat('%',@teaname,'%')";

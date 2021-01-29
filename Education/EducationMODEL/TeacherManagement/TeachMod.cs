@@ -9,7 +9,7 @@ namespace EducationMODEL.TeacherManagement
         public int TeachId { get; set; }//id
 
         public int TeacherType { get; set; }//教师类别(外键)
-
+        public string TeacherTypeName { get; set; }//教师类别(外键)
         public int TeacherRank { get; set; }//教师级别（外键）
 
         public string TeacherShowKe { get; set; }//可授课时
