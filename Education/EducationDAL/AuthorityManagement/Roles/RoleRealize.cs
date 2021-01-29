@@ -18,8 +18,8 @@ namespace EducationDAL.AuthorityManagement.Roles
         //角色删除
         public override int DelPart(int id)
         {
-            DapperHelper.Execute("delete ConsumerPart where Part==@id", new { id });
-            DapperHelper.Execute("delete PartMenu where PartMenuPartId==@id", new { id });
+            DapperHelper.Execute("delete ConsumerPart where Part=@id", new { id });
+            DapperHelper.Execute("delete PartMenu where PartMenuPartId=@id", new { id });
             return DapperHelper.Execute("delete Part where PartId=@id", new { id });
         }
 
